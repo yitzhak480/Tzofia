@@ -354,6 +354,23 @@ html[dir="rtl"] .page-tree .projects-button {
     font-size: 1.2em;
 }
 
+/* --- ✨ New Styles for Large Screens (1201px and up) ✨ --- */
+@media (min-width: 1201px) {
+    /* Refine text sizes on the tree page for better balance on large monitors */
+    .product-description h2 {
+        font-size: 3em; /* Slightly reduce font size from 3.5em */
+        margin-top: 0;  /* Remove top margin to align better with the image */
+    }
+
+    .product-description p {
+        font-size: 1.2em; /* Reduce paragraph font size from 1.4em */
+    }
+
+    .contact-info {
+        padding-top: 1.5rem; /* Adjust spacing above contact info */
+    }
+}
+
 /* --- ✨ Media Queries for Responsiveness ✨ --- */
 
 /* --- Medium Screens (Tablets, Small Laptops) --- */
