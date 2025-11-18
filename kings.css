@@ -1,0 +1,423 @@
+/* 
+   Classical Theme for Kings of Judah Project
+   Wild Classical Theme for Kings of Judah Project
+   Link this file in your HTML's <head> section: 
+   <link rel="stylesheet" href="kings.css"> 
+*/
+
+:root {
+    --font-main: 'Georgia', 'Times New Roman', serif;
+    --font-title: 'Trajan Pro', 'Palatino Linotype', serif; /* A more regal font if available */
+    --color-parchment: #fdf6e3; /* A light, aged paper color */
+    --color-gold: #c9b037;      /* A dull, classic gold for borders and accents */
+    --color-maroon: #0675ad;     /* A deep, royal red for headers */
+    --color-text: #3a2d27;      /* A dark, earthy brown for text */
+    --shadow-color: rgba(0, 0, 0, 0.2);
+}
+
+body {
+    background-color: var(--color-parchment);
+    /* Using a gradient to simulate aged paper and a subtle vignette effect */
+    background-color: var(--color-parchment); 
+    background-image: radial-gradient(circle, #fdf6e3, #f5e5c4);
+    font-family: var(--font-main);
+    color: var(--color-text);
+    margin: 0;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+/* --- ✨ New Header Styles ✨ --- */
+.page-header {
+    position: relative; /* Set positioning context for the button */
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 0.2rem double var(--color-gold);
+}
+
+.header-content {
+    text-align: center;
+}
+
+html[dir="rtl"].header-content { } /* No longer needed */
+
+/* --- 1. Bigger Headline --- */
+.main-title {
+    font-family: var(--font-title);
+    font-size: 4em; /* Increased size */
+    font-weight: bold;
+    color: var(--color-maroon);
+    text-shadow: 0.05rem 0.05rem 0.05rem #fff, -0.05rem -0.05rem 0.05rem #000, 0.15rem 0.15rem 0.25rem rgba(0,0,0,0.4);
+    margin: 0;
+    margin-bottom: 1rem; /* Space between title and new button */
+}
+
+/* --- 2. "See our other projects" Button --- */
+.projects-button {
+    display: inline-block;
+    background-color: var(--color-gold);
+    color: var(--color-text);
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.375rem; /* 6px */
+    text-decoration: none;
+    font-family: var(--font-main);
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+.projects-button:hover {
+    background-color: #d4bb41;
+    transform: translateY(-0.125rem); /* -2px */
+    box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.3); /* 0 2px 4px */
+}
+
+/* --- 3. Better Placed Language Button --- */
+#lang-toggle-btn {
+    position: absolute; /* Remove button from normal flow */
+    top: 0;
+    left: 0; /* Always on the left */
+    padding: 0.5rem 1rem;
+    font-family: var(--font-main);
+    font-size: 1rem;
+    cursor: pointer;
+    border: 0.0625rem solid var(--color-gold); /* 1px */
+    background-color: var(--color-parchment);
+    border-radius: 0.375rem; /* 6px */
+    transition: all 0.2s ease;
+}
+
+/* --- ✨ New Logo Style ✨ --- */
+.site-logo {
+    position: absolute;
+    top: 0;
+    right: 0; /* Always on the right */
+    height: 100%; /* Make the logo as tall as the header */
+    width: auto; /* Let height control the size */
+}
+
+.main_style {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem; /* Provides space between cards */
+}
+
+.king-card {
+    /* Use flex-basis for a responsive grid. Cards will be ~320px wide, but can shrink. */
+    flex: 0 1 20rem; /* Set flex-grow to 0 to prevent stretching, flex-shrink to 1, flex-basis to 20rem. */
+    max-width: 90%; /* On very small screens, allow it to take up most of the width */
+    background-color: #fffaf0; /* Floral white, slightly softer than pure white */
+    border: 0.125rem solid var(--color-gold); /* 2px */
+    border-top: 0.3125rem solid var(--color-maroon); /* 5px */
+    border-radius: 0.5rem; /* 8px */
+    box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.1), 0 0.625rem 1.25rem rgba(0,0,0,0.15); /* 4px 8px, 10px 20px */
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.king-card:hover {
+    transform: translateY(-0.3125rem) scale(1.02); /* -5px */
+    box-shadow: 0 0.375rem 0.75rem rgba(0,0,0,0.15), 0 0.9375rem 1.875rem rgba(0,0,0,0.2); /* 6px 12px, 15px 30px */
+}
+
+.card-header {
+    background-color: var(--color-maroon);
+    color: var(--color-parchment);
+    padding: 1rem;
+    text-align: center;
+    border-bottom: 0.2rem double var(--color-gold); /* 3px */
+    box-shadow: inset 0 -0.3125rem 0.625rem rgba(0,0,0,0.3); /* -5px 10px */
+}
+
+.king-name {
+    margin: 0;
+    font-size: 1.75em;
+    font-weight: 600;
+    text-shadow: 0.0625rem 0.0625rem 0.125rem rgba(0, 0, 0, 0.5); /* 1px 1px 2px */
+}
+
+.king-years {
+    margin: 0.25rem 0 0;
+    font-style: italic;
+    font-size: 1em;
+    opacity: 0.9;
+}
+
+.image-container {
+    aspect-ratio: 1 / 1; /* Force a 1x1 square aspect ratio */
+    background-color: #e0e0e0;
+    background-color: var(--color-text); /* Dark background for contrast */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.3125rem; /* 5px */
+    box-sizing: border-box;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.details-section {
+    padding: 1rem 1.5rem;
+    flex-grow: 1; /* Allows this section to grow and push the button down */
+}
+
+.detail-item {
+    margin: 0.75rem 0;
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+.label {
+    font-weight: bold;
+    color: var(--color-maroon);
+}
+
+.value {
+    font-weight: normal;
+}
+
+.card-button {
+    display: block;
+    width: calc(100% - 3rem); /* Full width minus padding */
+    margin: 0 1.5rem 1.5rem; /* Aligns with details-section padding */
+    padding: 0.75rem;
+    
+    background-color: var(--color-gold);
+    color: var(--color-text);
+    
+    border: 0.0625rem solid #a08c2c; /* 1px */
+    border-radius: 0.375rem; /* 6px */
+    
+    font-family: var(--font-main);
+    font-size: 1.1em;
+    font-weight: bold;
+    text-shadow: 0.0625rem 0.0625rem 0.0625rem rgba(255, 255, 255, 0.2); /* 1px */
+    
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: inset 0 -0.1875rem 0 rgba(0,0,0,0.2); /* -3px */
+}
+
+.card-button:hover {
+    background-color: #d4bb41;
+    transform: translateY(-0.125rem); /* -2px */
+    box-shadow: inset 0 -0.0625rem 0 rgba(0,0,0,0.2), 0 0.125rem 0.25rem rgba(0,0,0,0.3); /* -1px, 2px 4px */
+}
+
+/* --- RTL Specific Styles --- */
+html[dir="rtl"] .label {
+    margin-left: 8px;
+    margin-right: 0;
+}
+
+/* --- ✨ Hebrew Font Override --- */
+/* Apply "David" font when the language is Hebrew (RTL) */
+html[dir="rtl"] body {
+    font-family: 'David', 'Arial Hebrew', serif !important;
+}
+
+/* Override elements that have a specific font-family set */
+html[dir="rtl"] .main-title,
+html[dir="rtl"] .product-description h2 {
+    font-family: 'David', 'Arial Hebrew', serif !important;
+}
+
+html[dir="rtl"] .main-title {
+    font-size: 4.5em; /* Increase size for Hebrew font to match English visually */
+}
+
+/* Increase font sizes for other Hebrew elements to match English visually */
+html[dir="rtl"] .king-name {
+    font-size: 1.9em;
+}
+
+html[dir="rtl"] .detail-item,
+html[dir="rtl"] .card-button {
+    font-size: 1.15em;
+}
+
+/* --- ✨ Styles for tree.html ✨ --- */
+.product-page-content {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.product-image-container {
+    flex: 1.2; /* Give a bit more space to the image */
+    max-width: 45%;
+}
+
+.product-image-container img {
+    width: 100%;
+    height: auto;
+    border: 0.2rem solid var(--color-gold);
+    border-radius: 0.5rem;
+    box-shadow: 0 0.25rem 1.25rem rgba(0,0,0,0.2);
+}
+
+.product-description {
+    flex: 1; /* Make text column narrower */
+    max-width: 55%;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-description h2 {
+    font-family: var(--font-title);
+    font-size: 3.5em; /* Made even bigger */
+    color: var(--color-maroon);
+    text-shadow: 0.05rem 0.05rem 0.1rem rgba(0,0,0,0.2); /* Added shadow for depth */
+    margin-bottom: 1rem;
+    margin-top: 5rem;
+}
+
+.product-description p {
+    font-size: 1.4em; /* Made even bigger */
+    line-height: 1.7; /* Improved readability for larger text */
+}
+
+.product-specs {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    margin-bottom: 3.5rem;
+    padding: 0.75rem 1.25rem;
+    background-color: rgba(255, 250, 240, 0.6); /* Semi-transparent floral white */
+    border: 0.0625rem solid var(--color-gold);
+    border-radius: 0.5rem;
+    font-size: 1.2em;
+    align-self: flex-start; /* Prevent the box from stretching to full width */
+    font-weight: bold;
+}
+
+.spec-icon {
+    width: 1.5em;
+    height: 1.5em;
+    color: var(--color-maroon);
+    flex-shrink: 0;
+    transform: rotate(90deg); /* Rotate the icon */
+}
+
+.contact-info {
+    margin-top: 2rem;
+    padding-top: 2.5rem; /* Increased padding to lower the line */
+    margin-top: auto; /* Push this block to the bottom */
+    border-top: 0.125rem solid rgba(201, 176, 55, 0.3); /* Faint gold line */
+}
+
+.contact-info h3 {
+    font-family: var(--font-title);
+    font-size: 1.8em;
+    color: var(--color-maroon);
+    margin: 0 0 1rem 0;
+}
+
+.contact-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-info li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.contact-info a {
+    font-size: 1.2em;
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-icon {
+    width: 1.4em;
+    height: 1.4em;
+    color: var(--color-maroon);
+}
+
+/* --- ✨ Page-specific adjustments for tree.html ✨ --- */
+
+/* Make the button bigger in Hebrew on the tree page */
+html[dir="rtl"] .page-tree .projects-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1.2em;
+}
+
+/* --- ✨ Media Queries for Responsiveness ✨ --- */
+
+/* --- Medium Screens (Tablets, Small Laptops) --- */
+@media (max-width: 1024px) {
+    .product-page-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    .product-image-container,
+    .product-description {
+        max-width: 85%; /* Allow content to be wider on tablets */
+    }
+    .product-description h2 {
+        margin-top: 1rem;
+        font-size: 3em;
+    }
+    .product-description p {
+        font-size: 1.2em;
+    }
+}
+
+/* --- Small Screens (Mobile Phones) --- */
+@media (max-width: 767px) {
+    body {
+        padding: 1rem;
+    }
+    .page-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
+    }
+    .site-logo {
+        position: static; /* Remove absolute positioning */
+        height: auto;
+        width: 70vw; /* Logo width is 70% of the viewport width */
+        margin-bottom: 1rem;
+    }
+    #lang-toggle-btn {
+        position: static;
+        height: auto;
+        margin-bottom: 1rem;
+    }
+    #lang-toggle-btn {
+        order: 3; /* Make language button appear last */
+        width: auto;
+    }
+    .header-content {
+        order: 2;
+    }
+    .main-title {
+        font-size: 2.8em;
+    }
+    html[dir="rtl"] .main-title {
+        font-size: 3.2em;
+    }
+    .king-card {
+        max-width: 100%; /* Allow card to fill the screen width */
+    }
+    .product-image-container,
+    .product-description {
+        max-width: 100%; /* Full width on phones */
+    }
+}
