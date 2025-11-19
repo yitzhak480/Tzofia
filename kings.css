@@ -121,7 +121,7 @@ body {
 
 /* Add a specific hover effect for the enlarged first card */
 .first-king-card:hover {
-    transform: translateY(-0.3125rem) scale(1.25); /* Scale up from its base 1.2 */
+    transform: translateY(-0.3125rem) scale(1.1); /* Scale up from its base 1.2 */
 }
 
 .card-header {
@@ -388,7 +388,7 @@ html[dir="rtl"] .page-tree .projects-button {
 }
 
 .first-king-card {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 /* --- Medium Screens (Tablets, Small Laptops) --- */
