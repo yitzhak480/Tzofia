@@ -6,7 +6,7 @@ class KingCard {
         this.uiStrings = uiStrings;
     }
     
-    render() {
+    createCardElement() {
         const kingDiv = document.createElement('div');
         kingDiv.className = 'king-card';
 
@@ -56,7 +56,6 @@ class KingCard {
             window.open(wikiUrl, '_blank');
         });
 
-        const mainDiv = document.querySelector(".main_style");
-        mainDiv.append(kingDiv);
+        return kingDiv;
     }
 }

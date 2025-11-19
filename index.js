@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Get saved language from localStorage, or default to 'en'
     let currentLang = localStorage.getItem('preferredLang') || 'en';
+    let resizeTimer; // For debouncing the resize event
 
     function renderKingCards(lang) {
         // Only run this code on the main page (where mainDiv is visible)
@@ -18,9 +19,20 @@ document.addEventListener('DOMContentLoaded', () => {
             button_text: langData.button_text
         };
         mainDiv.innerHTML = '';
-        langData.kings.forEach(king => {
+        langData.kings.forEach((king, index) => {
             const kingCard = new KingCard(king, uiStrings);
-            kingCard.render();
+            const cardElement = kingCard.createCardElement();
+            
+            // If it's the first card, wrap it and give it a special class
+            if (index === 0) {
+                cardElement.classList.add('first-king-card');
+                const wrapper = document.createElement('div');
+                wrapper.className = 'first-king-wrapper';
+                wrapper.append(cardElement);
+                mainDiv.append(wrapper);
+            } else {
+                mainDiv.append(cardElement);
+            }
         });
     }
 
@@ -55,4 +67,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initial render
     setLanguage(currentLang);
+
+    // Re-render cards on window resize to handle responsive layout changes
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            renderKingCards(currentLang);
+        }, 250); // Debounce to avoid excessive re-renders
+    });
 });
