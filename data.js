@@ -25,7 +25,7 @@ const kingsData = {
             { "name": "Amon", "years_of_reign": "2 years", "father": "Menashe", "major_prophet": "Hilikiyahu (Hilkiah)", "image_source": "amon.jpg", "wiki_en": "Amon_of_Judah", "wiki_he": "אמון" },
             { "name": "Yoshiyahu (Josiah)", "years_of_reign": "31 years", "father": "Amon", "major_prophet": "Yirmiyahu (Jeremiah), Tzefanyah (Zephaniah), Chuldah (Huldah)", "image_source": "yoshiyahu.jpg", "wiki_en": "Josiah", "wiki_he": "יאשיהו" },
             { "name": "Yehoachaz (Jehoahaz)", "years_of_reign": "3 months", "father": "Yoshiyahu", "major_prophet": "Yirmiyahu (Jeremiah)", "image_source": "yehoachaz.jpg", "wiki_en": "Jehoahaz_of_Judah", "wiki_he": "יהואחז" },
-            { "name": "Yehoyakim (Jehoiakim)", "years_of_reign": "11 years", "father": "Yoshiyahu", "major_prophet": "Yirmiyahu (Jeremiah), Chavakuk (Habakkuk)", "image_source": "yehoyakim.jpg", "wiki_en": "Jehoiakim", "wiki_he": "יהויקים" },
+            { "name": "Yehoyakim (Jehoiakim)", "years_of_reign": "11 years", "father": "Yoshiyahu", "major_prophet": "Yirmiyahu (Jeremiah)", "image_source": "yehoyakim.jpg", "wiki_en": "Jehoiakim", "wiki_he": "יהויקים" },
             { "name": "Yehoyachin (Jehoiachin)", "years_of_reign": "3 months", "father": "Yehoyakim", "major_prophet": "Yirmiyahu (Jeremiah), Yechezkel (Ezekiel)", "image_source": "yehoyachin.jpg", "wiki_en": "Jehoiachin", "wiki_he": "יהויכין" },
             { "name": "Tzidkiyahu (Zedekiah)", "years_of_reign": "11 years", "father": "Yoshiyahu", "major_prophet": "Yirmiyahu (Jeremiah), Yechezkel (Ezekiel)", "image_source": "tzidkiyahu.jpg", "wiki_en": "Zedekiah", "wiki_he": "צדקיהו" }
         ]
@@ -56,7 +56,7 @@ const kingsData = {
             { "name": "אמון (Amon)", "years_of_reign": "שנתיים", "father": "מנשה", "major_prophet": "חלקיהו", "image_source": "amon.jpg", "wiki_en": "Amon_of_Judah", "wiki_he": "אמון" },
             { "name": "יאשיהו (Josiah)", "years_of_reign": "31 שנים", "father": "אמון", "major_prophet": "ירמיהו, צפניה, חולדה", "image_source": "yoshiyahu.jpg", "wiki_en": "Josiah", "wiki_he": "יאשיהו" },
             { "name": "יהואחז (Jehoahaz)", "years_of_reign": "3 חודשים", "father": "יאשיהו", "major_prophet": "ירמיהו", "image_source": "yehoachaz.jpg", "wiki_en": "Jehoahaz_of_Judah", "wiki_he": "יהואחז" },
-            { "name": "יהויקים (Jehoiakim)", "years_of_reign": "11 שנים", "father": "יאשיהו", "major_prophet": "ירמיהו, חבקוק", "image_source": "yehoyakim.jpg", "wiki_en": "Jehoiakim", "wiki_he": "יהויקים" },
+            { "name": "יהויקים (Jehoiakim)", "years_of_reign": "11 שנים", "father": "יאשיהו", "major_prophet": "ירמיהו", "image_source": "yehoyakim.jpg", "wiki_en": "Jehoiakim", "wiki_he": "יהויקים" },
             { "name": "יהויכין (Jehoiachin)", "years_of_reign": "3 חודשים", "father": "יהויקים", "major_prophet": "ירמיהו, יחזקאל", "image_source": "yehoyachin.jpg", "wiki_en": "Jehoiachin", "wiki_he": "יהויכין" },
             { "name": "צדקיהו (Zedekiah)", "years_of_reign": "11 שנים", "father": "יאשיהו", "major_prophet": "ירמיהו, יחזקאל", "image_source": "tzidkiyahu.jpg", "wiki_en": "Zedekiah", "wiki_he": "צדקיהו" }
         ]
