@@ -41,6 +41,13 @@ document.addEventListener('DOMContentLoaded', () => {
         document.documentElement.lang = lang;
         document.documentElement.dir = lang === 'he' ? 'rtl' : 'ltr';
 
+        // Add or remove the 'lang-he' class on the body for font styling
+        if (lang === 'he') {
+            document.body.classList.add('lang-he');
+        } else {
+            document.body.classList.remove('lang-he');
+        }
+
         // Update the text of all translatable elements
         translatableElements.forEach(element => {
             if (element.dataset[lang]) {
