@@ -1,5 +1,3 @@
-// Kings.js
-
 class KingCard {
     constructor(kingData, uiStrings) {
         this.kingData = kingData;
