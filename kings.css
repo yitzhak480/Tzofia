@@ -222,9 +222,10 @@ html[dir="rtl"] .label {
 }
 
 /* --- ✨ Hebrew Font Override --- */
+
 /* Apply "David" font when the language is Hebrew (RTL) */
 html[dir="rtl"] body {
-    font-family: 'David', 'Arial Hebrew', serif !important;
+    /* font-family: 'David', 'Arial Hebrew', serif; */
 }
 
 /* Override elements that have a specific font-family set */
@@ -234,8 +235,9 @@ html[dir="rtl"] #lang-toggle-btn,
 html[dir="rtl"] .card-button,
 html[dir="rtl"] .product-description h2,
 html[dir="rtl"] .contact-info h3 {
-    font-family: 'David', 'Arial Hebrew', serif !important;
+    /* font-family: 'David', 'Arial Hebrew', serif ; */
 }
+
 
 html[dir="rtl"] .main-title {
     font-size: 5em; /* Increase size for Hebrew font to match English visually */
