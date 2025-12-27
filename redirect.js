@@ -1,1 +1,1 @@
-document.location = "/tree";
+document.location.href = "https://tzofia.art/tree";
