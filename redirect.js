@@ -1,1 +1,1 @@
-document.location.href = "/tree";
+document.location = "/tree";
