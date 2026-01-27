@@ -1,13 +1,13 @@
-// Define a constant object to hold all data for the kings in multiple languages
+
 const kingsData = {
-    // Data for English language
+
     "en": {
-        "title": "The Kings of Judah", // Page title in English
-        "lang_btn": "עברית", // Text for the language toggle button (switching to Hebrew)
-        "father_label": "Father:", // Label for the father field
-        "prophet_label": "Major Prophet(s):", // Label for the prophet field
-        "button_text": "More Info", // Text for the 'More Info' button
-        "kings": [ // Array of objects, each representing a king
+        "title": "The Kings of Judah", 
+        "lang_btn": "עברית", 
+        "father_label": "Father:", 
+        "prophet_label": "Major Prophet(s):", 
+        "button_text": "More Info", 
+        "kings": [ 
             { "name": "David", "years_of_reign": "40 years", "father": "Yishai (Jesse)", "major_prophet": "Natan (Nathan), Gad", "image_source": "david.jpg", "wiki_en": "David", "wiki_he": "דוד" },
             { "name": "Shlomo (Solomon)", "years_of_reign": "40 years", "father": "David", "major_prophet": "Achiyah (Ahijah)", "image_source": "shlomo.jpg", "wiki_en": "Solomon", "wiki_he": "שלמה" },
             { "name": "Rehavam (Rehoboam)", "years_of_reign": "17 years", "father": "Shlomo", "major_prophet": "Shemayah (Shemaiah), Ido", "image_source": "rechavam.jpg", "wiki_en": "Rehoboam", "wiki_he": "רחבעם" },
