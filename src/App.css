@@ -1,0 +1,953 @@
+@import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;500;700&family=Amatic+SC:wght@700&display=swap');
+
+:root {
+  --color-parchment: #f4e4bc;      
+  --color-parchment-dark: #e3d2a6; 
+  --color-ink: #2c241b;            
+  --color-gold: #c5a059;           
+  --color-terracotta: #8e3b30;     
+  
+  --font-main: 'Frank Ruhl Libre', serif;
+  --font-title: 'Amatic SC', cursive; 
+}
+
+body {
+  background-color: var(--color-parchment);
+  color: var(--color-ink);
+  font-family: var(--font-main);
+  margin: 0;
+  background-image: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(0,0,0,0.05));
+  min-height: 100vh;
+}
+
+/* --- HEADER STYLES --- */
+
+.biblical-header {
+  width: 100%;
+  padding: 1.5rem 0;
+  background-color: var(--color-parchment);
+  color: var(--color-ink);
+  position: relative;
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  min-height: 140px; 
+  border-bottom: 4px double var(--color-ink, #2c241b);
+}
+
+.header-title {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+.header-nav {
+  display: flex;
+  gap: 2rem; 
+}
+
+.nav-item {
+  text-decoration: none;
+  color: var(--color-ink);
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.nav-item:hover {
+  color: var(--color-terracotta, #8e3b30);
+}
+
+.nav-item.active {
+  font-weight: bold;
+  color: var(--color-terracotta, #8e3b30);
+  border-bottom: 2px solid var(--color-terracotta, #8e3b30);
+}
+
+.header-logo {
+  position: absolute;
+  right: 30px;        
+  top: 50%;
+  transform: translateY(-50%);
+  height: 150px;      
+  width: auto;
+}
+
+.lang-toggle-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: transparent;
+  border: 1px solid var(--color-ink);
+  padding: 8px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  z-index: 100; 
+}
+
+.lang-toggle-btn:hover {
+  background-color: var(--color-ink);
+  color: var(--color-parchment);
+}
+
+/* --- FOOTER STYLES --- */
+
+.biblical-footer {
+  width: 100%;
+  background-color: var(--color-parchment, #f4e4bc);
+  color: var(--color-ink, #2c241b);
+  text-align: center;
+  padding-bottom: 2rem;
+  margin-top: auto; 
+  border-top: 4px double var(--color-ink, #2c241b);
+  position: relative;
+}
+
+.biblical-footer::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-gold, #c5a059);
+}
+
+.footer-content {
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.social-links {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.social-icon {
+  font-size: 1.5rem;
+  color: var(--color-ink, #2c241b);
+  transition: all 0.3s ease;
+  border: 2px solid var(--color-ink, #2c241b);
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.social-icon:hover {
+  color: var(--color-terracotta, #8e3b30);
+  border-color: var(--color-terracotta, #8e3b30);
+  transform: translateY(-3px);
+  background-color: rgba(142, 59, 48, 0.05); 
+}
+
+.copyright-text {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  opacity: 0.9;
+  margin: 0;
+}
+
+/* --- HOME PAGE STYLES --- */
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.home-main {
+  flex: 1; 
+  display: flex;
+  flex-direction: column; /* Changed to column to stack search bar and grid */
+  align-items: center;    /* Center items */
+  padding: 3rem 1.5rem; 
+}
+
+.scroll-paper {
+  max-width: 900px;
+  background-color: rgba(255, 255, 255, 0.4); 
+  padding: 3rem 4rem;
+  outline: 1px solid var(--color-ink, #2c241b);
+  outline-offset: -15px; 
+  box-shadow: 0 10px 30px rgba(44, 36, 27, 0.15);
+  border-radius: 2px;
+}
+
+.biblical-text {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1.2rem;
+  line-height: 1.9; 
+  text-align: justify; 
+  color: var(--color-ink, #2c241b);
+  margin: 0;
+}
+
+.biblical-text::first-letter {
+  font-family: 'Amatic SC', cursive; 
+  font-size: 4.5rem;
+  color: var(--color-terracotta, #8e3b30);
+  float: left;
+  line-height: 0.8;
+  padding-right: 15px; 
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* --- SEARCH BAR STYLES (NEW) --- */
+
+/* --- GALLERY TOOLBAR STYLES --- */
+
+
+/* Top Row: Search and Sort */
+/* --- GALLERY TOOLBAR STYLES --- */
+
+.gallery-toolbar {
+  width: 90%;
+  max-width: 800px; /* Reduced from 1000px to be more compact */
+  margin: 0 auto 3rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.5rem 2rem; /* Adjusted padding */
+  background-color: rgba(255, 255, 255, 0.4);
+  border: 1px solid var(--color-ink);
+  border-radius: 12px; /* Slightly rounder corners */
+  box-shadow: 0 4px 10px rgba(44, 36, 27, 0.05);
+}
+
+/* Top Row: Search and Sort */
+.toolbar-top {
+  display: flex;
+  justify-content: center; /* Center items instead of pushing them to edges */
+  align-items: center;
+  gap: 1.5rem; /* Space between Sort and Search */
+  flex-wrap: wrap;
+}
+
+.search-wrapper {
+  flex: 0 1 450px; /* Flex-grow: 0 (don't stretch), Base width: 450px */
+  position: relative;
+  width: 100%;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 20px; /* Taller padding for a "chunkier" feel */
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1.2rem; /* Larger text */
+  color: var(--color-ink);
+  background-color: var(--color-parchment); /* Match the Sort button background */
+  border: 1px solid var(--color-ink);
+  border-radius: 50px;
+  outline: none;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+/* Fix for Hebrew Direction (RTL) */
+/* If your site is strictly Hebrew/RTL, the X button should be on the LEFT */
+.search-input:focus {
+  background-color: #fff;
+  border-color: var(--color-terracotta);
+  box-shadow: 0 4px 12px rgba(142, 59, 48, 0.1);
+}
+
+.clear-search-btn {
+  position: absolute;
+  left: 15px; /* Moved to LEFT for Hebrew UI */
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: var(--color-terracotta);
+  cursor: pointer;
+  font-weight: bold;
+  padding: 0;
+}
+
+.sort-dropdown {
+  padding: 12px 20px 12px 35px; /* Matches input padding */
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1.1rem;
+  font-weight: bold;
+  background-color: var(--color-parchment);
+  border: 1px solid var(--color-ink);
+  border-radius: 50px;
+  cursor: pointer;
+  color: var(--color-ink);
+  appearance: none;
+  /* Arrow positioning */
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%232c241b%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: left 1rem top 50%; /* Arrow on LEFT for Hebrew */
+  background-size: 0.65rem auto;
+  min-width: 140px;
+}
+/* OPTIONAL: If you want the whole site to flip direction for Hebrew */
+body[dir="rtl"] .toolbar-top {
+  flex-direction: row-reverse;
+}
+/* Bottom Row: Filter Buttons */
+.toolbar-categories {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-top: 1.5rem;
+  border-top: 1px dashed var(--color-gold);
+}
+
+/* ... keep filter-btn and reset-btn styles as they were ... */
+.filter-btn {
+  background: transparent;
+  border: 2px solid transparent; /* Prevents jump on hover */
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1.1rem;
+  color: var(--color-ink);
+  cursor: pointer;
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  opacity: 0.7;
+}
+
+.filter-btn:hover {
+  opacity: 1;
+  color: var(--color-terracotta);
+}
+
+.filter-btn.active {
+  opacity: 1;
+  font-weight: bold;
+  border-bottom: 2px solid var(--color-terracotta);
+  background-color: rgba(142, 59, 48, 0.05);
+}
+
+.reset-btn {
+  margin-left: auto; /* Pushes to the right on large screens */
+  background: none;
+  border: 1px solid var(--color-terracotta);
+  color: var(--color-terracotta);
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s;
+}
+
+.reset-btn:hover {
+  background-color: var(--color-terracotta);
+  color: white;
+}
+
+/* No Results State */
+.no-results {
+  width: 100%;
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--color-ink);
+}
+
+.text-btn {
+  background: none;
+  border: none;
+  text-decoration: underline;
+  color: var(--color-terracotta);
+  cursor: pointer;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+}
+
+
+/* --- PRODUCT CARD STYLES --- */
+
+.biblical-card {
+  width: 260px;        
+  background-color: #fdf8e9;
+  border: 4px double var(--color-ink, #2c241b); 
+  border-radius: 6px;
+  box-shadow: 0 8px 16px rgba(44, 36, 27, 0.1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.biblical-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(44, 36, 27, 0.2);
+}
+
+.card-image-container {
+  aspect-ratio: 1 / 1; 
+  width: 100%;
+  border-bottom: 2px solid var(--color-gold, #c5a059);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-image-container::after {
+    content: '';
+    position: absolute;
+    top:0; left:0; right:0; bottom:0;
+    background: rgba(44, 36, 27, 0.15); 
+    pointer-events: none;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  transition: transform 0.5s ease;
+}
+
+.biblical-card:hover .card-image {
+    transform: scale(1.05);
+}
+
+.card-content {
+  padding: 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  flex-grow: 1;
+}
+
+.card-title {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1.4rem;
+  margin: 0;
+  color: var(--color-ink);
+}
+
+.card-price {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--color-terracotta, #8e3b30); 
+}
+
+.card-description {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  opacity: 0.9;
+  margin: 0;
+}
+
+.card-button {
+  margin-top: auto; 
+  background-color: var(--color-ink, #2c241b);
+  color: var(--color-parchment, #f4e4bc);
+  border: 1px solid var(--color-gold, #c5a059);
+  padding: 0.8rem 1rem;
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.card-button:hover {
+  background-color: var(--color-terracotta, #8e3b30);
+  color: white;
+  border-color: var(--color-ink);
+}
+
+/* --- GALLERY GRID STYLES --- */
+
+.gallery-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;           
+  max-width: 1600px;     
+  width: 95%;            
+  padding: 0;       
+  margin: 0 auto;
+}
+
+/* --- GLOBAL RESETS --- */
+#root {
+  max-width: none !important; 
+  width: 100% !important;     
+  margin: 0 !important;       
+  padding: 0 !important;      
+  text-align: initial !important; 
+}
+
+/* --- CART PAGE STYLES --- */
+
+.cart-page-container {
+  max-width: 800px;
+  width: 90%;
+  margin: 3rem auto;
+  flex: 1; 
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.cart-heading {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 2.5rem;
+  color: var(--color-ink);
+  text-align: center;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--color-gold);
+  display: inline-block;
+  padding-bottom: 0.5rem;
+  align-self: center;
+}
+
+/* --- CART CARD STYLES --- */
+.cart-card {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.4);
+  border: 2px solid var(--color-ink);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  gap: 1.5rem;
+  transition: transform 0.2s ease;
+}
+
+.cart-card:hover {
+  transform: scale(1.02);
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.cart-card-image {
+  width: 100px;
+  height: 100px;
+  border: 2px double var(--color-gold);
+  border-radius: 4px;
+  overflow: hidden;
+  flex-shrink: 0; 
+}
+
+.cart-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cart-card-details {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: right; 
+}
+
+.cart-item-title {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1.4rem;
+  margin: 0;
+  color: var(--color-ink);
+  font-weight: bold;
+}
+
+.cart-item-price {
+  font-size: 1.2rem;
+  color: var(--color-terracotta);
+  font-weight: bold;
+  margin: 0;
+}
+
+.remove-item-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--color-ink);
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.remove-item-btn:hover {
+  color: var(--color-terracotta);
+}
+
+/* --- SUMMARY SECTION --- */
+.cart-summary {
+  margin-top: 2rem;
+  padding: 2rem;
+  border-top: 4px double var(--color-ink);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  background-color: rgba(244, 228, 188, 0.5); 
+}
+
+.summary-row {
+  display: flex;
+  gap: 1rem;
+  font-size: 1.8rem;
+  font-family: 'Frank Ruhl Libre', serif;
+  color: var(--color-ink);
+}
+
+.total-price {
+  font-weight: bold;
+  color: var(--color-terracotta);
+}
+
+.checkout-button {
+  background-color: var(--color-ink);
+  color: var(--color-parchment);
+  border: 1px solid var(--color-gold);
+  padding: 1rem 3rem;
+  font-size: 1.2rem;
+  font-family: 'Frank Ruhl Libre', serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 1px;
+}
+
+.checkout-button:hover {
+  background-color: var(--color-terracotta);
+  border-color: var(--color-ink);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+.qty-btn {
+  width: 30px;
+  height: 30px;
+  background-color: var(--color-parchment);
+  border: 1px solid var(--color-ink);
+  border-radius: 50%;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.qty-btn:hover {
+  background-color: var(--color-ink);
+  color: white;
+}
+
+/* --- TREE PAGE STYLES --- */
+
+.tree-page-container-v2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem;
+  background-color: var(--color-parchment);
+  background-image: url("https://www.transparenttextures.com/patterns/aged-paper.png");
+  flex: 1;
+}
+
+.tree-scroll-card {
+  display: flex;
+  flex-direction: row;
+  max-width: 1000px; 
+  width: 95%;
+  background: linear-gradient(to right, #fdfbf7, var(--color-parchment), #fdfbf7);
+  border: 3px solid var(--color-gold);
+  box-shadow: 
+    0 10px 25px rgba(44, 36, 27, 0.2), 
+    inset 0 0 40px rgba(166, 124, 82, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.tree-image-section {
+  flex: 1; 
+  padding: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0,0,0,0.03);
+  border-left: 2px solid var(--color-gold);
+}
+
+.gold-frame-wrapper {
+  padding: 8px; 
+  background: linear-gradient(45deg, var(--color-gold), #d4af37, var(--color-gold));
+  box-shadow: 3px 3px 15px rgba(0,0,0,0.3);
+  transform: rotate(1deg);
+  transition: all 0.4s ease;
+  max-width: 400px; 
+}
+
+.gold-frame-wrapper:hover {
+  transform: rotate(0deg) scale(1.02);
+}
+
+.tree-poster-image-v2 {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--color-ink);
+}
+
+/* --- TREE CONTENT --- */
+.tree-content-section {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; 
+  justify-content: center; 
+}
+
+.tree-header-group {
+  text-align: center;
+}
+
+.tree-title-he {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 2.5rem;
+  color: var(--color-terracotta);
+  margin: 0;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.title-separator {
+  height: 3px;
+  width: 50%;
+  margin: 1rem auto;
+  background: linear-gradient(to right, transparent, var(--color-gold), transparent);
+}
+
+.tree-size-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: var(--color-ink);
+  color: var(--color-gold);
+  padding: 0.6rem 1rem; 
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  align-self: center; 
+}
+
+.size-icon { font-size: 1.2rem; }
+
+.tree-body-text {
+  font-family: 'Frank Ruhl Libre', serif;
+  color: var(--color-ink);
+  line-height: 1.6;
+}
+
+.desc-he {
+    font-size: 1.3rem; 
+    text-align: center; 
+    margin: 0;
+    font-weight: 600;
+}
+
+.tree-contact-ribbon {
+  margin-top: 1rem;
+  text-align: center;
+  padding: 1rem;
+  border-top: 1px dashed var(--color-gold);
+  border-bottom: 1px dashed var(--color-gold);
+  background-color: rgba(227, 210, 166, 0.3);
+}
+
+.contact-heading {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.2rem;
+    color: var(--color-terracotta);
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    font-size: 1rem;
+    font-weight: bold;
+    flex-wrap: wrap; 
+}
+
+.contact-link-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-ink);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.contact-link-item:hover {
+    color: var(--color-terracotta);
+}
+
+.separator { color: var(--color-gold); }
+
+.tree-purchase-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px; 
+    margin: 0.5rem auto; 
+    padding: 0.6rem 1.5rem;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 6px;
+    border: 1px solid rgba(166, 124, 82, 0.2);
+    width: fit-content; 
+}
+
+.tree-price-tag {
+    font-size: 1.6rem; 
+    font-weight: 800;
+    color: var(--color-ink);
+    font-family: 'Frank Ruhl Libre', serif;
+    line-height: 1;
+}
+
+.tree-add-btn {
+    background-color: var(--color-terracotta);
+    color: #fff;
+    border: none;
+    padding: 6px 16px; 
+    font-size: 0.95rem; 
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Frank Ruhl Libre', serif;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.tree-add-btn:hover {
+    background-color: #7a2e24;
+    transform: translateY(-1px);
+}
+
+.tree-add-btn.added {
+    background-color: #2e7d32;
+}
+
+.tree-view-cart-link {
+    color: var(--color-ink);
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 0.8rem; 
+    border-bottom: 1px solid var(--color-ink);
+    margin-top: 2px;
+}
+
+/* --- MEDIA QUERIES --- */
+
+@media (max-width: 768px) {
+  .lang-toggle-btn {
+    position: static; 
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 900px) {
+  .tree-scroll-card {
+    flex-direction: column;
+    max-width: 100%;
+  }
+
+  .tree-image-section {
+    border-left: none;
+    border-bottom: 2px solid var(--color-gold);
+    padding: 1rem;
+  }
+  
+  .gold-frame-wrapper {
+      max-width: 80%; 
+  }
+
+  .tree-content-section {
+    padding: 1.5rem;
+  }
+
+  .tree-title-he { font-size: 2rem; }
+}
+
+@media (max-width: 600px) {
+  .cart-card {
+    flex-direction: row; 
+  }
+  
+  .cart-card-image {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .cart-item-title {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .biblical-header {
+    padding-top: 10px;
+  }
+  
+  .header-logo {
+    position: static; 
+    transform: none;
+    height: 80px;
+    margin-bottom: 10px;
+  }
+  
+  .header-nav {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+  }
+
+  .scroll-paper {
+    padding: 2rem 1.5rem;
+    outline-offset: -8px;
+  }
+  
+  .biblical-text {
+    font-size: 1.1rem;
+    text-align: left; 
+  }
+}
+
+@media (max-width: 600px) {
+  .toolbar-top {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .reset-btn {
+    margin-left: 0;
+    width: 100%;
+    margin-top: 10px;
+  }
+}
