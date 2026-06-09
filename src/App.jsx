@@ -6,6 +6,7 @@ import Cart from "./pages/Cart";
 import Tree from "./pages/Tree"; 
 import { CartProvider, CartContext } from "./context/Context"; 
 import { useContext } from "react";
+import React from 'react';
 
 
 const MainLayout = () => {
