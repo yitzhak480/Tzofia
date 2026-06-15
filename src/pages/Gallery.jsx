@@ -2,7 +2,7 @@ import React, { useContext, useState, useMemo } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Card from '../components/Card';
-import { CartContext } from '../context/Context';
+import { CartContext } from '../context/context';
 
 const Gallery = () => {
   const { t, displayProducts, lang } = useContext(CartContext);

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { CartProvider, CartContext } from './context/Context';
+import { CartProvider, CartContext } from './context/context';
 import Home from './pages/Home';
 import Gallery from './pages/Gallery';
 import Tree from './pages/Tree';

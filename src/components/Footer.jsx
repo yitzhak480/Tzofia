@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 // שים לב: שינינו את הנתיב ל-context.jsx עם אותיות קטנות בהתאם לשם הקובץ שלך
-import { CartContext } from '../context/context'; 
+import { CartContext } from '../context/context';
 
 const Footer = () => {
   // אנחנו שואבים רק את השפה והתרגומים, בלי שום קשר לעגלה
