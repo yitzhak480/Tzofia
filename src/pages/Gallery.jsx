@@ -5,7 +5,7 @@ import Card from '../components/Card';
 import { CartContext } from '../context/Context';
 
 const Gallery = () => {
-  const { t, displayProducts } = useContext(CartContext);
+  const { t, displayProducts, lang } = useContext(CartContext);
 
   // --- STATE ---
   const [searchTerm, setSearchTerm] = useState('');
@@ -13,12 +13,8 @@ const Gallery = () => {
   const [sortOption, setSortOption] = useState('default');
 
   // --- CONFIGURATION ---
-  // We define this INSIDE the component so 't' updates when language changes
   const categories = [
-    { id: 'all', label: t.cat_all || 'All' }, 
-    { id: 'trees', label: t.cat_trees || 'Family Trees' },
-    { id: 'digital', label: t.cat_digital || 'Digital Art' },
-    { id: 'custom', label: t.cat_custom || 'Custom Orders' }
+    { id: 'all', label: t?.cat_all || (lang === 'he' ? 'הכל' : 'All') }
   ];
 
   // --- FILTERING ENGINE ---
@@ -27,28 +23,32 @@ const Gallery = () => {
 
     // 1. Search Filter
     if (searchTerm) {
-      data = data.filter(item => 
-        item.title.toLowerCase().includes(searchTerm.toLowerCase())
-      );
+      data = data.filter(item => {
+        const title = item[lang]?.title || item.title || '';
+        return title.toLowerCase().includes(searchTerm.toLowerCase());
+      });
     }
 
     // 2. Category Filter
-    // Note: Ensure your products in products.json have a "category" field!
     if (selectedCategory !== 'all') {
       data = data.filter(item => item.category === selectedCategory);
     }
 
-    // 3. Sorting
-    if (sortOption === 'price-low') {
-      data.sort((a, b) => a.price - b.price);
-    } else if (sortOption === 'price-high') {
-      data.sort((a, b) => b.price - a.price);
+    // 3. Sorting (לפי שנות מלוכה)
+    if (sortOption === 'reign-low') {
+      data.sort((a, b) => (a.reign_years || 0) - (b.reign_years || 0));
+    } else if (sortOption === 'reign-high') {
+      data.sort((a, b) => (b.reign_years || 0) - (a.reign_years || 0));
     } else if (sortOption === 'alpha') {
-      data.sort((a, b) => a.title.localeCompare(b.title));
+      data.sort((a, b) => {
+        const titleA = a[lang]?.title || a.title || '';
+        const titleB = b[lang]?.title || b.title || '';
+        return titleA.localeCompare(titleB);
+      });
     }
 
     return data;
-  }, [displayProducts, searchTerm, selectedCategory, sortOption]);
+  }, [displayProducts, searchTerm, selectedCategory, sortOption, lang]);
 
   // --- HANDLER ---
   const handleReset = () => {
@@ -59,32 +59,27 @@ const Gallery = () => {
 
   return (
     <div className="page-wrapper">
-      <Header title={t.gallery_title} />
+      <Header title={t?.gallery_title || (lang === 'he' ? 'המלכים' : 'Kings')} />
       
       <main className="home-main">
          
-         {/* --- TOOLBAR START --- */}
          <div className="gallery-toolbar">
-            
-            {/* Top Row: Sort & Search */}
             <div className="toolbar-top">
-              {/* Sort Dropdown */}
               <select 
                 className="sort-dropdown" 
                 value={sortOption} 
                 onChange={(e) => setSortOption(e.target.value)}
               >
-                <option value="default">{t.sort_default || "Sort By..."}</option>
-                <option value="price-low">{t.sort_low_high || "Price: Low to High"}</option>
-                <option value="price-high">{t.sort_high_low || "Price: High to Low"}</option>
-                <option value="alpha">{t.sort_az || "Name: A-Z"}</option>
+                <option value="default">{t?.sort_default || (lang === 'he' ? 'מיין לפי...' : 'Sort By...')}</option>
+                <option value="reign-low">{lang === 'he' ? 'שנות מלוכה: מהמעט להרבה' : 'Reign: Low to High'}</option>
+                <option value="reign-high">{lang === 'he' ? 'שנות מלוכה: מהרבה למעט' : 'Reign: High to Low'}</option>
+                <option value="alpha">{t?.sort_az || (lang === 'he' ? 'שם: א-ת' : 'Name: A-Z')}</option>
               </select>
 
-              {/* Search Input */}
               <div className="search-wrapper">
                 <input 
                   type="text" 
-                  placeholder={t.search_placeholder || "Search..."} 
+                  placeholder={t?.search_placeholder || (lang === 'he' ? 'חפש דמות...' : 'Search...') } 
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="search-input"
@@ -95,48 +90,46 @@ const Gallery = () => {
               </div>
             </div>
 
-            {/* Bottom Row: Category Buttons */}
-            <div className="toolbar-categories">
-              {categories.map(cat => (
-                <button 
-                  key={cat.id}
-                  className={`filter-btn ${selectedCategory === cat.id ? 'active' : ''}`}
-                  onClick={() => setSelectedCategory(cat.id)}
-                >
-                  {cat.label}
-                </button>
-              ))}
-              
-              {/* Reset Button (only visible if filters are on) */}
-              {(selectedCategory !== 'all' || searchTerm || sortOption !== 'default') && (
-                 <button className="reset-btn" onClick={handleReset}>
-                    {t.reset_filters || "Reset"}
-                 </button>
-              )}
-            </div>
-
+            {categories.length > 1 && (
+              <div className="toolbar-categories">
+                {categories.map(cat => (
+                  <button 
+                    key={cat.id}
+                    className={`filter-btn ${selectedCategory === cat.id ? 'active' : ''}`}
+                    onClick={() => setSelectedCategory(cat.id)}
+                  >
+                    {cat.label}
+                  </button>
+                ))}
+                
+                {(selectedCategory !== 'all' || searchTerm || sortOption !== 'default') && (
+                   <button className="reset-btn" onClick={handleReset}>
+                      {t?.reset_filters || (lang === 'he' ? 'נקה סינון' : 'Reset')}
+                   </button>
+                )}
+              </div>
+            )}
          </div>
-         {/* --- TOOLBAR END --- */}
 
-         {/* --- PRODUCT GRID --- */}
          <div className="gallery-grid">
             {processedProducts.length > 0 ? (
                 processedProducts.map((item) => (
-                    <Card 
-                        key={item.id}
-                        id={item.id}
-                        image={item.image}
-                        title={item.title} 
-                        price={item.price}
-                        description={item.description}
-                    />
+               <Card 
+    key={item.id}
+    image={item.image}
+    title={item[lang]?.title || item.title} 
+    reignDisplay={item[lang]?.reign_display || ''}
+    description={item[lang]?.description || item.description}
+    wikiLink={item[lang]?.wiki_link || ''}
+    /* השורה החדשה שבודקת את השפה ושולחת את הטקסט הנכון */
+    learnMoreText={lang === 'he' ? 'למד עוד' : 'Learn More'}
+/>
                 ))
             ) : (
                 <div className="no-results">
-                    <h3>{t.no_results_title || "No items found"}</h3>
-                    <p>{t.no_results_desc || "Try changing your filters"}</p>
+                    <h3>{t?.no_results_title || (lang === 'he' ? 'לא נמצאו תוצאות' : 'No results found')}</h3>
                     <button className="text-btn" onClick={handleReset}>
-                        {t.clear_all || "Clear Filters"}
+                        {t?.clear_all || (lang === 'he' ? 'נקה הכל' : 'Clear All')}
                     </button>
                 </div>
             )}

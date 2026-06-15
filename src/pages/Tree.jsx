@@ -2,29 +2,15 @@ import React, { useContext } from 'react';
 import { Helmet } from 'react-helmet-async';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { FaScroll, FaEnvelope, FaPhoneAlt, FaCartPlus, FaCheck } from 'react-icons/fa'; 
-import { CartContext } from '../context/Context';
-import { Link } from 'react-router-dom';
+import { FaScroll, FaEnvelope, FaPhoneAlt } from 'react-icons/fa'; 
+// ייבוא הקונטקסט עם אותיות קטנות בהתאם לנתיב המעודכן
+import { CartContext } from '../context/context'; 
 
 const Tree = () => {
-  const { t, addToCart, lang, cartItems } = useContext(CartContext);
-  
-  const TREE_ID = 999; 
-  const itemInCart = cartItems.find(item => item.id === TREE_ID);
-  
-  const handleAddToCart = () => {
-    const product = {
-        id: TREE_ID,
-        title: lang === 'he' ? "אילן יוחסין (פוסטר)" : "Family Tree Poster",
-        price: 60,
-        image: "/images/tree.jpg",
-        description: lang === 'he' ? "פוסטר אילן יוחסין מהודר" : "Family Tree Poster"
-    };
-    
-    addToCart(product);
-  };
+  // מושכים אך ורק את השפה והתרגומים
+  const { t, lang } = useContext(CartContext);
 
-  // יצירת סכמת המוצר עבור גוגל בצורה דינמית
+  // סכמת המוצר עבור גוגל (השארתי את זה כי זה מצוין ל-SEO ולקידום)
   const productSchema = {
     "@context": "https://schema.org/",
     "@type": "Product",
@@ -37,7 +23,7 @@ const Tree = () => {
     },
     "offers": {
       "@type": "Offer",
-      "url": "https://tzofia.art", // ניתן לעדכן לנתיב המדויק של העמוד אם קיים
+      "url": "https://tzofia.art", 
       "priceCurrency": "ILS",
       "price": "60",
       "availability": "https://schema.org/InStock"
@@ -47,18 +33,16 @@ const Tree = () => {
   return (
     <div className="page-wrapper">
       
-      {/* אזור ה-SEO שמזריק נתונים ל-Head של העמוד */}
       <Helmet>
         <title>{lang === 'he' ? 'אילן יוחסין תנ"כי ותורני - מאדם עד רבי יהודה הנשיא | Tzofia Art' : 'Biblical Family Tree | Tzofia Art'}</title>
         <meta name="description" content={lang === 'he' ? 'מחפשים אילן יוחסין תורני? גלו את השושלת המפוארת מאדם הראשון ועד רבי יהודה הנשיא בעיצוב מרהיב מבית Tzofia Art. היכנסו לפרטים והזמנה.' : 'Discover the biblical family tree poster from Adam to Rabbi Yehuda HaNasi.'} />
         
-        {/* קוד Schema שיעזור לגוגל להציג את המחיר והמוצר בתוצאות החיפוש */}
         <script type="application/ld+json">
           {JSON.stringify(productSchema)}
         </script>
       </Helmet>
 
-      <Header title={t.nav_tree} />
+      <Header title={t?.nav_tree || (lang === 'he' ? 'האילן התנ"כי' : 'The Tree')} />
 
       <main className="tree-page-container-v2">
         
@@ -68,7 +52,6 @@ const Tree = () => {
                 <div className="gold-frame-wrapper">
                     <img 
                         src="/images/tree.jpg" 
-                        /* שילבנו את מילות המפתח בטקסט החלופי של התמונה */
                         alt={lang === 'he' ? 'אילן יוחסין תנ"כי ותורני מאדם עד רבי יהודה הנשיא' : 'Biblical Family Tree Poster'} 
                         className="tree-poster-image-v2" 
                     />
@@ -78,45 +61,28 @@ const Tree = () => {
             <div className="tree-content-section">
                 
                 <header className="tree-header-group">
-                    {/* שונה מ-H2 ל-H1 כי זו הכותרת החשובה ביותר בעמוד */}
-                    <h1 className="tree-title-he">{t.tree_title}</h1>
+                    <h1 className="tree-title-he">{t?.tree_title || (lang === 'he' ? 'אילן יוחסין תנ"כי' : 'Biblical Family Tree')}</h1>
                     <div className="title-separator"></div>
                 </header>
 
                 <div className="tree-size-banner">
                     <FaScroll className="size-icon" />
-                    <span className="size-text">{t.tree_size}</span>
+                    <span className="size-text">{t?.tree_size || '100x70 cm'}</span>
                 </div>
 
                 <div className="tree-body-text">
-                    <p className="desc-he">{t.tree_desc}</p>
+                    <p className="desc-he">{t?.tree_desc}</p>
                 </div>
 
+                {/* אזור המחיר נשאר נקי וללא כפתורי הוספה לעגלה */}
                 <div className="tree-purchase-area">
                     <div className="tree-price-tag">
                         ₪60
                     </div>
-                    
-                    <button 
-                        className={`tree-add-btn ${itemInCart ? 'added' : ''}`} 
-                        onClick={handleAddToCart}
-                    >
-                        {itemInCart ? (
-                            <> <FaCheck /> {t.added_to_cart} ({itemInCart.quantity}) </>
-                        ) : (
-                            <> <FaCartPlus /> {t.add_to_cart} </>
-                        )}
-                    </button>
-
-                    {itemInCart && (
-                        <Link to="/cart" className="tree-view-cart-link">
-                           {t.view_cart_tooltip} ➔
-                        </Link>
-                    )}
                 </div>
 
                 <div className="tree-contact-ribbon">
-                    <h4 className="contact-heading">{t.contact_label}</h4>
+                    <h4 className="contact-heading">{t?.contact_label || (lang === 'he' ? 'לרכישה ופרטים נוספים:' : 'For orders and details:')}</h4>
                     <div className="contact-links">
                         <a href="mailto:yitzhak480@gmail.com" className="contact-link-item">
                             <FaEnvelope /> yitzhak480@gmail.com

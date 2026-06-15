@@ -951,3 +951,151 @@ body[dir="rtl"] .toolbar-top {
     margin-top: 10px;
   }
 }
+/* --- NEW HOME PAGE STYLES --- */
+
+.hero-section {
+  text-align: center;
+  padding: 4rem 1.5rem;
+  background: linear-gradient(to bottom, rgba(197, 160, 89, 0.15), transparent);
+  border-bottom: 2px dashed var(--color-gold);
+  margin-bottom: 3rem;
+  width: 100%;
+}
+
+.hero-content h1 {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 3.8rem;
+  color: var(--color-terracotta);
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  font-weight: 800;
+  text-shadow: 1px 1px 0px rgba(255,255,255,0.5);
+}
+
+.hero-content p {
+  font-size: 1.3rem;
+  max-width: 750px;
+  margin: 0 auto 2.5rem auto;
+  line-height: 1.6;
+  color: var(--color-ink);
+}
+
+.cta-button {
+  display: inline-block;
+  background-color: var(--color-terracotta);
+  color: #fff;
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 12px 35px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(142, 59, 48, 0.2);
+  border: 1px solid transparent;
+}
+
+.cta-button:hover {
+  background-color: #7a2e24;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(142, 59, 48, 0.3);
+}
+
+.methodology-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem 4rem 1.5rem;
+  text-align: center;
+  width: 100%;
+}
+
+.methodology-header h2 {
+  font-size: 2.8rem;
+  color: var(--color-ink);
+  margin-bottom: 0.5rem;
+}
+
+.methodology-subtitle {
+  font-size: 1.2rem;
+  max-width: 650px;
+  margin: 0 auto 3rem auto;
+  opacity: 0.85;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+.feature-card {
+  background-color: rgba(255, 255, 255, 0.4);
+  border: 2px solid var(--color-gold);
+  padding: 2.5rem 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(44, 36, 27, 0.1);
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  color: var(--color-terracotta);
+  margin-bottom: 1.2rem;
+}
+
+.feature-card h3 {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1.5rem;
+  color: var(--color-ink);
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.feature-card p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* התאמות למובייל */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.6rem;
+  }
+  
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* עיצוב כפתור ויקיפדיה - סגנון בורדו עם מסגרת */
+.wiki-learn-more-btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 8px 24px;
+  background-color: #8A3324; /* צבע הבורדו/אדמה מהתמונה */
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  border: 2px solid #5a1f16; /* מסגרת חזקה וכהה יותר, כפי שביקשת */
+  border-radius: 6px; /* עיגול עדין מאוד בפינות כמו בתמונה */
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15); /* צל עדין שמרים את הכפתור */
+}
+
+/* מצב ריחוף (Hover) - הכפתור מתכהה קצת וקופץ מעט */
+.wiki-learn-more-btn:hover {
+  background-color: #6b251a; 
+  border-color: #4a1911;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}

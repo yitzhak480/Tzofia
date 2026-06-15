@@ -1,24 +1,17 @@
 import React, { useContext } from 'react';
-import { FaInstagram, FaFacebookF, FaTiktok } from 'react-icons/fa';
-import { CartContext } from '../context/Context';
+// שים לב: שינינו את הנתיב ל-context.jsx עם אותיות קטנות בהתאם לשם הקובץ שלך
+import { CartContext } from '../context/context'; 
 
 const Footer = () => {
-  const { t } = useContext(CartContext);
+  // אנחנו שואבים רק את השפה והתרגומים, בלי שום קשר לעגלה
+  const { t, lang } = useContext(CartContext);
 
   return (
-    <footer className="biblical-footer">
+    <footer className="biblical-footer" style={{ textAlign: 'center', padding: '20px', marginTop: '40px' }}>
       <div className="footer-content">
-        
-        <div className="social-links">
-          <a href="#" className="social-icon"><FaTiktok /></a>
-          <a href="#" className="social-icon"><FaFacebookF /></a>
-          <a href="#" className="social-icon"><FaInstagram /></a>
-        </div>
-
-        <p className="copyright-text">
-           {t.footer_rights}
+        <p>
+          {t?.footer_rights || (lang === 'he' ? '© כל הזכויות שמורות' : '© All Rights Reserved')}
         </p>
-
       </div>
     </footer>
   );

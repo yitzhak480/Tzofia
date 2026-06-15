@@ -2,288 +2,375 @@
   {
     "id": 1,
     "image": "/images/david.jpg",
-    "price": 450,
+    "reign_years": 40,
     "he": {
       "title": "דוד המלך",
-      "description": "נעים זמירות ישראל, מייסד שושלת המלוכה וכובש ירושלים. מחבר ספר תהילים."
+      "reign_display": "40 שנה",
+      "description": "נעים זמירות ישראל, מייסד שושלת המלוכה וכובש ירושלים. מחבר ספר תהילים.",
+      "wiki_link": "https://he.wikipedia.org/wiki/דוד"
     },
     "en": {
       "title": "David",
-      "description": "The sweet singer of Israel, founder of the royal dynasty and conqueror of Jerusalem. Author of Psalms."
+      "reign_display": "40 years",
+      "description": "The sweet singer of Israel, founder of the royal dynasty and conqueror of Jerusalem. Author of Psalms.",
+      "wiki_link": "https://en.wikipedia.org/wiki/David"
     }
   },
   {
     "id": 2,
     "image": "/images/shlomo.jpg",
-    "price": 1200,
+    "reign_years": 40,
     "he": {
       "title": "שלמה המלך",
-      "description": "החכם באדם, בונה בית המקדש הראשון. תקופת מלכותו התאפיינה בשלווה ושגשוג כלכלי."
+      "reign_display": "40 שנה",
+      "description": "החכם באדם, בונה בית המקדש הראשון. תקופת מלכותו התאפיינה בשלווה ושגשוג כלכלי.",
+      "wiki_link": "https://he.wikipedia.org/wiki/שלמה"
     },
     "en": {
       "title": "Shlomo (Solomon)",
-      "description": "The wisest of men, builder of the First Temple. His reign was characterized by peace and prosperity."
+      "reign_display": "40 years",
+      "description": "The wisest of men, builder of the First Temple. His reign was characterized by peace and prosperity.",
+      "wiki_link": "https://en.wikipedia.org/wiki/Solomon"
     }
   },
   {
     "id": 3,
     "image": "/images/rechavam.jpg",
-    "price": 400,
+    "reign_years": 17,
     "he": {
       "title": "רחבעם",
-      "description": "בנו של שלמה. בימיו התפלגה הממלכה לממלכת יהודה וממלכת ישראל."
+      "reign_display": "17 שנה",
+      "description": "בנו של שלמה. בימיו התפלגה הממלכה לממלכת יהודה וממלכת ישראל.",
+      "wiki_link": "https://he.wikipedia.org/wiki/רחבעם"
     },
     "en": {
       "title": "Rehavam (Rehoboam)",
-      "description": "Son of Solomon. During his reign, the kingdom was divided into Judah and Israel."
+      "reign_display": "17 years",
+      "description": "Son of Solomon. During his reign, the kingdom was divided into Judah and Israel.",
+      "wiki_link": "https://en.wikipedia.org/wiki/Rehoboam"
     }
   },
   {
     "id": 4,
     "image": "/images/Abiyam.jpg",
-    "price": 420,
+    "reign_years": 3,
     "he": {
       "title": "אבים",
-      "description": "בנו של רחבעם. מלך 3 שנים בלבד. ניצח במלחמה גדולה את ירבעם מלך ישראל."
+      "reign_display": "3 שנים",
+      "description": "בנו של רחבעם. מלך 3 שנים בלבד. ניצח במלחמה גדולה את ירבעם מלך ישראל.",
+      "wiki_link": "https://he.wikipedia.org/wiki/אביה_(מלך_יהודה)"
     },
     "en": {
       "title": "Aviyam (Abijam)",
-      "description": "Son of Rehoboam. Reigned for only 3 years. Defeated Jeroboam King of Israel in a great war."
+      "reign_display": "3 years",
+      "description": "Son of Rehoboam. Reigned for only 3 years. Defeated Jeroboam King of Israel in a great war.",
+      "wiki_link": "https://en.wikipedia.org/wiki/Abijah_of_Judah"
     }
   },
   {
     "id": 5,
     "image": "/images/asa.jpg",
-    "price": 550,
+    "reign_years": 41,
     "he": {
       "title": "אסא",
-      "description": "מלך צדיק שנלחם בעבודת האלילים וחיזק את ערי יהודה. מלך 41 שנה."
+      "reign_display": "41 שנה",
+      "description": "מלך צדיק שנלחם בעבודת האלילים וחיזק את ערי יהודה. מלך 41 שנה.",
+      "wiki_link": "https://he.wikipedia.org/wiki/אסא"
     },
     "en": {
       "title": "Asa",
-      "description": "A righteous king who fought idolatry and fortified the cities of Judah. Reigned for 41 years."
+      "reign_display": "41 years",
+      "description": "A righteous king who fought idolatry and fortified the cities of Judah. Reigned for 41 years.",
+      "wiki_link": "https://en.wikipedia.org/wiki/Asa_of_Judah"
     }
   },
   {
     "id": 6,
     "image": "/images/yehoshafat.jpg",
-    "price": 600,
+    "reign_years": 25,
     "he": {
       "title": "יהושפט",
-      "description": "המשיך בדרכי אביו אסא, חיזק את מערכת המשפט והפיץ תורה בעם."
+      "reign_display": "25 שנה",
+      "description": "המשיך בדרכי אביו אסא, חיזק את מערכת המשפט והפיץ תורה בעם.",
+      "wiki_link": "https://he.wikipedia.org/wiki/יהושפט"
     },
     "en": {
       "title": "Yehoshafat (Jehoshaphat)",
-      "description": "Continued in the ways of his father Asa, strengthened the justice system and spread Torah among the people."
+      "reign_display": "25 years",
+      "description": "Continued in the ways of his father Asa, strengthened the justice system and spread Torah among the people.",
+      "wiki_link": "https://en.wikipedia.org/wiki/Jehoshaphat"
     }
   },
   {
     "id": 7,
     "image": "/images/yehoram.jpg",
-    "price": 350,
+    "reign_years": 8,
     "he": {
       "title": "יהורם",
-      "description": "בנו של יהושפט, נשא לאישה את עתליה בת אחאב מלך ישראל."
+      "reign_display": "8 שנים",
+      "description": "בנו של יהושפט, נשא לאישה את עתליה בת אחאב מלך ישראל.",
+      "wiki_link": "https://he.wikipedia.org/wiki/יהורם_(מלך_יהודה)"
     },
     "en": {
       "title": "Yehoram (Jehoram)",
-      "description": "Son of Jehoshaphat, married Athaliah, daughter of Ahab King of Israel."
+      "reign_display": "8 years",
+      "description": "Son of Jehoshaphat, married Athaliah, daughter of Ahab King of Israel.",
+      "wiki_link": "https://en.wikipedia.org/wiki/Jehoram_of_Judah"
     }
   },
   {
     "id": 8,
     "image": "/images/achazyahu.jpg",
-    "price": 320,
+    "reign_years": 1,
     "he": {
       "title": "אחזיהו",
-      "description": "מלך שנה אחת בלבד בירושלים לפני שנהרג."
+      "reign_display": "שנה אחת",
+      "description": "מלך שנה אחת בלבד בירושלים לפני שנהרג.",
+      "wiki_link": "https://he.wikipedia.org/wiki/אחזיהו_(מלך_יהודה)"
     },
     "en": {
       "title": "Ahazyahu (Ahaziah)",
-      "description": "Reigned for only one year in Jerusalem before being killed."
+      "reign_display": "1 year",
+      "description": "Reigned for only one year in Jerusalem before being killed.",
+      "wiki_link": "https://en.wikipedia.org/wiki/Ahaziah_of_Judah"
     }
   },
   {
     "id": 9,
     "image": "/images/atalyah.jpg",
-    "price": 100,
+    "reign_years": 6,
     "he": {
       "title": "עתליה",
-      "description": "השמידה את כל זרע המלוכה (למעט יהואש) ותפסה את השלטון בכוח ל-6 שנים."
+      "reign_display": "6 שנים",
+      "description": "השמידה את כל זרע המלוכה (למעט יהואש) ותפסה את השלטון בכוח ל-6 שנים.",
+      "wiki_link": "https://he.wikipedia.org/wiki/עתליה"
     },
     "en": {
       "title": "Atalyah (Athaliah)",
-      "description": "Destroyed all the royal seed (except Joash) and seized power by force for 6 years."
+      "reign_display": "6 years",
+      "description": "Destroyed all the royal seed (except Joash) and seized power by force for 6 years.",
+      "wiki_link": "https://en.wikipedia.org/wiki/Athaliah"
     }
   },
   {
     "id": 10,
     "image": "/images/yehoash.jpg",
-    "price": 700,
+    "reign_years": 40,
     "he": {
       "title": "יהואש",
-      "description": "ניצל מלידתו והוחבא בבית המקדש. חידש את בדק הבית ופעל לתיקון המקדש."
+      "reign_display": "40 שנה",
+      "description": "ניצל מלידתו והוחבא בבית המקדש. חידש את בדק הבית ופעל לתיקון המקדש.",
+      "wiki_link": "https://he.wikipedia.org/wiki/יהואש_(מלך_יהודה)"
     },
     "en": {
       "title": "Yehoash (Joash)",
-      "description": "Saved at birth and hidden in the Temple. Renovated the Temple and worked to repair it."
+      "reign_display": "40 years",
+      "description": "Saved at birth and hidden in the Temple. Renovated the Temple and worked to repair it.",
+      "wiki_link": "https://en.wikipedia.org/wiki/Jehoash_of_Judah"
     }
   },
   {
     "id": 11,
     "image": "/images/amatzyah.jpg",
-    "price": 480,
+    "reign_years": 29,
     "he": {
       "title": "אמציה",
-      "description": "ניצח את אדום בקרב, אך מאוחר יותר הובס במלחמה מול ממלכת ישראל."
+      "reign_display": "29 שנה",
+      "description": "ניצח את אדום בקרב, אך מאוחר יותר הובס במלחמה מול ממלכת ישראל.",
+      "wiki_link": "https://he.wikipedia.org/wiki/אמציה"
     },
     "en": {
       "title": "Amatzyah (Amaziah)",
-      "description": "Defeated Edom in battle, but was later defeated in a war against the Kingdom of Israel."
+      "reign_display": "29 years",
+      "description": "Defeated Edom in battle, but was later defeated in a war against the Kingdom of Israel.",
+      "wiki_link": "https://en.wikipedia.org/wiki/Amaziah_of_Judah"
     }
   },
   {
     "id": 12,
     "image": "/images/uziyahu.jpg",
-    "price": 850,
+    "reign_years": 52,
     "he": {
       "title": "עוזיהו",
-      "description": "מלך עוצמתי שבנה, ביצר ופיתח את החקלאות והצבא. מלך 52 שנה."
+      "reign_display": "52 שנה",
+      "description": "מלך עוצמתי שבנה, ביצר ופיתח את החקלאות והצבא. מלך 52 שנה.",
+      "wiki_link": "https://he.wikipedia.org/wiki/עוזיהו"
     },
     "en": {
       "title": "Uziyahu (Uzziah)",
-      "description": "A powerful king who built, fortified, and developed agriculture and the army. Reigned 52 years."
+      "reign_display": "52 years",
+      "description": "A powerful king who built, fortified, and developed agriculture and the army. Reigned 52 years.",
+      "wiki_link": "https://en.wikipedia.org/wiki/Uzziah"
     }
   },
   {
     "id": 13,
     "image": "/images/yotam.jpg",
-    "price": 500,
+    "reign_years": 16,
     "he": {
       "title": "יותם",
-      "description": "בנו של עוזיהו. המשיך בבניית שער בית ה' העליון ובביצור הערים."
+      "reign_display": "16 שנה",
+      "description": "בנו של עוזיהו. המשיך בבניית שער בית ה' העליון ובביצור הערים.",
+      "wiki_link": "https://he.wikipedia.org/wiki/יותם_(מלך_יהודה)"
     },
     "en": {
       "title": "Yotam (Jotham)",
-      "description": "Son of Uzziah. Continued building the Upper Gate of the House of the Lord and fortifying cities."
-      
+      "reign_display": "16 years",
+      "description": "Son of Uzziah. Continued building the Upper Gate of the House of the Lord and fortifying cities.",
+      "wiki_link": "https://en.wikipedia.org/wiki/Jotham_of_Judah"
     }
   },
   {
     "id": 14,
     "image": "/images/achaz.jpg",
-    "price": 380,
+    "reign_years": 16,
     "he": {
       "title": "אחז",
-      "description": "בימיו היו מלחמות קשות עם ארם וישראל. סגר את דלתות ההיכל."
+      "reign_display": "16 שנה",
+      "description": "בימיו היו מלחמות קשות עם ארם וישראל. סגר את דלתות ההיכל.",
+      "wiki_link": "https://he.wikipedia.org/wiki/אחז"
     },
     "en": {
       "title": "Ahaz",
-      "description": "His reign saw severe wars with Aram and Israel. He closed the doors of the Sanctuary."
+      "reign_display": "16 years",
+      "description": "His reign saw severe wars with Aram and Israel. He closed the doors of the Sanctuary.",
+      "wiki_link": "https://en.wikipedia.org/wiki/Ahaz"
     }
   },
   {
     "id": 15,
     "image": "/images/chizkiyahu.jpg",
-    "price": 1100,
+    "reign_years": 29,
     "he": {
       "title": "חזקיהו",
-      "description": "מגדולי המלכים. טיהר את המקדש, עשה פסח גדול, ובימיו ניצלה ירושלים מסנחריב."
+      "reign_display": "29 שנה",
+      "description": "מגדולי המלכים. טיהר את המקדש, עשה פסח גדול, ובימיו ניצלה ירושלים מסנחריב.",
+      "wiki_link": "https://he.wikipedia.org/wiki/חזקיהו"
     },
     "en": {
       "title": "Hizkiyahu (Hezekiah)",
-      "description": "One of the greatest kings. Purified the Temple, held a great Passover, and Jerusalem was saved from Sennacherib."
+      "reign_display": "29 years",
+      "description": "One of the greatest kings. Purified the Temple, held a great Passover, and Jerusalem was saved from Sennacherib.",
+      "wiki_link": "https://en.wikipedia.org/wiki/Hezekiah"
     }
   },
   {
     "id": 16,
     "image": "/images/menashe.jpg",
-    "price": 420,
+    "reign_years": 55,
     "he": {
       "title": "מנשה",
-      "description": "מלך תקופה ארוכה מאוד (55 שנה). בסוף ימיו עשה תשובה."
+      "reign_display": "55 שנה",
+      "description": "מלך תקופה ארוכה מאוד (55 שנה). בסוף ימיו עשה תשובה.",
+      "wiki_link": "https://he.wikipedia.org/wiki/מנשה_(מלך_יהודה)"
     },
     "en": {
       "title": "Menashe (Manasseh)",
-      "description": "Reigned for a very long time (55 years). Repented at the end of his days."
+      "reign_display": "55 years",
+      "description": "Reigned for a very long time (55 years). Repented at the end of his days.",
+      "wiki_link": "https://en.wikipedia.org/wiki/Manasseh_of_Judah"
     }
   },
   {
     "id": 17,
     "image": "/images/amon.jpg",
-    "price": 300,
+    "reign_years": 2,
     "he": {
       "title": "אמון",
-      "description": "בנו של מנשה, מלך שנתיים בלבד בירושלים."
+      "reign_display": "שנתיים",
+      "description": "בנו של מנשה, מלך שנתיים בלבד בירושלים.",
+      "wiki_link": "https://he.wikipedia.org/wiki/אמון_(מלך_יהודה)"
     },
     "en": {
       "title": "Amon",
-      "description": "Son of Manasseh, reigned for only two years in Jerusalem."
+      "reign_display": "2 years",
+      "description": "Son of Manasseh, reigned for only two years in Jerusalem.",
+      "wiki_link": "https://en.wikipedia.org/wiki/Amon_of_Judah"
     }
   },
   {
     "id": 18,
     "image": "/images/yoshiyahu.jpg",
-    "price": 950,
+    "reign_years": 31,
     "he": {
       "title": "יאשיהו",
-      "description": "מלך צדיק שחולל רפורמה רוחנית גדולה ומצא את ספר התורה הגנוז במקדש."
+      "reign_display": "31 שנה",
+      "description": "מלך צדיק שחולל רפורמה רוחנית גדולה ומצא את ספר התורה הגנוז במקדש.",
+      "wiki_link": "https://he.wikipedia.org/wiki/יאשיהו"
     },
     "en": {
       "title": "Yoshiyahu (Josiah)",
-      "description": "A righteous king who led a great spiritual reform and found the hidden Torah scroll in the Temple."
+      "reign_display": "31 years",
+      "description": "A righteous king who led a great spiritual reform and found the hidden Torah scroll in the Temple.",
+      "wiki_link": "https://en.wikipedia.org/wiki/Josiah"
     }
   },
   {
     "id": 19,
     "image": "/images/yehoachaz.jpg",
-    "price": 350,
+    "reign_years": 0.25,
     "he": {
       "title": "יהואחז",
-      "description": "מלך שלושה חודשים בלבד לפני שהוגלה למצרים על ידי פרעה נכה."
+      "reign_display": "3 חודשים",
+      "description": "מלך שלושה חודשים בלבד לפני שהוגלה למצרים על ידי פרעה נכה.",
+      "wiki_link": "https://he.wikipedia.org/wiki/יהואחז_(מלך_יהודה)"
     },
     "en": {
       "title": "Yehoahaz (Jehoahaz)",
-      "description": "Reigned for only three months before being exiled to Egypt by Pharaoh Necho."
+      "reign_display": "3 months",
+      "description": "Reigned for only three months before being exiled to Egypt by Pharaoh Necho.",
+      "wiki_link": "https://en.wikipedia.org/wiki/Jehoahaz_of_Judah"
     }
   },
   {
     "id": 20,
     "image": "/images/yehoyakim.jpg",
-    "price": 400,
+    "reign_years": 11,
     "he": {
       "title": "יהויקים",
-      "description": "מונה למלך על ידי פרעה. בימיו עלה נבוכדנאצר מלך בבל על ירושלים."
+      "reign_display": "11 שנה",
+      "description": "מונה למלך על ידי פרעה. בימיו עלה נבוכדנאצר מלך בבל על ירושלים.",
+      "wiki_link": "https://he.wikipedia.org/wiki/יהויקים"
     },
     "en": {
       "title": "Yehoyakim (Jehoiakim)",
-      "description": "Appointed king by Pharaoh. In his days, Nebuchadnezzar King of Babylon came up against Jerusalem."
+      "reign_display": "11 years",
+      "description": "Appointed king by Pharaoh. In his days, Nebuchadnezzar King of Babylon came up against Jerusalem.",
+      "wiki_link": "https://en.wikipedia.org/wiki/Jehoiakim"
     }
   },
   {
     "id": 21,
     "image": "/images/yehoyachin.jpg",
-    "price": 500,
+    "reign_years": 0.25,
     "he": {
       "title": "יהויכין",
-      "description": "הוגלה לבבל עם החרש והמסגר בגלות יהויכין המפורסמת."
+      "reign_display": "3 חודשים",
+      "description": "הוגלה לבבל עם החרש והמסגר בגלות יהויכין המפורסמת.",
+      "wiki_link": "https://he.wikipedia.org/wiki/יהויכין"
     },
     "en": {
       "title": "Yehoyahin (Jehoiachin)",
-      "description": "Exiled to Babylon with the craftsmen and smiths in the famous Jehoiachin exile."
+      "reign_display": "3 months",
+      "description": "Exiled to Babylon with the craftsmen and smiths in the famous Jehoiachin exile.",
+      "wiki_link": "https://en.wikipedia.org/wiki/Jeconiah"
     }
   },
   {
     "id": 22,
     "image": "/images/tzidkiyahu.jpg",
-    "price": 600,
+    "reign_years": 11,
     "he": {
       "title": "צדקיהו",
-      "description": "המלך האחרון מבית דוד לפני חורבן בית ראשון. בימיו נחרבה ירושלים."
+      "reign_display": "11 שנה",
+      "description": "המלך האחרון מבית דוד לפני חורבן בית ראשון. בימיו נחרבה ירושלים.",
+      "wiki_link": "https://he.wikipedia.org/wiki/צדקיהו"
     },
     "en": {
       "title": "Tzidkiyahu (Zedekiah)",
-      "description": "The last king of the House of David before the destruction of the First Temple. Jerusalem was destroyed in his days."
+      "reign_display": "11 years",
+      "description": "The last king of the House of David before the destruction of the First Temple. Jerusalem was destroyed in his days.",
+      "wiki_link": "https://en.wikipedia.org/wiki/Zedekiah"
     }
   }
 ]

@@ -1,19 +1,7 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { CartContext } from '../context/Context';
+import React from 'react';
 
-const Card = ({ id, image, title, price, description }) => {
-
-  const { addToCart, cartItems, t, formatPrice } = useContext(CartContext); 
-
-  const itemInCart = cartItems.find((item) => item.id === id);
-  const quantity = itemInCart ? itemInCart.quantity : 0;
-
-  const handleAddToCart = () => {
-
-    addToCart({ id, image, title, price });
-  };
-
+// הוספנו את learnMoreText לרשימה
+const Card = ({ image, title, reignDisplay, description, wikiLink, learnMoreText }) => {
   return (
     <div className="biblical-card">
         <div className="card-image-container">
@@ -23,26 +11,25 @@ const Card = ({ id, image, title, price, description }) => {
         <div className="card-content">
             <h2 className="card-title">{title}</h2>
             
-          
-            <div className="card-price">{formatPrice(price)}</div>
+            {reignDisplay && (
+                <div className="card-reign">
+                    {reignDisplay}
+                </div>
+            )}
             
             <p className="card-description">{description}</p>
             
-            <div className="card-actions-container" style={{ marginTop: 'auto', display: 'flex', gap: '10px' }}>
-                <button 
-                    className={`card-button ${quantity > 0 ? 'active' : ''}`} 
-                    onClick={handleAddToCart}
-                    style={{ flex: 1 }}
+            {wikiLink && (
+                <a 
+                    href={wikiLink} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="wiki-learn-more-btn"
                 >
-                    {quantity > 0 ? `${t.added_to_cart} (${quantity})` : t.add_to_cart}
-                </button>
-
-                {quantity > 0 && (
-                    <Link to="/cart" className="view-cart-mini-btn" title={t.view_cart_tooltip}>
-                        🛒
-                    </Link>
-                )}
-            </div>
+                    {/* מדפיס את הטקסט המותאם לשפה שהגיע מהגלריה */}
+                    {learnMoreText}
+                </a>
+            )}
         </div>
     </div>
   );

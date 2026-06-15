@@ -1,22 +1,14 @@
 export const translations = {
   he: {
     nav_home: "דף הבית",
-    nav_gallery: "קטלוג",
+    nav_gallery: "מלכי בית דוד",
     nav_cart: "עגלה",
-    nav_about: "אודות",
-    nav_contact: "צור קשר",
+ 
     nav_tree: "אילן יוחסין",
     
     gallery_title: "מלכי בית דוד",
-    add_to_cart: "הוסף לעגלה",
-    added_to_cart: "נוסף לעגלה",
-    view_cart_tooltip: "עבור לעגלה",
-    
-    cart_title: "העגלה שלך",
-    order_summary: "סיכום הזמנה",
-    cart_empty: "העגלה שלך ריקה כרגע...",
-    cart_total: 'סה"כ לתשלום:',
-    cart_checkout: "המשך לתשלום",
+
+
     
     home_welcome: "ברוכים הבאים לצופיה ארט",
     home_subtitle: "אמנות יהודית, אילנות יוחסין והיסטוריה מרגשת",
@@ -28,14 +20,13 @@ export const translations = {
     tree_size: "גודל: 91x61 ס״מ",
     contact_label: "להזמנות, צור קשר:",
     
-    search_placeholder: "חפש מוצר...",  
+    search_placeholder: "חפש מלך...",  
     no_results: "לא נמצאו תוצאות",
     no_results_title: "לא נמצאו תוצאות",
     no_results_desc: "נסה לשנות את מילות החיפוש או הסינון",
     
     sort_default: "מיין לפי...",
-    sort_low_high: "מחיר: מהנמוך לגבוה",
-    sort_high_low: "מחיר: מהגבוה לנמוך",
+
     sort_az: "שם: א-ת",
     
     cat_all: "הכל",
@@ -50,22 +41,12 @@ export const translations = {
   },
   en: {
     nav_home: "Home",
-    nav_gallery: "Catalog",
-    nav_cart: "Cart",
-    nav_about: "About",
-    nav_contact: "Contact",
+    nav_gallery: "Kings of David's Dynasty",
+   
+ 
     nav_tree: "Family Tree",
 
     gallery_title: "Kings of David's Dynasty",
-    add_to_cart: "Add to Cart",
-    added_to_cart: "In Cart",
-    view_cart_tooltip: "Go to Cart",
-
-    cart_title: "Your Cart",
-    order_summary: "Order Summary",
-    cart_empty: "Your cart is currently empty...",
-    cart_total: "Total:",
-    cart_checkout: "Proceed to Checkout",
 
     home_welcome: "Welcome to Tzofia Art",
     home_subtitle: "Jewish Art, Genealogy & Biblical History",
@@ -77,7 +58,7 @@ export const translations = {
     tree_size: "Size: 91x61 cm",
     contact_label: "For orders, contact us:",
 
-    search_placeholder: "Search products...",
+    search_placeholder: "Search a king...",
     no_results: "No results found",
     no_results_title: "No treasures found",
     no_results_desc: "Try adjusting your search or filters",

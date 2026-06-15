@@ -1,37 +1,35 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import "./App.css";
-import Home from "./pages/Home";
-import Gallery from "./pages/Gallery";
-import Cart from "./pages/Cart";
-import Tree from "./pages/Tree"; 
-import { CartProvider, CartContext } from "./context/Context"; 
-import { useContext } from "react";
-import React from 'react';
-
-
-const MainLayout = () => {
+import React, { useContext, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { CartProvider, CartContext } from './context/Context';
+import Home from './pages/Home';
+import Gallery from './pages/Gallery';
+import Tree from './pages/Tree';
+import './App.css';
+// קומפוננטת המבנה שמנהלת אך ורק את כיוון הדף (RTL/LTR) לפי השפה, בלי שום קשר לעגלה
+const MainLayout = ({ children }) => {
   const { lang } = useContext(CartContext);
-  
-  return (
-    
-    <div dir={lang === 'he' ? 'rtl' : 'ltr'} className={lang}>
-   
-      <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/gallery" element={<Gallery />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/tree" element={<Tree />} /> 
-      </Routes>
-    </div>
-  );
+
+  // משנה את כיווניות הגלישה בדפדפן באופן אוטומטי כשמחליפים שפה
+  useEffect(() => {
+    document.body.dir = lang === 'he' ? 'rtl' : 'ltr';
+  }, [lang]);
+
+  return <div className={`app-container ${lang}`}>{children}</div>;
 };
 
 function App() {
   return (
     <CartProvider>
-      <BrowserRouter>
-        <MainLayout />
-      </BrowserRouter>
+      <Router>
+        <MainLayout>
+          <Routes>
+            {/* הדרכים הקיים באתר - נקיות לחלוטין מדפי עגלה או צור קשר */}
+            <Route path="/" element={<Home />} />
+            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/tree" element={<Tree />} />
+          </Routes>
+        </MainLayout>
+      </Router>
     </CartProvider>
   );
 }
