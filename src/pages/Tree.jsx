@@ -1,4 +1,5 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
+import { Helmet } from 'react-helmet-async';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { FaScroll, FaEnvelope, FaPhoneAlt, FaCartPlus, FaCheck } from 'react-icons/fa'; 
@@ -23,8 +24,40 @@ const Tree = () => {
     addToCart(product);
   };
 
+  // יצירת סכמת המוצר עבור גוגל בצורה דינמית
+  const productSchema = {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": "אילן יוחסין תנ\"כי ותורני - מאדם עד רבי יהודה הנשיא",
+    "image": "https://tzofia.art/images/tree.jpg",
+    "description": "אילן יוחסין תנ\"כי ותורני מהודר המציג את השושלת המפוארת מאדם הראשון ועד רבי יהודה הנשיא.",
+    "brand": {
+      "@type": "Brand",
+      "name": "Tzofia Art"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": "https://tzofia.art", // ניתן לעדכן לנתיב המדויק של העמוד אם קיים
+      "priceCurrency": "ILS",
+      "price": "60",
+      "availability": "https://schema.org/InStock"
+    }
+  };
+
   return (
     <div className="page-wrapper">
+      
+      {/* אזור ה-SEO שמזריק נתונים ל-Head של העמוד */}
+      <Helmet>
+        <title>{lang === 'he' ? 'אילן יוחסין תנ"כי ותורני - מאדם עד רבי יהודה הנשיא | Tzofia Art' : 'Biblical Family Tree | Tzofia Art'}</title>
+        <meta name="description" content={lang === 'he' ? 'מחפשים אילן יוחסין תורני? גלו את השושלת המפוארת מאדם הראשון ועד רבי יהודה הנשיא בעיצוב מרהיב מבית Tzofia Art. היכנסו לפרטים והזמנה.' : 'Discover the biblical family tree poster from Adam to Rabbi Yehuda HaNasi.'} />
+        
+        {/* קוד Schema שיעזור לגוגל להציג את המחיר והמוצר בתוצאות החיפוש */}
+        <script type="application/ld+json">
+          {JSON.stringify(productSchema)}
+        </script>
+      </Helmet>
+
       <Header title={t.nav_tree} />
 
       <main className="tree-page-container-v2">
@@ -35,7 +68,8 @@ const Tree = () => {
                 <div className="gold-frame-wrapper">
                     <img 
                         src="/images/tree.jpg" 
-                        alt="Family Tree Poster" 
+                        /* שילבנו את מילות המפתח בטקסט החלופי של התמונה */
+                        alt={lang === 'he' ? 'אילן יוחסין תנ"כי ותורני מאדם עד רבי יהודה הנשיא' : 'Biblical Family Tree Poster'} 
                         className="tree-poster-image-v2" 
                     />
                 </div>
@@ -44,7 +78,8 @@ const Tree = () => {
             <div className="tree-content-section">
                 
                 <header className="tree-header-group">
-                    <h2 className="tree-title-he">{t.tree_title}</h2>
+                    {/* שונה מ-H2 ל-H1 כי זו הכותרת החשובה ביותר בעמוד */}
+                    <h1 className="tree-title-he">{t.tree_title}</h1>
                     <div className="title-separator"></div>
                 </header>
 
