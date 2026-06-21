@@ -108,7 +108,7 @@ body {
   color: var(--color-ink, #2c241b);
   text-align: center;
   padding-bottom: 2rem;
-  margin-top: auto; 
+
   border-top: 4px double var(--color-ink, #2c241b);
   position: relative;
 }
