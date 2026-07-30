@@ -46,7 +46,7 @@ export const translations = {
  
     nav_tree: "Family Tree",
 
-    gallery_title: "Kings of David's Dynasty",
+    gallery_title: "Kings of the house of David",
 
     home_welcome: "Welcome to Tzofia Art",
     home_subtitle: "Jewish Art, Genealogy & Biblical History",
