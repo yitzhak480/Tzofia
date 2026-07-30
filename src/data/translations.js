@@ -41,7 +41,7 @@ export const translations = {
   },
   en: {
     nav_home: "Home",
-    nav_gallery: "Kings of David's Dynasty",
+    nav_gallery: "Kings of the house of David",
    
  
     nav_tree: "Family Tree",
