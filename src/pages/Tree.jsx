@@ -54,7 +54,7 @@ const Tree = () => {
           <Link to="/Gmara" className="tree-showcase-card">
             <div className="showcase-image-wrapper">
               {/* אפשר לשנות לתמונה המתאימה בתיקיית public */}
-              <img src="../public/images/talmud-tree.jpg" alt="אילן יוחסין משנה וגאונים" />
+              <img src="/images/talmud-tree.jpg" alt="אילן יוחסין משנה וגאונים" />
             </div>
             <div className="showcase-content">
               <h2>{lang === 'he' ? 'חלק שני: אמוראים לגאונים' : 'Volume 2: Mishna to Geonim'}</h2>

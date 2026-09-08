@@ -183,6 +183,9 @@ h1, .page-title, .biblical-title, .main-product-title {
      מעכשיו הוא תמיד מתנהג משמאל לימין (LTR), בלי קשר לשפה! */
   direction: ltr !important; 
 }
+/* 
+
+
 
 /* בגלל שנעלנו ל-LTR, הסדר עכשיו קבוע: 
    האלמנט הראשון ב-HTML (הכלים) יהיה בשמאל, 
@@ -193,6 +196,7 @@ h1, .page-title, .biblical-title, .main-product-title {
 .header-tools {
   display: flex;
   gap: 1.5rem;
+
   align-items: center;
   direction: ltr !important; 
   /* דוחף את הכפתורים מעט למטה כדי ליישר אותם עם הלוגו */

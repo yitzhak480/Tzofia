@@ -24,7 +24,7 @@ const About = () => {
     {
       id: 1,
       nameHe: "הרב חיים רבי",
-      nameEn: "Rabbi Chaim Rabi",
+      nameEn: "Rabbi Chaim Rebi",
       descHe: "נשיא מוסדות עטרת חכמים ומחבר ספרים: 'יקרא דחיי', 'עבד ה'', 'הנהגות' ועוד",
       descEn: "President of Ateret Chachamim Institutions and author of books: 'Yikra D'Chayei', 'Eved Hashem', 'Hanhagot', and more",
       image: "/images/rebi.jpg" 
@@ -32,7 +32,7 @@ const About = () => {
     {
       id: 2,
       nameHe: "הרב מתתיה שרים",
-      nameEn: "Rabbi Matitya Sharim",
+      nameEn: "Rabbi Matitya Shrem",
       descHe: 'ראש ישיבת "תורה והוראה" ונאמן הקדשות הרשב"י במירון',
       descEn: 'Head of "Torah VeHora\'ah" Yeshiva and Trustee of Rashbi Endowments in Meron',
       image: "/images/mati.jpg" 
