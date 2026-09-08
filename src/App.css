@@ -2639,3 +2639,45 @@ body[dir="rtl"] .toolbar-top {
   .prev-btn { right: 2%; padding: 10px; font-size: 1.5rem; }
   .next-btn { left: 2%; padding: 10px; font-size: 1.5rem; }
 }
+
+/* =========================================
+   התאמות ההדר (Header) לגרסת מובייל
+   ========================================= */
+@media (max-width: 768px) {
+  .biblical-header {
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important; /* הלוגו יהיה למטה והכלים למעלה, או להפך */
+    align-items: center !important;
+    justify-content: center !important;
+    height: auto !important; /* מבטל גובה קבוע אם קיים */
+    min-height: 120px !important;
+    padding: 20px 10px !important;
+    gap: 20px !important;
+  }
+
+  .header-tools {
+    position: static !important; /* מבטל כל ריחוף */
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    transform: none !important;
+    margin: 0 !important;
+  }
+
+  /* תופס את הכפתורים עצמם למקרה שהם אלה שמרחפים */
+  .square-tool-btn {
+    position: static !important;
+    transform: none !important;
+    margin: 0 5px !important;
+  }
+
+  .logo-link {
+    position: static !important;
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+    transform: none !important;
+  }
+}
