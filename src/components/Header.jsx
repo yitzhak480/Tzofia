@@ -1,29 +1,52 @@
 import React, { useContext } from 'react';
-import { NavLink } from 'react-router-dom';
-// ייבוא באותיות קטנות למניעת שגיאות רגישות-לאותיות
 import { CartContext } from '../context/context';
+import { Link, useLocation } from 'react-router-dom';
+import { FaShoppingCart, FaGlobe, FaHome } from 'react-icons/fa'; // הוספנו את אייקון הבית
 
-const Header = ({ title }) => {
-  const { t, toggleLanguage, lang } = useContext(CartContext);
+const Header = () => {
+  const { toggleLanguage, lang, cartItems } = useContext(CartContext);
+  const totalItemsInCart = cartItems.reduce((total, item) => total + item.quantity, 0);
+  
+  // מביא לנו את הנתיב הנוכחי שהלקוח נמצא בו
+  const location = useLocation();
 
   return (
     <header className="biblical-header">
       
-      <button onClick={toggleLanguage} className="lang-toggle-btn">
-        {lang === 'he' ? '🇺🇸 English' : '🇮🇱 עברית'}
-      </button>
+      <div className="header-tools">
+        
+        {/* כפתור שפה (תמיד מופיע, יהיה הכי שמאלי) */}
+        <button onClick={toggleLanguage} className="square-tool-btn" title={lang === 'he' ? 'Change to English' : 'החלף לעברית'}>
+          <FaGlobe className="tool-icon" />
+          {/* שינינו מ-HE ל-עב */}
+          <span className="tool-text">{lang === 'he' ? 'EN' : 'עב'}</span>
+        </button>
 
-      {/* הלוגו המקורי שלך */}
-      <img src="/images/Asset 5.svg" alt="Logo" className="header-logo" />
+        {/* כפתור עגלה - מופיע רק אם אנחנו *לא* בדף העגלה */}
+        {location.pathname !== '/cart' && (
+          <Link to="/cart" className="square-tool-btn cart-link-btn" title={lang === 'he' ? 'עגלת קניות' : 'Shopping Cart'}>
+            <FaShoppingCart className="tool-icon" />
+            <span className="tool-text">{lang === 'he' ? 'סל' : 'Cart'}</span>
+            {totalItemsInCart > 0 && (
+              <span className="cart-badge">{totalItemsInCart}</span>
+            )}
+          </Link>
+        )}
 
-      <h1 className="header-title">{title}</h1>
+        {/* כפתור בית - מופיע רק אם אנחנו *לא* בדף הבית */}
+        {location.pathname !== '/' && (
+          <Link to="/" className="square-tool-btn" title={lang === 'he' ? 'דף הבית' : 'Home'}>
+            <FaHome className="tool-icon" />
+            <span className="tool-text">{lang === 'he' ? 'בית' : 'Home'}</span>
+          </Link>
+        )}
 
-      <nav className="header-nav">
-        <NavLink to="/" className="nav-item">{t.nav_home}</NavLink>
-        <NavLink to="/tree" className="nav-item">{t.nav_tree}</NavLink>
-        <NavLink to="/gallery" className="nav-item">{t.nav_gallery}</NavLink>
-      </nav>
+      </div>
 
+      <Link to="/" className="logo-link">
+        <img src="/images/Asset 5.svg" alt="Tzofia Art Logo" className="header-logo" />
+      </Link>
+      
     </header>
   );
 };

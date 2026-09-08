@@ -1,102 +1,76 @@
-import React, { useContext } from 'react';
-import { Helmet } from 'react-helmet-async';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import { FaScroll, FaEnvelope, FaPhoneAlt } from 'react-icons/fa'; 
-// ייבוא הקונטקסט עם אותיות קטנות בהתאם לנתיב המעודכן
-import { CartContext } from '../context/context'; 
+import React, { useContext } from "react";
+import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+import { CartContext } from '../context/context';
 
 const Tree = () => {
-  // מושכים אך ורק את השפה והתרגומים
-  const { t, lang } = useContext(CartContext);
-
-  // סכמת המוצר עבור גוגל (השארתי את זה כי זה מצוין ל-SEO ולקידום)
-  const productSchema = {
-    "@context": "https://schema.org/",
-    "@type": "Product",
-    "name": "אילן יוחסין תנ\"כי ותורני - מאדם עד רבי יהודה הנשיא",
-    "image": "https://tzofia.art/images/tree.jpg",
-    "description": "אילן יוחסין תנ\"כי ותורני מהודר המציג את השושלת המפוארת מאדם הראשון ועד רבי יהודה הנשיא.",
-    "brand": {
-      "@type": "Brand",
-      "name": "Tzofia Art"
-    },
-    "offers": {
-      "@type": "Offer",
-      "url": "https://tzofia.art", 
-      "priceCurrency": "ILS",
-      "price": "60",
-      "availability": "https://schema.org/InStock"
-    }
-  };
+  const { lang } = useContext(CartContext);
 
   return (
     <div className="page-wrapper">
-      
       <Helmet>
-        <title>{lang === 'he' ? 'אילן יוחסין תנ"כי ותורני - מאדם עד רבי יהודה הנשיא | Tzofia Art' : 'Biblical Family Tree | Tzofia Art'}</title>
-        <meta name="description" content={lang === 'he' ? 'מחפשים אילן יוחסין תורני? גלו את השושלת המפוארת מאדם הראשון ועד רבי יהודה הנשיא בעיצוב מרהיב מבית Tzofia Art. היכנסו לפרטים והזמנה.' : 'Discover the biblical family tree poster from Adam to Rabbi Yehuda HaNasi.'} />
-        
-        <script type="application/ld+json">
-          {JSON.stringify(productSchema)}
-        </script>
+        <title>
+          {lang === 'he' ? 'Tzofia Art | אילנות היוחסין' : 'Tzofia Art | Family Trees'}
+        </title>
       </Helmet>
 
-      <Header title={t?.nav_tree || (lang === 'he' ? 'האילן התנ"כי' : 'The Tree')} />
+      <Header />
 
-      <main className="tree-page-container-v2">
-        
-        <div className="tree-scroll-card">
-            
-            <div className="tree-image-section">
-                <div className="gold-frame-wrapper">
-                    <img 
-                        src="/images/tree.jpg" 
-                        alt={lang === 'he' ? 'אילן יוחסין תנ"כי ותורני מאדם עד רבי יהודה הנשיא' : 'Biblical Family Tree Poster'} 
-                        className="tree-poster-image-v2" 
-                    />
-                </div>
+      <main className="home-main">
+        {/* אזור הפתיח של הדף */}
+        <section className="home-hero" style={{ paddingBottom: '2rem' }}>
+          <h1>{lang === 'he' ? 'אילנות היוחסין שלנו' : 'Our Family Trees'}</h1>
+          <p>
+            {lang === 'he' 
+              ? 'בחרו את התקופה ההיסטורית שברצונכם לחקור. כל אילן יוחסין הוא תוצר של מחקר מעמיק, שנועד לפרוס בפניכם את תמונת הדורות המלאה.'
+              : 'Choose the historical era you wish to explore. Each family tree is the result of deep research, designed to lay out the full picture of the generations.'}
+          </p>
+        </section>
+
+        {/* תצוגת הכרכים (כרטיסיות רוחביות גדולות) */}
+        <section className="trees-showcase-container">
+          
+{/* כרך 1: תקופת המקרא */}
+          <Link to="/Biblical" className="tree-showcase-card">
+            <div className="showcase-image-wrapper">
+                  <img src="/images/torah-tree.jpg" alt="אילן יוחסין תנ״ך" />
             </div>
-
-            <div className="tree-content-section">
-                
-                <header className="tree-header-group">
-                    <h1 className="tree-title-he">{t?.tree_title || (lang === 'he' ? 'אילן יוחסין תנ"כי' : 'Biblical Family Tree')}</h1>
-                    <div className="title-separator"></div>
-                </header>
-
-                <div className="tree-size-banner">
-                    <FaScroll className="size-icon" />
-                    <span className="size-text">{t?.tree_size || '100x70 cm'}</span>
-                </div>
-
-                <div className="tree-body-text">
-                    <p className="desc-he">{t?.tree_desc}</p>
-                </div>
-
-                {/* אזור המחיר נשאר נקי וללא כפתורי הוספה לעגלה */}
-                <div className="tree-purchase-area">
-                    <div className="tree-price-tag">
-                        ₪60
-                    </div>
-                </div>
-
-                <div className="tree-contact-ribbon">
-                    <h4 className="contact-heading">{t?.contact_label || (lang === 'he' ? 'לרכישה ופרטים נוספים:' : 'For orders and details:')}</h4>
-                    <div className="contact-links">
-                        <a href="mailto:yitzhak480@gmail.com" className="contact-link-item">
-                            <FaEnvelope /> yitzhak480@gmail.com
-                        </a>
-                        <span className="separator">|</span>
-                        <a href="tel:054-8177702" className="contact-link-item">
-                            <FaPhoneAlt /> 054-8177702
-                        </a>
-                    </div>
-                </div>
-
+            <div className="showcase-content">
+              <h2>{lang === 'he' ? 'חלק ראשון: מאדם לתנאים' : 'Volume 1: From Adam to the Tanaim'}</h2>
+              <div className="title-separator" style={{ margin: '15px 0' }}></div>
+              <p>
+                {lang === 'he' 
+                  ? 'מאדם וחווה דרך תקופת האבות, יציאת מצרים, שלטון המלכים וחורבן בית ראשון ושני ועד לימי חתימת המשנה.'
+                  : 'From Adam and Eve through the era of the Patriarchs, the Exodus, the reigns of the Kings, the destruction of the First and Second Temples, up to the sealing of the Mishna.'}
+              </p>
+              <span className="showcase-btn">
+                {lang === 'he' ? 'צפו באילן המלא ←' : 'View Full Tree ←'}
+              </span>
             </div>
-        </div>
+          </Link>
+          {/* כרך 2: משנה וגאונים */}
+          <Link to="/Gmara" className="tree-showcase-card">
+            <div className="showcase-image-wrapper">
+              {/* אפשר לשנות לתמונה המתאימה בתיקיית public */}
+              <img src="../public/images/talmud-tree.jpg" alt="אילן יוחסין משנה וגאונים" />
+            </div>
+            <div className="showcase-content">
+              <h2>{lang === 'he' ? 'חלק שני: אמוראים לגאונים' : 'Volume 2: Mishna to Geonim'}</h2>
+              <div className="title-separator" style={{ margin: '15px 0' }}></div>
+              <p>
+                {lang === 'he' 
+                  ? 'הדורות שעיצבו את התורה שבעל פה. מאחרוני התנאים, דרך האמוראים בבבל ובארץ ישראל, ועד תקופת הגאונים.'
+                  : 'The generations that shaped the Oral Torah. From the Zugot and Tannaim, through the Amoraim, to the Geonic period.'}
+              </p>
+              <span className="showcase-btn">
+                {lang === 'he' ? 'צפו באילן המלא ←' : 'View Full Tree ←'}
+              </span>
+            </div>
+          </Link>
 
+        </section>
       </main>
 
       <Footer />

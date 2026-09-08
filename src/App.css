@@ -1,14 +1,31 @@
-@import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;500;700&family=Amatic+SC:wght@700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;500;700&family=Amatic+SC:wght@700&display=swap");
 
 :root {
-  --color-parchment: #f4e4bc;      
-  --color-parchment-dark: #e3d2a6; 
-  --color-ink: #2c241b;            
-  --color-gold: #c5a059;           
-  --color-terracotta: #8e3b30;     
-  
-  --font-main: 'Frank Ruhl Libre', serif;
-  --font-title: 'Amatic SC', cursive; 
+  --color-parchment: #f4e4bc;
+  --color-parchment-dark: #e3d2a6;
+  --color-ink: #2c241b;
+  --color-gold: #c5a059;
+  --color-terracotta: #8e3b30;
+
+  --font-main: "Frank Ruhl Libre", serif;
+  --font-title: "Amatic SC", cursive;
+}
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* מבטיח שהמעטפת תמיד תהיה לפחות בגובה מלא של המסך */
+}
+
+/* חסימה גלובלית של גלישה רוחבית בכל האתר */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box; /* מבטיח ששוליים לא ינפחו את הרוחב מעבר ל-100% */
 }
 
 body {
@@ -16,88 +33,236 @@ body {
   color: var(--color-ink);
   font-family: var(--font-main);
   margin: 0;
-  background-image: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(0,0,0,0.05));
+  padding: 0;
+  height: 100%;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.1),
+    rgba(0, 0, 0, 0.05)
+  );
   min-height: 100vh;
 }
-
-/* --- HEADER STYLES --- */
-
+/* --- עיצוב ה-Header הכללי --- */
 .biblical-header {
+  display: grid;
+  /* יוצר 3 עמודות: שמאל (כלים), אמצע (גמיש), ימין (לוגו) */
+  grid-template-columns: 1fr auto 1fr; 
+  align-items: center; /* ממרכז את הכל בדיוק על אותו קו גובה! */
+  padding: 2rem 4rem; /* מוסיף מרווח יפה מהצדדים */
+  background-color: transparent;
   width: 100%;
-  padding: 1.5rem 0;
-  background-color: var(--color-parchment);
-  color: var(--color-ink);
-  position: relative;
-  display: flex;
-  flex-direction: column; 
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  min-height: 140px; 
-  border-bottom: 4px double var(--color-ink, #2c241b);
+  box-sizing: border-box;
 }
 
-.header-title {
-  font-family: 'Frank Ruhl Libre', serif;
-  font-size: 3rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-  margin: 0;
-}
-
-.header-nav {
-  display: flex;
-  gap: 2rem; 
-}
-
-.nav-item {
-  text-decoration: none;
-  color: var(--color-ink);
-  font-family: 'Frank Ruhl Libre', serif;
-  font-size: 1.2rem;
-  font-weight: 500;
-  position: relative;
-  transition: all 0.3s ease;
-}
-
-.nav-item:hover {
-  color: var(--color-terracotta, #8e3b30);
-}
-
-.nav-item.active {
-  font-weight: bold;
-  color: var(--color-terracotta, #8e3b30);
-  border-bottom: 2px solid var(--color-terracotta, #8e3b30);
+.home-hero {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  /* הקטנו את הריווח העליון מ-6rem ל-4rem כדי שהכותרת תשב בול באמצע השטח הפנוי */
+  padding: 4rem 2rem 1.5rem 2rem;
 }
 
 .header-logo {
   position: absolute;
-  right: 30px;        
-  top: 50%;
-  transform: translateY(-50%);
-  height: 150px;      
+  right: 30px;
+  top: 30px; /* רווח מלמעלה בדיוק כמו הרווח מימין */
+  /* מחקנו את ה-transform ואת ה-top: 50% שעשו את הבלגן */
+  height: 150px;
   width: auto;
+  z-index: 10;
 }
 
 .lang-toggle-btn {
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 40px; /* התאמתי טיפה שיהיה ממורכז יפה מול הלוגו */
+  left: 30px;
   background: transparent;
-  border: 1px solid var(--color-ink);
+  border: 1px solid var(--color-ink, #2c241b);
   padding: 8px 15px;
   border-radius: 20px;
   cursor: pointer;
-  font-family: 'Frank Ruhl Libre', serif;
+  font-family: "Frank Ruhl Libre", serif;
   font-size: 1rem;
   font-weight: bold;
   transition: all 0.3s ease;
-  z-index: 100; 
+  z-index: 100;
 }
 
-.lang-toggle-btn:hover {
-  background-color: var(--color-ink);
-  color: var(--color-parchment);
+
+/* =========================================
+   עיצוב כותרות ראשיות (שאיבה למעלה ויישור מול הלוגו)
+   ========================================= */
+
+/* =========================================
+   עיצוב כותרות ראשיות (שאיבה למעלה ויישור מול הלוגו)
+   ========================================= */
+
+/* =========================================
+   עיצוב כותרות ראשיות 
+   ========================================= */
+
+h1, .page-title, .biblical-title, .main-product-title {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 2.2rem;
+  color: var(--color-ink, #2c241b);
+  text-align: center;
+  
+  margin-top: -5.5rem; 
+  margin-bottom: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  
+  /* נותן לכותרות קצרות כמעט את כל רוחב המסך, כך שהן לא יישברו סתם */
+  max-width: 95%; 
+  
+  line-height: 1.4;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  
+  position: relative;
+  z-index: 5;
+}
+
+/* --- התאמות למסכים בינוניים וקטנים /* =========================================
+   חומת מגן למסכים בינוניים וקטנים (חצי מסך, טאבלט, מובייל)
+   ========================================= */
+@media (max-width: 1024px) {
+  h1, 
+  .page-title, 
+  .biblical-title, 
+  .main-product-title, 
+  .long-title {
+    /* ה-important מכריח את הדפדפן לבטל את המשיכה למעלה, ולא משנה מה! */
+    margin-top: 2rem !important; 
+    max-width: 95% !important;
+    font-size: 1.8rem !important;
+  }
+}
+
+/* --- קלאס מיוחד לכותרות ארוכות שמתפצלות לשתי שורות (דפי העצים) --- */
+.long-title {
+  margin-top: -7.5rem; /* משיכה כפולה כדי לפצות על השורה השנייה */
+  max-width: 75%; /* ההגבלה שגורמת לשורה להישבר בצורה יפה לפני הקצוות */
+}
+/* --- התאמות למסכים קטנים --- */
+@media (max-width: 1024px) {
+  h1, .page-title, .biblical-title {
+    max-width: 85%;
+    margin-top: -4.5rem;
+    font-size: 1.9rem;
+  }
+  .long-title {
+    margin-top: -6rem; 
+  }
+}
+
+@media (max-width: 768px) {
+  h1, .page-title, .biblical-title {
+    max-width: 95%;
+    margin-top: 1rem;
+    font-size: 1.7rem;
+  }
+  .long-title {
+    margin-top: 1rem; /* במובייל מאפסים את הכל */
+  }
+}
+/* =========================================
+   עיצוב ה-Header (נעול כיוון - חסין שפות)
+   ========================================= */
+
+.biblical-header {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center; 
+  padding: 2rem 4rem; 
+  background-color: transparent;
+  width: 100%;
+  box-sizing: border-box;
+  
+  /* הפקודה האגרסיבית שנועלת את ההדר: 
+     מעכשיו הוא תמיד מתנהג משמאל לימין (LTR), בלי קשר לשפה! */
+  direction: ltr !important; 
+}
+
+/* בגלל שנעלנו ל-LTR, הסדר עכשיו קבוע: 
+   האלמנט הראשון ב-HTML (הכלים) יהיה בשמאל, 
+   האלמנט השני ב-HTML (הלוגו) יהיה בימין. */
+
+/* --- אזור הכלים העליון (Header Tools) --- */
+
+.header-tools {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  direction: ltr !important; 
+  /* דוחף את הכפתורים מעט למטה כדי ליישר אותם עם הלוגו */
+transform: translate(-20px, 35px);
+}
+
+/* --- אזור הלוגו --- */
+.logo-link {
+  display: block;
+  z-index: 2;
+}
+
+/* =========================================
+   עיצוב הכפתורים עצמם (ללא שינוי)
+   ========================================= */
+
+/* --- עיצוב הכפתורים עצמם (מוגדלים) --- */
+.square-tool-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 72px; /* הוגדל מ-60px */
+  height: 72px; /* הוגדל מ-60px */
+  background-color: var(--color-gold, #c5a059); 
+  border: 2px solid var(--color-ink, #2c241b); 
+  border-radius: 12px; 
+  color: #fff; 
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative; 
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.square-tool-btn:hover {
+  background-color: var(--color-ink, #2c241b); 
+  color: var(--color-gold, #c5a059); 
+  transform: translateY(-3px); 
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.tool-icon {
+  font-size: 1.8rem; /* האייקון הוגדל */
+  margin-bottom: 4px;
+}
+
+.tool-text {
+  font-size: 0.95rem; /* הטקסט הוגדל */
+  font-weight: 700;
+  font-family: 'Frank Ruhl Libre', serif;
+}
+
+/* --- בועית ספירת הפריטים בעגלה (Badge) --- */
+.cart-badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: var(--color-terracotta, #8e3b30); 
+  color: white;
+  font-size: 0.85rem;
+  font-weight: bold;
+  width: 26px; 
+  height: 26px; 
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+  border: 2px solid #fff; 
 }
 
 /* --- FOOTER STYLES --- */
@@ -108,13 +273,13 @@ body {
   color: var(--color-ink, #2c241b);
   text-align: center;
   padding-bottom: 2rem;
-
+  margin-top: auto;
   border-top: 4px double var(--color-ink, #2c241b);
   position: relative;
 }
 
 .biblical-footer::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -6px;
   left: 0;
@@ -155,11 +320,11 @@ body {
   color: var(--color-terracotta, #8e3b30);
   border-color: var(--color-terracotta, #8e3b30);
   transform: translateY(-3px);
-  background-color: rgba(142, 59, 48, 0.05); 
+  background-color: rgba(142, 59, 48, 0.05);
 }
 
 .copyright-text {
-  font-family: 'Frank Ruhl Libre', serif;
+  font-family: "Frank Ruhl Libre", serif;
   font-size: 1rem;
   font-weight: bold;
   letter-spacing: 1px;
@@ -168,55 +333,157 @@ body {
 }
 
 /* --- HOME PAGE STYLES --- */
+/* =========================================
+   Home Page - New Layout Styles
+   ========================================= */
 
-.page-wrapper {
+.home-new-layout {
+  background-color: #fcf9f2; /* רקע חמים דמוי קלף עדין */
+  padding-bottom: 5rem;
+}
+
+/* Hero Section */
+.home-hero {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  /* צמצמנו את הריווח העליון והתחתון של אזור הטקסט (מ-4rem ל-1.5rem) */
+  padding: 1.5rem 2rem;
+}
+
+.home-hero h1 {
+  font-family: "Frank Ruhl Libre", serif;
+  font-size: 3.5rem;
+  color: var(--color-ink, #2c241b);
+  /* הקטנו מעט את הרווח בין הכותרת לפסקה */
+  margin-bottom: 0.8rem;
+  font-weight: 700;
+}
+
+.home-hero p {
+  font-family: "Frank Ruhl Libre", serif;
+  font-size: 1.3rem;
+  line-height: 1.8;
+  color: #5a4f40;
+}
+
+/* Cards Grid */
+.home-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+  max-width: 1200px;
+  /* הוספנו 6rem למטה (auto 6rem auto) כדי לדחוף את הפוטר למטה */
+  margin: 0 auto 6rem auto;
+  padding: 0 2rem;
+}
+.home-main {
+  flex: 1; /* פקודת הקסם: גורם לתוכן האמצעי לתפוס את כל השטח הפנוי ולדחוף את הפוטר למטה */
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
 }
 
-.home-main {
-  flex: 1; 
-  display: flex;
-  flex-direction: column; /* Changed to column to stack search bar and grid */
-  align-items: center;    /* Center items */
-  padding: 3rem 1.5rem; 
+/* Individual Card (Tzofia Art Style - Premium V2) */
+.tzofia-card {
+  display: grid; 
+  padding: 24px; /* יוצר את ההגנה של מסגרת הזהב מסביב לתמונה */
+  
+  /* רקע הקלף */
+  background-color: #e2d1b3;
+  background-image: linear-gradient(to bottom, #f7f1e3, #e2d1b3);
+  
+  /* המסגרת היוקרתית (זהב + דיו) */
+  border: 2px solid var(--color-gold, #c5a059);
+  outline: 4px double var(--color-ink, #2c241b);
+  outline-offset: -14px;
+  
+  border-radius: 4px;
+  box-shadow: 0 15px 35px rgba(44, 36, 27, 0.1);
+  text-decoration: none;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, outline-color 0.4s ease;
 }
 
-.scroll-paper {
-  max-width: 900px;
-  background-color: rgba(255, 255, 255, 0.4); 
-  padding: 3rem 4rem;
-  outline: 1px solid var(--color-ink, #2c241b);
-  outline-offset: -15px; 
-  box-shadow: 0 10px 30px rgba(44, 36, 27, 0.15);
+/* טריק הגריד - שם את אזור התמונה ואזור הטקסט בדיוק באותה משבצת */
+.tzofia-card > * {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.tzofia-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 45px rgba(44, 36, 27, 0.2);
+  outline-color: var(--color-terracotta, #8e3b30);
+}
+
+/* Card Image */
+.card-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 61 / 91; /* כופה פרופורציה של הפוסטרים שלך */
   border-radius: 2px;
+  overflow: hidden;
 }
 
-.biblical-text {
-  font-family: 'Frank Ruhl Libre', serif;
-  font-size: 1.2rem;
-  line-height: 1.9; 
-  text-align: justify; 
+.card-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.7s ease;
+}
+
+.tzofia-card:hover .card-image-wrapper img {
+  transform: scale(1.08); /* אפקט זום איטי עדין בתמונה */
+}
+
+/* הגרדיינט המיוחד שנמס לתוך הקלף בסוף התמונה */
+/* הגרדיינט המיוחד: נמס לתוך צבע הקלף */
+.card-image-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  /* מתחיל להסתיר כבר ב-15%, נהיה כמעט אטום לגמרי ב-50% (איפה שהכותרת מתחילה), ואטום לחלוטין ב-80% */
+  background: linear-gradient(to bottom, transparent 15%, rgba(226, 209, 179, 0.95) 50%, #e2d1b3 80%);
+  pointer-events: none;
+}
+/* Card Content */
+.card-content {
+  position: relative;
+  z-index: 2; /* מוודא שהטקסט יושב מעל הגרדיינט של התמונה */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* דוחף את כל הטקסט לחלק התחתון של הכרטיס */
+  align-items: center;
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.card-content h2 {
+  font-family: "Frank Ruhl Libre", serif;
+  font-size: 2rem;
+  color: var(--color-terracotta, #8e3b30);
+  margin-bottom: 0.5rem;
+}
+
+.card-content .title-separator {
+  width: 40px;
+  height: 2px;
+  background-color: var(--color-terracotta, #8e3b30); /* צבע טרקוטה שמשתלב מעולה עם זהב */
+  margin: 10px auto 15px auto;
+  opacity: 0.7;
+}
+
+.card-content p {
+  font-family: "Frank Ruhl Libre", serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
   color: var(--color-ink, #2c241b);
   margin: 0;
-}
-
-.biblical-text::first-letter {
-  font-family: 'Amatic SC', cursive; 
-  font-size: 4.5rem;
-  color: var(--color-terracotta, #8e3b30);
-  float: left;
-  line-height: 0.8;
-  padding-right: 15px; 
-  margin-top: 10px;
-  font-weight: bold;
 }
 
 /* --- SEARCH BAR STYLES (NEW) --- */
 
 /* --- GALLERY TOOLBAR STYLES --- */
-
 
 /* Top Row: Search and Sort */
 /* --- GALLERY TOOLBAR STYLES --- */
@@ -253,10 +520,12 @@ body {
 .search-input {
   width: 100%;
   padding: 12px 20px; /* Taller padding for a "chunkier" feel */
-  font-family: 'Frank Ruhl Libre', serif;
+  font-family: "Frank Ruhl Libre", serif;
   font-size: 1.2rem; /* Larger text */
   color: var(--color-ink);
-  background-color: var(--color-parchment); /* Match the Sort button background */
+  background-color: var(
+    --color-parchment
+  ); /* Match the Sort button background */
   border: 1px solid var(--color-ink);
   border-radius: 50px;
   outline: none;
@@ -288,7 +557,7 @@ body {
 
 .sort-dropdown {
   padding: 12px 20px 12px 35px; /* Matches input padding */
-  font-family: 'Frank Ruhl Libre', serif;
+  font-family: "Frank Ruhl Libre", serif;
   font-size: 1.1rem;
   font-weight: bold;
   background-color: var(--color-parchment);
@@ -322,7 +591,7 @@ body[dir="rtl"] .toolbar-top {
 .filter-btn {
   background: transparent;
   border: 2px solid transparent; /* Prevents jump on hover */
-  font-family: 'Frank Ruhl Libre', serif;
+  font-family: "Frank Ruhl Libre", serif;
   font-size: 1.1rem;
   color: var(--color-ink);
   cursor: pointer;
@@ -379,19 +648,20 @@ body[dir="rtl"] .toolbar-top {
   margin-top: 1rem;
 }
 
-
 /* --- PRODUCT CARD STYLES --- */
 
 .biblical-card {
-  width: 260px;        
+  width: 260px;
   background-color: #fdf8e9;
-  border: 4px double var(--color-ink, #2c241b); 
+  border: 4px double var(--color-ink, #2c241b);
   border-radius: 6px;
   box-shadow: 0 8px 16px rgba(44, 36, 27, 0.1);
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .biblical-card:hover {
@@ -400,7 +670,7 @@ body[dir="rtl"] .toolbar-top {
 }
 
 .card-image-container {
-  aspect-ratio: 1 / 1; 
+  aspect-ratio: 1 / 1;
   width: 100%;
   border-bottom: 2px solid var(--color-gold, #c5a059);
   position: relative;
@@ -408,22 +678,25 @@ body[dir="rtl"] .toolbar-top {
 }
 
 .card-image-container::after {
-    content: '';
-    position: absolute;
-    top:0; left:0; right:0; bottom:0;
-    background: rgba(44, 36, 27, 0.15); 
-    pointer-events: none;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(44, 36, 27, 0.15);
+  pointer-events: none;
 }
 
 .card-image {
   width: 100%;
   height: 100%;
-  object-fit: cover; 
+  object-fit: cover;
   transition: transform 0.5s ease;
 }
 
 .biblical-card:hover .card-image {
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 .card-content {
@@ -436,17 +709,17 @@ body[dir="rtl"] .toolbar-top {
 }
 
 .card-title {
-  font-family: 'Frank Ruhl Libre', serif;
+  font-family: "Frank Ruhl Libre", serif;
   font-size: 1.4rem;
   margin: 0;
   color: var(--color-ink);
 }
 
 .card-price {
-  font-family: 'Frank Ruhl Libre', serif;
+  font-family: "Frank Ruhl Libre", serif;
   font-size: 1.2rem;
   font-weight: bold;
-  color: var(--color-terracotta, #8e3b30); 
+  color: var(--color-terracotta, #8e3b30);
 }
 
 .card-description {
@@ -457,12 +730,12 @@ body[dir="rtl"] .toolbar-top {
 }
 
 .card-button {
-  margin-top: auto; 
+  margin-top: auto;
   background-color: var(--color-ink, #2c241b);
   color: var(--color-parchment, #f4e4bc);
   border: 1px solid var(--color-gold, #c5a059);
   padding: 0.8rem 1rem;
-  font-family: 'Frank Ruhl Libre', serif;
+  font-family: "Frank Ruhl Libre", serif;
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -480,178 +753,23 @@ body[dir="rtl"] .toolbar-top {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1.5rem;           
-  max-width: 1600px;     
-  width: 95%;            
-  padding: 0;       
+  gap: 1.5rem;
+  max-width: 1600px;
+  width: 95%;
+  padding: 0;
   margin: 0 auto;
 }
 
 /* --- GLOBAL RESETS --- */
 #root {
-  max-width: none !important; 
-  width: 100% !important;     
-  margin: 0 !important;       
-  padding: 0 !important;      
-  text-align: initial !important; 
+  max-width: none !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: initial !important;
 }
 
-/* --- CART PAGE STYLES --- */
 
-.cart-page-container {
-  max-width: 800px;
-  width: 90%;
-  margin: 3rem auto;
-  flex: 1; 
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.cart-heading {
-  font-family: 'Frank Ruhl Libre', serif;
-  font-size: 2.5rem;
-  color: var(--color-ink);
-  text-align: center;
-  margin-bottom: 1rem;
-  border-bottom: 2px solid var(--color-gold);
-  display: inline-block;
-  padding-bottom: 0.5rem;
-  align-self: center;
-}
-
-/* --- CART CARD STYLES --- */
-.cart-card {
-  display: flex;
-  align-items: center;
-  background-color: rgba(255, 255, 255, 0.4);
-  border: 2px solid var(--color-ink);
-  border-radius: 8px;
-  padding: 1rem;
-  margin-bottom: 1.5rem;
-  gap: 1.5rem;
-  transition: transform 0.2s ease;
-}
-
-.cart-card:hover {
-  transform: scale(1.02);
-  background-color: rgba(255, 255, 255, 0.6);
-}
-
-.cart-card-image {
-  width: 100px;
-  height: 100px;
-  border: 2px double var(--color-gold);
-  border-radius: 4px;
-  overflow: hidden;
-  flex-shrink: 0; 
-}
-
-.cart-card-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.cart-card-details {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  text-align: right; 
-}
-
-.cart-item-title {
-  font-family: 'Frank Ruhl Libre', serif;
-  font-size: 1.4rem;
-  margin: 0;
-  color: var(--color-ink);
-  font-weight: bold;
-}
-
-.cart-item-price {
-  font-size: 1.2rem;
-  color: var(--color-terracotta);
-  font-weight: bold;
-  margin: 0;
-}
-
-.remove-item-btn {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  color: var(--color-ink);
-  cursor: pointer;
-  padding: 0.5rem;
-  transition: color 0.3s ease;
-}
-
-.remove-item-btn:hover {
-  color: var(--color-terracotta);
-}
-
-/* --- SUMMARY SECTION --- */
-.cart-summary {
-  margin-top: 2rem;
-  padding: 2rem;
-  border-top: 4px double var(--color-ink);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-  background-color: rgba(244, 228, 188, 0.5); 
-}
-
-.summary-row {
-  display: flex;
-  gap: 1rem;
-  font-size: 1.8rem;
-  font-family: 'Frank Ruhl Libre', serif;
-  color: var(--color-ink);
-}
-
-.total-price {
-  font-weight: bold;
-  color: var(--color-terracotta);
-}
-
-.checkout-button {
-  background-color: var(--color-ink);
-  color: var(--color-parchment);
-  border: 1px solid var(--color-gold);
-  padding: 1rem 3rem;
-  font-size: 1.2rem;
-  font-family: 'Frank Ruhl Libre', serif;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  letter-spacing: 1px;
-}
-
-.checkout-button:hover {
-  background-color: var(--color-terracotta);
-  border-color: var(--color-ink);
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-.qty-btn {
-  width: 30px;
-  height: 30px;
-  background-color: var(--color-parchment);
-  border: 1px solid var(--color-ink);
-  border-radius: 50%;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 1.2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s;
-}
-
-.qty-btn:hover {
-  background-color: var(--color-ink);
-  color: white;
-}
 
 /* --- TREE PAGE STYLES --- */
 
@@ -668,34 +786,44 @@ body[dir="rtl"] .toolbar-top {
 .tree-scroll-card {
   display: flex;
   flex-direction: row;
-  max-width: 1000px; 
+  max-width: 1000px;
   width: 95%;
-  background: linear-gradient(to right, #fdfbf7, var(--color-parchment), #fdfbf7);
+  background: linear-gradient(
+    to right,
+    #fdfbf7,
+    var(--color-parchment),
+    #fdfbf7
+  );
   border: 3px solid var(--color-gold);
-  box-shadow: 
-    0 10px 25px rgba(44, 36, 27, 0.2), 
+  box-shadow:
+    0 10px 25px rgba(44, 36, 27, 0.2),
     inset 0 0 40px rgba(166, 124, 82, 0.1);
   border-radius: 12px;
   overflow: hidden;
 }
 
 .tree-image-section {
-  flex: 1; 
+  flex: 1;
   padding: 1.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0,0,0,0.03);
+  background-color: rgba(0, 0, 0, 0.03);
   border-left: 2px solid var(--color-gold);
 }
 
 .gold-frame-wrapper {
-  padding: 8px; 
-  background: linear-gradient(45deg, var(--color-gold), #d4af37, var(--color-gold));
-  box-shadow: 3px 3px 15px rgba(0,0,0,0.3);
+  padding: 8px;
+  background: linear-gradient(
+    45deg,
+    var(--color-gold),
+    #d4af37,
+    var(--color-gold)
+  );
+  box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
   transform: rotate(1deg);
   transition: all 0.4s ease;
-  max-width: 400px; 
+  max-width: 400px;
 }
 
 .gold-frame-wrapper:hover {
@@ -715,8 +843,8 @@ body[dir="rtl"] .toolbar-top {
   padding: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem; 
-  justify-content: center; 
+  gap: 1rem;
+  justify-content: center;
 }
 
 .tree-header-group {
@@ -724,7 +852,7 @@ body[dir="rtl"] .toolbar-top {
 }
 
 .tree-title-he {
-  font-family: 'Frank Ruhl Libre', serif;
+  font-family: "Frank Ruhl Libre", serif;
   font-size: 2.5rem;
   color: var(--color-terracotta);
   margin: 0;
@@ -736,7 +864,12 @@ body[dir="rtl"] .toolbar-top {
   height: 3px;
   width: 50%;
   margin: 1rem auto;
-  background: linear-gradient(to right, transparent, var(--color-gold), transparent);
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--color-gold),
+    transparent
+  );
 }
 
 .tree-size-banner {
@@ -746,26 +879,28 @@ body[dir="rtl"] .toolbar-top {
   gap: 10px;
   background-color: var(--color-ink);
   color: var(--color-gold);
-  padding: 0.6rem 1rem; 
+  padding: 0.6rem 1rem;
   border-radius: 50px;
   font-size: 1.1rem;
   font-weight: bold;
-  align-self: center; 
+  align-self: center;
 }
 
-.size-icon { font-size: 1.2rem; }
+.size-icon {
+  font-size: 1.2rem;
+}
 
 .tree-body-text {
-  font-family: 'Frank Ruhl Libre', serif;
+  font-family: "Frank Ruhl Libre", serif;
   color: var(--color-ink);
   line-height: 1.6;
 }
 
 .desc-he {
-    font-size: 1.3rem; 
-    text-align: center; 
-    margin: 0;
-    font-weight: 600;
+  font-size: 1.3rem;
+  text-align: center;
+  margin: 0;
+  font-weight: 600;
 }
 
 .tree-contact-ribbon {
@@ -778,101 +913,138 @@ body[dir="rtl"] .toolbar-top {
 }
 
 .contact-heading {
-    margin: 0 0 0.5rem 0;
-    font-size: 1.2rem;
-    color: var(--color-terracotta);
+  margin: 0 0 0.5rem 0;
+  font-size: 1.2rem;
+  color: var(--color-terracotta);
 }
 
 .contact-links {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    font-size: 1rem;
-    font-weight: bold;
-    flex-wrap: wrap; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  font-size: 1rem;
+  font-weight: bold;
+  flex-wrap: wrap;
 }
 
 .contact-link-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--color-ink);
-    text-decoration: none;
-    transition: color 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-ink);
+  text-decoration: none;
+  transition: color 0.3s;
 }
 
 .contact-link-item:hover {
-    color: var(--color-terracotta);
+  color: var(--color-terracotta);
 }
 
-.separator { color: var(--color-gold); }
+.separator {
+  color: var(--color-gold);
+}
 
 .tree-purchase-area {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px; 
-    margin: 0.5rem auto; 
-    padding: 0.6rem 1.5rem;
-    background-color: rgba(255, 255, 255, 0.4);
-    border-radius: 6px;
-    border: 1px solid rgba(166, 124, 82, 0.2);
-    width: fit-content; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin: 0.5rem auto;
+  padding: 0.6rem 1.5rem;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 6px;
+  border: 1px solid rgba(166, 124, 82, 0.2);
+  width: fit-content;
 }
 
 .tree-price-tag {
-    font-size: 1.6rem; 
-    font-weight: 800;
-    color: var(--color-ink);
-    font-family: 'Frank Ruhl Libre', serif;
-    line-height: 1;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--color-ink);
+  font-family: "Frank Ruhl Libre", serif;
+  line-height: 1;
 }
 
 .tree-add-btn {
-    background-color: var(--color-terracotta);
-    color: #fff;
-    border: none;
-    padding: 6px 16px; 
-    font-size: 0.95rem; 
-    border-radius: 4px;
-    cursor: pointer;
-    font-family: 'Frank Ruhl Libre', serif;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  background-color: var(--color-terracotta);
+  color: #fff;
+  border: none;
+  padding: 6px 16px;
+  font-size: 0.95rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: "Frank Ruhl Libre", serif;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .tree-add-btn:hover {
-    background-color: #7a2e24;
-    transform: translateY(-1px);
+  background-color: #7a2e24;
+  transform: translateY(-1px);
 }
 
 .tree-add-btn.added {
-    background-color: #2e7d32;
+  background-color: #2e7d32;
 }
 
 .tree-view-cart-link {
-    color: var(--color-ink);
-    font-weight: bold;
-    text-decoration: none;
-    font-size: 0.8rem; 
-    border-bottom: 1px solid var(--color-ink);
-    margin-top: 2px;
+  color: var(--color-ink);
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 0.8rem;
+  border-bottom: 1px solid var(--color-ink);
+  margin-top: 2px;
 }
 
 /* --- MEDIA QUERIES --- */
+/* =========================================
+   RESPONSIVE DESIGN (התאמה למסכים משתנים)
+   ========================================= */
 
-@media (max-width: 768px) {
+/* 1. מסכים בינוניים וטאבלטים (עד 1050px) - סידור 
+/* 1. מסכים בינוניים וטאבלטים (עד 1050px) - סידור ההדר */
+@media (max-width: 1050px) {
+  .biblical-header {
+    height: auto;
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2rem;
+    gap: 1.5rem;
+  }
+
+  .header-logo {
+    position: static;
+    height: 130px;
+    margin: 0;
+    order: 1; /* הפקודה ששמה את הלוגו למעלה! */
+  }
+
   .lang-toggle-btn {
-    position: static; 
-    margin-bottom: 10px;
+    position: static;
+    margin: 0;
+    order: 2; /* הפקודה ששמה את הכפתור למטה! */
+  }
+
+  .home-hero {
+    padding-top: 1.5rem;
   }
 }
 
+/* 2. התאמות למסכי טאבלט (עד 900px) - כרטיסיות ועמודי העץ */
 @media (max-width: 900px) {
+  /* התיקון לכרטיסיות של דף הבית - עמודה אחת מושלמת במרכז */
+  .home-cards-grid {
+    grid-template-columns: 1fr; /* כופה עמודה אחת */
+    max-width: 450px; /* שומר על פרופורציות יפות של הכרטיסייה שלא תימתח מדי */
+    gap: 2rem;
+  }
+
   .tree-scroll-card {
     flex-direction: column;
     max-width: 100%;
@@ -880,77 +1052,172 @@ body[dir="rtl"] .toolbar-top {
 
   .tree-image-section {
     border-left: none;
-    border-bottom: 2px solid var(--color-gold);
+    border-bottom: 2px solid var(--color-gold, #c5a059);
     padding: 1rem;
   }
-  
+
   .gold-frame-wrapper {
-      max-width: 80%; 
+    max-width: 80%;
   }
 
   .tree-content-section {
     padding: 1.5rem;
   }
 
-  .tree-title-he { font-size: 2rem; }
+  .tree-title-he {
+    font-size: 2rem;
+  }
 }
+/* 3. מסכים קטנים וסלולר (עד 768px) - פונטים וטקסטים */
+@media (max-width: 768px) {
+  /* הקטנת כותרות דף הבית כדי שלא יגלשו לשורות מוגזמות */
+  .home-hero h1 {
+    font-size: 2.5rem;
+  }
 
-@media (max-width: 600px) {
-  .cart-card {
-    flex-direction: row; 
-  }
-  
-  .cart-card-image {
-    width: 70px;
-    height: 70px;
-  }
-  
-  .cart-item-title {
+  .home-hero p {
     font-size: 1.1rem;
   }
-}
 
-@media (max-width: 768px) {
-  .biblical-header {
-    padding-top: 10px;
-  }
-  
-  .header-logo {
-    position: static; 
-    transform: none;
-    height: 80px;
-    margin-bottom: 10px;
-  }
-  
-  .header-nav {
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
+  .home-cards-grid {
+    gap: 2rem; /* פחות רווח מת בין הכרטיסיות בנייד */
   }
 
+  /* עיצוב המגילות והטקסט ההיסטורי לשאר האתר */
   .scroll-paper {
     padding: 2rem 1.5rem;
     outline-offset: -8px;
   }
-  
+
   .biblical-text {
     font-size: 1.1rem;
-    text-align: left; 
+    /* במקום left (שישבור את העברית), נשתמש ב-start שמתאים את עצמו לשפה באופן דינמי */
+    text-align: start;
   }
 }
 
-@media (max-width: 600px) {
-  .toolbar-top {
-    flex-direction: column;
-    align-items: stretch;
-  }
+
+/* =========================================
+   Trees Showcase Page (Perfect Poster Ratio 61/91)
+   ========================================= */
+
+.trees-showcase-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+  max-width: 1100px; /* רוחב נוח שנותן לכרטיסיות לנשום */
+  margin: 0 auto 5rem auto;
+  padding: 0 2rem;
+  width: 100%;
+}
+
+.tree-showcase-card {
+  /* השימוש בגריד מאפשר לנו לשים את התמונה והטקסט אחד על השני בול */
+  display: grid; 
+  padding: 24px; /* מגן על התמונה מכל הכיוונים שלא תיגע במסגרת */
   
-  .reset-btn {
-    margin-left: 0;
-    width: 100%;
-    margin-top: 10px;
+  background-color: #e2d1b3;
+  background-image: linear-gradient(to bottom, #f7f1e3, #e2d1b3);
+  
+  border: 2px solid var(--color-gold, #c5a059);
+  outline: 4px double var(--color-ink, #2c241b);
+  outline-offset: -14px;
+  
+  border-radius: 4px;
+  box-shadow: 0 15px 35px rgba(44, 36, 27, 0.1);
+  text-decoration: none;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, outline-color 0.4s ease;
+}
+
+/* הפקודה ששמה את אזור התמונה ואת אזור הטקסט באותה משבצת גריד */
+.tree-showcase-card > * {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.tree-showcase-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 45px rgba(44, 36, 27, 0.2);
+  outline-color: var(--color-terracotta, #8e3b30);
+}
+
+.showcase-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 61 / 91; /* כופה על אזור התמונה את היחס המושלם של הפוסטר שלך! */
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.showcase-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+/* הגרדיינט המיוחד: נמס לתוך צבע הקלף */
+.showcase-image-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(to bottom, transparent 40%, rgba(226, 209, 179, 0.85) 70%, #e2d1b3 95%);
+  pointer-events: none;
+}
+
+.showcase-content {
+  position: relative;
+  z-index: 2; /* מוודא שהטקסט יושב מעל הגרדיינט */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* דוחף למטה */
+  align-items: center;
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.showcase-content h2 {
+  font-family: "Frank Ruhl Libre", serif;
+  font-size: 2.2rem;
+  color: var(--color-terracotta, #8e3b30);
+  margin-bottom: 0;
+}
+
+.showcase-content .title-separator {
+  margin: 15px auto;
+}
+
+.showcase-content p {
+  font-family: "Frank Ruhl Libre", serif;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--color-ink, #2c241b);
+  margin-bottom: 1.5rem;
+}
+
+.showcase-btn {
+  font-family: "Frank Ruhl Libre", serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--color-terracotta, #8e3b30);
+  transition: all 0.3s ease;
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+  margin-bottom: 0.5rem;
+}
+
+.tree-showcase-card:hover .showcase-btn {
+  color: var(--color-ink, #2c241b);
+  border-bottom: 1px solid var(--color-ink, #2c241b);
+}
+
+@media (max-width: 800px) {
+  .trees-showcase-container {
+    grid-template-columns: 1fr;
+    max-width: 500px;
   }
 }
+
 /* --- NEW HOME PAGE STYLES --- */
 
 .hero-section {
@@ -963,13 +1230,13 @@ body[dir="rtl"] .toolbar-top {
 }
 
 .hero-content h1 {
-  font-family: 'Frank Ruhl Libre', serif;
+  font-family: "Frank Ruhl Libre", serif;
   font-size: 3.8rem;
   color: var(--color-terracotta);
   margin-bottom: 1.5rem;
   line-height: 1.2;
   font-weight: 800;
-  text-shadow: 1px 1px 0px rgba(255,255,255,0.5);
+  text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5);
 }
 
 .hero-content p {
@@ -984,7 +1251,7 @@ body[dir="rtl"] .toolbar-top {
   display: inline-block;
   background-color: var(--color-terracotta);
   color: #fff;
-  font-family: 'Frank Ruhl Libre', serif;
+  font-family: "Frank Ruhl Libre", serif;
   font-size: 1.3rem;
   font-weight: bold;
   padding: 12px 35px;
@@ -1035,7 +1302,10 @@ body[dir="rtl"] .toolbar-top {
   padding: 2.5rem 1.5rem;
   border-radius: 8px;
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease;
 }
 
 .feature-card:hover {
@@ -1051,7 +1321,7 @@ body[dir="rtl"] .toolbar-top {
 }
 
 .feature-card h3 {
-  font-family: 'Frank Ruhl Libre', serif;
+  font-family: "Frank Ruhl Libre", serif;
   font-size: 1.5rem;
   color: var(--color-ink);
   margin-bottom: 1rem;
@@ -1069,7 +1339,7 @@ body[dir="rtl"] .toolbar-top {
   .hero-content h1 {
     font-size: 2.6rem;
   }
-  
+
   .features-grid {
     grid-template-columns: 1fr;
   }
@@ -1079,7 +1349,7 @@ body[dir="rtl"] .toolbar-top {
   display: inline-block;
   margin-top: 15px;
   padding: 8px 24px;
-  background-color: #8A3324; /* צבע הבורדו/אדמה מהתמונה */
+  background-color: #8a3324; /* צבע הבורדו/אדמה מהתמונה */
   color: #ffffff;
   text-decoration: none;
   font-weight: bold;
@@ -1093,9 +1363,1275 @@ body[dir="rtl"] .toolbar-top {
 
 /* מצב ריחוף (Hover) - הכפתור מתכהה קצת וקופץ מעט */
 .wiki-learn-more-btn:hover {
-  background-color: #6b251a; 
+  background-color: #6b251a;
   border-color: #4a1911;
   color: #ffffff;
   transform: translateY(-2px);
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* =========================================
+   Single Tree Product Page (Biblical.jsx)
+   ========================================= */
+.product-page-container {
+  max-width: 1188px; /* הוגדל מ-1140 כדי שהתמונה תוכל להתרחב ולצמוח לגובה! */
+  margin: 4rem auto 6rem auto;
+  padding: 0 2rem;
+  width: 100%;
+}
+
+.product-page-header {
+  text-align: center;
+  margin-bottom: 4rem; 
+}
+
+.main-product-title {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 3rem; 
+  color: var(--color-ink, #2c241b); /* שונה לדיו */
+  margin-bottom: 15px;
+}
+
+.product-page-header .title-separator {
+  margin: 0 auto; 
+}
+
+/* --- יישור הגבהים בין ימין לשמאל --- */
+/* --- יישור הגבהים בין ימין לשמאל --- */
+/* --- פותחים את רוחב העמוד כדי לתת לתמונה מקום לגדול --- */
+
+
+/* --- יישור הגבהים --- */
+.product-split-layout {
+  display: grid;
+  /* נותנים לגלריה יתרון רוחב משמעותי, עם !important כדי לוודא ששום קוד ישן לא דורס את זה */
+  grid-template-columns: 1.8fr 1fr !important; 
+  gap: 4rem;
+  align-items: stretch; 
+}
+
+/* --- אזור הגלריה --- */
+.product-gallery {
+  display: grid;
+  grid-template-columns: 1fr 160px; 
+  gap: 1.5rem;
+  /* פקודת הקסם: מונעת מהמסגרת להימתח ולהשאיר חלל ריק, היא תעטוף בול את התמונה */
+  align-self: start; 
+}
+
+.main-poster-frame {
+  width: 100%;
+  height: max-content; /* כופה על המסגרת להסתיים איפה שהתמונה מסתיימת */
+  padding: 24px;
+  background-color: #f7f1e3;
+  border: 2px solid var(--color-gold, #c5a059);
+  outline: 4px double var(--color-ink, #2c241b);
+  outline-offset: -12px;
+  box-sizing: border-box;
+  box-shadow: 0 15px 35px rgba(44, 36, 27, 0.12);
+  cursor: zoom-in;
+}
+
+.main-poster-frame img {
+  width: 100%;
+  height: auto; /* מחזיר את התמונה להתנהגות טבעית בלי חיתוכים */
+  aspect-ratio: 61 / 91; 
+  object-fit: contain; /* מבטיח ששום דבר לא נחתך */
+  display: block;
+}
+
+.thumbnails-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: 100%; /* מתפרס על כל הגובה כדי להשתוות למסגרת הגדולה */
+}
+
+.thumb-frame {
+  padding: 6px;
+  background-color: #f7f1e3;
+  border: 1px solid var(--color-gold, #c5a059);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  cursor: zoom-in;
+  
+  /* הקסם שמחזיר את חלוקת הגובה השווה: */
+  flex: 1; 
+  display: flex;
+  min-height: 0;
+}
+
+.thumb-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.thumb-frame:hover {
+  transform: translateX(-4px); 
+  border-color: var(--color-ink, #2c241b);
+}
+
+/* --- אזור התוכן והקנייה (eCommerce) --- */
+
+/* --- אזור התוכן והקנייה (eCommerce) --- */
+/* --- יישור הגבהים --- */
+/* --- יישור הגבהים --- */
+.product-split-layout {
+  display: grid;
+  /* נותן קצת יותר רוחב לגלריה כדי שתצמח בגובה ותדביק את הטקסט */
+  grid-template-columns: 1.35fr 1fr; 
+  gap: 4rem;
+  align-items: stretch; 
+}
+
+/* --- אזור הגלריה --- */
+.product-gallery {
+  display: grid;
+  grid-template-columns: 1fr 160px; 
+  gap: 1.5rem;
+  /* הפקודה הקריטית שעוצרת את העיוות: מונעת מהגלריה להידחף למטה בגלל הטקסט */
+  align-self: start; 
+  align-items: stretch; 
+}
+
+/* --- מירכוז המידות --- */
+/* --- מפרט טכני (מידות וחומר) --- */
+.product-specs {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* מתיישר אוטומטית לפי השפה */
+  gap: 0.8rem;
+  margin-top: 1.2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+  color: var(--color-terracotta, #8e3b30);
+  width: 100%;
+}
+
+.spec-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.spec-icon {
+  color: inherit; 
+}
+
+
+.product-content {
+  display: flex;
+  flex-direction: column;
+  /* מרווח בין החלק העליון (הטקסטים) לחלק התחתון (הקנייה), דוחף את הקנייה לתחתית */
+  justify-content: space-between; 
+  height: 100%;
+}
+
+.product-description p {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: var(--color-ink, #2c241b);
+  text-align: start; 
+  margin-bottom: 1rem;
+}
+.product-info-top {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* מתיישר אוטומטית לימין בעברית, ולשמאל באנגלית */
+  text-align: start; /* מתיישר אוטומטית לפי כיוון השפה */
+}
+.product-sources {
+  margin-top: 0.5rem;
+  padding-top: 1.2rem;
+  border-top: 1px dashed rgba(197, 160, 89, 0.4); /* קו מקווקו עדין מזהב */
+}
+
+.product-sources p {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(44, 36, 27, 0.75);
+  text-align: start;
+  margin: 0;
+}
+/* --- מירכוז המידות --- */
+
+
+.product-price-tag {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--color-ink, #2c241b);
+}
+
+/* עיצוב חנות הקניות החדש */
+/* --- אזור הקנייה החדש והמדוגם --- */
+.ecommerce-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.purchase-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(226, 209, 179, 0.3); /* צבע קלף עדין לרקע */
+  padding: 1rem 1.5rem;
+  border: 1px solid var(--color-gold, #c5a059);
+  border-radius: 4px;
+}
+
+.product-price-tag {
+  font-size: 2.2rem; /* הקטנו את המחיר */
+  font-weight: bold;
+  color: var(--color-ink, #2c241b);
+  margin: 0;
+  line-height: 1;
+}
+/* =========================================
+   עיצוב מד הכמות החדש (מחליף את .quantity-wrapper)
+   ========================================= */
+.custom-quantity-selector {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.quantity-label {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1.2rem;
+  color: var(--color-ink, #2c241b);
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  background-color: #f7f1e3;
+  border: 1px solid var(--color-gold, #c5a059);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.qty-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  padding: 0.4rem 0.8rem;
+  color: var(--color-ink, #2c241b);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-family: inherit;
+}
+
+.qty-btn:hover {
+  background-color: rgba(197, 160, 89, 0.2); /* רקע זהוב חלש במעבר עכבר */
+}
+
+.qty-number {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  min-width: 32px;
+  text-align: center;
+  color: var(--color-ink, #2c241b);
+  user-select: none; /* מונע סימון מקרי של המספר עם העכבר */
+}
+.quantity-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.quantity-wrapper label {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1.2rem;
+  color: var(--color-ink, #2c241b);
+}
+
+.quantity-input {
+  width: 60px;
+  height: 40px;
+  text-align: center;
+  font-size: 1.2rem;
+  font-family: 'Frank Ruhl Libre', serif;
+  background-color: #f7f1e3;
+  border: 1px solid var(--color-gold, #c5a059);
+  color: var(--color-ink, #2c241b);
+  border-radius: 2px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.quantity-input:focus {
+  border-color: var(--color-terracotta, #8e3b30);
+}
+
+.add-to-cart-btn {
+  background-color: var(--color-ink, #2c241b);
+  color: #fdfbf7;
+  border: none;
+  padding: 1rem;
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1.4rem;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(44, 36, 27, 0.15);
+}
+
+.add-to-cart-btn:hover {
+  background-color: var(--color-terracotta, #8e3b30);
+}
+
+.add-to-cart-btn:active {
+  transform: scale(0.98);
+}
+
+.secure-checkout {
+  text-align: center;
+  font-family: 'Frank Ruhl Libre', serif;
+  color: #666;
+  font-size: 1rem;
+}
+
+
+/* =========================================
+   עיצוב עמוד הצהרת נגישות
+   ========================================= */
+
+.accessibility-page {
+  padding: 3rem 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+  color: var(--color-ink, #2c241b);
+  /* מרווח תחתון שמרחיק את הטקסט מהפוטר */
+  min-height: 60vh; 
+}
+
+.accessibility-page .page-title {
+  /* דורס את המשיכה למעלה (-5.5rem) רק בעמוד הזה, כי פה אין תמונות רקע שצריך להתיישר מולן */
+  margin-top: 1rem !important; 
+  margin-bottom: 2.5rem;
+  font-size: 2.5rem;
+}
+
+.accessibility-content {
+  font-family: 'Assistant', sans-serif; /* פונט קריא יותר לטקסט רץ ארוך, אפשר להשאיר את המקורי אם תרצה */
+  font-size: 1.15rem;
+  line-height: 1.8;
+  background-color: rgba(255, 255, 255, 0.4); /* רקע לבן חצי שקוף שמבליט את הטקסט מעל הצבע הכללי */
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--color-gold, #c5a059);
+}
+
+.accessibility-content p {
+  margin-bottom: 1.2rem;
+}
+
+.accessibility-content ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+.accessibility-content li {
+  margin-bottom: 0.8rem;
+  padding-right: 1.5rem; /* מקום לויז'ואל אם צריך, ומתאים ל-RTL */
+  position: relative;
+}
+
+.accessibility-content li::before {
+  content: "•";
+  color: var(--color-gold, #c5a059);
+  font-weight: bold;
+  position: absolute;
+  right: 0;
+}
+.accessibility-page .page-title {
+  margin-top: -7rem !important; 
+  margin-bottom: 2.5rem;
+  font-size: 2.5rem;
+}
+
+/* התאמה למסכים קטנים */
+@media (max-width: 768px) {
+  .accessibility-content {
+    padding: 1.5rem;
+    font-size: 1rem;
+  }
+
+  .accessibility-page .page-title {
+  margin-top: 0rem !important; 
+  margin-bottom: 2.5rem;
+  font-size: 2.5rem;
+}
+}
+
+/* מובייל */
+@media (max-width: 1000px) {
+  .product-split-layout {
+    grid-template-columns: 1fr;
+  }
+    .accessibility-page .page-title {
+  margin-top: 0rem !important; 
+  margin-bottom: 2.5rem;
+  font-size: 2.5rem;
+}
+  .product-gallery {
+    grid-template-columns: 1fr; /* במובייל הגלריה חוזרת לעמודה אחת */
+  }
+  
+  .thumbnails-column {
+    flex-direction: row; /* התמונות הקטנות יסתדרו בשורה מתחת לתמונה הגדולה במובייל */
+    justify-content: center;
+  }
+  
+  .thumb-frame {
+    width: 30%;
+  }
+  /* שבירת הגריד וסידור התמונות למסך צר/מובייל */
+  .product-split-layout {
+    grid-template-columns: 1fr !important; /* הפקודה שדורסת את שתי העמודות ויוצרת טור אחד */
+    gap: 2.5rem;
+  }
+}
+
+/* העדכון לגלריה - מגדיל את התמונות ל-160 פיקסלים ומוסיף אייקון לחיצה */
+
+.main-poster-frame {
+  cursor: zoom-in; /* משנה את העכבר לזכוכית מגדלת! */
+}
+
+.thumb-frame {
+  cursor: zoom-in;
+}
+
+
+/* =========================================
+   Lightbox (גלריה מוגדלת)
+   ========================================= */
+
+.lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  /* שחור מאוד עדין ושקוף ב-40% בלבד */
+  background-color: rgba(20, 15, 10, 0.4); 
+  /* הקסם: מטשטש את האתר מאחור כמו זכוכית חלבית */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); /* לתמיכה בספארי של אפל */
+  
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox-image {
+  max-width: 100%;
+  max-height: 90vh;
+  object-fit: contain;
+  border: 4px solid var(--color-gold, #c5a059);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  border-radius: 4px;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  background: none;
+  border: none;
+  color: #fdfbf7;
+  font-size: 3rem;
+  cursor: pointer;
+  z-index: 10000;
+  transition: color 0.3s ease;
+}
+
+.lightbox-close:hover {
+  color: var(--color-gold, #c5a059);
+}
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(44, 36, 27, 0.8);
+  border: 2px solid var(--color-gold, #c5a059);
+  color: #fdfbf7;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10000;
+}
+
+.lightbox-nav:hover {
+  background: var(--color-gold, #c5a059);
+  color: var(--color-ink, #2c241b);
+}
+
+.lightbox-prev {
+  right: 40px; /* צד ימין - כדי לדפדף אחורה */
+}
+
+.lightbox-next {
+  left: 40px; /* צד שמאל - כדי לדפדף קדימה */
+}
+
+/* התאמה למובייל */
+@media (max-width: 768px) {
+  .lightbox-nav {
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+  }
+  .lightbox-prev { right: 15px; }
+  .lightbox-next { left: 15px; }
+  .lightbox-close { top: 15px; right: 15px; font-size: 2.2rem; }
+}
+
+/* =========================================
+   התאמות מיוחדות למובייל (Mobile Responsive)
+   ========================================= */
+@media (max-width: 900px) {
+  .product-page-container {
+    padding: 0 1rem;
+  }
+
+  /* --- 1. מירכוז הכותרת --- */
+  .main-product-title {
+    font-size: 2rem;
+    text-align: center; /* דורס את היישור לימין */
+  }
+
+  /* --- 2. מירכוז התוכן והטקסטים --- */
+  .product-info-top {
+    align-items: center; /* ממרכז את הבלוק */
+    text-align: center;
+  }
+
+  .product-description p,
+  .product-sources p {
+    text-align: center; /* ממרכז את הפסקאות עצמן */
+  }
+
+  .product-specs {
+    align-items: center; /* ממרכז את המיפרט (מידות ואיכות) */
+  }
+
+  /* שבירת הגריד המרכזי */
+  .product-split-layout {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .product-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .main-poster-frame {
+    padding: 12px;
+    outline-offset: -6px;
+  }
+
+  /* --- 3. מירכוז התמונות הקטנות --- */
+  .thumbnails-column {
+    flex-direction: row;
+    justify-content: center; /* ממרכז את שלושת התמונות לאמצע המסך */
+    height: auto;
+    gap: 15px;
+    margin-top: 10px;
+  }
+
+  .thumb-frame {
+    width: 30%;
+    flex: none; /* מבטל את חלוקת הגובה האוטומטית מהדסקטופ */
+  }
+
+  /* --- 4. מירכוז אזור הקנייה --- */
+  .purchase-row {
+    flex-direction: column;
+    align-items: center; /* ממרכז את המחיר ומד הכמות */
+    gap: 1.5rem;
+  }
+}
+
+
+/* =========================================
+   עיצוב עגלת הקניות (Cart Page)
+   ========================================= */
+.cart-page-container {
+  max-width: 800px;
+  width: 90%;
+  margin: 3rem auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.cart-heading {
+  font-family: "Frank Ruhl Libre", serif;
+  font-size: 2.5rem;
+  color: var(--color-ink);
+  text-align: center;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--color-gold);
+  display: inline-block;
+  padding-bottom: 0.5rem;
+  align-self: center;
+}
+
+/* --- CART CARD STYLES --- */
+.cart-card {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.4);
+  border: 2px solid var(--color-ink);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  gap: 1.5rem;
+  transition: transform 0.2s ease;
+}
+
+.cart-card:hover {
+  transform: scale(1.02);
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.cart-card-image {
+  width: 100px;
+  height: 100px;
+  border: 2px double var(--color-gold);
+  border-radius: 4px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.cart-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cart-card-details {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  /* ממרכז לצד הנכון לפי השפה */
+  text-align: start; 
+}
+
+.cart-item-title {
+  font-family: "Frank Ruhl Libre", serif;
+  font-size: 1.4rem;
+  margin: 0;
+  color: var(--color-ink);
+  font-weight: bold;
+}
+
+.cart-item-price {
+  font-size: 1.2rem;
+  color: var(--color-terracotta);
+  font-weight: bold;
+  margin: 0;
+}
+
+.remove-item-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--color-ink);
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.remove-item-btn:hover {
+  color: var(--color-terracotta);
+}
+
+/* --- SUMMARY SECTION --- */
+.cart-summary {
+  margin-top: 2rem;
+  padding: 2rem;
+  border-top: 4px double var(--color-ink);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  background-color: rgba(244, 228, 188, 0.5);
+}
+
+.summary-row {
+  display: flex;
+  gap: 1rem;
+  font-size: 1.8rem;
+  font-family: "Frank Ruhl Libre", serif;
+  color: var(--color-ink);
+}
+
+.total-price {
+  font-weight: bold;
+  color: var(--color-terracotta);
+}
+
+.checkout-button {
+  background-color: var(--color-ink);
+  color: var(--color-parchment);
+  border: 1px solid var(--color-gold);
+  padding: 1rem 3rem;
+  font-size: 1.2rem;
+  font-family: "Frank Ruhl Libre", serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 1px;
+}
+
+.checkout-button:hover {
+  background-color: var(--color-terracotta);
+  border-color: var(--color-ink);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* סלולר קטן (עד 600px) */
+@media (max-width: 600px) {
+  .cart-card {
+    flex-direction: row;
+  }
+  .cart-card-image {
+    width: 70px;
+    height: 70px;
+  }
+  .cart-item-title {
+    font-size: 1.1rem;
+  }
+}
+
+/* =========================================
+   התאמות למובייל (מסכים צרים) - הדר מרוכז
+   ========================================= */
+@media (max-width: 1000px) {
+  .biblical-header {
+    /* הופך את ההדר לטור במקום שורה */
+    flex-direction: column !important; 
+    /* מאפס את כיוון ה-LTR שכפינו קודם כדי למרכז הכל כראוי */
+    direction: ltr !important; 
+    gap: 1.5rem; /* מרווח בין הלוגו לכלים */
+    padding: 1.5rem; 
+  }
+
+  /* מוודא שהלוגו עולה למעלה (ראשון בטור) */
+  .logo-link {
+    order: 1 !important; 
+    margin: 0 auto; /* ממרכז את הלוגו */
+  }
+
+  /* מוודא שהכלים יורדים למטה (שניים בטור) */
+  .header-tools {
+    order: 2 !important; 
+    justify-content: center; /* ממרכז את הכפתורים זה לצד זה */
+    width: 100%;
+  }
+}
+
+
+/* =========================================
+   עיצוב טופס הזמנה (Checkout Form)
+   ========================================= */
+.checkout-form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.4);
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-gold, #c5a059);
+}
+
+.checkout-notice {
+  font-family: 'Assistant', sans-serif;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: var(--color-ink, #2c241b);
+  font-weight: bold;
+}
+
+.checkout-form .form-group {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.checkout-form label {
+  margin-bottom: 0.5rem;
+  font-family: 'Assistant', sans-serif;
+  font-weight: bold;
+}
+
+.checkout-form input, 
+.checkout-form textarea {
+  padding: 0.8rem;
+  font-family: 'Assistant', sans-serif;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.checkout-form input:focus, 
+.checkout-form textarea:focus {
+  outline: none;
+  border-color: var(--color-gold, #c5a059);
+  box-shadow: 0 0 5px rgba(197, 160, 89, 0.3);
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
+.submit-order-btn, .cancel-btn {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1.2rem;
+  cursor: pointer;
+  flex: 1;
+}
+
+.submit-order-btn {
+  background-color: var(--color-ink, #2c241b);
+  color: #fff;
+}
+
+.submit-order-btn:hover {
+  opacity: 0.9;
+}
+
+.cancel-btn {
+  background-color: transparent;
+  border: 1px solid var(--color-ink, #2c241b);
+  color: var(--color-ink, #2c241b);
+}
+
+@media (max-width: 600px) {
+  .form-actions {
+    flex-direction: column-reverse;
+  }
+}
+
+
+/* =========================================
+   עיצוב דף אודות (About Us)
+   ========================================= */
+
+
+   /* כותרת עמוד אודות */
+.about-main-title {
+  text-align: center;
+  font-size: 3rem; /* הגדלנו משמעותית */
+  margin-top: -2rem; /* מרווח יפה מלמעלה */
+  margin-bottom: 3.5rem; /* מרווח לפני תחילת הסיפור */
+  color: var(--color-ink, #2c241b);
+}
+
+
+
+.about-page-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1.5rem 4rem 1.5rem;
+  color: var(--color-ink, #2c241b);
+}
+
+.about-history-section {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem; /* מרווח גדול בין כל בלוק סיפור */
+  margin-top: 2rem;
+}
+
+.history-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+/* הופך את כיוון הבלוק (בשביל הזיג-זג) */
+.history-block.reverse {
+  flex-direction: row-reverse;
+}
+
+.history-image-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+
+
+.history-text-wrapper {
+  flex: 1;
+  /* מחקנו את הגדרת ה-font-family כדי שיירש את הפונט היפה של שאר האתר */
+  font-size: 1.4rem; 
+  line-height: 1.9;  
+}
+
+
+/* טיפול במובייל - כדי שהתמונה תמיד תהיה מעל הטקסט במסכים קטנים */
+@media (max-width: 768px) {
+    .about-main-title {
+    font-size: 2.2rem;
+    margin-top: 2rem;
+  }
+  .history-block {
+    flex-direction: column-reverse; 
+  }
+}
+
+.history-text-wrapper p {
+  margin-bottom: 1.2rem;
+}
+
+/* מסגרת התמונות - בסגנון של שאר האתר */
+.framed-history-image {
+  max-width: 100%;
+  height: auto;
+  border: 4px solid var(--color-gold, #c5a059); /* צבע זהב/חום של האתר */
+  border-radius: 4px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  padding: 5px;
+  background-color: #fff; /* יוצר אפקט של פספרטו (מסגרת לבנה פנימית) */
+}
+
+/* התאמה למובייל */
+@media (max-width: 768px) {
+  .about-history-section {
+    gap: 3rem;
+  }
+  
+  .history-block,
+  .history-block.reverse {
+    flex-direction: column; /* במובייל הכל מסודר מלמעלה למטה */
+    text-align: center;
+    gap: 1.5rem;
+  }
+
+  .history-text-wrapper {
+    font-size: 1.05rem;
+  }
+}
+
+
+/* =========================================
+   אזור הצוות (אז מי אנחנו בעצם)
+   ========================================= */
+
+.team-section {
+  margin-top: 5rem;
+  padding-top: 3rem;
+  border-top: 1px solid rgba(197, 160, 89, 0.3); /* קו הפרדה עדין מהחלק של ההיסטוריה */
+}
+
+.team-main-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--color-ink, #2c241b);
+  margin-bottom: 0.5rem;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 עמודות שוות */
+  gap: 2.5rem;
+}
+
+.team-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-family: 'Assistant', sans-serif;
+}
+
+.team-image-wrapper {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%; /* הופך את התמונה לעיגול מושלם */
+  border: 4px solid var(--color-gold, #c5a059);
+  padding: 4px;
+  background-color: #fff;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  overflow: hidden; /* מוודא שהתמונה לא חורגת מהעיגול */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.team-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* חותך את התמונה יפה במרכז בלי למעוך אותה */
+  border-radius: 50%;
+}
+
+.team-card h3 {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  color: var(--color-ink);
+}
+
+.team-role {
+  font-size: 1.15rem;
+  margin-bottom: 0.8rem;
+  line-height: 1.5;
+  font-weight: bold;
+}
+
+.team-bio {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.team-contact {
+  margin-top: auto; /* דוחף את אזור הקשר לתחתית הכרטיסיה תמיד */
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+/* התאמה למובייל - הכרטיסיות ירדו אחת מתחת לשנייה */
+@media (max-width: 768px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+}
+
+/* =========================================
+   אזור המלצות רבנים
+   ========================================= */
+
+.recommendations-section {
+  margin-top: 5rem;
+  padding-top: 3rem;
+  border-top: 1px solid rgba(197, 160, 89, 0.3); 
+}
+
+.recommendations-main-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--color-ink, #2c241b);
+  margin-bottom: 0.5rem;
+}
+
+.recommendations-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 עמודות */
+  gap: 2.5rem;
+}
+
+.recommendation-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.recommendation-header {
+  min-height: 100px; /* שומר על גובה אחיד לכותרות גם אם אורך הטקסט שונה */
+  margin-bottom: 1rem;
+}
+
+.recommendation-header h3 {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-ink);
+}
+
+.recommendation-header p {
+  font-family: 'Assistant', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.4;
+  color: var(--color-ink);
+}
+
+.recommendation-image-wrapper {
+  width: 100%;
+  max-width: 320px; /* מגביל את רוחב המכתב */
+  border: 4px solid var(--color-gold, #c5a059);
+  padding: 5px;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease; /* אנימציה קטנה במעבר עכבר */
+}
+
+.recommendation-image-wrapper:hover {
+  transform: scale(1.02); /* מגדיל טיפה את המכתב כשמרחפים מעליו */
+}
+
+.recommendation-image {
+  width: 100%;
+  height: auto;
+  display: block; /* מונע רווחים מיותרים בתחתית התמונה */
+}
+
+/* התאמה למובייל */
+@media (max-width: 768px) {
+  .recommendations-grid {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+}
+
+
+/* =========================================
+   אזור המלצות רבנים + גלריית מכתבים
+   ========================================= */
+
+.clickable {
+  cursor: pointer;
+  position: relative; /* בשביל האייקון של הריחוף */
+}
+
+.hover-zoom-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none; /* כדי שלא יפריע ללחיצה על התמונה עצמה */
+}
+
+.recommendation-image-wrapper:hover .hover-zoom-icon {
+  opacity: 1; /* מראה זכוכית מגדלת כשמרחפים מעל המכתב */
+}
+
+.recommendation-image-wrapper:hover .recommendation-image {
+  opacity: 0.7; /* מכהה טיפה את המכתב בריחוף להבלטת הזכוכית מגדלת */
+}
+
+/* =========================================
+   עיצוב חלון הלייטבוקס (Lightbox Overlay)
+   ========================================= */
+
+.lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.85);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px);
+}
+
+.lightbox-main-image {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border: 5px solid var(--color-gold, #c5a059);
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2.5rem;
+  cursor: pointer;
+  z-index: 10000;
+  transition: color 0.2s;
+}
+
+.lightbox-close:hover {
+  color: var(--color-gold);
+}
+
+.lightbox-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid var(--color-gold);
+  color: white;
+  font-size: 2rem;
+  padding: 15px;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  transition: all 0.3s;
+}
+
+.lightbox-nav-btn:hover {
+  background: var(--color-gold);
+  color: #fff;
+}
+
+.prev-btn { right: 5%; }
+.next-btn { left: 5%; }
+
+/* במובייל - התאמה קטנה לחיצים */
+@media (max-width: 768px) {
+  .prev-btn { right: 2%; padding: 10px; font-size: 1.5rem; }
+  .next-btn { left: 2%; padding: 10px; font-size: 1.5rem; }
 }
