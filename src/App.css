@@ -2681,3 +2681,202 @@ body[dir="rtl"] .toolbar-top {
     transform: none !important;
   }
 }
+
+/* =========================================
+   תיקון גלישה אופקית במובייל (הדף נוטה/זז הצידה)
+   ========================================= */
+
+/* נועל את הרוחב של כל האתר ומונע בריחה ימינה/שמאלה */
+html, body, .page-wrapper {
+  overflow-x: hidden !important;
+  max-width: 100vw;
+  width: 100%;
+}
+
+/* מוודא שהתמונות של ההיסטוריה לא דוחפות את המסך הצידה בגלל המסגרת */
+.history-image-wrapper {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.framed-history-image {
+  max-width: 100%;
+  height: auto;
+  box-sizing: border-box; /* מכריח את המסגרת להיכנס לתוך ה-100% ולא להוסיף רוחב */
+}
+
+/* התאמת ריווחים וטקסטים למובייל בעברית ואנגלית */
+@media (max-width: 768px) {
+  .history-block {
+    width: 100%;
+    padding: 0 15px; /* שומר על ריווח עדין מהצדדים */
+    box-sizing: border-box;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+  /* ממרכז את הטקסט בכל השפות במובייל */
+  .history-text-wrapper,
+  [dir="ltr"] .history-text-wrapper,
+  [dir="rtl"] .history-text-wrapper {
+    text-align: center !important;
+  }
+}
+
+
+/* =========================================
+   נעילת רוחב לעמוד אודות במובייל (מניעת תזוזת הדף הצידה)
+   ========================================= */
+
+@media (max-width: 768px) {
+  /* מוודא שכל המעטפות הראשיות של עמוד אודות לא חורגות מהמסך */
+  html, body, #root, .page-wrapper {
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .about-page-container, 
+  .about-history-section,
+  .team-section,
+  .recommendations-section {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+  /* מכווץ את בלוק ההיסטוריה והטקסט שיהיו בדיוק ברוחב המסך ולא פיקסל יותר */
+  .history-block {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    padding: 0 15px !important; 
+  }
+
+  .history-text-wrapper, .history-image-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* ממרכז את הטקסט בכל השפות בלי להזיז את הדף */
+  .history-text-wrapper p {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+/* =========================================
+   ביטול זיגזג במובייל (סידור קבוע של טקסט ואז תמונה)
+   ========================================= */
+
+@media (max-width: 768px) {
+  .history-block {
+    display: flex !important;
+    flex-direction: column !important; /* מסדר אותם בעמודה */
+  }
+
+  .history-text-wrapper {
+    order: 1 !important; /* הטקסט תמיד יקבל קדימות ויופיע למעלה */
+  }
+
+  .history-image-wrapper {
+    order: 2 !important; /* התמונה תמיד תופיע למטה מתחת לטקסט */
+    margin-top: 1.5rem !important; /* רווח יפה בין הטקסט לתמונה */
+    margin-bottom: 2rem !important; /* רווח יפה לפני הפסקה הבאה */
+  }
+}
+
+/* =========================================
+   עיצוב הקישור ליוטיוב (UsefulCharts)
+   ========================================= */
+
+.useful-link {
+  color: var(--color-gold, #c5a059);
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-gold, #c5a059);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.useful-link:hover {
+  color: #a38244; /* צבע זהב כהה יותר בריחוף */
+  border-bottom-color: #a38244;
+}
+/* =========================================
+   תיקון חפיפת טקסט על תמונה בכרטיסיות (עמוד האילנות)
+   ========================================= */
+
+@media (max-width: 768px) {
+  .tree-showcase-card {
+    display: flex !important;
+    flex-direction: column !important; 
+    height: auto !important;
+    overflow: hidden !important;
+  }
+
+  .showcase-image-wrapper {
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    z-index: 1 !important; /* מוודא שהתמונה מאחור */
+  }
+
+  .showcase-content {
+    position: relative !important; 
+    z-index: 2 !important; /* מוודא שהטקסט עולה על התמונה ולא מתחבא מאחוריה */
+    width: 100% !important;
+    transform: none !important;
+    
+    /* הנה הקסם שמושך את התוכן למעלה אל החלק הדהוי */
+    margin: -90px 0 0 0 !important; 
+    
+    padding: 0 1.5rem 1.5rem 1.5rem !important; /* ביטלנו את הריווח העליון כדי שהכותרת תעלה גבוה */
+    box-sizing: border-box !important;
+    background-color: transparent !important;
+  }
+}
+
+
+/* =========================================
+   התאמת כרטיסיות דף הבית למובייל (טקסט מטפס על התמונה הדהויה)
+   ========================================= */
+
+@media (max-width: 768px) {
+  .tzofia-card {
+    display: flex !important;
+    flex-direction: column !important;
+    height: auto !important; /* מאפשר לכרטיס לגדול לפי כמות הטקסט */
+    padding: 15px !important; /* קצת פחות שוליים במובייל שיהיה יותר מקום לתוכן */
+  }
+
+  /* מבטלים את כפיית הגריד של המסכים הגדולים */
+  .tzofia-card > * {
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+
+  .card-image-wrapper {
+    position: relative !important;
+    z-index: 1 !important;
+    /* במובייל אנחנו מאפשרים לתמונה להיות קצת יותר קצרה כדי להשאיר מקום לטקסט */
+    aspect-ratio: 61 / 75 !important; 
+  }
+
+  .card-content {
+    position: relative !important;
+    z-index: 2 !important;
+    /* הנה המשיכה למעלה שמניחה את הכותרת על החלק הדהוי */
+    margin-top: -110px !important; 
+    padding: 0 1rem 0.5rem 1rem !important;
+    justify-content: flex-start !important;
+  }
+
+  /* כוונון עדין של המסיכה הדהויה שתתאים בדיוק למיקום החדש של הטקסט */
+  .card-image-wrapper::after {
+    background: linear-gradient(to bottom, transparent 10%, rgba(226, 209, 179, 0.9) 60%, #e2d1b3 100%) !important;
+  }
+}

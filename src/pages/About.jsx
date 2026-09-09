@@ -77,10 +77,34 @@ const About = () => {
                   ? "כבר שנים רבות שאנחנו מחוברים עמוקות לנושא דברי הימים ותולדות העם היהודי. החשיבות של הבנת הדרך שעברנו – איך הגענו לכאן ומה חווינו לאורך השנים בארץ ישראל ובגולה – היא חלק מרכזי בחיינו."
                   : "For many years, we have been deeply connected to the chronicles and history of the Jewish people. The importance of understanding the journey we have taken – how we arrived here and what we experienced over the years in the Land of Israel and the diaspora – is a central part of our lives."}
               </p>
-              <p>
-                {lang === "he"
-                  ? 'בשנת תשפ"ב נתקלנו באילן יוחסין תנ"כי באנגלית שיצר היוטיובר הקנדי מ-"UsefulCharts", ומאוד התחברנו לרעיון. תוך ימים ספורים הכנו את הגרסה הראשונה שלנו – העתק מדויק של האילן שלו, אבל בעברית.'
-                  : 'In 2022, we came across an English biblical family tree created by the Canadian YouTuber from "UsefulCharts", and we deeply connected with the concept. Within a few days, we created our first version – an exact Hebrew replica of his tree.'}
+           <p>
+                {lang === "he" ? (
+                  <>
+                    בשנת תשפ"ב נתקלנו באילן יוחסין תנ"כי באנגלית שיצר היוטיובר הקנדי מ-
+                    <a 
+                      href="https://www.youtube.com/watch?v=iD7kWTV3mtE" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="useful-link"
+                    >
+                      "UsefulCharts"
+                    </a>
+                    , ומאוד התחברנו לרעיון. תוך ימים ספורים הכנו את הגרסה הראשונה שלנו – העתק מדויק של האילן שלו, אבל בעברית.
+                  </>
+                ) : (
+                  <>
+                    In 2022, we came across an English biblical family tree created by the Canadian YouTuber from 
+                    <a 
+                      href="https://www.youtube.com/watch?v=iD7kWTV3mtE" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="useful-link"
+                    >
+                       "UsefulCharts"
+                    </a>
+                    , and we deeply connected with the concept. Within a few days, we created our first version – an exact Hebrew replica of his tree.
+                  </>
+                )}
               </p>
               <p>
                 {lang === "he"
@@ -176,18 +200,20 @@ const About = () => {
           <div className="title-separator" style={{ margin: "0 auto 3rem auto" }}></div>
 
           <div className="team-grid">
-            
-            {/* כרטיס יצחק (יופיע מימין בעברית) */}
+        
+       {/* כרטיס יצחק (יופיע מימין בעברית) */}
             <div className="team-card">
               <div className="team-image-wrapper">
                 <img 
                   src="/images/yitz.jpg" 
                   alt={lang === "he" ? "יצחק הכהן צופיוף" : "Yitzhak HaCohen Tsofiouf"} 
                   className="team-image"
+                  style={{ objectPosition: "top" }} /* התוספת שמושכת את התמונה למעלה */
                   onContextMenu={(e) => e.preventDefault()} 
                   onDragStart={(e) => e.preventDefault()}
                 />
               </div>
+              {/* ... המשך הקוד של הכרטיס ... */}
               <h3>{lang === "he" ? "יצחק הכהן צופיוף" : "Yitzhak HaCohen Tzofiof"}</h3>
               <p className="team-role">
                 {lang === "he" 
