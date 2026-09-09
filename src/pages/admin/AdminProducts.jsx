@@ -14,14 +14,28 @@ const AdminProducts = () => {
     slug: ''
   });
 
-  const fetchProducts = async () => {
+const fetchProducts = async () => {
     try {
       const response = await fetch('https://tzofia-backend.onrender.com/api/products');
+      
+      // אם השרת מחזיר שגיאה (כמו 500), אנחנו עוצרים פה ולא מנסים לקרוא את הנתונים
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
       const data = await response.json();
-      setProducts(data);
+      
+      // מוודא שאכן קיבלנו רשימה (מערך) כדי למנוע את קריסת ה-map
+      if (Array.isArray(data)) {
+        setProducts(data);
+      } else {
+        console.error('Expected an array but got:', data);
+        setProducts([]); 
+      }
       setLoading(false);
     } catch (error) {
       console.error('Error fetching products:', error);
+      setProducts([]); // במקרה של שגיאה, נציג רשימה ריקה במקום להקריס את האתר
       setLoading(false);
     }
   };
