@@ -108,7 +108,7 @@ const fetchProducts = async () => {
             
             <div className="form-group">
               <label>קישור לתמונה (URL):</label>
-              <input type="text" name="imageUrl" dir="ltr" value={formData.imageUrl} onChange={handleChange} required />
+              <input type="text" name="imageUrl" dir="ltr" value={formData.imageUrl} onChange={handleChange} />
             </div>
             
             <button type="submit" className="admin-submit-btn">הוסף מוצר +</button>
