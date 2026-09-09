@@ -16,7 +16,7 @@ const productSchema = new mongoose.Schema({
   },
   imageUrl: { 
     type: String, 
-    required: true // בשלב הראשון נשמור כאן כתובת תמונה פשוטה
+    required: false // בשלב הראשון נשמור כאן כתובת תמונה פשוטה
   },
   inStock: { 
     type: Boolean, 
