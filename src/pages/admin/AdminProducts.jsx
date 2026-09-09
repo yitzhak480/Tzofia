@@ -16,7 +16,7 @@ const AdminProducts = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch('http://localhost:5001/api/products');
+      const response = await fetch('https://tzofia-backend.onrender.com/api/products');
       const data = await response.json();
       setProducts(data);
       setLoading(false);
@@ -40,7 +40,7 @@ const AdminProducts = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:5001/api/products', {
+      const response = await fetch('https://tzofia-backend.onrender.com/api/products', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
