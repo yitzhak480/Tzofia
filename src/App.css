@@ -2471,8 +2471,24 @@ body[dir="rtl"] .toolbar-top {
 
 .recommendations-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 עמודות */
+  grid-template-columns: repeat(4, 1fr); /* שינינו מ-3 ל-4 עמודות */
   gap: 2.5rem;
+}
+
+/* התאמה למסכי טאבלט (מציג 2 בשורה כדי שלא יהיה צפוף מדי) */
+@media (max-width: 1024px) {
+  .recommendations-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+  }
+}
+
+/* התאמה למובייל (מציג 1 בשורה) */
+@media (max-width: 768px) {
+  .recommendations-grid {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
 }
 
 .recommendation-card {
@@ -2521,13 +2537,8 @@ body[dir="rtl"] .toolbar-top {
   display: block; /* מונע רווחים מיותרים בתחתית התמונה */
 }
 
-/* התאמה למובייל */
-@media (max-width: 768px) {
-  .recommendations-grid {
-    grid-template-columns: 1fr;
-    gap: 3.5rem;
-  }
-}
+
+
 
 
 /* =========================================

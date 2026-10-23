@@ -13,24 +13,34 @@ const About = () => {
 
   // מערך הנתונים של ההמלצות לטובת המעבר בגלריה
   const recommendationsData = [
+    
+  {
+    id: 0,
+    nameHe: "הרב ציון בוארון",
+    nameEn: "Rabbi Tzion Boaron",
+    descHe: 'פוסק, מקובל, חבר בית הדין הרבני הגדול לשעבר ומחבר ספר ״שו״ת שערי ציון',
+    descEn: "Posek, Kabbalist, former member of the Great Rabbinical Court, and author of 'Responsa Shaarei Tzion'",
+    image: "/images/tzion.jpg" 
+  },
+  {
+    id: 1,
+    nameHe: "הרב אורי עמוס שרקי",
+    nameEn: "Rabbi Uri Amos Sherki",
+    descHe: 'יו"ר ברית עולם, ר"מ בישיבת מכון מאיר ורב קהילת "בית יהודה"',
+    descEn: 'Chairman of Brit Olam, Ram at Machon Meir Yeshiva, and Rabbi of the "Beit Yehuda" Community',
+    image: "/images/sherki.jpg" 
+  },
+  {
+    id: 2,
+    nameHe: "הרב חיים רבי והרב זבדיה כהן",
+    nameEn: "Rabbi Chaim Rebi & Rabbi Zevdia Cohen",
+    descHe: 'הרב רבי הוא נשיא מוסדות עטרת חכמים והרב כהן הוא הרב הראשי וראב״ד העיר תל אביב יפו',
+    descEn: "Rabbi Rebi is the President of Ateret Chachamim Institutions, and Rabbi Cohen is the Chief Rabbi and Head of the Rabbinical Court of Tel Aviv-Yafo",
+    image: "/images/rebi.jpg" 
+  }
+  ,
     {
-      id: 0,
-      nameHe: "הרב אורי עמוס שרקי",
-      nameEn: "Rabbi Uri Amos Sherki",
-      descHe: 'יו"ר ברית עולם, ר"מ בישיבת מכון מאיר ורב קהילת "בית יהודה"',
-      descEn: 'Chairman of Brit Olam, Ram at Machon Meir Yeshiva, and Rabbi of the "Beit Yehuda" Community',
-      image: "/images/sherki.jpg" 
-    },
-    {
-      id: 1,
-      nameHe: "הרב חיים רבי",
-      nameEn: "Rabbi Chaim Rebi",
-      descHe: "נשיא מוסדות עטרת חכמים ומחבר ספרים: 'יקרא דחיי', 'עבד ה'', 'הנהגות' ועוד",
-      descEn: "President of Ateret Chachamim Institutions and author of books: 'Yikra D'Chayei', 'Eved Hashem', 'Hanhagot', and more",
-      image: "/images/rebi.jpg" 
-    },
-    {
-      id: 2,
+      id: 3,
       nameHe: "הרב מתתיה שרים",
       nameEn: "Rabbi Matitya Shrem",
       descHe: 'ראש ישיבת "תורה והוראה" ונאמן הקדשות הרשב"י במירון',
@@ -172,8 +182,8 @@ const About = () => {
               </p>
               <p>
                 {lang === "he"
-                  ? "באילן זה ישנן למעלה מ-600 דמויות, והוא האילן היחיד שמציג גם את גדולי האמוראים, הסבוראים והגאונים, ואפילו את מלכי הכוזרים. עם הוצאת אילן זה, זכינו לקבל ברכות והמלצות על שני האילנות מגדולי ישראל, בהם הרב חיים רבי והרב אורי שרקי (ראו בהמשך)."
-                  : "This tree contains over 600 figures and is the only family tree that displays the great Amoraim, Savoraim, and Geonim, and even the Khazar kings. Upon publishing this tree, we were also blessed to receive recommendations for both trees from Rabbi Chaim Rabi and Rabbi Uri Sherki (see below)."}
+                  ? "באילן זה ישנן למעלה מ-600 דמויות, והוא האילן היחיד שמציג גם את גדולי האמוראים, הסבוראים והגאונים, ואפילו את מלכי הכוזרים. עם הוצאת אילן זה, זכינו לקבל ברכות והמלצות על שני האילנות מגדולי ישראל, בהם הרב ציון בוארון, הרב חיים רבי, הרב זבדיה כהן והרב אורי שרקי (ראו בהמשך)."
+                  : "This tree contains over 600 figures and is the only family tree that displays the great Amoraim, Savoraim, and Geonim, and even the Khazar kings. Upon publishing this tree, we were also blessed to receive recommendations for both trees from Rabbi Tzion Boaron, Rabbi Chaim Rabi, Rabbi Zvedia Cohen, and Rabbi Uri Sherki (see below)."}
               </p>
             </div>
             <div className="history-image-wrapper">
