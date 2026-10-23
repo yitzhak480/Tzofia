@@ -2455,11 +2455,16 @@ body[dir="rtl"] .toolbar-top {
 /* =========================================
    אזור המלצות רבנים
    ========================================= */
-
 .recommendations-section {
   margin-top: 5rem;
   padding-top: 3rem;
   border-top: 1px solid rgba(197, 160, 89, 0.3); 
+  
+  /* הדרך הבטוחה להרחיב את האזור מעבר לגבולות הדף הרגילים */
+  width: 95vw; 
+  max-width: 1600px; 
+  margin-left: calc(50% - 47.5vw);
+  margin-right: calc(50% - 47.5vw);
 }
 
 .recommendations-main-title {
@@ -2499,7 +2504,7 @@ body[dir="rtl"] .toolbar-top {
 }
 
 .recommendation-header {
-  min-height: 100px; /* שומר על גובה אחיד לכותרות גם אם אורך הטקסט שונה */
+  min-height: 150px; /* שומר על גובה אחיד לכותרות גם אם אורך הטקסט שונה */
   margin-bottom: 1rem;
 }
 
@@ -2509,12 +2514,15 @@ body[dir="rtl"] .toolbar-top {
   margin-bottom: 0.5rem;
   color: var(--color-ink);
 }
-
 .recommendation-header p {
   font-family: 'Assistant', sans-serif;
   font-size: 1.05rem;
   line-height: 1.4;
   color: var(--color-ink);
+  
+  /* התוספת שמצרה את הטקסט וממרכזת אותו */
+  max-width: 260px; 
+  margin: 0 auto; 
 }
 
 .recommendation-image-wrapper {
