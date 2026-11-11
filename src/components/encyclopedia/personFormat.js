@@ -41,6 +41,34 @@ export const RELATION_TYPES = [
   { id: 'student', he: 'תלמיד', en: 'Student', heMany: 'תלמידיו', enMany: 'Students' },
 ];
 
+// Words that change with the person's gender ("רבותיו" / "רבותיה").
+export const genderWords = (person, lang) => {
+  const female = person.gender === 'female';
+  if (lang !== 'he') return { teachers: 'Teachers', students: 'Students', siblings: 'and siblings', family: 'Family' };
+  return {
+    teachers: female ? 'רבותיה' : 'רבותיו',
+    students: female ? 'תלמידיה' : 'תלמידיו',
+    siblings: female ? 'ואחיה' : 'ואחיו',
+    family: 'משפחה',
+  };
+};
+
+// The title above the family tree, naming only what the person has:
+// "משפחה", "משפחה ורבותיו", "משפחה, רבותיו ותלמידיו", "רבותיו ותלמידיו"...
+export const familyTitle = (person, lang) => {
+  const g = groupRelations(person.relations);
+  const w = genderWords(person, lang);
+  const parts = [
+    (g.parents.length || g.siblings.length || g.spouses.length || g.children.length) && w.family,
+    g.teachers.length && w.teachers,
+    g.students.length && w.students,
+  ].filter(Boolean);
+  if (parts.length <= 1) return parts[0] || '';
+  const last = parts[parts.length - 1];
+  const rest = parts.slice(0, -1).join(', ');
+  return lang === 'he' ? `${rest} ו${last}` : `${rest} and ${last.toLowerCase()}`;
+};
+
 // Splits a person's relations into the groups the family tree uses.
 export const groupRelations = (relations = []) => {
   const of = (...types) => relations.filter((r) => types.includes(r.type));

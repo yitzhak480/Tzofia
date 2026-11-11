@@ -34,7 +34,7 @@ const LoadingState = ({ loading, error }) => {
       <div className="encyc-status">
         <h3>{he ? 'הדף לא נמצא' : 'Page not found'}</h3>
         <Link to="/encyclopedia" className="text-btn">
-          {he ? 'חזרה לאנציקלופדיה' : 'Back to the Encyclopedia'}
+          {he ? 'חזרה ללומדות האילן' : 'Back to Tree Learning Guides'}
         </Link>
       </div>
     );

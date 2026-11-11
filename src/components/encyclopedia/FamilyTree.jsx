@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../../context/context';
 import { tr } from '../../api';
-import { groupRelations } from './personFormat';
+import { genderWords, groupRelations } from './personFormat';
 
 // A small family tree: teachers on top, parents, the person among the
 // siblings, spouses, children, and students at the bottom.
@@ -11,6 +11,7 @@ const FamilyTree = ({ person, name }) => {
   const { lang } = useContext(CartContext);
   const he = lang === 'he';
   const g = groupRelations(person.relations);
+  const w = genderWords(person, lang);
 
   const chip = (r, i) => {
     const label = tr(r.name, lang);
@@ -34,13 +35,13 @@ const FamilyTree = ({ person, name }) => {
 
   return (
     <div className="encyc-family">
-      {row(he ? 'רבותיו' : 'Teachers', g.teachers, 'is-side')}
+      {row(w.teachers, g.teachers, 'is-side')}
       {g.teachers.length > 0 && line}
       {row(he ? 'הורים' : 'Parents', g.parents)}
       {g.parents.length > 0 && line}
 
       <div className="encyc-family-group">
-        {g.siblings.length > 0 && <div className="encyc-family-label">{he ? 'ואחיו' : 'and siblings'}</div>}
+        {g.siblings.length > 0 && <div className="encyc-family-label">{w.siblings}</div>}
         <div className="encyc-family-row">
           {g.siblings.slice(0, half).map(chip)}
           <span className="encyc-chip encyc-chip-self">{name}</span>
@@ -52,7 +53,7 @@ const FamilyTree = ({ person, name }) => {
       {g.children.length > 0 && line}
       {row(he ? 'ילדים' : 'Children', g.children)}
       {g.students.length > 0 && line}
-      {row(he ? 'תלמידיו' : 'Students', g.students, 'is-side')}
+      {row(w.students, g.students, 'is-side')}
     </div>
   );
 };

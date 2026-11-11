@@ -78,6 +78,8 @@ const personSchema = new mongoose.Schema(
       index: true,
     },
     name: { type: localized(true), required: true },
+    // Used for wording on the page: "רבותיו" / "רבותיה".
+    gender: { type: String, enum: ['male', 'female'], default: 'male' },
     roles: { type: [localized(true)], default: [] },
     life: { type: yearsSchema, default: () => ({}) },
     offices: { type: [officeSchema], default: [] },

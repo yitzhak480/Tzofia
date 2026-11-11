@@ -24,7 +24,7 @@ const EncyclopediaCategory = () => {
   return (
     <div className="page-wrapper">
       <Helmet>
-        <title>{`Tzofia Art | ${name || (he ? 'האנציקלופדיה' : 'Encyclopedia')}`}</title>
+        <title>{`Tzofia Art | ${name || (he ? 'לומדות האילן' : 'Tree Learning Guides')}`}</title>
       </Helmet>
 
       <Header />

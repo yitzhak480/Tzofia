@@ -85,7 +85,7 @@ const CategoryForm = ({ initial, options, defaultParent = '', onSave, onCancel, 
       <div className="form-group">
         <label>נמצאת בתוך:</label>
         <select value={form.parent} onChange={(e) => setForm((f) => ({ ...f, parent: e.target.value }))}>
-          <option value="">— קטגוריה ראשית (מופיעה בעמוד הראשי של האנציקלופדיה) —</option>
+          <option value="">— קטגוריה ראשית (מופיעה בעמוד הראשי של לומדות האילן) —</option>
           {options.map((o) => (
             <option key={o._id} value={o._id}>
               {'   '.repeat(o.depth)}

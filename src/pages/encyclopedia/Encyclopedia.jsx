@@ -43,14 +43,14 @@ const Encyclopedia = () => {
   return (
     <div className="page-wrapper">
       <Helmet>
-        <title>{he ? 'Tzofia Art | האנציקלופדיה' : 'Tzofia Art | Encyclopedia'}</title>
+        <title>{he ? 'Tzofia Art | לומדות האילן' : 'Tzofia Art | Tree Learning Guides'}</title>
       </Helmet>
 
       <Header />
 
       <main className="home-main">
         <section className="home-hero encyc-hero" style={{ paddingBottom: '2rem' }}>
-          <h1>{he ? 'האנציקלופדיה' : 'The Encyclopedia'}</h1>
+          <h1>{he ? 'לומדות האילן' : 'Tree Learning Guides'}</h1>
           <p>
             {he
               ? 'הכירו את הדמויות המופיעות באילנות שלנו. בחרו קבוצה כדי להתחיל, או חפשו דמות לפי שם.'

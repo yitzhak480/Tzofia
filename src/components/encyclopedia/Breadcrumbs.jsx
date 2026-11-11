@@ -10,7 +10,7 @@ const Breadcrumbs = ({ categories = [], current }) => {
 
   return (
     <nav className="encyc-breadcrumbs" aria-label={lang === 'he' ? 'מיקום בדף' : 'Breadcrumb'}>
-      <Link to="/encyclopedia">{lang === 'he' ? 'האנציקלופדיה' : 'Encyclopedia'}</Link>
+      <Link to="/encyclopedia">{lang === 'he' ? 'לומדות האילן' : 'Tree Learning Guides'}</Link>
       {categories.map((c) => (
         <React.Fragment key={c._id}>
           {sep}

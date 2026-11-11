@@ -8,7 +8,7 @@ import Breadcrumbs from '../../components/encyclopedia/Breadcrumbs';
 import LoadingState from '../../components/encyclopedia/LoadingState';
 import FamilyTree from '../../components/encyclopedia/FamilyTree';
 import { TreeHighlight, TreeZoom } from '../../components/encyclopedia/TreeViews';
-import { cardSummary, yearsText } from '../../components/encyclopedia/personFormat';
+import { cardSummary, familyTitle, yearsText } from '../../components/encyclopedia/personFormat';
 import { treeById } from '../../data/trees';
 import { CartContext } from '../../context/context';
 import { tr, useApi } from '../../api';
@@ -153,7 +153,7 @@ const EncyclopediaPerson = () => {
 
           {hasFamily && (
             <section className="encyc-section">
-              <h2 className="encyc-section-title">{he ? 'משפחה, רבותיו ותלמידיו' : 'Family, Teachers and Students'}</h2>
+              <h2 className="encyc-section-title">{familyTitle(person, lang)}</h2>
               <FamilyTree person={person} name={name} />
             </section>
           )}

@@ -154,6 +154,7 @@ const KINGS = {
   },
 
   atalyah: {
+    gender: 'female',
     roles: ['מלכה'],
     offices: reign(3056, 3061, 'בתנ״ך: שש שנים'),
     relations: [
@@ -396,6 +397,7 @@ const main = async () => {
       return { type: r.type, person: null, name: { he: r.name, en: '' } };
     });
     person.set({
+      gender: data.gender || 'male',
       roles: data.roles.map((he) => ({ he, en: '' })),
       life: data.life ? { from: data.life[0], to: data.life[1] } : { from: null, to: null },
       offices: data.offices,

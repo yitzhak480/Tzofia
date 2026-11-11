@@ -2466,10 +2466,10 @@ body[dir="rtl"] .toolbar-top {
 /* מפעיל את ההרחבה אך ורק במסכי מחשב וטאבלט - מונע את התזוזה במובייל מראש */
 @media (min-width: 769px) {
   .recommendations-section {
-    width: 95vw; 
-    max-width: 1600px; 
-    margin-left: calc(50% - 47.5vw);
-    margin-right: calc(50% - 47.5vw);
+    /* רחב יותר מהדף (עד 1600px) וממורכז בדיוק, בכל רוחב מסך */
+    width: min(95vw, 1600px);
+    margin-left: calc(50% - min(47.5vw, 800px));
+    margin-right: calc(50% - min(47.5vw, 800px));
   }
 }
 
@@ -3036,45 +3036,16 @@ html, body, .page-wrapper {
   border-color: #4a1911;
 }
 
-/* קטגוריה בלי תמונה: עיצוב ברירת מחדל - קלף עם האות הראשונה וקישוט */
-.card-image-wrapper.encyc-no-image {
-  background:
-    radial-gradient(ellipse at 50% 32%, rgba(255, 250, 235, 0.95) 0%, rgba(239, 227, 200, 0.6) 45%, transparent 75%),
-    linear-gradient(to bottom, #efe3c8, #e2d1b3);
+/* קטגוריה בלי תמונה: גב של קלף משחק */
+.encyc-card-back {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
-.encyc-default-art {
-  position: absolute;
-  inset: 8% 10% 42% 10%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.2rem;
-  border: 1px solid rgba(197, 160, 89, 0.7);
-  outline: 1px solid rgba(197, 160, 89, 0.35);
-  outline-offset: 6px;
-  border-radius: 2px;
-}
-
-.encyc-default-letter {
-  font-family: "Frank Ruhl Libre", serif;
-  font-size: clamp(5rem, 9vw, 7.5rem);
-  font-weight: 700;
-  line-height: 1;
-  color: var(--color-terracotta, #8e3b30);
-  opacity: 0.85;
-  text-shadow: 0 2px 0 rgba(255, 255, 255, 0.6);
-}
-
-.encyc-default-ornament {
-  font-size: 1.6rem;
-  color: var(--color-gold, #c5a059);
-  line-height: 1;
-}
-
-.encyc-default-ornament.is-flipped {
-  transform: rotate(180deg);
+/* הדהייה אל הקלף מתחילה נמוך יותר, כדי שהמדליון יישאר גלוי */
+.card-image-wrapper.encyc-no-image::after {
+  background: linear-gradient(to bottom, transparent 42%, rgba(226, 209, 179, 0.95) 68%, #e2d1b3 82%);
 }
 
 /* כרטיס קטגוריה תמיד ברוחב מלא (גם בלי תמונה שתקבע את הרוחב) */
@@ -3082,8 +3053,17 @@ html, body, .page-wrapper {
   width: 100%;
 }
 
-.encyc-cards-grid {
+/* כרטיסי הקטגוריות באותו גודל כמו בדף הבית, גם כשיש רק אחד או שניים */
+.home-cards-grid.encyc-cards-grid {
   width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 340px));
+  justify-content: center;
+}
+
+@media (max-width: 900px) {
+  .home-cards-grid.encyc-cards-grid {
+    grid-template-columns: minmax(0, 340px);
+  }
 }
 
 .encyc-bottom-space {
@@ -3534,6 +3514,7 @@ body[dir="ltr"] .encyc-infobox {
 
 .admin-container.admin-wide {
   max-width: 1000px;
+  width: 100%;
 }
 
 .admin-login {
@@ -4204,4 +4185,18 @@ a.admin-btn {
   .admin-save-buttons .admin-submit-btn {
     flex: 1;
   }
+}
+
+.admin-radio-row {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.admin-radio-row label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: normal !important;
+  font-size: 1rem !important;
+  cursor: pointer;
 }

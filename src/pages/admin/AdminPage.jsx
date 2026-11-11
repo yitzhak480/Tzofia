@@ -46,7 +46,7 @@ const AdminPage = () => {
       <Header />
 
       <main className="admin-container admin-wide">
-        <h1 className="admin-main-title">ניהול האנציקלופדיה</h1>
+        <h1 className="admin-main-title">ניהול לומדות האילן</h1>
 
         {!token ? (
           <AdminLogin onLogin={handleLogin} />

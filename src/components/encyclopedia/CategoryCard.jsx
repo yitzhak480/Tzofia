@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../../context/context';
 import { tr } from '../../api';
+import CardBack from './CardBack';
 
 // A category card in the same style as the cards on the Home page.
 const CategoryCard = ({ category }) => {
@@ -16,11 +17,7 @@ const CategoryCard = ({ category }) => {
           <img src={category.image.url} alt={name} />
         ) : (
           // Default design when the category has no picture yet.
-          <div className="encyc-default-art" aria-hidden="true">
-            <span className="encyc-default-ornament">❦</span>
-            <span className="encyc-default-letter">{name.charAt(0)}</span>
-            <span className="encyc-default-ornament is-flipped">❦</span>
-          </div>
+          <CardBack />
         )}
       </div>
       <div className="card-content">

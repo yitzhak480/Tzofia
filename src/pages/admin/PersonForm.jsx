@@ -16,6 +16,7 @@ const yearNum = (s) => (String(s).trim() === '' ? null : Number(s));
 // Server data -> form state (everything as plain strings for the inputs).
 const toForm = (p = {}) => ({
   name: L(p.name),
+  gender: p.gender || 'male',
   categories: p.categories ? p.categories.map(String) : [],
   roles: (p.roles || []).map(L),
   life: { from: yearStr(p.life?.from), to: yearStr(p.life?.to) },
@@ -35,6 +36,7 @@ const toForm = (p = {}) => ({
 // Form state -> what the server expects.
 const toBody = (f) => ({
   name: f.name,
+  gender: f.gender,
   categories: f.categories,
   roles: f.roles.filter((r) => r.he.trim()),
   life: { from: yearNum(f.life.from), to: yearNum(f.life.to) },
@@ -186,6 +188,13 @@ const PersonForm = ({ initial, defaultCategory, categoryRows, people, upload, on
           )}
         </div>
         <div className="form-group">
+          <label>מין:</label>
+          <div className="admin-radio-row">
+            <label><input type="radio" name="gender" checked={form.gender === 'male'} onChange={() => set({ gender: 'male' })} /> זכר</label>
+            <label><input type="radio" name="gender" checked={form.gender === 'female'} onChange={() => set({ gender: 'female' })} /> נקבה</label>
+          </div>
+        </div>
+        <div className="form-group">
           <label>קטגוריות: * <span className="admin-hint">(אפשר לסמן כמה)</span></label>
           <CategoryPicker rows={categoryRows} value={form.categories} onChange={(categories) => set({ categories })} />
         </div>
@@ -234,7 +243,7 @@ const PersonForm = ({ initial, defaultCategory, categoryRows, people, upload, on
         </div>
       </Section>
 
-      <Section title="משפחה, רבותיו ותלמידיו" hint="שמות של דמויות שיש להן דף באנציקלופדיה יהפכו לקישורים.">
+      <Section title="משפחה, רבותיו ותלמידיו" hint="שמות של דמויות שיש להן דף בלומדות האילן יהפכו לקישורים.">
         <RelationsEditor value={form.relations} onChange={(relations) => set({ relations })} people={otherPeople} />
       </Section>
 

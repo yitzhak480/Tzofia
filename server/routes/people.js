@@ -11,7 +11,7 @@ const { resolveRelations } = require('../lib/relations');
 
 const router = express.Router();
 const FIELDS = [
-  'slug', 'categories', 'name', 'roles', 'life', 'offices', 'period', 'summary', 'content',
+  'slug', 'categories', 'name', 'gender', 'roles', 'life', 'offices', 'period', 'summary', 'content',
   'mainImage', 'relations', 'sources', 'treeSpots', 'wikiLink', 'order', 'published',
 ];
 const SORT = { order: 1, createdAt: 1 };
