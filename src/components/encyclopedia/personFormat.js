@@ -9,6 +9,7 @@ export const yearsText = (span, lang = 'he') => {
   const { from, to } = span;
   if (hasYear(from) && hasYear(to)) {
     const n = Number(to) - Number(from);
+    if (n === 0) return String(from); // e.g. a reign of a few months
     const count = lang === 'he' ? `${n} שנה` : `${n} years`;
     return n > 0 ? `${from}–${to} (${count})` : `${from}–${to}`;
   }
