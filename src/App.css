@@ -2454,17 +2454,23 @@ body[dir="rtl"] .toolbar-top {
 
 /* =========================================
    אזור המלצות רבנים
-   ========================================= */
-.recommendations-section {
+   ========================================
+   */
+   .recommendations-section {
   margin-top: 5rem;
   padding-top: 3rem;
   border-top: 1px solid rgba(197, 160, 89, 0.3); 
-  
-  /* הדרך הבטוחה להרחיב את האזור מעבר לגבולות הדף הרגילים */
-  width: 95vw; 
-  max-width: 1600px; 
-  margin-left: calc(50% - 47.5vw);
-  margin-right: calc(50% - 47.5vw);
+  box-sizing: border-box;
+}
+
+/* מפעיל את ההרחבה אך ורק במסכי מחשב וטאבלט - מונע את התזוזה במובייל מראש */
+@media (min-width: 769px) {
+  .recommendations-section {
+    width: 95vw; 
+    max-width: 1600px; 
+    margin-left: calc(50% - 47.5vw);
+    margin-right: calc(50% - 47.5vw);
+  }
 }
 
 .recommendations-main-title {
@@ -2494,6 +2500,7 @@ body[dir="rtl"] .toolbar-top {
     grid-template-columns: 1fr;
     gap: 3.5rem;
   }
+  
 }
 
 .recommendation-card {
