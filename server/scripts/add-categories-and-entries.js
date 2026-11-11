@@ -119,8 +119,6 @@ const ENTRIES = [
     categories: ['nesiim'],
     name: L('הלל הזקן', 'Hillel the Elder'),
     roles: [L('נשיא', 'Nasi'), L('ראש בית הלל', 'Head of Beit Hillel')],
-    life: [3648, 3768],
-    offices: [office('שנות נשיאות', 'Years as Nasi', 3728, 3768, 'מאה שנה לפני החורבן (שבת טו ע״א)', 'A hundred years before the Destruction (Shabbat 15a)')],
     summary: L('נשיא ישראל, ענו ואוהב שלום, שמבית מדרשו יצאו רוב ההלכות.', 'Nasi of Israel, humble and peace-loving, whose school is followed in most of halachah.'),
     rel: [
       { type: 'teacher', he: 'שמעיה', en: 'Shemayah' },
@@ -220,7 +218,6 @@ const ENTRIES = [
     kind: 'other',
     name: L('בית המקדש הראשון', 'The First Temple'),
     roles: [L('בית מקדש', 'Temple')],
-    life: [2928, 3338],
     summary: L('בית המקדש שבנה שלמה המלך בירושלים, ועמד ארבע מאות ועשר שנים.', 'The Temple built by King Shlomo in Jerusalem, which stood for four hundred and ten years.'),
     rel: [
       { type: 'related', slug: 'shlomo' },
@@ -297,7 +294,7 @@ const ENTRIES = [
     categories: ['amoraim'],
     name: L('רב (אבא בר איבו)', 'Rav (Abba bar Ibo)'),
     roles: [L('אמורא', 'Amora'), L('מייסד ישיבת סורא', 'Founder of the Sura academy')],
-    offices: [office('ראש ישיבת סורא', 'Head of the Sura academy', 3979, 4007, 'לפי איגרת רב שרירא גאון', 'According to the Letter of Rav Sherira Gaon')],
+    offices: [office('ראש ישיבת סורא', 'Head of the Sura academy', 3979, 4003, 'לפי איגרת רב שרירא גאון', 'According to the Letter of Rav Sherira Gaon')],
     summary: L('מגדולי האמוראים, תלמיד רבי יהודה הנשיא ומייסד ישיבת סורא בבבל.', 'One of the greatest Amoraim, a student of Rabbi Yehudah HaNasi and founder of the Sura academy in Babylon.'),
     rel: [
       { type: 'teacher', he: 'רבי יהודה הנשיא', en: 'Rabbi Yehudah HaNasi' },
@@ -310,10 +307,10 @@ const ENTRIES = [
     spots: gmara(43.3, 11.9),
     content: L(
       p('בבית מדרשו של רבי', 'רב, ששמו אבא בר איבו, נולד בבבל ועלה לארץ ישראל עם דודו רבי חייא, ולמד תורה מפי רבי יהודה הנשיא. בשל גדולתו נקרא בפי כל "רב" סתם, כרבן של כל בני הגולה. חז״ל אומרים עליו "רב תנא הוא ופליג": מעמדו כמעמד תנא, ולכן הוא רשאי לחלוק על דברי תנאים (עירובין נ ע״ב).') +
-        p('ישיבת סורא', 'בשנת ג׳תתקע״ט ירד רב לבבל, ולפי איגרת רב שרירא גאון ייסד את ישיבת סורא, שהייתה במשך מאות שנים, יחד עם פומבדיתא, מרכז התורה של העם היהודי. הוא עמד בראשה עד פטירתו בשנת ד׳ז׳. תלמידיו רב הונא ורב יהודה היו מגדולי הדור הבא.') +
+        p('ישיבת סורא', 'בשנת ג׳תתקע״ט ירד רב לבבל, ולפי איגרת רב שרירא גאון ייסד את ישיבת סורא, שהייתה במשך מאות שנים, יחד עם פומבדיתא, מרכז התורה של העם היהודי. הוא עמד בראשה עד פטירתו בשנת ד׳ג׳. תלמידיו רב הונא ורב יהודה היו מגדולי הדור הבא.') +
         p('רב ושמואל', 'רב וחברו שמואל, ראש ישיבת נהרדעא, נחלקו בהלכות רבות, ומחלוקותיהם ממלאות את התלמוד הבבלי. נקבע: "הלכתא כרב באיסורי, וכשמואל בדיני" (בכורות מט ע״ב). לפי המסורת רב חיבר את נוסח "עלינו לשבח" ואת ברכות מלכויות, זכרונות ושופרות של ראש השנה, הנקראות בירושלמי "תקיעתא דבי רב".'),
       p('In the Study Hall of Rabbi', 'Rav, whose name was Abba bar Ibo, was born in Babylon and went up to the Land of Israel with his uncle Rabbi Chiya, where he learned Torah from Rabbi Yehudah HaNasi. Because of his greatness he was called simply "Rav", the teacher of all the Diaspora. Chazal say of him "Rav is a Tanna and may disagree": his standing was like that of a Tanna, so he could disagree with Tannaim (Eruvin 50b).') +
-        p('The Sura Academy', 'In the year 3979 Rav went down to Babylon, and according to the Letter of Rav Sherira Gaon he founded the Sura academy, which for hundreds of years, together with Pumbedita, was the center of Torah for the Jewish people. He headed it until his passing in 4007. His students Rav Huna and Rav Yehudah were among the greatest of the next generation.') +
+        p('The Sura Academy', 'In the year 3979 Rav went down to Babylon, and according to the Letter of Rav Sherira Gaon he founded the Sura academy, which for hundreds of years, together with Pumbedita, was the center of Torah for the Jewish people. He headed it until his passing in 4003. His students Rav Huna and Rav Yehudah were among the greatest of the next generation.') +
         p('Rav and Shmuel', 'Rav and his colleague Shmuel, head of the Nehardea academy, disagreed in many laws, and their disputes fill the Babylonian Talmud. The rule was set: "The halachah follows Rav in matters of prohibition, and Shmuel in monetary law" (Bechorot 49b). According to tradition Rav composed the prayer "Aleinu LeShabeach" and the blessings of Kingship, Remembrance and Shofar of Rosh Hashanah, which the Jerusalem Talmud calls "the shofar blessings of the school of Rav".'),
     ),
   },
@@ -341,7 +338,6 @@ const ENTRIES = [
     categories: ['geonim'],
     name: L('רב סעדיה גאון', 'Rav Saadia Gaon'),
     roles: [L('גאון', 'Gaon'), L('ראש ישיבת סורא', 'Head of the Sura academy')],
-    life: [4642, 4702],
     offices: [office('גאון ישיבת סורא', 'Gaon of the Sura academy', 4688, 4702)],
     summary: L('גאון סורא, מגדולי חכמי ישראל, שלחם בקראים וחיבר את "האמונות והדעות".', 'Gaon of Sura, one of the greatest Jewish sages, who fought the Karaites and wrote "Emunot VeDeot".'),
     rel: [

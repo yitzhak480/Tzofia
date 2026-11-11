@@ -56,14 +56,14 @@
     "reign_years": 3,
     "he": {
       "title": "אבים",
-      "reign_display": "3 שנים",
-      "description": "בנו של רחבעם. מלך 3 שנים בלבד. ניצח במלחמה גדולה את ירבעם מלך ישראל.",
+      "reign_display": "2 שנים",
+      "description": "בנו של רחבעם. מלך שנתיים בלבד. ניצח במלחמה גדולה את ירבעם מלך ישראל.",
       "wiki_link": "https://he.wikipedia.org/wiki/אביה_(מלך_יהודה)"
     },
     "en": {
       "title": "Aviyam (Abijam)",
-      "reign_display": "3 years",
-      "description": "Son of Rehoboam. Reigned for only 3 years. Defeated Jeroboam King of Israel in a great war.",
+      "reign_display": "2 years",
+      "description": "Son of Rehoboam. Reigned for only 2 years. Defeated Jeroboam King of Israel in a great war.",
       "wiki_link": "https://en.wikipedia.org/wiki/Abijah_of_Judah"
     }
   },
@@ -90,13 +90,13 @@
     "reign_years": 25,
     "he": {
       "title": "יהושפט",
-      "reign_display": "25 שנה",
+      "reign_display": "23 שנה",
       "description": "המשיך בדרכי אביו אסא, חיזק את מערכת המשפט והפיץ תורה בעם.",
       "wiki_link": "https://he.wikipedia.org/wiki/יהושפט"
     },
     "en": {
       "title": "Yehoshafat (Jehoshaphat)",
-      "reign_display": "25 years",
+      "reign_display": "23 years",
       "description": "Continued in the ways of his father Asa, strengthened the justice system and spread Torah among the people.",
       "wiki_link": "https://en.wikipedia.org/wiki/Jehoshaphat"
     }
@@ -141,14 +141,14 @@
     "reign_years": 6,
     "he": {
       "title": "עתליה",
-      "reign_display": "6 שנים",
-      "description": "השמידה את כל זרע המלוכה (למעט יהואש) ותפסה את השלטון בכוח ל-6 שנים.",
+      "reign_display": "5 שנים",
+      "description": "השמידה את כל זרע המלוכה (למעט יהואש) ותפסה את השלטון בכוח ל-5 שנים.",
       "wiki_link": "https://he.wikipedia.org/wiki/עתליה"
     },
     "en": {
       "title": "Atalyah (Athaliah)",
-      "reign_display": "6 years",
-      "description": "Destroyed all the royal seed (except Joash) and seized power by force for 6 years.",
+      "reign_display": "5 years",
+      "description": "Destroyed all the royal seed (except Joash) and seized power by force for 5 years.",
       "wiki_link": "https://en.wikipedia.org/wiki/Athaliah"
     }
   },
@@ -158,13 +158,13 @@
     "reign_years": 40,
     "he": {
       "title": "יהואש",
-      "reign_display": "40 שנה",
+      "reign_display": "39 שנה",
       "description": "ניצל מלידתו והוחבא בבית המקדש. חידש את בדק הבית ופעל לתיקון המקדש.",
       "wiki_link": "https://he.wikipedia.org/wiki/יהואש_(מלך_יהודה)"
     },
     "en": {
       "title": "Yehoash (Joash)",
-      "reign_display": "40 years",
+      "reign_display": "39 years",
       "description": "Saved at birth and hidden in the Temple. Renovated the Temple and worked to repair it.",
       "wiki_link": "https://en.wikipedia.org/wiki/Jehoash_of_Judah"
     }
@@ -175,13 +175,13 @@
     "reign_years": 29,
     "he": {
       "title": "אמציה",
-      "reign_display": "29 שנה",
+      "reign_display": "15 שנה",
       "description": "ניצח את אדום בקרב, אך מאוחר יותר הובס במלחמה מול ממלכת ישראל.",
       "wiki_link": "https://he.wikipedia.org/wiki/אמציה"
     },
     "en": {
       "title": "Amatzyah (Amaziah)",
-      "reign_display": "29 years",
+      "reign_display": "15 years",
       "description": "Defeated Edom in battle, but was later defeated in a war against the Kingdom of Israel.",
       "wiki_link": "https://en.wikipedia.org/wiki/Amaziah_of_Judah"
     }
