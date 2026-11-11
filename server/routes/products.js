@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const Product = require('../models/Product'); // מייבאים את המודל שיצרנו קודם
+const { requireAdmin } = require('../middleware/auth');
 
-// POST: הוספת מוצר חדש למסד הנתונים
-router.post('/', async (req, res) => {
+// POST: הוספת מוצר חדש למסד הנתונים (אדמין בלבד)
+router.post('/', requireAdmin, async (req, res) => {
   try {
     const newProduct = new Product(req.body);
     const savedProduct = await newProduct.save();
