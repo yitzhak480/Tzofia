@@ -5,7 +5,8 @@ const { localized, imageSchema, slugField } = require('./shared');
 
 const categorySchema = new mongoose.Schema(
   {
-    slug: slugField,
+    // "person" is reserved because /encyclopedia/person/... is a person's page.
+    slug: { ...slugField, validate: { validator: (v) => v !== 'person', message: 'The URL name "person" is reserved' } },
     name: { type: localized(true), required: true },
     description: { type: localized(), default: () => ({}) },
     image: { type: imageSchema, default: null },

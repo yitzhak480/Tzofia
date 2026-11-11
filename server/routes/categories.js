@@ -11,7 +11,7 @@ const router = express.Router();
 const FIELDS = ['slug', 'name', 'description', 'image', 'parent', 'order'];
 const SORT = { order: 1, createdAt: 1 };
 // What a person's card needs (no full article).
-const CARD_FIELDS = 'slug name period summary mainImage order category';
+const CARD_FIELDS = 'slug name period summary autoSummary mainImage order categories life offices';
 
 const normalizeParent = (data) => {
   if (data.parent === '' || data.parent === undefined) data.parent = null;
@@ -32,7 +32,7 @@ router.get('/:slug', async (req, res) => {
   const [ancestors, children, people] = await Promise.all([
     ancestorChain(category.parent),
     Category.find({ parent: category._id }).sort(SORT).lean(),
-    Person.find({ category: category._id, published: true }).select(CARD_FIELDS).sort(SORT).lean(),
+    Person.find({ categories: category._id, published: true }).select(CARD_FIELDS).sort(SORT).lean(),
   ]);
 
   res.json({ category, ancestors, children, people });
@@ -80,7 +80,7 @@ router.delete('/:id', requireAdmin, async (req, res) => {
 
   const [childCount, peopleCount] = await Promise.all([
     Category.countDocuments({ parent: category._id }),
-    Person.countDocuments({ category: category._id }),
+    Person.countDocuments({ categories: category._id }),
   ]);
   if (childCount || peopleCount) {
     return res.status(409).json({

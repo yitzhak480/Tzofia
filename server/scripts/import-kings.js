@@ -14,7 +14,7 @@ const kings = require(path.join(__dirname, '..', '..', 'src', 'data.json'));
 
 const upsertCategory = (slug, fields) =>
   Category.findOneAndUpdate({ slug }, { $set: fields, $setOnInsert: { slug } }, {
-    upsert: true, new: true, runValidators: true,
+    upsert: true, returnDocument: 'after', runValidators: true,
   });
 
 const main = async () => {
@@ -38,7 +38,6 @@ const main = async () => {
       { slug },
       {
         $set: {
-          category: judah._id,
           name: { he: king.he.title, en: king.en.title },
           period: { he: king.he.reign_display, en: king.en.reign_display },
           summary: { he: king.he.description, en: king.en.description },
@@ -46,9 +45,9 @@ const main = async () => {
           wikiLink: { he: king.he.wiki_link, en: king.en.wiki_link },
           order: index + 1,
         },
-        $setOnInsert: { slug, content: { he: '', en: '' }, published: true },
+        $setOnInsert: { slug, categories: [judah._id], content: { he: '', en: '' }, published: true },
       },
-      { upsert: true, new: true, runValidators: true }
+      { upsert: true, returnDocument: 'after', runValidators: true }
     );
     console.log(`✓ ${king.en.title} -> /encyclopedia/person/${slug}`);
   }

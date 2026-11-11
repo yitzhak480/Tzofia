@@ -1,20 +1,98 @@
 // A person in the encyclopedia, e.g. King David.
+// Only the Hebrew name and the article text are really needed; everything
+// else is optional and the page hides whatever is empty.
 const mongoose = require('mongoose');
 const { localized, imageSchema, slugField } = require('./shared');
+
+// A span of years, e.g. 2854–2924. Either end may be missing.
+const yearsSchema = new mongoose.Schema(
+  {
+    from: { type: Number, default: null },
+    to: { type: Number, default: null },
+  },
+  { _id: false }
+);
+
+// A position held for some years: "שנות מלוכה 2884–2924".
+const officeSchema = new mongoose.Schema(
+  {
+    label: { type: localized(true), required: true },
+    from: { type: Number, default: null },
+    to: { type: Number, default: null },
+    note: { type: localized(), default: () => ({}) },
+  },
+  { _id: false }
+);
+
+const RELATION_TYPES = ['father', 'mother', 'sibling', 'spouse', 'child', 'teacher', 'student'];
+
+// A relative / teacher / student. If `person` is set it links to that page;
+// otherwise only the name is shown (and linked automatically if a page with
+// exactly that Hebrew name exists).
+const relationSchema = new mongoose.Schema(
+  {
+    type: { type: String, enum: RELATION_TYPES, required: true },
+    person: { type: mongoose.Schema.Types.ObjectId, ref: 'Person', default: null },
+    name: { type: localized(), default: () => ({}) },
+  },
+  { _id: false }
+);
+
+// Where the person appears on one of our tree posters (percent of the image).
+const treeSpotSchema = new mongoose.Schema(
+  {
+    tree: { type: String, required: true, trim: true },
+    x: { type: Number, required: true, min: 0, max: 100 },
+    y: { type: Number, required: true, min: 0, max: 100 },
+  },
+  { _id: false }
+);
+
+const plainText = (html) =>
+  String(html || '')
+    .replace(/<h[1-6][^>]*>[\s\S]*?<\/h[1-6]>/gi, ' ') // headings aren't part of the summary
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+const excerpt = (html, max = 170) => {
+  const text = plainText(html);
+  if (text.length <= max) return text;
+  const cut = text.slice(0, max);
+  return `${cut.slice(0, cut.lastIndexOf(' ') > 80 ? cut.lastIndexOf(' ') : max)}…`;
+};
 
 const personSchema = new mongoose.Schema(
   {
     slug: slugField,
-    category: { type: mongoose.Schema.Types.ObjectId, ref: 'Category', required: true, index: true },
+    // The first category is the main one (used for "back to..." and breadcrumbs).
+    categories: {
+      type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Category' }],
+      validate: { validator: (v) => Array.isArray(v) && v.length > 0, message: 'Choose at least one category' },
+      index: true,
+    },
     name: { type: localized(true), required: true },
-    // Short line under the name, e.g. "reigned 40 years" or "c. 1000 BCE".
+    roles: { type: [localized(true)], default: [] },
+    life: { type: yearsSchema, default: () => ({}) },
+    offices: { type: [officeSchema], default: [] },
+    // Short line on the person's card. Old entries (the kings) use it; new ones
+    // normally leave it empty and the card shows the office / life years.
     period: { type: localized(), default: () => ({}) },
-    // One or two sentences, shown on the person's card in the category list.
+    // Short text on the card. If empty, the start of the article is used.
     summary: { type: localized(), default: () => ({}) },
-    // The full article, written in the admin's rich text editor (HTML).
+    autoSummary: { type: localized(), default: () => ({}) },
+    // The article, written in the admin's text editor (HTML).
     content: { type: localized(), default: () => ({}) },
     mainImage: { type: imageSchema, default: null },
-    gallery: { type: [imageSchema], default: [] },
+    relations: { type: [relationSchema], default: [] },
+    sources: { type: [{ type: String, trim: true }], default: [] },
+    treeSpots: { type: [treeSpotSchema], default: [] },
     wikiLink: { type: localized(), default: () => ({}) },
     order: { type: Number, default: 0 },
     // Unpublished people are visible only in the admin.
@@ -22,5 +100,15 @@ const personSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
+personSchema.pre('validate', function cleanUp() {
+  // Drop empty rows the admin form may send.
+  this.sources = (this.sources || []).map((s) => String(s).trim()).filter(Boolean);
+  this.roles = (this.roles || []).filter((r) => r && r.he && r.he.trim());
+  this.relations = (this.relations || []).filter((r) => r.person || (r.name && r.name.he && r.name.he.trim()));
+  this.autoSummary = { he: excerpt(this.content?.he), en: excerpt(this.content?.en) };
+});
+
+personSchema.statics.RELATION_TYPES = RELATION_TYPES;
 
 module.exports = mongoose.model('Person', personSchema);
