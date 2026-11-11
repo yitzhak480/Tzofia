@@ -87,9 +87,9 @@ const KINGS = {
     roles: ['King of Judah'],
     sources: ['I Kings 12; 14:21–31', 'II Chronicles 10–12'],
     content:
-      p('The Division of the Kingdom', 'Rechavam son of Shlomo became king at the age of forty-one. The people gathered in Shechem and asked him to lighten the heavy burden that Shlomo had placed on them. Rechavam rejected the advice of the elders and followed the advice of the young men who had grown up with him, answering the people harshly. The ten tribes rebelled and made Yeravam son of Nevat their king, and Rechavam remained king over Judah and Binyamin alone.') +
-      p('His Reign', 'Rechavam wanted to go to war against Israel, but Shemayah the man of God told him in the name of Hashem not to fight his brothers, and the people returned home. Rechavam fortified many cities in Judah, and at the start of his reign the Kohanim and Levites from all of Israel came to Jerusalem and strengthened the service of Hashem.') +
-      p('Shishak’s Campaign', 'In the fifth year of his reign, after the people had abandoned the Torah of Hashem, Shishak king of Egypt came up against Jerusalem and took the treasures of the House of Hashem and of the king’s palace, among them the gold shields Shlomo had made. Rechavam made copper shields in their place. Because he humbled himself before Hashem, the destruction was not complete.'),
+      p('The Division of the Kingdom', 'Rehavam son of Shlomo became king at the age of forty-one. The people gathered in Shechem and asked him to lighten the heavy burden that Shlomo had placed on them. Rehavam rejected the advice of the elders and followed the advice of the young men who had grown up with him, answering the people harshly. The ten tribes rebelled and made Yeravam son of Nevat their king, and Rehavam remained king over Judah and Binyamin alone.') +
+      p('His Reign', 'Rehavam wanted to go to war against Israel, but Shemayah the man of God told him in the name of Hashem not to fight his brothers, and the people returned home. Rehavam fortified many cities in Judah, and at the start of his reign the Kohanim and Levites from all of Israel came to Jerusalem and strengthened the service of Hashem.') +
+      p('Shishak’s Campaign', 'In the fifth year of his reign, after the people had abandoned the Torah of Hashem, Shishak king of Egypt came up against Jerusalem and took the treasures of the House of Hashem and of the king’s palace, among them the gold shields Shlomo had made. Rehavam made copper shields in their place. Because he humbled himself before Hashem, the destruction was not complete.'),
   },
 
   abiyam: {
@@ -97,7 +97,7 @@ const KINGS = {
     note: 'In Tanach: three years (I Kings 15:2)',
     sources: ['I Kings 15:1–8', 'II Chronicles 13'],
     content:
-      p('His Reign', 'Aviyam, called Aviyah in the Book of Chronicles, reigned after his father Rechavam for three years in Jerusalem. The Book of Kings testifies that he followed all the sins of his father, but for David’s sake Hashem gave him a lamp in Jerusalem.') +
+      p('His Reign', 'Aviyam, called Aviyah in the Book of Chronicles, reigned after his father Rehavam for three years in Jerusalem. The Book of Kings testifies that he followed all the sins of his father, but for David’s sake Hashem gave him a lamp in Jerusalem.') +
       p('The War against Yeravam', 'Aviyah went to war against Yeravam king of Israel. Standing on Mount Tzemarayim, he addressed the army of Israel: he reminded them that Hashem had given the kingship to David and his sons by a covenant of salt, and that in Jerusalem the Kohanim, the sons of Aharon, still served Hashem in order. Although Yeravam’s army surrounded Judah on every side, the men of Judah cried out to Hashem, the Kohanim sounded the trumpets, and Judah won a great victory.'),
   },
 
@@ -132,8 +132,8 @@ const KINGS = {
     roles: ['King of Judah'],
     sources: ['II Kings 8:25 – 9:29', 'II Chronicles 22:1–9'],
     content:
-      p('His Reign', 'Achazyahu son of Yehoram reigned one year in Jerusalem, and following the counsel of his mother Atalyah he walked in the ways of the house of Achav.') +
-      p('His Death', 'Achazyahu went out with Yoram son of Achav, king of Israel, to war at Ramot Gilad, and afterwards went down to Yizre’el to visit the wounded Yoram. At that time Yehu son of Nimshi was anointed king over Israel by the messenger of Elisha the Prophet, in order to cut off the house of Achav. Yehu killed Yoram, and Achazyahu, who fled, was struck and died at Megiddo.'),
+      p('His Reign', 'Ahazyahu son of Yehoram reigned one year in Jerusalem, and following the counsel of his mother Atalyah he walked in the ways of the house of Achav.') +
+      p('His Death', 'Ahazyahu went out with Yoram son of Achav, king of Israel, to war at Ramot Gilad, and afterwards went down to Yizre’el to visit the wounded Yoram. At that time Yehu son of Nimshi was anointed king over Israel by the messenger of Elisha the Prophet, in order to cut off the house of Achav. Yehu killed Yoram, and Ahazyahu, who fled, was struck and died at Megiddo.'),
   },
 
   atalyah: {
@@ -141,8 +141,8 @@ const KINGS = {
     note: 'In Tanach: six years',
     sources: ['II Kings 8:18; 8:26', 'II Kings 11', 'II Chronicles 22:10 – 23:21'],
     content:
-      p('Daughter of the House of Achav', 'Atalyah, of the house of Achav king of Israel, married Yehoram king of Judah, and her son Achazyahu reigned after him. She influenced her husband and her son to follow the ways of the house of Achav.') +
-      p('Her Reign', 'When Atalyah saw that her son Achazyahu was dead, she rose up and killed all the royal family and seized power. But Yehoshava, daughter of King Yoram and sister of Achazyahu, stole the infant Yoash from among the king’s sons and hid him in the House of Hashem for six years, while Atalyah reigned over the land.') +
+      p('Daughter of the House of Achav', 'Atalyah, of the house of Achav king of Israel, married Yehoram king of Judah, and her son Ahazyahu reigned after him. She influenced her husband and her son to follow the ways of the house of Achav.') +
+      p('Her Reign', 'When Atalyah saw that her son Ahazyahu was dead, she rose up and killed all the royal family and seized power. But Yehoshava, daughter of King Yoram and sister of Ahazyahu, stole the infant Yoash from among the king’s sons and hid him in the House of Hashem for six years, while Atalyah reigned over the land.') +
       p('The End of Her Reign', 'In the seventh year Yehoyada the Kohen made a covenant with the army officers, brought out Yoash and crowned him in the House of Hashem. Atalyah heard the noise of the people and came, tore her clothes and cried "Treason, treason!", but she was taken out of the House of Hashem and put to death. The people tore down the house of Baal and made a covenant to be a people of Hashem.'),
   },
 
@@ -151,7 +151,7 @@ const KINGS = {
     note: 'In Tanach: 40 years',
     sources: ['II Kings 11–12', 'II Chronicles 23–24', 'Gittin 57b'],
     content:
-      p('The Child Who Was Saved', 'Yehoash son of Achazyahu was saved as a baby from his grandmother Atalyah: his aunt Yehoshava hid him in the House of Hashem for six years. At the age of seven he was crowned by Yehoyada the Kohen, who brought the people into a covenant with Hashem.') +
+      p('The Child Who Was Saved', 'Yehoash son of Ahazyahu was saved as a baby from his grandmother Atalyah: his aunt Yehoshava hid him in the House of Hashem for six years. At the age of seven he was crowned by Yehoyada the Kohen, who brought the people into a covenant with Hashem.') +
       p('Repairing the House of Hashem', '"Yehoash did what was right in the eyes of Hashem all his days, as Yehoyada the Kohen instructed him". He saw to the repair of the House of Hashem: he prepared a chest with a hole in its lid beside the altar, and the money the people donated into it was given to the craftsmen who repaired the House.') +
       p('After Yehoyada’s Death', 'After Yehoyada died, Yehoash listened to the princes of Judah, and the people returned to serving the Asherim and idols. Zecharyah son of Yehoyada the Kohen rebuked them, and at the king’s command they stoned him in the courtyard of the House of Hashem. Chazal relate that the blood of Zecharyah kept seething until the days of the Destruction (Gittin 57b). At the end of his days the army of Aram came against Judah, and Yehoash was killed by his servants.'),
   },
@@ -187,26 +187,26 @@ const KINGS = {
     roles: ['King of Judah'],
     sources: ['II Kings 16', 'II Chronicles 28', 'Isaiah 7–8', 'Bereishit Rabbah 42:3'],
     content:
-      p('His Reign', 'Achaz son of Yotam became king at the age of twenty and reigned sixteen years in Jerusalem, and he did not do what was right in the eyes of Hashem. He followed the ways of the kings of Israel, made molten images for the Baalim and even passed his son through the fire. Chazal expounded that he was called Achaz because he "seized" (achaz) the synagogues and study halls and shut them (Bereishit Rabbah 42:3).') +
-      p('The War with Aram and Israel', 'Retzin king of Aram and Pekach son of Remalyahu king of Israel came up against Jerusalem. Yeshayahu the Prophet went out to meet Achaz and told him: "Be careful and keep calm, do not fear", and offered him to ask for a sign from Hashem. Achaz refused, and instead of trusting in Hashem he sent a bribe to Tiglat-Pileser king of Assyria and asked for his help.') +
-      p('The Altar from Damascus', 'When Achaz went to Damascus to meet the king of Assyria, he saw an altar there and sent its design to Uriyah the Kohen, who built an altar like it in Jerusalem. Achaz cut up the vessels of the House of Hashem, shut the doors of the Sanctuary, and made himself altars in every corner of Jerusalem.'),
+      p('His Reign', 'Ahaz son of Yotam became king at the age of twenty and reigned sixteen years in Jerusalem, and he did not do what was right in the eyes of Hashem. He followed the ways of the kings of Israel, made molten images for the Baalim and even passed his son through the fire. Chazal expounded that he was called Ahaz because he "seized" (achaz) the synagogues and study halls and shut them (Bereishit Rabbah 42:3).') +
+      p('The War with Aram and Israel', 'Retzin king of Aram and Pekach son of Remalyahu king of Israel came up against Jerusalem. Yeshayahu the Prophet went out to meet Ahaz and told him: "Be careful and keep calm, do not fear", and offered him to ask for a sign from Hashem. Ahaz refused, and instead of trusting in Hashem he sent a bribe to Tiglat-Pileser king of Assyria and asked for his help.') +
+      p('The Altar from Damascus', 'When Ahaz went to Damascus to meet the king of Assyria, he saw an altar there and sent its design to Uriyah the Kohen, who built an altar like it in Jerusalem. Ahaz cut up the vessels of the House of Hashem, shut the doors of the Sanctuary, and made himself altars in every corner of Jerusalem.'),
   },
 
   chizkiyahu: {
     roles: ['King of Judah'],
     sources: ['II Kings 18–20', 'Isaiah 36–39', 'II Chronicles 29–32', 'Berachot 10a–b', 'Sanhedrin 94b', 'Bava Batra 15a'],
     content:
-      p('Restoring the Service', 'Chizkiyahu son of Achaz became king at the age of twenty-five, and in the first month of his reign he opened the doors of the House of Hashem that his father had shut, purified the Temple and restored the service of the Kohanim and Levites. He sent invitations to all Israel, including the ten tribes, to celebrate Pesach in Jerusalem, and he broke the copper serpent Moshe had made, because the people were burning incense to it.') +
-      p('Spreading the Torah', 'Chazal relate that Chizkiyahu planted a sword at the entrance of the study hall and declared that whoever did not occupy himself with Torah would be pierced by the sword. They searched from Dan to Be’er Sheva and found no ignorant person; even small boys and girls were expert in the laws of purity and impurity (Sanhedrin 94b). Chizkiyahu and his circle wrote down the books of Isaiah, Proverbs, Song of Songs and Ecclesiastes (Bava Batra 15a).') +
-      p('The Miracle of Sancheriv', 'Sancheriv king of Assyria came up against the cities of Judah and besieged Jerusalem, and Ravshakeh blasphemed Hashem. Chizkiyahu spread the letters before Hashem and prayed, and Yeshayahu the Prophet promised that the king of Assyria would not enter the city. That night an angel of Hashem went out and struck down one hundred and eighty-five thousand in the camp of Assyria.') +
-      p('His Illness', 'Chizkiyahu fell mortally ill, and Yeshayahu came to him on Hashem’s mission. Chizkiyahu turned his face to the wall and prayed, and Hashem added fifteen years to his life; the sign was that the shadow went back on the steps of Achaz.'),
+      p('Restoring the Service', 'Hizkiyahu son of Ahaz became king at the age of twenty-five, and in the first month of his reign he opened the doors of the House of Hashem that his father had shut, purified the Temple and restored the service of the Kohanim and Levites. He sent invitations to all Israel, including the ten tribes, to celebrate Pesach in Jerusalem, and he broke the copper serpent Moshe had made, because the people were burning incense to it.') +
+      p('Spreading the Torah', 'Chazal relate that Hizkiyahu planted a sword at the entrance of the study hall and declared that whoever did not occupy himself with Torah would be pierced by the sword. They searched from Dan to Be’er Sheva and found no ignorant person; even small boys and girls were expert in the laws of purity and impurity (Sanhedrin 94b). Hizkiyahu and his circle wrote down the books of Isaiah, Proverbs, Song of Songs and Ecclesiastes (Bava Batra 15a).') +
+      p('The Miracle of Sancheriv', 'Sancheriv king of Assyria came up against the cities of Judah and besieged Jerusalem, and Ravshakeh blasphemed Hashem. Hizkiyahu spread the letters before Hashem and prayed, and Yeshayahu the Prophet promised that the king of Assyria would not enter the city. That night an angel of Hashem went out and struck down one hundred and eighty-five thousand in the camp of Assyria.') +
+      p('His Illness', 'Hizkiyahu fell mortally ill, and Yeshayahu came to him on Hashem’s mission. Hizkiyahu turned his face to the wall and prayed, and Hashem added fifteen years to his life; the sign was that the shadow went back on the steps of Ahaz.'),
   },
 
   menashe: {
     roles: ['King of Judah'],
     sources: ['II Kings 21:1–18', 'II Chronicles 33:1–20', 'Yevamot 49b', 'Mishnah Sanhedrin 10:2'],
     content:
-      p('His Reign', 'Menashe son of Chizkiyahu became king at the age of twelve and reigned fifty-five years in Jerusalem, longer than any other king of the House of David. He rebuilt the high places his father Chizkiyahu had destroyed, set up altars to Baal and to all the host of heaven, even in the courtyards of the House of Hashem, passed his son through the fire and placed the image of the Asherah in the House. He also shed much innocent blood; Chazal relate that he killed Yeshayahu the Prophet (Yevamot 49b).') +
+      p('His Reign', 'Menashe son of Hizkiyahu became king at the age of twelve and reigned fifty-five years in Jerusalem, longer than any other king of the House of David. He rebuilt the high places his father Hizkiyahu had destroyed, set up altars to Baal and to all the host of heaven, even in the courtyards of the House of Hashem, passed his son through the fire and placed the image of the Asherah in the House. He also shed much innocent blood; Chazal relate that he killed Yeshayahu the Prophet (Yevamot 49b).') +
       p('Exile and Repentance', 'Hashem brought against him the army commanders of the king of Assyria, who captured him with hooks, bound him in copper chains and led him to Babylon. "In his distress he entreated Hashem his God and humbled himself greatly", and Hashem heard his plea and brought him back to Jerusalem to his kingdom. Menashe removed the foreign gods and returned to serving Hashem.') +
       p('The View of Chazal', 'In the Mishnah (Sanhedrin 10:2) Menashe is counted among the three kings who have no share in the World to Come, but Rabbi Yehudah says he does have a share, because it is said "He prayed to Him, and He was entreated by him".'),
   },
@@ -233,15 +233,15 @@ const KINGS = {
     note: 'Three months',
     sources: ['II Kings 23:30–34', 'II Chronicles 36:1–4', 'Horayot 11b'],
     content:
-      p('His Reign', 'After Yoshiyahu’s death the people of the land took his son Yehoachaz and anointed him king in his place, even though his brother Yehoyakim was older; Chazal explain that this is why he needed to be anointed (Horayot 11b). Yehoachaz became king at the age of twenty-three and reigned only three months.') +
-      p('His Exile', 'Pharaoh Necho imprisoned him at Rivlah in the land of Chamat, imposed a heavy tax on the land, and made his brother Elyakim king in his place, changing his name to Yehoyakim. Yehoachaz was taken to Egypt and died there.'),
+      p('His Reign', 'After Yoshiyahu’s death the people of the land took his son Yehoahaz and anointed him king in his place, even though his brother Yehoyakim was older; Chazal explain that this is why he needed to be anointed (Horayot 11b). Yehoahaz became king at the age of twenty-three and reigned only three months.') +
+      p('His Exile', 'Pharaoh Necho imprisoned him at Rivlah in the land of Chamat, imposed a heavy tax on the land, and made his brother Elyakim king in his place, changing his name to Yehoyakim. Yehoahaz was taken to Egypt and died there.'),
   },
 
   yehoyakim: {
     roles: ['King of Judah'],
     sources: ['II Kings 23:34 – 24:6', 'II Chronicles 36:4–8', 'Jeremiah 22; 26; 36'],
     content:
-      p('His Reign', 'Pharaoh Necho made Elyakim son of Yoshiyahu king in place of his brother Yehoachaz and changed his name to Yehoyakim. He became king at the age of twenty-five, reigned eleven years in Jerusalem, and did evil in the eyes of Hashem. He collected money from the people to pay the tax to Pharaoh. In his days Nevuchadnetzar king of Babylon came up, and Yehoyakim served him for three years and then rebelled against him.') +
+      p('His Reign', 'Pharaoh Necho made Elyakim son of Yoshiyahu king in place of his brother Yehoahaz and changed his name to Yehoyakim. He became king at the age of twenty-five, reigned eleven years in Jerusalem, and did evil in the eyes of Hashem. He collected money from the people to pay the tax to Pharaoh. In his days Nevuchadnetzar king of Babylon came up, and Yehoyakim served him for three years and then rebelled against him.') +
       p('Yirmeyahu’s Scroll', 'Yirmeyahu the Prophet warned him and the people again and again. When the scroll that Baruch son of Neriyah had written from Yirmeyahu’s dictation was read before the king, Yehoyakim cut it with a knife and burned it in the fire of the brazier, and he was not afraid and did not tear his clothes. Yirmeyahu prophesied of him: "He shall be buried with the burial of a donkey".'),
   },
 
@@ -250,15 +250,15 @@ const KINGS = {
     note: 'Three months',
     sources: ['II Kings 24:8–16; 25:27–30', 'Jeremiah 22:24–30; 52:31–34', 'II Chronicles 36:9–10', 'Gittin 88a'],
     content:
-      p('The Exile of Yehoyachin', 'Yehoyachin, also called Yechonyah, became king at the age of eighteen and reigned three months in Jerusalem. Nevuchadnetzar besieged the city, and Yehoyachin went out to him with his mother, his servants and his officers. Nevuchadnetzar exiled him to Babylon, together with the princes of Jerusalem, the mighty men of valor, "and the craftsmen and the smiths"; Chazal teach that these were the Torah scholars (Gittin 88a).') +
-      p('In Babylon', 'For thirty-seven years Yehoyachin sat in prison in Babylon. When Evil-Merodach became king, he released him from prison, spoke kindly to him and set his throne above the thrones of the kings who were with him in Babylon, and all his days he ate at the king’s table. From his descendants came the Exilarchs and the line of the House of David in exile.'),
+      p('The Exile of Yehoyahin', 'Yehoyahin, also called Yechonyah, became king at the age of eighteen and reigned three months in Jerusalem. Nevuchadnetzar besieged the city, and Yehoyahin went out to him with his mother, his servants and his officers. Nevuchadnetzar exiled him to Babylon, together with the princes of Jerusalem, the mighty men of valor, "and the craftsmen and the smiths"; Chazal teach that these were the Torah scholars (Gittin 88a).') +
+      p('In Babylon', 'For thirty-seven years Yehoyahin sat in prison in Babylon. When Evil-Merodach became king, he released him from prison, spoke kindly to him and set his throne above the thrones of the kings who were with him in Babylon, and all his days he ate at the king’s table. From his descendants came the Exilarchs and the line of the House of David in exile.'),
   },
 
   tzidkiyahu: {
     roles: ['King of Judah', 'The Last King of the First Temple Era'],
     sources: ['II Kings 24:17 – 25:7', 'Jeremiah 34; 37–39; 52', 'II Chronicles 36:11–21', 'Ezekiel 17'],
     content:
-      p('His Reign', 'After the exile of Yehoyachin, Nevuchadnetzar made Matanyah king, the uncle of Yehoyachin and a son of Yoshiyahu, and changed his name to Tzidkiyahu. He became king at the age of twenty-one and reigned eleven years in Jerusalem. He swore by God to Nevuchadnetzar to be loyal to him, but rebelled against him.') +
+      p('His Reign', 'After the exile of Yehoyahin, Nevuchadnetzar made Matanyah king, the uncle of Yehoyahin and a son of Yoshiyahu, and changed his name to Tzidkiyahu. He became king at the age of twenty-one and reigned eleven years in Jerusalem. He swore by God to Nevuchadnetzar to be loyal to him, but rebelled against him.') +
       p('Yirmeyahu and the Siege', 'Yirmeyahu the Prophet warned Tzidkiyahu again and again to surrender to the king of Babylon in order to save the city. Tzidkiyahu sought to hear the word of Hashem in secret, but did not stand up to his officers, who imprisoned Yirmeyahu in a pit. In the ninth year of his reign the siege of Jerusalem began.') +
       p('The Destruction', 'On the ninth of Tammuz, in the eleventh year of his reign, the city was breached. Tzidkiyahu fled by way of the plains of Yericho and was captured. At Rivlah his sons were slaughtered before his eyes, his eyes were put out, and he was led in copper chains to Babylon. On the ninth of Av the Holy Temple was burned, and the Kingdom of Judah came to its end.'),
   },
