@@ -14,8 +14,8 @@ export const TREES = [
     id: 'gmara',
     name: { he: 'אילן יוחסין מאחרוני התנאים ועד הגאונים', en: 'Family Tree: From the Last Tannaim to the Geonim' },
     image: '/images/talmud-tree.jpg',
-    zoomImage: '/images/talmud-tree.jpg',
-    ratio: 1373 / 2048, // when a sharper copy exists, set zoomImage to it
+    zoomImage: '/images/talmud-tree-hd.jpg',
+    ratio: 2011 / 3000,
     page: '/Gmara',
   },
 ];
