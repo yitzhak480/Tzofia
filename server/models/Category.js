@@ -12,6 +12,8 @@ const categorySchema = new mongoose.Schema(
     image: { type: imageSchema, default: null },
     parent: { type: mongoose.Schema.Types.ObjectId, ref: 'Category', default: null, index: true },
     order: { type: Number, default: 0 },
+    // Colour of the decorative card shown when there is no picture.
+    cardColor: { type: String, enum: ['burgundy', 'blue', 'purple', 'brown', 'marble'], default: 'burgundy' },
   },
   { timestamps: true }
 );

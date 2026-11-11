@@ -72,8 +72,9 @@ const excerpt = (html, max = 170) => {
 const personSchema = new mongoose.Schema(
   {
     slug: slugField,
-    // A person (David) or a place (Jerusalem, the Temple).
-    kind: { type: String, enum: ['person', 'place'], default: 'person' },
+    // A person (David) or anything else: a place, book, Temple vessel, event,
+    // tribe... ('place' is an older name for 'other').
+    kind: { type: String, enum: ['person', 'other', 'place'], default: 'person' },
     // The first category is the main one (used for "back to..." and breadcrumbs).
     categories: {
       type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Category' }],

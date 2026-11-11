@@ -149,7 +149,7 @@ const AdminPeople = ({ adminApi }) => {
   return (
     <div className="admin-card">
       <div className="admin-card-header">
-        <h2>דמויות ומקומות <span className="admin-muted">({people.length})</span></h2>
+        <h2>ערכים <span className="admin-muted">({people.length})</span></h2>
         <button className="admin-submit-btn admin-add-btn" onClick={() => setEditing({ mode: 'new', key: Date.now() })}>
           + ערך חדש
         </button>
@@ -182,7 +182,7 @@ const AdminPeople = ({ adminApi }) => {
                 {p.mainImage?.url ? <img src={p.mainImage.url} alt="" className="admin-thumb" /> : <div className="admin-thumb admin-image-empty" />}
                 <div className="admin-tree-text">
                   <strong>{p.name.he}</strong>
-                  {p.kind === 'place' && <span className="admin-badge">מקום</span>}
+                  {p.kind && p.kind !== 'person' && <span className="admin-badge">ערך כללי</span>}
                   {!p.published && <span className="admin-badge admin-badge-draft">טיוטה</span>}
                   {!p.autoSummary?.he && <span className="admin-badge admin-badge-empty">אין טקסט</span>}
                   <div className="admin-muted">{p.categories.map((id) => catName.get(id)).filter(Boolean).join(' · ')}</div>

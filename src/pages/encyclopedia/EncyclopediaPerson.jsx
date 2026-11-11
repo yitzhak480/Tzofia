@@ -49,7 +49,7 @@ const EncyclopediaPerson = () => {
     );
   }
 
-  const isPlace = person.kind === 'place';
+  const isPlace = person.kind !== 'person' && Boolean(person.kind); // place, book, vessel, event...
   const roles = (person.roles || []).map((r) => tr(r, lang)).filter(Boolean);
   const lifeText = yearsText(person.life, lang);
   const offices = (person.offices || []).filter((o) => tr(o.label, lang));

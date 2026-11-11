@@ -7,7 +7,7 @@ import { CategoryPicker, OfficesEditor, RelationsEditor, TreeSpotsEditor, YearsI
 import { SLUG_PATTERN } from './adminApi';
 
 const DRAFT_KEY = 'tzofia_new_person_draft';
-const PLACE_SUGGESTIONS = ['עיר', 'בית מקדש', 'משכן', 'הר', 'נהר', 'ארץ', 'ישיבה', 'בית כנסת', 'מערה', 'מדבר'];
+const PLACE_SUGGESTIONS = ['עיר', 'מקום', 'בית מקדש', 'כלי המקדש', 'ספר', 'אירוע', 'שבט', 'הר', 'נהר', 'ארץ', 'ישיבה', 'בית כנסת', 'מערה', 'מדבר', 'מסכת', 'חפץ'];
 const ROLE_SUGGESTIONS = ['מלך', 'נביא', 'נביאה', 'כהן גדול', 'שופט', 'תנא', 'אמורא', 'סבורא', 'גאון', 'נשיא', 'ראש ישיבה', 'אב בית דין'];
 
 const L = (v) => ({ he: v?.he || '', en: v?.en || '' });
@@ -100,7 +100,7 @@ const PersonForm = ({ initial, defaultCategory, categoryRows, people, upload, on
   const savedSnapshot = useRef(JSON.stringify(editing ? toForm(initial) : toForm({ categories: defaultCategory ? [defaultCategory] : [] })));
 
   const dirty = JSON.stringify(form) !== savedSnapshot.current;
-  const isPlace = form.kind === 'place';
+  const isPlace = form.kind !== 'person'; // anything that isn't a person
   const set = (patch) => setForm((f) => ({ ...f, ...patch }));
   const setL = (field, lang) => (e) => setForm((f) => ({ ...f, [field]: { ...f[field], [lang]: e.target.value } }));
 
@@ -183,13 +183,13 @@ const PersonForm = ({ initial, defaultCategory, categoryRows, people, upload, on
           <label>סוג הערך:</label>
           <div className="admin-radio-row">
             <label><input type="radio" name="kind" checked={!isPlace} onChange={() => set({ kind: 'person' })} /> דמות</label>
-            <label><input type="radio" name="kind" checked={isPlace} onChange={() => set({ kind: 'place' })} /> מקום (עיר, מקדש, הר...)</label>
+            <label><input type="radio" name="kind" checked={isPlace} onChange={() => set({ kind: 'other' })} /> ערך אחר (מקום, ספר, כלי, אירוע, שבט...)</label>
           </div>
         </div>
         <div className="form-row">
           <div className="form-group half">
             <label>שם בעברית: *</label>
-            <input value={form.name.he} onChange={setL('name', 'he')} placeholder={isPlace ? 'למשל: ירושלים' : 'למשל: דוד המלך'} autoFocus={!editing} />
+            <input value={form.name.he} onChange={setL('name', 'he')} placeholder={isPlace ? 'למשל: ירושלים, ארון הברית, ספר תהילים' : 'למשל: דוד המלך'} autoFocus={!editing} />
           </div>
           {showEnglish && (
             <div className="form-group half">
@@ -215,7 +215,7 @@ const PersonForm = ({ initial, defaultCategory, categoryRows, people, upload, on
         <RichTextEditor
           value={form.content.he}
           onChange={(html) => setForm((f) => ({ ...f, content: { ...f.content, he: html } }))}
-          placeholder={isPlace ? 'כתבו כאן על המקום...' : 'כתבו כאן על הדמות...'}
+          placeholder={isPlace ? 'כתבו כאן על הערך...' : 'כתבו כאן על הדמות...'}
         />
         {showEnglish && (
           <div className="form-group">
@@ -224,7 +224,7 @@ const PersonForm = ({ initial, defaultCategory, categoryRows, people, upload, on
               dir="ltr"
               value={form.content.en}
               onChange={(html) => setForm((f) => ({ ...f, content: { ...f.content, en: html } }))}
-              placeholder={isPlace ? 'Write about the place...' : 'Write about the person...'}
+              placeholder={isPlace ? 'Write about this entry...' : 'Write about the person...'}
             />
           </div>
         )}
@@ -236,12 +236,12 @@ const PersonForm = ({ initial, defaultCategory, categoryRows, people, upload, on
 
       <Section title="פרטים" hint="יופיעו בתיבת המידע ליד הטקסט.">
         <div className="form-group">
-          <label>{isPlace ? 'סוג המקום:' : 'תפקידים:'}</label>
+          <label>{isPlace ? 'סוג (מקום, ספר, כלי, אירוע...):' : 'תפקידים:'}</label>
           <TagInput
             value={form.roles.map((r) => r.he)}
             onChange={(list) => set({ roles: list.map((he) => form.roles.find((r) => r.he === he) || { he, en: '' }) })}
             suggestions={isPlace ? PLACE_SUGGESTIONS : ROLE_SUGGESTIONS}
-            placeholder={isPlace ? 'כתבו ולחצו Enter, למשל: עיר' : 'כתבו תפקיד ולחצו Enter, למשל: מלך'}
+            placeholder={isPlace ? 'כתבו ולחצו Enter, למשל: ספר' : 'כתבו תפקיד ולחצו Enter, למשל: מלך'}
           />
         </div>
         <div className="form-group">
@@ -258,7 +258,7 @@ const PersonForm = ({ initial, defaultCategory, categoryRows, people, upload, on
 
       <Section
         title={isPlace ? 'ערכים קשורים' : 'משפחה, רבותיו ותלמידיו'}
-        hint={isPlace ? 'דמויות ומקומות שקשורים למקום. שמות שיש להם דף בלומדות האילן יהפכו לקישורים.' : 'שמות של דמויות שיש להן דף בלומדות האילן יהפכו לקישורים. "ערך קשור" מתאים למשל למקום שקשור לדמות.'}
+        hint={isPlace ? 'דמויות וערכים אחרים שקשורים לערך הזה. שמות שיש להם דף בלומדות האילן יהפכו לקישורים.' : 'שמות של דמויות שיש להן דף בלומדות האילן יהפכו לקישורים. "ערך קשור" מתאים למשל למקום שקשור לדמות.'}
       >
         <RelationsEditor
           value={form.relations}

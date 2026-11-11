@@ -1,8 +1,10 @@
 import React, { useMemo, useState } from 'react';
 import ImageUpload from '../../components/admin/ImageUpload';
 import { SLUG_PATTERN, toSlug } from './adminApi';
+import CardBack from '../../components/encyclopedia/CardBack';
+import { CARD_COLORS } from '../../components/encyclopedia/cardColors';
 
-const emptyCategory = { name: { he: '', en: '' }, description: { he: '', en: '' }, slug: '', parent: '', image: null };
+const emptyCategory = { name: { he: '', en: '' }, description: { he: '', en: '' }, slug: '', parent: '', image: null, cardColor: 'burgundy' };
 
 // Add / edit form for a category. `options` is the list of possible parents
 // (already without this category and its subcategories).
@@ -16,6 +18,7 @@ const CategoryForm = ({ initial, options, defaultParent = '', onSave, onCancel, 
           slug: initial.slug,
           parent: initial.parent || '',
           image: initial.image || null,
+          cardColor: initial.cardColor || 'burgundy',
         }
       : { ...emptyCategory, parent: defaultParent }
   );
@@ -112,6 +115,25 @@ const CategoryForm = ({ initial, options, defaultParent = '', onSave, onCancel, 
         onChange={(image) => setForm((f) => ({ ...f, image }))}
         upload={upload}
       />
+
+      <div className="form-group">
+        <label>צבע הכרטיס כשאין תמונה:</label>
+        <div className="admin-color-picker" role="radiogroup">
+          {Object.entries(CARD_COLORS).map(([key, c]) => (
+            <button
+              key={key}
+              type="button"
+              role="radio"
+              aria-checked={form.cardColor === key}
+              className={`admin-color-option ${form.cardColor === key ? 'is-selected' : ''}`}
+              onClick={() => setForm((f) => ({ ...f, cardColor: key }))}
+            >
+              <span className="admin-color-swatch"><CardBack color={key} /></span>
+              {c.he}
+            </button>
+          ))}
+        </div>
+      </div>
 
       <div className="admin-form-actions">
         <button type="submit" className="admin-submit-btn" disabled={busy || Boolean(slugError)}>

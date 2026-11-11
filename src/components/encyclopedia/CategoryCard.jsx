@@ -17,7 +17,7 @@ const CategoryCard = ({ category }) => {
           <img src={category.image.url} alt={name} />
         ) : (
           // Default design when the category has no picture yet.
-          <CardBack />
+          <CardBack color={category.cardColor} />
         )}
       </div>
       <div className="card-content">
