@@ -4,7 +4,6 @@
    עיצוב דף אודות (About Us)
    ========================================= */
 
-
    /* כותרת עמוד אודות */
 .about-main-title {
   text-align: center;
@@ -13,8 +12,6 @@
   margin-bottom: 3.5rem; /* מרווח לפני תחילת הסיפור */
   color: var(--color-ink, #2c241b);
 }
-
-
 
 .about-page-container {
   max-width: 1000px;
@@ -38,9 +35,6 @@
 }
 
 /* הופך את כיוון הבלוק (בשביל הזיג-זג) */
-.history-block.reverse {
-  flex-direction: row-reverse;
-}
 
 .history-image-wrapper {
   flex: 1;
@@ -48,15 +42,12 @@
   justify-content: center;
 }
 
-
-
 .history-text-wrapper {
   flex: 1;
   /* מחקנו את הגדרת ה-font-family כדי שיירש את הפונט היפה של שאר האתר */
   font-size: 1.4rem; 
   line-height: 1.9;  
 }
-
 
 /* טיפול במובייל - כדי שהתמונה תמיד תהיה מעל הטקסט במסכים קטנים */
 @media (max-width: 768px) {
@@ -90,8 +81,7 @@
     gap: 3rem;
   }
   
-  .history-block,
-  .history-block.reverse {
+  .history-block {
     flex-direction: column; /* במובייל הכל מסודר מלמעלה למטה */
     text-align: center;
     gap: 1.5rem;
@@ -101,7 +91,6 @@
     font-size: 1.05rem;
   }
 }
-
 
 /* =========================================
    אזור הצוות (אז מי אנחנו בעצם)
@@ -289,10 +278,6 @@
   height: auto;
   display: block; /* מונע רווחים מיותרים בתחתית התמונה */
 }
-
-
-
-
 
 /* =========================================
    אזור המלצות רבנים + גלריית מכתבים

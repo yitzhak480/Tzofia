@@ -25,12 +25,6 @@
     order: 1; /* הפקודה ששמה את הלוגו למעלה! */
   }
 
-  .lang-toggle-btn {
-    position: static;
-    margin: 0;
-    order: 2; /* הפקודה ששמה את הכפתור למטה! */
-  }
-
   .home-hero {
     padding-top: 1.5rem;
   }
@@ -43,29 +37,6 @@
     grid-template-columns: 1fr; /* כופה עמודה אחת */
     max-width: 450px; /* שומר על פרופורציות יפות של הכרטיסייה שלא תימתח מדי */
     gap: 2rem;
-  }
-
-  .tree-scroll-card {
-    flex-direction: column;
-    max-width: 100%;
-  }
-
-  .tree-image-section {
-    border-left: none;
-    border-bottom: 2px solid var(--color-gold, #c5a059);
-    padding: 1rem;
-  }
-
-  .gold-frame-wrapper {
-    max-width: 80%;
-  }
-
-  .tree-content-section {
-    padding: 1.5rem;
-  }
-
-  .tree-title-he {
-    font-size: 2rem;
   }
 }
 /* 3. מסכים קטנים וסלולר (עד 768px) - פונטים וטקסטים */
@@ -84,14 +55,4 @@
   }
 
   /* עיצוב המגילות והטקסט ההיסטורי לשאר האתר */
-  .scroll-paper {
-    padding: 2rem 1.5rem;
-    outline-offset: -8px;
-  }
-
-  .biblical-text {
-    font-size: 1.1rem;
-    /* במקום left (שישבור את העברית), נשתמש ב-start שמתאים את עצמו לשפה באופן דינמי */
-    text-align: start;
-  }
 }

@@ -73,38 +73,11 @@
   font-weight: bold;
   padding: 0;
 }
-
-.sort-dropdown {
-  padding: 12px 20px 12px 35px; /* Matches input padding */
-  font-family: "Frank Ruhl Libre", serif;
-  font-size: 1.1rem;
-  font-weight: bold;
-  background-color: var(--color-parchment);
-  border: 1px solid var(--color-ink);
-  border-radius: 50px;
-  cursor: pointer;
-  color: var(--color-ink);
-  appearance: none;
-  /* Arrow positioning */
-  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%232c241b%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
-  background-repeat: no-repeat;
-  background-position: left 1rem top 50%; /* Arrow on LEFT for Hebrew */
-  background-size: 0.65rem auto;
-  min-width: 140px;
-}
 /* OPTIONAL: If you want the whole site to flip direction for Hebrew */
 body[dir="rtl"] .toolbar-top {
   flex-direction: row-reverse;
 }
 /* Bottom Row: Filter Buttons */
-.toolbar-categories {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-  padding-top: 1.5rem;
-  border-top: 1px dashed var(--color-gold);
-}
 
 /* ... keep filter-btn and reset-btn styles as they were ... */
 .filter-btn {
@@ -130,23 +103,6 @@ body[dir="rtl"] .toolbar-top {
   font-weight: bold;
   border-bottom: 2px solid var(--color-terracotta);
   background-color: rgba(142, 59, 48, 0.05);
-}
-
-.reset-btn {
-  margin-left: auto; /* Pushes to the right on large screens */
-  background: none;
-  border: 1px solid var(--color-terracotta);
-  color: var(--color-terracotta);
-  padding: 0.4rem 1rem;
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: all 0.3s;
-}
-
-.reset-btn:hover {
-  background-color: var(--color-terracotta);
-  color: white;
 }
 
 /* No Results State */
@@ -234,36 +190,11 @@ body[dir="rtl"] .toolbar-top {
   color: var(--color-ink);
 }
 
-.card-price {
-  font-family: "Frank Ruhl Libre", serif;
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: var(--color-terracotta, #8e3b30);
-}
-
 .card-description {
   font-size: 0.9rem;
   line-height: 1.5;
   opacity: 0.9;
   margin: 0;
-}
-
-.card-button {
-  margin-top: auto;
-  background-color: var(--color-ink, #2c241b);
-  color: var(--color-parchment, #f4e4bc);
-  border: 1px solid var(--color-gold, #c5a059);
-  padding: 0.8rem 1rem;
-  font-family: "Frank Ruhl Libre", serif;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.card-button:hover {
-  background-color: var(--color-terracotta, #8e3b30);
-  color: white;
-  border-color: var(--color-ink);
 }
 
 /* --- GALLERY GRID STYLES --- */
