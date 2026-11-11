@@ -14,6 +14,7 @@ const INVERSE = {
   spouse: 'spouse',
   teacher: 'student',
   student: 'teacher',
+  related: 'related',
 };
 
 // Relations that count as the same group when removing duplicates.

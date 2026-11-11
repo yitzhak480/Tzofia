@@ -7,6 +7,7 @@ import { CategoryPicker, OfficesEditor, RelationsEditor, TreeSpotsEditor, YearsI
 import { SLUG_PATTERN } from './adminApi';
 
 const DRAFT_KEY = 'tzofia_new_person_draft';
+const PLACE_SUGGESTIONS = ['עיר', 'בית מקדש', 'משכן', 'הר', 'נהר', 'ארץ', 'ישיבה', 'בית כנסת', 'מערה', 'מדבר'];
 const ROLE_SUGGESTIONS = ['מלך', 'נביא', 'נביאה', 'כהן גדול', 'שופט', 'תנא', 'אמורא', 'סבורא', 'גאון', 'נשיא', 'ראש ישיבה', 'אב בית דין'];
 
 const L = (v) => ({ he: v?.he || '', en: v?.en || '' });
@@ -15,6 +16,7 @@ const yearNum = (s) => (String(s).trim() === '' ? null : Number(s));
 
 // Server data -> form state (everything as plain strings for the inputs).
 const toForm = (p = {}) => ({
+  kind: p.kind || 'person',
   name: L(p.name),
   gender: p.gender || 'male',
   categories: p.categories ? p.categories.map(String) : [],
@@ -27,7 +29,6 @@ const toForm = (p = {}) => ({
   relations: (p.relations || []).map((r) => ({ type: r.type, person: r.person ? String(r.person) : null, name: L(r.name) })),
   sources: (p.sources || []).join('\n'),
   treeSpots: (p.treeSpots || []).map((s) => ({ tree: s.tree, x: s.x, y: s.y })),
-  wikiLink: L(p.wikiLink),
   period: L(p.period),
   slug: p.slug || '',
   published: p.published ?? true,
@@ -35,6 +36,7 @@ const toForm = (p = {}) => ({
 
 // Form state -> what the server expects.
 const toBody = (f) => ({
+  kind: f.kind,
   name: f.name,
   gender: f.gender,
   categories: f.categories,
@@ -49,7 +51,6 @@ const toBody = (f) => ({
   relations: f.relations.filter((r) => r.person || r.name.he.trim()),
   sources: f.sources.split('\n').map((s) => s.trim()).filter(Boolean),
   treeSpots: f.treeSpots,
-  wikiLink: f.wikiLink,
   period: f.period,
   slug: f.slug.trim(),
   published: f.published,
@@ -97,6 +98,7 @@ const PersonForm = ({ initial, defaultCategory, categoryRows, people, upload, on
   const savedSnapshot = useRef(JSON.stringify(editing ? toForm(initial) : toForm({ categories: defaultCategory ? [defaultCategory] : [] })));
 
   const dirty = JSON.stringify(form) !== savedSnapshot.current;
+  const isPlace = form.kind === 'place';
   const set = (patch) => setForm((f) => ({ ...f, ...patch }));
   const setL = (field, lang) => (e) => setForm((f) => ({ ...f, [field]: { ...f[field], [lang]: e.target.value } }));
 
@@ -175,10 +177,17 @@ const PersonForm = ({ initial, defaultCategory, categoryRows, people, upload, on
       </label>
 
       <Section title="שם וקטגוריות" optional={false}>
+        <div className="form-group">
+          <label>סוג הערך:</label>
+          <div className="admin-radio-row">
+            <label><input type="radio" name="kind" checked={!isPlace} onChange={() => set({ kind: 'person' })} /> דמות</label>
+            <label><input type="radio" name="kind" checked={isPlace} onChange={() => set({ kind: 'place' })} /> מקום (עיר, מקדש, הר...)</label>
+          </div>
+        </div>
         <div className="form-row">
           <div className="form-group half">
             <label>שם בעברית: *</label>
-            <input value={form.name.he} onChange={setL('name', 'he')} placeholder="למשל: דוד המלך" autoFocus={!editing} />
+            <input value={form.name.he} onChange={setL('name', 'he')} placeholder={isPlace ? 'למשל: ירושלים' : 'למשל: דוד המלך'} autoFocus={!editing} />
           </div>
           {showEnglish && (
             <div className="form-group half">
@@ -187,13 +196,13 @@ const PersonForm = ({ initial, defaultCategory, categoryRows, people, upload, on
             </div>
           )}
         </div>
-        <div className="form-group">
+        {!isPlace && <div className="form-group">
           <label>מין:</label>
           <div className="admin-radio-row">
             <label><input type="radio" name="gender" checked={form.gender === 'male'} onChange={() => set({ gender: 'male' })} /> זכר</label>
             <label><input type="radio" name="gender" checked={form.gender === 'female'} onChange={() => set({ gender: 'female' })} /> נקבה</label>
           </div>
-        </div>
+        </div>}
         <div className="form-group">
           <label>קטגוריות: * <span className="admin-hint">(אפשר לסמן כמה)</span></label>
           <CategoryPicker rows={categoryRows} value={form.categories} onChange={(categories) => set({ categories })} />
@@ -204,7 +213,7 @@ const PersonForm = ({ initial, defaultCategory, categoryRows, people, upload, on
         <RichTextEditor
           value={form.content.he}
           onChange={(html) => setForm((f) => ({ ...f, content: { ...f.content, he: html } }))}
-          placeholder="כתבו כאן על הדמות..."
+          placeholder={isPlace ? 'כתבו כאן על המקום...' : 'כתבו כאן על הדמות...'}
         />
         {showEnglish && (
           <div className="form-group">
@@ -213,7 +222,7 @@ const PersonForm = ({ initial, defaultCategory, categoryRows, people, upload, on
               dir="ltr"
               value={form.content.en}
               onChange={(html) => setForm((f) => ({ ...f, content: { ...f.content, en: html } }))}
-              placeholder="Write about the person..."
+              placeholder={isPlace ? 'Write about the place...' : 'Write about the person...'}
             />
           </div>
         )}
@@ -225,26 +234,36 @@ const PersonForm = ({ initial, defaultCategory, categoryRows, people, upload, on
 
       <Section title="פרטים" hint="יופיעו בתיבת המידע ליד הטקסט.">
         <div className="form-group">
-          <label>תפקידים:</label>
+          <label>{isPlace ? 'סוג המקום:' : 'תפקידים:'}</label>
           <TagInput
             value={form.roles.map((r) => r.he)}
             onChange={(list) => set({ roles: list.map((he) => form.roles.find((r) => r.he === he) || { he, en: '' }) })}
-            suggestions={ROLE_SUGGESTIONS}
-            placeholder="כתבו תפקיד ולחצו Enter, למשל: מלך"
+            suggestions={isPlace ? PLACE_SUGGESTIONS : ROLE_SUGGESTIONS}
+            placeholder={isPlace ? 'כתבו ולחצו Enter, למשל: עיר' : 'כתבו תפקיד ולחצו Enter, למשל: מלך'}
           />
         </div>
         <div className="form-group">
-          <label>שנות חיים:</label>
+          <label>{isPlace ? 'תקופה (משנת – עד שנת):' : 'שנות חיים:'}</label>
           <YearsInput value={form.life} onChange={(life) => set({ life })} />
         </div>
-        <div className="form-group">
-          <label>תפקיד עם שנים (מלוכה, נבואה, כהונה...):</label>
-          <OfficesEditor value={form.offices} onChange={(offices) => set({ offices })} showEnglish={showEnglish} />
-        </div>
+        {!isPlace && (
+          <div className="form-group">
+            <label>תפקיד עם שנים (מלוכה, נבואה, כהונה...):</label>
+            <OfficesEditor value={form.offices} onChange={(offices) => set({ offices })} showEnglish={showEnglish} />
+          </div>
+        )}
       </Section>
 
-      <Section title="משפחה, רבותיו ותלמידיו" hint="שמות של דמויות שיש להן דף בלומדות האילן יהפכו לקישורים.">
-        <RelationsEditor value={form.relations} onChange={(relations) => set({ relations })} people={otherPeople} />
+      <Section
+        title={isPlace ? 'ערכים קשורים' : 'משפחה, רבותיו ותלמידיו'}
+        hint={isPlace ? 'דמויות ומקומות שקשורים למקום. שמות שיש להם דף בלומדות האילן יהפכו לקישורים.' : 'שמות של דמויות שיש להן דף בלומדות האילן יהפכו לקישורים. "ערך קשור" מתאים למשל למקום שקשור לדמות.'}
+      >
+        <RelationsEditor
+          value={form.relations}
+          onChange={(relations) => set({ relations })}
+          people={otherPeople}
+          types={isPlace ? ['related'] : undefined}
+        />
       </Section>
 
       <Section title="מקורות" hint="מקור אחד בכל שורה.">
@@ -256,7 +275,7 @@ const PersonForm = ({ initial, defaultCategory, categoryRows, people, upload, on
         />
       </Section>
 
-      <Section title="באילן היוחסין שלנו" hint="סמנו איפה הדמות מופיעה באילן. בעמוד יוצגו האילן עם סימון ותצוגה מוגדלת.">
+      <Section title="באילן היוחסין שלנו" hint="סמנו איפה הערך מופיע באילן. בעמוד יוצגו האילן עם סימון ותצוגה מוגדלת.">
         <TreeSpotsEditor value={form.treeSpots} onChange={(treeSpots) => set({ treeSpots })} />
       </Section>
 
@@ -270,11 +289,6 @@ const PersonForm = ({ initial, defaultCategory, categoryRows, people, upload, on
         <div className="form-group">
           <label>שורה קצרה בכרטיס (מתחת לשם):</label>
           <input value={form.period.he} onChange={setL('period', 'he')} placeholder="אם ריק, יוצגו שנות התפקיד או שנות החיים" />
-        </div>
-        <div className="form-group">
-          <label>קישור לוויקיפדיה:</label>
-          <input dir="ltr" value={form.wikiLink.he} onChange={setL('wikiLink', 'he')} placeholder="https://he.wikipedia.org/wiki/..." />
-          {showEnglish && <input dir="ltr" value={form.wikiLink.en} onChange={setL('wikiLink', 'en')} placeholder="https://en.wikipedia.org/wiki/..." />}
         </div>
         <div className="form-group">
           <label>כתובת הדף (באנגלית):</label>
@@ -303,7 +317,7 @@ const PersonForm = ({ initial, defaultCategory, categoryRows, people, upload, on
             {busy ? 'שומר...' : 'שמירה'}
           </button>
           <button type="button" className="admin-btn" disabled={busy} onClick={() => save(true)} title="שומר ופותח טופס חדש עם אותן קטגוריות">
-            שמירה והוספת דמות נוספת
+            שמירה והוספת ערך נוסף
           </button>
           <button type="button" className="admin-btn" disabled={busy} onClick={cancel}>ביטול</button>
         </div>

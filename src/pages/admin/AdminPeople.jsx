@@ -117,19 +117,19 @@ const AdminPeople = ({ adminApi }) => {
   if (loadError) {
     return (
       <div className="admin-card">
-        <p className="admin-error">לא ניתן לטעון את הדמויות: {loadError}</p>
+        <p className="admin-error">לא ניתן לטעון את הערכים: {loadError}</p>
         <button className="admin-btn" onClick={reload}>נסו שוב</button>
       </div>
     );
   }
-  if (!people) return <p className="loading-text">טוען דמויות... (השרת עשוי להתעורר עד דקה)</p>;
+  if (!people) return <p className="loading-text">טוען... (השרת עשוי להתעורר עד דקה)</p>;
 
   if (editing) {
     return (
       <div className="admin-card">
-        <h2>{editing.mode === 'edit' ? `עריכת "${editing.person.name.he}"` : 'דמות חדשה'}</h2>
+        <h2>{editing.mode === 'edit' ? `עריכת "${editing.person.name.he}"` : 'ערך חדש'}</h2>
         {categories.length === 0 ? (
-          <p className="admin-error">כדי להוסיף דמות צריך קודם ליצור קטגוריה (בלשונית "קטגוריות").</p>
+          <p className="admin-error">כדי להוסיף ערך צריך קודם ליצור קטגוריה (בלשונית "קטגוריות").</p>
         ) : (
           <PersonForm
             key={editing.mode === 'edit' ? editing.person._id : `new-${editing.key || ''}`}
@@ -149,9 +149,9 @@ const AdminPeople = ({ adminApi }) => {
   return (
     <div className="admin-card">
       <div className="admin-card-header">
-        <h2>דמויות <span className="admin-muted">({people.length})</span></h2>
+        <h2>דמויות ומקומות <span className="admin-muted">({people.length})</span></h2>
         <button className="admin-submit-btn admin-add-btn" onClick={() => setEditing({ mode: 'new', key: Date.now() })}>
-          + דמות חדשה
+          + ערך חדש
         </button>
       </div>
 
@@ -169,10 +169,10 @@ const AdminPeople = ({ adminApi }) => {
           ))}
         </select>
       </div>
-      {filterCat && <p className="admin-hint">אפשר לשנות את סדר הדמויות בקטגוריה הזו עם החיצים. דמות חדשה תתווסף לקטגוריה הזו.</p>}
+      {filterCat && <p className="admin-hint">אפשר לשנות את הסדר בקטגוריה הזו עם החיצים. ערך חדש יתווסף לקטגוריה הזו.</p>}
 
       {visible.length === 0 ? (
-        <p className="loading-text">{people.length ? 'לא נמצאו דמויות.' : 'עדיין אין דמויות. לחצו על "+ דמות חדשה".'}</p>
+        <p className="loading-text">{people.length ? 'לא נמצאו ערכים.' : 'עדיין אין ערכים. לחצו על "+ ערך חדש".'}</p>
       ) : (
         <ul className="admin-tree">
           {visible.map((p, index) => {
@@ -182,6 +182,7 @@ const AdminPeople = ({ adminApi }) => {
                 {p.mainImage?.url ? <img src={p.mainImage.url} alt="" className="admin-thumb" /> : <div className="admin-thumb admin-image-empty" />}
                 <div className="admin-tree-text">
                   <strong>{p.name.he}</strong>
+                  {p.kind === 'place' && <span className="admin-badge">מקום</span>}
                   {!p.published && <span className="admin-badge admin-badge-draft">טיוטה</span>}
                   {!p.autoSummary?.he && <span className="admin-badge admin-badge-empty">אין טקסט</span>}
                   <div className="admin-muted">{p.categories.map((id) => catName.get(id)).filter(Boolean).join(' · ')}</div>

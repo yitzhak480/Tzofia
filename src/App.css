@@ -3147,7 +3147,7 @@ html, body, .page-wrapper {
 .encyc-infobox {
   float: left; /* בעברית: בצד השני של תחילת הטקסט */
   width: 330px;
-  margin: 0 0 1.5rem 2.5rem;
+  margin: 0 2.5rem 1.5rem 0; /* רווח בצד שפונה אל הטקסט */
   background: #fff9ec;
   border: 2px solid var(--color-gold, #c5a059);
   border-radius: 4px;
@@ -3157,7 +3157,17 @@ html, body, .page-wrapper {
 
 body[dir="ltr"] .encyc-infobox {
   float: right;
-  margin: 0 2.5rem 1.5rem 0;
+  margin: 0 0 1.5rem 2.5rem;
+}
+
+/* באתר באנגלית, כשהמאמר קיים רק בעברית */
+.encyc-lang-note {
+  margin: 0 0 1rem 0;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.95rem;
+  color: #6b6255;
+  background: rgba(197, 160, 89, 0.12);
+  border-inline-start: 3px solid var(--color-gold, #c5a059);
 }
 
 .encyc-infobox-title {
@@ -4200,3 +4210,33 @@ a.admin-btn {
   font-size: 1rem !important;
   cursor: pointer;
 }
+
+/* כפתור עין להצגת הסיסמה */
+.admin-password-box {
+  position: relative;
+  display: flex;
+}
+
+.admin-password-box input {
+  flex: 1;
+  padding-inline-end: 44px !important;
+}
+
+.admin-password-eye {
+  position: absolute;
+  inset-inline-end: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 6px;
+  font-size: 1.15rem;
+  color: #6b6255;
+  cursor: pointer;
+  line-height: 0;
+}
+
+.admin-password-eye:hover {
+  color: var(--color-ink, #2c241b);
+}
+

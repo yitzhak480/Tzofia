@@ -170,7 +170,8 @@ const PersonNameInput = ({ relation, people, onChange, onEnter, autoFocus }) => 
   );
 };
 
-export const RelationsEditor = ({ value, onChange, people }) => {
+export const RelationsEditor = ({ value, onChange, people, types }) => {
+  const allowed = types ? RELATION_TYPES.filter((t) => types.includes(t.id)) : RELATION_TYPES;
   const [focusIndex, setFocusIndex] = useState(null);
   const update = (i, patch) => onChange(value.map((r, j) => (j === i ? { ...r, ...patch } : r)));
   const remove = (i) => onChange(value.filter((_, j) => j !== i));
@@ -184,14 +185,14 @@ export const RelationsEditor = ({ value, onChange, people }) => {
   return (
     <div className="admin-stack">
       <div className="admin-quick-add">
-        {RELATION_TYPES.map((t) => (
+        {allowed.map((t) => (
           <button key={t.id} type="button" className="admin-btn" onClick={() => add(t.id)}>+ {t.he}</button>
         ))}
       </div>
       {value.map((r, i) => (
         <div key={i} className="admin-relation-row">
           <select value={r.type} onChange={(e) => update(i, { type: e.target.value })}>
-            {RELATION_TYPES.map((t) => <option key={t.id} value={t.id}>{t.he}</option>)}
+            {allowed.map((t) => <option key={t.id} value={t.id}>{t.he}</option>)}
           </select>
           <PersonNameInput
             relation={r}

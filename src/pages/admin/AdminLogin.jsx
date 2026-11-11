@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { api } from '../../api';
 
 const AdminLogin = ({ onLogin }) => {
   const [password, setPassword] = useState('');
+  const [show, setShow] = useState(false);
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
 
@@ -32,15 +34,26 @@ const AdminLogin = ({ onLogin }) => {
       <form onSubmit={handleSubmit} className="admin-form">
         <div className="form-group">
           <label htmlFor="admin-password">סיסמה:</label>
-          <input
-            id="admin-password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            autoComplete="current-password"
-            autoFocus
-            required
-          />
+          <div className="admin-password-box">
+            <input
+              id="admin-password"
+              type={show ? 'text' : 'password'}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              autoComplete="current-password"
+              autoFocus
+              required
+            />
+            <button
+              type="button"
+              className="admin-password-eye"
+              onClick={() => setShow((v) => !v)}
+              aria-label={show ? 'הסתרת הסיסמה' : 'הצגת הסיסמה'}
+              title={show ? 'הסתרת הסיסמה' : 'הצגת הסיסמה'}
+            >
+              {show ? <FaEyeSlash /> : <FaEye />}
+            </button>
+          </div>
         </div>
         {error && <p className="admin-error">{error}</p>}
         <button type="submit" className="admin-submit-btn" disabled={busy}>

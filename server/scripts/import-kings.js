@@ -26,7 +26,7 @@ const main = async () => {
     order: 1,
   });
   const judah = await upsertCategory('kings-of-judah', {
-    name: { he: 'מלכי יהודה', en: 'Kings of Judah' },
+    name: { he: 'מלכי בית דוד', en: 'Kings of the House of David' },
     parent: kingsCat._id,
     order: 1,
   });
@@ -42,7 +42,6 @@ const main = async () => {
           period: { he: king.he.reign_display, en: king.en.reign_display },
           summary: { he: king.he.description, en: king.en.description },
           mainImage: { url: king.image, publicId: '' },
-          wikiLink: { he: king.he.wiki_link, en: king.en.wiki_link },
           order: index + 1,
         },
         $setOnInsert: { slug, categories: [judah._id], content: { he: '', en: '' }, published: true },

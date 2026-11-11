@@ -24,7 +24,8 @@ const officeSchema = new mongoose.Schema(
   { _id: false }
 );
 
-const RELATION_TYPES = ['father', 'mother', 'sibling', 'spouse', 'child', 'teacher', 'student'];
+// 'related' connects any two entries, e.g. David and Jerusalem.
+const RELATION_TYPES = ['father', 'mother', 'sibling', 'spouse', 'child', 'teacher', 'student', 'related'];
 
 // A relative / teacher / student. If `person` is set it links to that page;
 // otherwise only the name is shown (and linked automatically if a page with
@@ -71,6 +72,8 @@ const excerpt = (html, max = 170) => {
 const personSchema = new mongoose.Schema(
   {
     slug: slugField,
+    // A person (David) or a place (Jerusalem, the Temple).
+    kind: { type: String, enum: ['person', 'place'], default: 'person' },
     // The first category is the main one (used for "back to..." and breadcrumbs).
     categories: {
       type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Category' }],
@@ -95,7 +98,6 @@ const personSchema = new mongoose.Schema(
     relations: { type: [relationSchema], default: [] },
     sources: { type: [{ type: String, trim: true }], default: [] },
     treeSpots: { type: [treeSpotSchema], default: [] },
-    wikiLink: { type: localized(), default: () => ({}) },
     order: { type: Number, default: 0 },
     // Unpublished people are visible only in the admin.
     published: { type: Boolean, default: true },

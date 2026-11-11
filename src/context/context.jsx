@@ -4,7 +4,14 @@ import { translations } from '../data/translations';
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  const [lang, setLang] = useState('he'); 
+  // The chosen language is remembered, so refreshing the page keeps it.
+  const [lang, setLang] = useState(() => {
+    try {
+      return localStorage.getItem('tzofia_lang') === 'en' ? 'en' : 'he';
+    } catch {
+      return 'he';
+    }
+  });
   
   const [cartItems, setCartItems] = useState(() => {
     const savedCart = localStorage.getItem("tzofia_cart");
@@ -20,6 +27,15 @@ export const CartProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem("tzofia_cart", JSON.stringify(cartItems));
   }, [cartItems]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('tzofia_lang', lang);
+    } catch {
+      // private browsing: the language just isn't remembered
+    }
+    document.documentElement.lang = lang;
+  }, [lang]);
 
   const addToCart = (product, quantity, price) => {
     setCartItems(prevItems => {

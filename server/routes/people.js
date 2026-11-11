@@ -11,12 +11,12 @@ const { resolveRelations } = require('../lib/relations');
 
 const router = express.Router();
 const FIELDS = [
-  'slug', 'categories', 'name', 'gender', 'roles', 'life', 'offices', 'period', 'summary', 'content',
-  'mainImage', 'relations', 'sources', 'treeSpots', 'wikiLink', 'order', 'published',
+  'slug', 'kind', 'categories', 'name', 'gender', 'roles', 'life', 'offices', 'period', 'summary', 'content',
+  'mainImage', 'relations', 'sources', 'treeSpots', 'order', 'published',
 ];
 const SORT = { order: 1, createdAt: 1 };
 // What a person's card needs (no full article).
-const CARD_FIELDS = 'slug name period summary autoSummary mainImage order categories life offices published';
+const CARD_FIELDS = 'slug kind name period summary autoSummary mainImage order categories life offices published';
 
 const escapeRegex = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 const imagesOf = (p) => [p.mainImage].filter(Boolean);

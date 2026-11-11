@@ -21,9 +21,9 @@ const CategoryCard = ({ category }) => {
         )}
       </div>
       <div className="card-content">
-        <h2>{name}</h2>
+        <h2 dir="auto">{name}</h2>
         <div className="title-separator"></div>
-        {description && <p>{description}</p>}
+        {description && <p dir="auto">{description}</p>}
       </div>
     </Link>
   );

@@ -23,9 +23,9 @@ const PersonCard = ({ person }) => {
       </div>
 
       <div className="card-content">
-        <h2 className="card-title">{name}</h2>
-        {line && <div className="card-reign">{line}</div>}
-        {summary && <p className="card-description">{summary}</p>}
+        <h2 className="card-title" dir="auto">{name}</h2>
+        {line && <div className="card-reign" dir="auto">{line}</div>}
+        {summary && <p className="card-description" dir="auto">{summary}</p>}
         <span className="wiki-learn-more-btn encyc-card-btn">
           {lang === 'he' ? 'קרא עוד' : 'Read More'}
         </span>

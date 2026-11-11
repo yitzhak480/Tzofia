@@ -9,7 +9,7 @@ import AdminPeople from './AdminPeople';
 import { loadToken, makeAdminApi, saveToken } from './adminApi';
 
 const TABS = [
-  { id: 'people', label: 'דמויות' },
+  { id: 'people', label: 'דמויות ומקומות' },
   { id: 'categories', label: 'קטגוריות' },
 ];
 

@@ -11,7 +11,7 @@ const router = express.Router();
 const FIELDS = ['slug', 'name', 'description', 'image', 'parent', 'order'];
 const SORT = { order: 1, createdAt: 1 };
 // What a person's card needs (no full article).
-const CARD_FIELDS = 'slug name period summary autoSummary mainImage order categories life offices';
+const CARD_FIELDS = 'slug kind name period summary autoSummary mainImage order categories life offices';
 
 const normalizeParent = (data) => {
   if (data.parent === '' || data.parent === undefined) data.parent = null;

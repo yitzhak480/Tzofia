@@ -16,9 +16,9 @@ const FamilyTree = ({ person, name }) => {
   const chip = (r, i) => {
     const label = tr(r.name, lang);
     return r.slug ? (
-      <Link key={`${r.slug}-${i}`} to={`/encyclopedia/person/${r.slug}`} className="encyc-chip is-link">{label}</Link>
+      <Link key={`${r.slug}-${i}`} to={`/encyclopedia/person/${r.slug}`} className="encyc-chip is-link" dir="auto">{label}</Link>
     ) : (
-      <span key={`${label}-${i}`} className="encyc-chip">{label}</span>
+      <span key={`${label}-${i}`} className="encyc-chip" dir="auto">{label}</span>
     );
   };
 
@@ -44,7 +44,7 @@ const FamilyTree = ({ person, name }) => {
         {g.siblings.length > 0 && <div className="encyc-family-label">{w.siblings}</div>}
         <div className="encyc-family-row">
           {g.siblings.slice(0, half).map(chip)}
-          <span className="encyc-chip encyc-chip-self">{name}</span>
+          <span className="encyc-chip encyc-chip-self" dir="auto">{name}</span>
           {g.siblings.slice(half).map((r, i) => chip(r, i + half))}
         </div>
       </div>

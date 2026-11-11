@@ -21,7 +21,7 @@ DOMPurify.addHook('afterSanitizeAttributes', (node) => {
   }
 });
 
-// /encyclopedia/person/david — a person's page.
+// /encyclopedia/person/david — a person's (or place's) page.
 // Layout: info box (picture, details, sources) beside the article, then the
 // person on our tree posters, then the family tree. Empty parts are hidden.
 const EncyclopediaPerson = () => {
@@ -49,22 +49,25 @@ const EncyclopediaPerson = () => {
     );
   }
 
+  const isPlace = person.kind === 'place';
   const roles = (person.roles || []).map((r) => tr(r, lang)).filter(Boolean);
   const lifeText = yearsText(person.life, lang);
   const offices = (person.offices || []).filter((o) => tr(o.label, lang));
-  const wikiLink = tr(person.wikiLink, lang);
   const sources = person.sources || [];
   const spots = (person.treeSpots || []).map((s) => ({ ...s, tree: treeById(s.tree) })).filter((s) => s.tree);
-  const hasFamily = (person.relations || []).length > 0;
+  const related = (person.relations || []).filter((r) => r.type === 'related');
+  const family = { ...person, relations: (person.relations || []).filter((r) => r.type !== 'related') };
+  // On the English site, an article written only in Hebrew is shown right-to-left.
+  const hebrewOnly = !he && !person.content?.en && Boolean(person.content?.he);
 
   const rows = [
-    roles.length > 0 && [he ? 'תפקידים' : 'Roles', roles.join(he ? ', ' : ', ')],
-    lifeText && [he ? 'שנות חיים' : 'Lifetime', lifeText],
+    roles.length > 0 && [isPlace ? (he ? 'סוג' : 'Type') : he ? 'תפקידים' : 'Roles', roles.join(', ')],
+    lifeText && [isPlace ? (he ? 'תקופה' : 'Period') : he ? 'שנות חיים' : 'Lifetime', lifeText],
     ...offices.map((o) => [
       tr(o.label, lang),
       <>
         {yearsText(o, lang) || '—'}
-        {tr(o.note, lang) && <small>{tr(o.note, lang)}</small>}
+        {tr(o.note, lang) && <small dir="auto">{tr(o.note, lang)}</small>}
       </>,
     ]),
     data.categories.length > 0 && [
@@ -76,15 +79,10 @@ const EncyclopediaPerson = () => {
         </React.Fragment>
       )),
     ],
-    wikiLink && [
-      he ? 'לקריאה נוספת' : 'Read more',
-      <a href={wikiLink} target="_blank" rel="noopener noreferrer" className="encyc-link">
-        {he ? 'ויקיפדיה' : 'Wikipedia'}
-      </a>,
-    ],
   ].filter(Boolean);
   const hasInfobox = rows.length > 0 || person.mainImage?.url || sources.length > 0;
   const parent = data.ancestors[data.ancestors.length - 1];
+  const arrow = he ? '←' : '→';
 
   return (
     <div className="page-wrapper">
@@ -97,22 +95,22 @@ const EncyclopediaPerson = () => {
 
       <main className="home-main">
         <section className="home-hero encyc-hero" style={{ paddingBottom: '1.5rem' }}>
-          <h1>{name}</h1>
+          <h1 dir="auto">{name}</h1>
           <Breadcrumbs categories={data.ancestors} current={name} />
         </section>
 
         <article className={`encyc-article encyc-person ${hasInfobox ? '' : 'no-infobox'}`}>
           {hasInfobox && (
             <aside className="encyc-infobox">
-              <div className="encyc-infobox-title">{name}</div>
+              <div className="encyc-infobox-title" dir="auto">{name}</div>
               {person.mainImage?.url && <img src={person.mainImage.url} alt={name} className="encyc-infobox-image" />}
               {rows.length > 0 && (
                 <table>
                   <tbody>
                     {rows.map(([label, value], i) => (
                       <tr key={i}>
-                        <th scope="row">{label}</th>
-                        <td>{value}</td>
+                        <th scope="row" dir="auto">{label}</th>
+                        <td dir="auto">{value}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -121,16 +119,22 @@ const EncyclopediaPerson = () => {
               {sources.length > 0 && (
                 <div className="encyc-infobox-sources">
                   <div className="encyc-infobox-subtitle">{he ? 'מקורות' : 'Sources'}</div>
-                  <ol>{sources.map((s, i) => <li key={i}>{s}</li>)}</ol>
+                  <ol dir="auto">{sources.map((src, i) => <li key={i}>{src}</li>)}</ol>
                 </div>
               )}
             </aside>
           )}
 
+          {hebrewOnly && <p className="encyc-lang-note">This article is currently available in Hebrew only.</p>}
           {articleHtml ? (
-            <div className="encyc-content" dangerouslySetInnerHTML={{ __html: articleHtml }} />
+            <div
+              className="encyc-content"
+              dir={hebrewOnly ? 'rtl' : undefined}
+              lang={hebrewOnly ? 'he' : undefined}
+              dangerouslySetInnerHTML={{ __html: articleHtml }}
+            />
           ) : (
-            cardSummary(person, lang) && <p className="encyc-content">{cardSummary(person, lang)}</p>
+            cardSummary(person, lang) && <p className="encyc-content" dir="auto">{cardSummary(person, lang)}</p>
           )}
 
           {spots.length > 0 && (
@@ -140,7 +144,7 @@ const EncyclopediaPerson = () => {
                 <div key={s.tree.id} className="encyc-in-tree">
                   <Link to={s.tree.page} className="encyc-in-tree-card" title={he ? 'לעמוד האילן' : 'Go to the tree'}>
                     <TreeHighlight tree={s.tree} spot={s} alt={tr(s.tree.name, lang)} />
-                    <span className="encyc-caption">{tr(s.tree.name, lang)} ←</span>
+                    <span className="encyc-caption">{tr(s.tree.name, lang)} {arrow}</span>
                   </Link>
                   <div className="encyc-in-tree-card">
                     <TreeZoom tree={s.tree} spot={s} alt={he ? `${name} באילן, מקרוב` : `${name} on the tree, close up`} />
@@ -151,10 +155,25 @@ const EncyclopediaPerson = () => {
             </section>
           )}
 
-          {hasFamily && (
+          {!isPlace && family.relations.length > 0 && (
             <section className="encyc-section">
-              <h2 className="encyc-section-title">{familyTitle(person, lang)}</h2>
-              <FamilyTree person={person} name={name} />
+              <h2 className="encyc-section-title">{familyTitle(family, lang)}</h2>
+              <FamilyTree person={family} name={name} />
+            </section>
+          )}
+
+          {related.length > 0 && (
+            <section className="encyc-section">
+              <h2 className="encyc-section-title">{he ? 'ערכים קשורים' : 'Related Entries'}</h2>
+              <div className="encyc-family-row">
+                {related.map((r, i) =>
+                  r.slug ? (
+                    <Link key={i} to={`/encyclopedia/person/${r.slug}`} className="encyc-chip is-link" dir="auto">{tr(r.name, lang)}</Link>
+                  ) : (
+                    <span key={i} className="encyc-chip" dir="auto">{tr(r.name, lang)}</span>
+                  )
+                )}
+              </div>
             </section>
           )}
 
