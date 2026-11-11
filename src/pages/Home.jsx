@@ -49,8 +49,8 @@ const Home = () => {
             </div>
           </Link>
 
-          {/* כרטיסייה 2: לומדות האילן -> מוביל זמנית לגלריה */}
-          <Link to="/gallery" className="tzofia-card">
+          {/* כרטיסייה 2: לומדות האילן -> מוביל לאנציקלופדיה */}
+          <Link to="/encyclopedia" className="tzofia-card">
             <div className="card-image-wrapper">
               <img src="/images/temple.jpg" alt="לומדות האילן" />
             </div>

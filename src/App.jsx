@@ -1,17 +1,21 @@
-import React, { useContext, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { Suspense, lazy, useContext, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { CartProvider, CartContext } from './context/context';
 import { Toaster } from 'react-hot-toast'; 
 import Home from './pages/Home';
 import Accessibility from './pages/Accessibility';
-import Gallery from './pages/Gallery';
+import Encyclopedia from './pages/encyclopedia/Encyclopedia';
+import EncyclopediaCategory from './pages/encyclopedia/EncyclopediaCategory';
+import EncyclopediaPerson from './pages/encyclopedia/EncyclopediaPerson';
 import Tree from './pages/Tree';
-import AdminProducts from './pages/admin/AdminProducts';
 import Cart from './pages/Cart';
 import Biblical from './pages/Biblical';
 import Gmara from './pages/Gmara';
 import About from './pages/About'; // הנה הייבוא של עמוד האודות
 import './App.css';
+
+// The admin page (with its text editor) loads only when someone opens /admin.
+const AdminPage = lazy(() => import('./pages/admin/AdminPage'));
 
 const MainLayout = ({ children }) => {
   const { lang } = useContext(CartContext);
@@ -48,9 +52,13 @@ function App() {
           <Routes>
             <Route path="/Biblical" element={<Biblical />} />
             <Route path="/Gmara" element={<Gmara/>} />
-            <Route path="/admin" element={<AdminProducts />} />
+            <Route path="/admin" element={<Suspense fallback={<p className="loading-text">טוען...</p>}><AdminPage /></Suspense>} />
             <Route path="/" element={<Home />} />
-            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/encyclopedia" element={<Encyclopedia />} />
+            <Route path="/encyclopedia/person/:slug" element={<EncyclopediaPerson />} />
+            <Route path="/encyclopedia/:slug" element={<EncyclopediaCategory />} />
+            {/* the old Gallery address now leads to the Encyclopedia */}
+            <Route path="/gallery" element={<Navigate to="/encyclopedia" replace />} />
             <Route path="/tree" element={<Tree />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/accessibility" element={<Accessibility />} />

@@ -1,6 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react'; 
 import { translations } from '../data/translations';
-import productsData from '../data.json'; 
 
 export const CartContext = createContext();
 
@@ -45,15 +44,12 @@ export const CartProvider = ({ children }) => {
     setCartItems([]);
   };
 
-  const displayProducts = productsData;
-
   return (
     <CartContext.Provider value={{ 
         lang, 
         setLang, 
         toggleLanguage, 
-        t, 
-        displayProducts,
+        t,
         cartItems,      
         addToCart,      
         removeFromCart,

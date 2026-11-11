@@ -27,7 +27,7 @@ const { t, lang, addToCart } = useContext(CartContext);
     setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
   // מערך התמונות של כרך א'
   const images = [
-    "/images/torah-tree.jpg",
+    "/images/torah-tree-product.jpg", // גרסה מטושטשת מעט, כדי שלא יהיה אפשר לקרוא את הפרטים הקטנים מצילום מסך
     "/images/avot.jpg",
     "/images/blue.jpg",
     "/images/zugot.jpg",

@@ -2892,7 +2892,8 @@ html, body, .page-wrapper {
     aspect-ratio: 61 / 75 !important; 
   }
 
-  .card-content {
+  /* רק לכרטיסיות בסגנון דף הבית (לא לכרטיסי הדמויות) */
+  .tzofia-card .card-content {
     position: relative !important;
     z-index: 2 !important;
     /* הנה המשיכה למעלה שמניחה את הכותרת על החלק הדהוי */
@@ -2908,7 +2909,7 @@ html, body, .page-wrapper {
 }
 
 /* =========================================
-   עיצוב דף ניהול מוצרים (אדמין)
+   עיצוב דף הניהול (אדמין)
    ========================================= */
 
 .admin-container {
@@ -3002,39 +3003,1205 @@ html, body, .page-wrapper {
   color: #555;
 }
 
-.admin-products-list {
+
+/* =========================================
+   האנציקלופדיה (Encyclopedia)
+   ========================================= */
+
+/* שורת שנות מלוכה / תקופה בכרטיס דמות */
+.card-reign {
+  font-family: "Frank Ruhl Libre", serif;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--color-terracotta, #8e3b30);
+}
+
+/* כרטיס דמות הוא קישור: בלי קו תחתון ובצבע הרגיל */
+.encyc-person-card {
+  text-decoration: none;
+  color: var(--color-ink, #2c241b);
+}
+
+.encyc-person-card .card-content {
+  justify-content: flex-start;
+}
+
+.encyc-card-btn {
+  margin-top: auto;
+  align-self: center;
+}
+
+.encyc-person-card:hover .encyc-card-btn {
+  background-color: #6b251a;
+  border-color: #4a1911;
+}
+
+/* קטגוריה בלי תמונה: עיצוב ברירת מחדל - קלף עם האות הראשונה וקישוט */
+.card-image-wrapper.encyc-no-image {
+  background:
+    radial-gradient(ellipse at 50% 32%, rgba(255, 250, 235, 0.95) 0%, rgba(239, 227, 200, 0.6) 45%, transparent 75%),
+    linear-gradient(to bottom, #efe3c8, #e2d1b3);
+}
+
+.encyc-default-art {
+  position: absolute;
+  inset: 8% 10% 42% 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  border: 1px solid rgba(197, 160, 89, 0.7);
+  outline: 1px solid rgba(197, 160, 89, 0.35);
+  outline-offset: 6px;
+  border-radius: 2px;
+}
+
+.encyc-default-letter {
+  font-family: "Frank Ruhl Libre", serif;
+  font-size: clamp(5rem, 9vw, 7.5rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-terracotta, #8e3b30);
+  opacity: 0.85;
+  text-shadow: 0 2px 0 rgba(255, 255, 255, 0.6);
+}
+
+.encyc-default-ornament {
+  font-size: 1.6rem;
+  color: var(--color-gold, #c5a059);
+  line-height: 1;
+}
+
+.encyc-default-ornament.is-flipped {
+  transform: rotate(180deg);
+}
+
+/* כרטיס קטגוריה תמיד ברוחב מלא (גם בלי תמונה שתקבע את הרוחב) */
+.encyc-category-card {
+  width: 100%;
+}
+
+.encyc-cards-grid {
+  width: 100%;
+}
+
+.encyc-bottom-space {
+  margin-bottom: 6rem;
+}
+
+/* פירורי לחם: האנציקלופדיה ‹ מלכים ‹ מלכי יהודה */
+.encyc-breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem 0.6rem;
+  margin: -1rem auto 1rem auto;
+  font-family: "Frank Ruhl Libre", serif;
+  font-size: 1.05rem;
+  color: #5a4f40;
+}
+
+.encyc-breadcrumbs a {
+  color: var(--color-terracotta, #8e3b30);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.encyc-breadcrumbs a:hover {
+  border-bottom-color: var(--color-terracotta, #8e3b30);
+}
+
+.encyc-crumb-sep {
+  color: var(--color-gold, #c5a059);
+  font-weight: bold;
+}
+
+/* מצב טעינה / שגיאה / ריק */
+.encyc-status {
+  text-align: center;
+  padding: 3rem 2rem 6rem;
+  font-size: 1.2rem;
+  color: var(--color-ink, #2c241b);
+}
+
+.encyc-status-note {
+  font-size: 1rem;
+  color: #5a4f40;
+}
+
+/* ===== עמוד דמות ===== */
+.encyc-article {
+  width: 92%;
+  max-width: 1100px;
+  margin: 0 auto 6rem auto;
+  padding: 2.5rem;
+  background-color: #fdf8e9;
+  border: 4px double var(--color-ink, #2c241b);
+  border-radius: 6px;
+  box-shadow: 0 15px 35px rgba(44, 36, 27, 0.1);
+}
+
+.encyc-person {
+  display: flow-root; /* the info box floats beside the text */
+}
+
+.encyc-person.no-infobox {
+  max-width: 880px;
+}
+
+.encyc-link {
+  color: var(--color-terracotta, #8e3b30);
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(142, 59, 48, 0.4);
+}
+
+.encyc-link:hover {
+  border-bottom-color: var(--color-terracotta, #8e3b30);
+}
+
+/* תיבת המידע (תמונה, פרטים, מקורות) */
+.encyc-infobox {
+  float: left; /* בעברית: בצד השני של תחילת הטקסט */
+  width: 330px;
+  margin: 0 0 1.5rem 2.5rem;
+  background: #fff9ec;
+  border: 2px solid var(--color-gold, #c5a059);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(44, 36, 27, 0.1);
+}
+
+body[dir="ltr"] .encyc-infobox {
+  float: right;
+  margin: 0 2.5rem 1.5rem 0;
+}
+
+.encyc-infobox-title {
+  background: var(--color-ink, #2c241b);
+  color: var(--color-gold, #c5a059);
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: bold;
+  padding: 0.7rem;
+}
+
+.encyc-infobox-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-bottom: 2px solid var(--color-gold, #c5a059);
+}
+
+.encyc-infobox table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.98rem;
+}
+
+.encyc-infobox th,
+.encyc-infobox td {
+  padding: 0.55rem 0.8rem;
+  vertical-align: top;
+  text-align: start;
+  border-top: 1px solid rgba(197, 160, 89, 0.4);
+  line-height: 1.5;
+}
+
+.encyc-infobox th {
+  width: 36%;
+  color: var(--color-terracotta, #8e3b30);
+  background: rgba(197, 160, 89, 0.12);
+}
+
+.encyc-infobox td small {
+  display: block;
+  color: #6b6255;
+}
+
+.encyc-infobox-sources {
+  border-top: 2px solid var(--color-gold, #c5a059);
+  padding: 0.6rem 0.8rem 0.8rem;
+}
+
+.encyc-infobox-subtitle {
+  color: var(--color-terracotta, #8e3b30);
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+}
+
+.encyc-infobox-sources ol {
+  margin: 0;
+  padding-inline-start: 1.4rem;
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+/* טקסט המאמר שנכתב בעורך */
+.encyc-content {
+  font-size: 1.15rem;
+  line-height: 1.9;
+  color: var(--color-ink, #2c241b);
+  overflow-wrap: break-word;
+}
+
+.encyc-content > :first-child {
+  margin-top: 0;
+}
+
+.encyc-content h1,
+.encyc-content h2,
+.encyc-content h3 {
+  font-family: "Frank Ruhl Libre", serif;
+  color: var(--color-terracotta, #8e3b30);
+  text-align: start;
+  margin: 1.8rem 0 0.5rem 0;
+  max-width: none;
+  line-height: 1.3;
+}
+
+.encyc-content h1 { font-size: 1.8rem; }
+.encyc-content h2 { font-size: 1.5rem; }
+.encyc-content h3 { font-size: 1.25rem; }
+
+.encyc-content p {
+  margin: 0 0 1.1rem 0;
+}
+
+.encyc-content a {
+  color: var(--color-terracotta, #8e3b30);
+}
+
+.encyc-content blockquote {
+  margin: 1.5rem 0;
+  padding: 0.5rem 1.5rem;
+  border-inline-start: 4px solid var(--color-gold, #c5a059);
+  background-color: rgba(197, 160, 89, 0.1);
+  font-style: italic;
+}
+
+.encyc-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* חלקים בתחתית העמוד: באילן שלנו, משפחה */
+.encyc-section {
+  clear: both;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px dashed var(--color-gold, #c5a059);
+}
+
+.encyc-section-title {
+  font-family: "Frank Ruhl Libre", serif;
+  font-size: 1.6rem;
+  color: var(--color-terracotta, #8e3b30);
+  text-align: center;
+  margin: 0 auto 1.8rem auto;
+  max-width: none;
+}
+
+.encyc-section-title::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 2px;
+  margin: 0.6rem auto 0;
+  background: var(--color-terracotta, #8e3b30);
+  opacity: 0.7;
+}
+
+.encyc-caption {
+  display: block;
+  margin-top: 0.8rem;
+  text-align: center;
+  color: #5a4f40;
+  font-size: 0.95rem;
+}
+
+.encyc-in-tree {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.encyc-in-tree + .encyc-in-tree {
+  margin-top: 2.5rem;
+}
+
+.encyc-in-tree-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.encyc-in-tree-card .encyc-tree,
+.encyc-in-tree-card .encyc-zoom {
+  border: 2px solid var(--color-gold, #c5a059);
+  outline: 4px double var(--color-ink, #2c241b);
+  outline-offset: 5px;
+  margin: 10px;
+}
+
+.encyc-tree {
+  position: relative;
+  line-height: 0;
+}
+
+.encyc-tree img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.encyc-tree-ring {
+  position: absolute;
+  width: 14%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border: 3px solid var(--color-terracotta, #8e3b30);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(253, 248, 233, 0.8), 0 0 18px 6px rgba(142, 59, 48, 0.55);
+  animation: encyc-pulse 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes encyc-pulse {
+  50% { box-shadow: 0 0 0 4px rgba(253, 248, 233, 0.8), 0 0 28px 12px rgba(142, 59, 48, 0.35); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .encyc-tree-ring { animation: none; }
+}
+
+.encyc-zoom {
+  position: relative;
+  overflow: hidden;
+  line-height: 0;
+  background: #f0e8d6;
+}
+
+.encyc-zoom img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  user-select: none;
+}
+
+.encyc-zoom.is-pickable {
+  cursor: crosshair;
+}
+
+/* עץ המשפחה */
+.encyc-family {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.encyc-family-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.encyc-family-label {
+  font-size: 0.95rem;
+  font-weight: bold;
+  color: #6b6255;
+}
+
+.encyc-family-group.is-side {
+  margin: 0.4rem 0;
+}
+
+.encyc-family-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.encyc-family-line {
+  width: 2px;
+  height: 26px;
+  background: var(--color-gold, #c5a059);
+}
+
+.encyc-chip {
+  padding: 0.5rem 1.1rem;
+  background: #fff9ec;
+  border: 1px solid var(--color-gold, #c5a059);
+  border-radius: 6px;
+  font-size: 1.15rem;
+  color: var(--color-ink, #2c241b);
+  text-decoration: none;
+}
+
+.encyc-chip.is-link {
+  border: 2px solid var(--color-terracotta, #8e3b30);
+  color: var(--color-terracotta, #8e3b30);
+  font-weight: bold;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.encyc-chip.is-link:hover {
+  background: var(--color-terracotta, #8e3b30);
+  color: #fff;
+}
+
+.encyc-chip-self {
+  background: var(--color-terracotta, #8e3b30);
+  border-color: var(--color-terracotta, #8e3b30);
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.35rem;
+  padding: 0.6rem 1.5rem;
+  box-shadow: 0 6px 14px rgba(142, 59, 48, 0.25);
+}
+
+.encyc-family-group.is-side .encyc-chip {
+  font-size: 1.05rem;
+}
+
+.encyc-back {
+  clear: both;
+  text-align: center;
+  padding-top: 2rem;
+}
+
+/* כרטיס דמות בלי תמונה: האות הראשונה של השם */
+.encyc-card-no-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom, #f7f1e3, #e2d1b3);
+}
+
+.encyc-card-initial {
+  font-size: 6rem;
+  font-weight: bold;
+  color: var(--color-terracotta, #8e3b30);
+  opacity: 0.55;
+}
+
+@media (max-width: 800px) {
+  .encyc-article {
+    padding: 1.5rem 1.2rem;
+  }
+
+  .encyc-infobox,
+  body[dir="ltr"] .encyc-infobox {
+    float: none;
+    width: 100%;
+    margin: 0 0 1.5rem 0;
+  }
+
+  .encyc-in-tree {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .encyc-chip {
+    font-size: 1rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .encyc-chip-self {
+    font-size: 1.15rem;
+  }
+}
+
+/* כותרת העמוד תופסת את כל הרוחב, כך שכותרות קצרות לא נשברות לשתי שורות */
+.encyc-hero {
+  width: 100%;
+}
+
+/* =========================================
+   דף הניהול - אנציקלופדיה
+   ========================================= */
+
+.admin-container.admin-wide {
+  max-width: 1000px;
+}
+
+.admin-login {
+  max-width: 420px;
+  margin: 0 auto 2rem auto;
+}
+
+.admin-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.admin-tabs {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.admin-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 1px solid var(--color-gold, #c5a059);
+  margin-bottom: 1.5rem;
+  padding-bottom: 10px;
+}
+
+.admin-card-header h2 {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.admin-add-btn {
+  margin: 0;
+  padding: 8px 18px;
+  font-size: 1rem;
+}
+
+.admin-form select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: inherit;
+  background-color: #fff;
+}
+
+.admin-form-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.admin-form-actions .admin-submit-btn {
+  flex: 1;
+  margin: 0;
+}
+
+.admin-submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.admin-btn {
+  background: #fff;
+  color: var(--color-ink, #2c241b);
+  border: 1px solid var(--color-ink, #2c241b);
+  padding: 7px 14px;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+
+.admin-btn:hover:not(:disabled) {
+  background: var(--color-ink, #2c241b);
+  color: #fff;
+}
+
+.admin-btn-danger {
+  color: var(--color-terracotta, #8e3b30);
+  border-color: var(--color-terracotta, #8e3b30);
+}
+
+.admin-btn-danger:hover:not(:disabled) {
+  background: var(--color-terracotta, #8e3b30);
+}
+
+.admin-btn:disabled,
+.admin-icon-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.admin-icon-btn {
+  background: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  color: var(--color-ink, #2c241b);
+}
+
+.admin-error {
+  color: #b3261e;
+  margin: 0;
+}
+
+.admin-warning {
+  color: #9a6700;
+}
+
+.admin-hint,
+.admin-muted {
+  color: #6b6255;
+  font-size: 0.9rem;
+}
+
+.admin-muted a {
+  color: inherit;
+}
+
+/* העלאת תמונה */
+.admin-image-upload {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.admin-image-preview {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border: 2px solid var(--color-gold, #c5a059);
+  border-radius: 4px;
+}
+
+.admin-image-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f3ece0;
+  color: #8a8070;
+  font-size: 0.9rem;
+}
+
+.admin-image-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* רשימת הקטגוריות כעץ */
+.admin-tree {
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
 }
 
-.admin-product-item {
+.admin-tree-item {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 15px;
+  gap: 1rem;
+  padding: 10px 14px;
   background-color: rgba(197, 160, 89, 0.1);
   border: 1px solid rgba(197, 160, 89, 0.3);
   border-radius: 6px;
 }
 
-.admin-product-item h3 {
-  margin: 0 0 5px 0;
-}
-
-.admin-product-item p {
-  margin: 0;
-  color: #555;
-}
-
-.admin-edit-btn {
-  background-color: var(--color-ink, #2c241b);
-  color: #fff;
-  border: none;
-  padding: 8px 16px;
+.admin-thumb {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  object-fit: cover;
   border-radius: 4px;
+  border: 1px solid var(--color-gold, #c5a059);
+}
+
+.admin-tree-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.admin-row-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+@media (max-width: 768px) {
+  .admin-card {
+    padding: 1.2rem;
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+
+  .admin-tree-item {
+    flex-wrap: wrap;
+  }
+
+  .admin-row-actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+/* =========================================
+   דף הניהול - טופס דמות
+   ========================================= */
+
+.admin-person-form {
+  gap: 0;
+}
+
+.admin-section {
+  padding: 1.4rem 0;
+  border-top: 1px solid rgba(197, 160, 89, 0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.admin-section h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: var(--color-terracotta, #8e3b30);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.admin-section .admin-hint {
+  margin: -0.4rem 0 0;
+}
+
+.admin-optional {
+  font-size: 0.8rem;
+  font-weight: normal;
+  color: #8a8070;
+  border: 1px solid #d8cdb8;
+  border-radius: 20px;
+  padding: 1px 8px;
+}
+
+.admin-advanced summary {
   cursor: pointer;
+  font-weight: bold;
+  font-size: 1.15rem;
+  color: var(--color-ink, #2c241b);
+}
+
+.admin-advanced[open] summary {
+  margin-bottom: 0.4rem;
+}
+
+.admin-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.admin-quick-add {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.admin-link-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--color-terracotta, #8e3b30);
+  text-decoration: underline;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.9rem;
+}
+
+.admin-badge {
+  display: inline-block;
+  margin-inline-start: 0.5rem;
+  padding: 1px 8px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  background: var(--color-gold, #c5a059);
+  color: #fff;
+  vertical-align: middle;
+}
+
+.admin-badge-draft {
+  background: #7a7062;
+}
+
+.admin-badge-empty {
+  background: transparent;
+  color: #9a6700;
+  border: 1px solid #d9b56b;
+}
+
+.admin-notice {
+  margin-bottom: 1rem;
+  padding: 0.7rem 1rem;
+  background: #fff4d6;
+  border: 1px solid #e7c96f;
+  border-radius: 6px;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.admin-english-toggle,
+.admin-publish-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: normal !important;
+  font-size: 1rem !important;
+  cursor: pointer;
+}
+
+.admin-english-toggle {
+  margin-bottom: 0.4rem;
+  color: #5a4f40;
+}
+
+/* עורך הטקסט */
+.admin-rte {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.admin-rte-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 6px;
+  background: #f6f0e3;
+  border-bottom: 1px solid #e0d6c2;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.admin-rte-btn {
+  min-width: 34px;
+  padding: 5px 10px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: none;
+  font-family: inherit;
+  font-size: 0.95rem;
+  cursor: pointer;
+  color: var(--color-ink, #2c241b);
+}
+
+.admin-rte-btn:hover {
+  background: #fff;
+  border-color: #d8cdb8;
+}
+
+.admin-rte-btn.is-active {
+  background: var(--color-ink, #2c241b);
+  color: #fff;
+}
+
+.admin-rte-body {
+  position: relative;
+}
+
+.admin-rte-content {
+  min-height: 260px;
+  padding: 1rem 1.2rem;
+  outline: none;
+}
+
+.admin-rte-placeholder {
+  position: absolute;
+  top: 1rem;
+  inset-inline-start: 1.2rem;
+  color: #a39a8a;
+  pointer-events: none;
+  font-size: 1.1rem;
+}
+
+/* תגיות (תפקידים) */
+.admin-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+}
+
+.admin-tags input {
+  flex: 1;
+  min-width: 160px;
+  border: none !important;
+  padding: 4px !important;
+  outline: none;
+}
+
+.admin-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 4px 3px 10px;
+  background: var(--color-ink, #2c241b);
+  color: var(--color-gold, #c5a059);
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+body[dir="rtl"] .admin-tag {
+  padding: 3px 10px 3px 4px;
+}
+
+.admin-tag button {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+/* בחירת קטגוריות */
+.admin-cat-picker {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.admin-cat-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.4rem 0.6rem;
+  border-bottom: 1px solid #f0eadc;
+}
+
+.admin-cat-option.is-checked {
+  background: rgba(197, 160, 89, 0.12);
+}
+
+.admin-cat-option label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: normal !important;
+  font-size: 1rem !important;
+  cursor: pointer;
+}
+
+/* שנים ותפקידים */
+.admin-years {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.admin-years input {
+  width: 110px;
+}
+
+.admin-office-row,
+.admin-relation-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  padding: 0.6rem;
+  background: rgba(197, 160, 89, 0.08);
+  border: 1px solid rgba(197, 160, 89, 0.3);
+  border-radius: 6px;
+}
+
+.admin-office-row > input:first-child {
+  width: 170px;
+}
+
+.admin-office-note {
+  flex: 1;
+  min-width: 200px;
+}
+
+.admin-relation-row select {
+  width: 140px;
+}
+
+/* שם עם הצעות מתוך האנציקלופדיה */
+.admin-person-input {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-width: 220px;
+}
+
+.admin-person-input input {
+  flex: 1;
+}
+
+.admin-link-status {
+  font-size: 0.85rem;
+  color: #2e7d32;
+  white-space: nowrap;
+}
+
+.admin-suggest {
+  position: absolute;
+  top: 100%;
+  inset-inline-start: 0;
+  z-index: 20;
+  min-width: 240px;
+  margin: 2px 0 0;
+  padding: 4px;
+  list-style: none;
+  background: #fff;
+  border: 1px solid var(--color-gold, #c5a059);
+  border-radius: 6px;
+  box-shadow: 0 8px 20px rgba(44, 36, 27, 0.15);
+}
+
+.admin-suggest button {
+  width: 100%;
+  text-align: start;
+  padding: 6px 10px;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.admin-suggest button:hover {
+  background: #f6f0e3;
+}
+
+/* סימון באילן */
+.admin-spot {
+  padding: 1rem;
+  border: 1px solid rgba(197, 160, 89, 0.4);
+  border-radius: 6px;
+  background: #fffdf8;
+}
+
+.admin-spot-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+.admin-spot-views {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.admin-spot-poster {
+  cursor: crosshair;
+  border: 2px solid var(--color-gold, #c5a059);
+  margin-top: 0.4rem;
+}
+
+.admin-spot-zoom {
+  border: 2px solid var(--color-terracotta, #8e3b30);
+  margin-top: 0.4rem;
+}
+
+/* רשימת דמויות */
+.admin-filters {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.admin-filters input,
+.admin-filters select {
+  padding: 9px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 1rem;
+  background: #fff;
+}
+
+.admin-filters input {
+  flex: 1;
+  min-width: 200px;
+}
+
+a.admin-btn {
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* פס השמירה שנשאר בתחתית המסך */
+.admin-save-bar {
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1rem -2rem -2rem;
+  padding: 1rem 2rem;
+  background: #fdfbf7;
+  border-top: 2px solid var(--color-gold, #c5a059);
+  box-shadow: 0 -6px 16px rgba(44, 36, 27, 0.08);
+  border-radius: 0 0 8px 8px;
+}
+
+.admin-save-buttons {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.admin-save-buttons .admin-submit-btn {
+  margin: 0;
+  padding: 10px 28px;
+}
+
+@media (max-width: 768px) {
+  .admin-spot-views {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-save-bar {
+    margin: 1rem -1.2rem -1.2rem;
+    padding: 0.8rem 1.2rem;
+  }
+
+  .admin-save-buttons {
+    width: 100%;
+  }
+
+  .admin-save-buttons .admin-submit-btn {
+    flex: 1;
+  }
 }
