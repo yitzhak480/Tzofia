@@ -1,0 +1,75 @@
+/* הצהרת נגישות */
+
+/* =========================================
+   עיצוב עמוד הצהרת נגישות
+   ========================================= */
+
+.accessibility-page {
+  padding: 3rem 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+  color: var(--color-ink, #2c241b);
+  /* מרווח תחתון שמרחיק את הטקסט מהפוטר */
+  min-height: 60vh; 
+}
+
+.accessibility-page .page-title {
+  /* דורס את המשיכה למעלה (-5.5rem) רק בעמוד הזה, כי פה אין תמונות רקע שצריך להתיישר מולן */
+  margin-top: 1rem !important; 
+  margin-bottom: 2.5rem;
+  font-size: 2.5rem;
+}
+
+.accessibility-content {
+  font-family: 'Assistant', sans-serif; /* פונט קריא יותר לטקסט רץ ארוך, אפשר להשאיר את המקורי אם תרצה */
+  font-size: 1.15rem;
+  line-height: 1.8;
+  background-color: rgba(255, 255, 255, 0.4); /* רקע לבן חצי שקוף שמבליט את הטקסט מעל הצבע הכללי */
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--color-gold, #c5a059);
+}
+
+.accessibility-content p {
+  margin-bottom: 1.2rem;
+}
+
+.accessibility-content ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+.accessibility-content li {
+  margin-bottom: 0.8rem;
+  padding-right: 1.5rem; /* מקום לויז'ואל אם צריך, ומתאים ל-RTL */
+  position: relative;
+}
+
+.accessibility-content li::before {
+  content: "•";
+  color: var(--color-gold, #c5a059);
+  font-weight: bold;
+  position: absolute;
+  right: 0;
+}
+.accessibility-page .page-title {
+  margin-top: -7rem !important; 
+  margin-bottom: 2.5rem;
+  font-size: 2.5rem;
+}
+
+/* התאמה למסכים קטנים */
+@media (max-width: 768px) {
+  .accessibility-content {
+    padding: 1.5rem;
+    font-size: 1rem;
+  }
+
+  .accessibility-page .page-title {
+  margin-top: 0rem !important; 
+  margin-bottom: 2.5rem;
+  font-size: 2.5rem;
+}
+}

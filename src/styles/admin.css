@@ -1,0 +1,758 @@
+/* דף הניהול: קטגוריות, ערכים וטופס הוספה */
+
+/* =========================================
+   דף הניהול - אנציקלופדיה
+   ========================================= */
+
+.admin-container.admin-wide {
+  max-width: 1000px;
+  width: 100%;
+}
+
+.admin-login {
+  max-width: 420px;
+  margin: 0 auto 2rem auto;
+}
+
+.admin-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.admin-tabs {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.admin-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 1px solid var(--color-gold, #c5a059);
+  margin-bottom: 1.5rem;
+  padding-bottom: 10px;
+}
+
+.admin-card-header h2 {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.admin-add-btn {
+  margin: 0;
+  padding: 8px 18px;
+  font-size: 1rem;
+}
+
+.admin-form select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: inherit;
+  background-color: #fff;
+}
+
+.admin-form-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.admin-form-actions .admin-submit-btn {
+  flex: 1;
+  margin: 0;
+}
+
+.admin-submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.admin-btn {
+  background: #fff;
+  color: var(--color-ink, #2c241b);
+  border: 1px solid var(--color-ink, #2c241b);
+  padding: 7px 14px;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+
+.admin-btn:hover:not(:disabled) {
+  background: var(--color-ink, #2c241b);
+  color: #fff;
+}
+
+.admin-btn-danger {
+  color: var(--color-terracotta, #8e3b30);
+  border-color: var(--color-terracotta, #8e3b30);
+}
+
+.admin-btn-danger:hover:not(:disabled) {
+  background: var(--color-terracotta, #8e3b30);
+}
+
+.admin-btn:disabled,
+.admin-icon-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.admin-icon-btn {
+  background: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  color: var(--color-ink, #2c241b);
+}
+
+.admin-error {
+  color: #b3261e;
+  margin: 0;
+}
+
+.admin-warning {
+  color: #9a6700;
+}
+
+.admin-hint,
+.admin-muted {
+  color: #6b6255;
+  font-size: 0.9rem;
+}
+
+.admin-muted a {
+  color: inherit;
+}
+
+/* העלאת תמונה */
+.admin-image-upload {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.admin-image-preview {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border: 2px solid var(--color-gold, #c5a059);
+  border-radius: 4px;
+}
+
+.admin-image-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f3ece0;
+  color: #8a8070;
+  font-size: 0.9rem;
+}
+
+.admin-image-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* רשימת הקטגוריות כעץ */
+.admin-tree {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.admin-tree-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 10px 14px;
+  background-color: rgba(197, 160, 89, 0.1);
+  border: 1px solid rgba(197, 160, 89, 0.3);
+  border-radius: 6px;
+}
+
+.admin-thumb {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid var(--color-gold, #c5a059);
+}
+
+.admin-tree-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.admin-row-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+@media (max-width: 768px) {
+  .admin-card {
+    padding: 1.2rem;
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+
+  .admin-tree-item {
+    flex-wrap: wrap;
+  }
+
+  .admin-row-actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+/* =========================================
+   דף הניהול - טופס דמות
+   ========================================= */
+
+.admin-person-form {
+  gap: 0;
+}
+
+.admin-section {
+  padding: 1.4rem 0;
+  border-top: 1px solid rgba(197, 160, 89, 0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.admin-section h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: var(--color-terracotta, #8e3b30);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.admin-section .admin-hint {
+  margin: -0.4rem 0 0;
+}
+
+.admin-optional {
+  font-size: 0.8rem;
+  font-weight: normal;
+  color: #8a8070;
+  border: 1px solid #d8cdb8;
+  border-radius: 20px;
+  padding: 1px 8px;
+}
+
+.admin-advanced summary {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.15rem;
+  color: var(--color-ink, #2c241b);
+}
+
+.admin-advanced[open] summary {
+  margin-bottom: 0.4rem;
+}
+
+.admin-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.admin-quick-add {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.admin-link-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--color-terracotta, #8e3b30);
+  text-decoration: underline;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.9rem;
+}
+
+.admin-badge {
+  display: inline-block;
+  margin-inline-start: 0.5rem;
+  padding: 1px 8px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  background: var(--color-gold, #c5a059);
+  color: #fff;
+  vertical-align: middle;
+}
+
+.admin-badge-draft {
+  background: #7a7062;
+}
+
+.admin-badge-empty {
+  background: transparent;
+  color: #9a6700;
+  border: 1px solid #d9b56b;
+}
+
+.admin-notice {
+  margin-bottom: 1rem;
+  padding: 0.7rem 1rem;
+  background: #fff4d6;
+  border: 1px solid #e7c96f;
+  border-radius: 6px;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.admin-english-toggle,
+.admin-publish-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: normal !important;
+  font-size: 1rem !important;
+  cursor: pointer;
+}
+
+.admin-english-toggle {
+  margin-bottom: 0.4rem;
+  color: #5a4f40;
+}
+
+/* עורך הטקסט */
+.admin-rte {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.admin-rte-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 6px;
+  background: #f6f0e3;
+  border-bottom: 1px solid #e0d6c2;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.admin-rte-btn {
+  min-width: 34px;
+  padding: 5px 10px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: none;
+  font-family: inherit;
+  font-size: 0.95rem;
+  cursor: pointer;
+  color: var(--color-ink, #2c241b);
+}
+
+.admin-rte-btn:hover {
+  background: #fff;
+  border-color: #d8cdb8;
+}
+
+.admin-rte-btn.is-active {
+  background: var(--color-ink, #2c241b);
+  color: #fff;
+}
+
+.admin-rte-body {
+  position: relative;
+}
+
+.admin-rte-content {
+  min-height: 260px;
+  padding: 1rem 1.2rem;
+  outline: none;
+}
+
+.admin-rte-placeholder {
+  position: absolute;
+  top: 1rem;
+  inset-inline-start: 1.2rem;
+  color: #a39a8a;
+  pointer-events: none;
+  font-size: 1.1rem;
+}
+
+/* תגיות (תפקידים) */
+.admin-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+}
+
+.admin-tags input {
+  flex: 1;
+  min-width: 160px;
+  border: none !important;
+  padding: 4px !important;
+  outline: none;
+}
+
+.admin-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 4px 3px 10px;
+  background: var(--color-ink, #2c241b);
+  color: var(--color-gold, #c5a059);
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+body[dir="rtl"] .admin-tag {
+  padding: 3px 10px 3px 4px;
+}
+
+.admin-tag button {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+/* בחירת קטגוריות */
+.admin-cat-picker {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.admin-cat-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.4rem 0.6rem;
+  border-bottom: 1px solid #f0eadc;
+}
+
+.admin-cat-option.is-checked {
+  background: rgba(197, 160, 89, 0.12);
+}
+
+.admin-cat-option label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: normal !important;
+  font-size: 1rem !important;
+  cursor: pointer;
+}
+
+/* שנים ותפקידים */
+.admin-years {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.admin-years input {
+  width: 110px;
+}
+
+.admin-office-row,
+.admin-relation-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  padding: 0.6rem;
+  background: rgba(197, 160, 89, 0.08);
+  border: 1px solid rgba(197, 160, 89, 0.3);
+  border-radius: 6px;
+}
+
+.admin-office-row > input:first-child {
+  width: 170px;
+}
+
+.admin-office-note {
+  flex: 1;
+  min-width: 200px;
+}
+
+.admin-relation-row select {
+  width: 140px;
+}
+
+/* שם עם הצעות מתוך האנציקלופדיה */
+.admin-person-input {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-width: 220px;
+}
+
+.admin-person-input input {
+  flex: 1;
+}
+
+.admin-link-status {
+  font-size: 0.85rem;
+  color: #2e7d32;
+  white-space: nowrap;
+}
+
+.admin-suggest {
+  position: absolute;
+  top: 100%;
+  inset-inline-start: 0;
+  z-index: 20;
+  min-width: 240px;
+  margin: 2px 0 0;
+  padding: 4px;
+  list-style: none;
+  background: #fff;
+  border: 1px solid var(--color-gold, #c5a059);
+  border-radius: 6px;
+  box-shadow: 0 8px 20px rgba(44, 36, 27, 0.15);
+}
+
+.admin-suggest button {
+  width: 100%;
+  text-align: start;
+  padding: 6px 10px;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.admin-suggest button:hover {
+  background: #f6f0e3;
+}
+
+/* סימון באילן */
+.admin-spot {
+  padding: 1rem;
+  border: 1px solid rgba(197, 160, 89, 0.4);
+  border-radius: 6px;
+  background: #fffdf8;
+}
+
+.admin-spot-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+.admin-spot-views {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.admin-spot-poster {
+  cursor: crosshair;
+  border: 2px solid var(--color-gold, #c5a059);
+  margin-top: 0.4rem;
+}
+
+.admin-spot-zoom {
+  border: 2px solid var(--color-terracotta, #8e3b30);
+  margin-top: 0.4rem;
+}
+
+/* רשימת דמויות */
+.admin-filters {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.admin-filters input,
+.admin-filters select {
+  padding: 9px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 1rem;
+  background: #fff;
+}
+
+.admin-filters input {
+  flex: 1;
+  min-width: 200px;
+}
+
+a.admin-btn {
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* פס השמירה שנשאר בתחתית המסך */
+.admin-save-bar {
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1rem -2rem -2rem;
+  padding: 1rem 2rem;
+  background: #fdfbf7;
+  border-top: 2px solid var(--color-gold, #c5a059);
+  box-shadow: 0 -6px 16px rgba(44, 36, 27, 0.08);
+  border-radius: 0 0 8px 8px;
+}
+
+.admin-save-buttons {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.admin-save-buttons .admin-submit-btn {
+  margin: 0;
+  padding: 10px 28px;
+}
+
+@media (max-width: 768px) {
+  .admin-spot-views {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-save-bar {
+    margin: 1rem -1.2rem -1.2rem;
+    padding: 0.8rem 1.2rem;
+  }
+
+  .admin-save-buttons {
+    width: 100%;
+  }
+
+  .admin-save-buttons .admin-submit-btn {
+    flex: 1;
+  }
+}
+
+.admin-radio-row {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.admin-radio-row label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: normal !important;
+  font-size: 1rem !important;
+  cursor: pointer;
+}
+
+/* כפתור עין להצגת הסיסמה */
+.admin-password-box {
+  position: relative;
+  display: flex;
+}
+
+.admin-password-box input {
+  flex: 1;
+  padding-inline-end: 44px !important;
+}
+
+.admin-password-eye {
+  position: absolute;
+  inset-inline-end: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 6px;
+  font-size: 1.15rem;
+  color: #6b6255;
+  cursor: pointer;
+  line-height: 0;
+}
+
+.admin-password-eye:hover {
+  color: var(--color-ink, #2c241b);
+}
+
+/* בחירת צבע לכרטיס קטגוריה בלי תמונה */
+.admin-color-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.admin-color-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 6px;
+  background: #fff;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.admin-color-option.is-selected {
+  border-color: var(--color-terracotta, #8e3b30);
+  background: #f6f0e3;
+}
+
+.admin-color-swatch {
+  display: block;
+  width: 64px;
+  height: 64px;
+  overflow: hidden;
+  border-radius: 4px;
+  border: 1px solid #d8cdb8;
+}

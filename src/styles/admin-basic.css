@@ -1,0 +1,96 @@
+/* דף הניהול: עיצוב בסיסי */
+
+/* =========================================
+   עיצוב דף הניהול (אדמין)
+   ========================================= */
+
+.admin-container {
+  max-width: 800px;
+  margin: 2rem auto 5rem auto;
+  padding: 0 1.5rem;
+  font-family: "Frank Ruhl Libre", serif;
+  color: var(--color-ink, #2c241b);
+}
+
+.admin-main-title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--color-terracotta, #8e3b30);
+}
+
+.admin-card {
+  background: #fdfbf7;
+  border: 2px solid var(--color-gold, #c5a059);
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.admin-card h2 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  border-bottom: 1px solid var(--color-gold, #c5a059);
+  padding-bottom: 10px;
+}
+
+.admin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-row {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.form-group.half {
+  flex: 1;
+}
+
+.admin-form label {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.admin-form input, 
+.admin-form textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: inherit;
+  background-color: #fff;
+}
+
+.admin-submit-btn {
+  background-color: #2e7d32;
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
+  margin-top: 10px;
+}
+
+.admin-submit-btn:hover {
+  background-color: #1b5e20;
+}
+
+.loading-text {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #555;
+}

@@ -1,0 +1,214 @@
+/* עמודי המוצר: התאמות למובייל, תמונות וחלון תמונה מוגדלת */
+
+/* מובייל */
+@media (max-width: 1000px) {
+  .product-split-layout {
+    grid-template-columns: 1fr;
+  }
+    .accessibility-page .page-title {
+  margin-top: 0rem !important; 
+  margin-bottom: 2.5rem;
+  font-size: 2.5rem;
+}
+  .product-gallery {
+    grid-template-columns: 1fr; /* במובייל הגלריה חוזרת לעמודה אחת */
+  }
+  
+  .thumbnails-column {
+    flex-direction: row; /* התמונות הקטנות יסתדרו בשורה מתחת לתמונה הגדולה במובייל */
+    justify-content: center;
+  }
+  
+  .thumb-frame {
+    width: 30%;
+  }
+  /* שבירת הגריד וסידור התמונות למסך צר/מובייל */
+  .product-split-layout {
+    grid-template-columns: 1fr !important; /* הפקודה שדורסת את שתי העמודות ויוצרת טור אחד */
+    gap: 2.5rem;
+  }
+}
+
+/* העדכון לגלריה - מגדיל את התמונות ל-160 פיקסלים ומוסיף אייקון לחיצה */
+
+.main-poster-frame {
+  cursor: zoom-in; /* משנה את העכבר לזכוכית מגדלת! */
+}
+
+.thumb-frame {
+  cursor: zoom-in;
+}
+
+
+/* =========================================
+   Lightbox (גלריה מוגדלת)
+   ========================================= */
+
+.lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  /* שחור מאוד עדין ושקוף ב-40% בלבד */
+  background-color: rgba(20, 15, 10, 0.4); 
+  /* הקסם: מטשטש את האתר מאחור כמו זכוכית חלבית */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); /* לתמיכה בספארי של אפל */
+  
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox-image {
+  max-width: 100%;
+  max-height: 90vh;
+  object-fit: contain;
+  border: 4px solid var(--color-gold, #c5a059);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  border-radius: 4px;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  background: none;
+  border: none;
+  color: #fdfbf7;
+  font-size: 3rem;
+  cursor: pointer;
+  z-index: 10000;
+  transition: color 0.3s ease;
+}
+
+.lightbox-close:hover {
+  color: var(--color-gold, #c5a059);
+}
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(44, 36, 27, 0.8);
+  border: 2px solid var(--color-gold, #c5a059);
+  color: #fdfbf7;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10000;
+}
+
+.lightbox-nav:hover {
+  background: var(--color-gold, #c5a059);
+  color: var(--color-ink, #2c241b);
+}
+
+.lightbox-prev {
+  right: 40px; /* צד ימין - כדי לדפדף אחורה */
+}
+
+.lightbox-next {
+  left: 40px; /* צד שמאל - כדי לדפדף קדימה */
+}
+
+/* התאמה למובייל */
+@media (max-width: 768px) {
+  .lightbox-nav {
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+  }
+  .lightbox-prev { right: 15px; }
+  .lightbox-next { left: 15px; }
+  .lightbox-close { top: 15px; right: 15px; font-size: 2.2rem; }
+}
+
+/* =========================================
+   התאמות מיוחדות למובייל (Mobile Responsive)
+   ========================================= */
+@media (max-width: 900px) {
+  .product-page-container {
+    padding: 0 1rem;
+  }
+
+  /* --- 1. מירכוז הכותרת --- */
+  .main-product-title {
+    font-size: 2rem;
+    text-align: center; /* דורס את היישור לימין */
+  }
+
+  /* --- 2. מירכוז התוכן והטקסטים --- */
+  .product-info-top {
+    align-items: center; /* ממרכז את הבלוק */
+    text-align: center;
+  }
+
+  .product-description p,
+  .product-sources p {
+    text-align: center; /* ממרכז את הפסקאות עצמן */
+  }
+
+  .product-specs {
+    align-items: center; /* ממרכז את המיפרט (מידות ואיכות) */
+  }
+
+  /* שבירת הגריד המרכזי */
+  .product-split-layout {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .product-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .main-poster-frame {
+    padding: 12px;
+    outline-offset: -6px;
+  }
+
+  /* --- 3. מירכוז התמונות הקטנות --- */
+  .thumbnails-column {
+    flex-direction: row;
+    justify-content: center; /* ממרכז את שלושת התמונות לאמצע המסך */
+    height: auto;
+    gap: 15px;
+    margin-top: 10px;
+  }
+
+  .thumb-frame {
+    width: 30%;
+    flex: none; /* מבטל את חלוקת הגובה האוטומטית מהדסקטופ */
+  }
+
+  /* --- 4. מירכוז אזור הקנייה --- */
+  .purchase-row {
+    flex-direction: column;
+    align-items: center; /* ממרכז את המחיר ומד הכמות */
+    gap: 1.5rem;
+  }
+}

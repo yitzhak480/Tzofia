@@ -1,0 +1,269 @@
+/* עגלת הקניות וטופס ההזמנה */
+
+/* =========================================
+   עיצוב עגלת הקניות (Cart Page)
+   ========================================= */
+.cart-page-container {
+  max-width: 800px;
+  width: 90%;
+  margin: 3rem auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.cart-heading {
+  font-family: "Frank Ruhl Libre", serif;
+  font-size: 2.5rem;
+  color: var(--color-ink);
+  text-align: center;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--color-gold);
+  display: inline-block;
+  padding-bottom: 0.5rem;
+  align-self: center;
+}
+
+/* --- CART CARD STYLES --- */
+.cart-card {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.4);
+  border: 2px solid var(--color-ink);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  gap: 1.5rem;
+  transition: transform 0.2s ease;
+}
+
+.cart-card:hover {
+  transform: scale(1.02);
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.cart-card-image {
+  width: 100px;
+  height: 100px;
+  border: 2px double var(--color-gold);
+  border-radius: 4px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.cart-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cart-card-details {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  /* ממרכז לצד הנכון לפי השפה */
+  text-align: start; 
+}
+
+.cart-item-title {
+  font-family: "Frank Ruhl Libre", serif;
+  font-size: 1.4rem;
+  margin: 0;
+  color: var(--color-ink);
+  font-weight: bold;
+}
+
+.cart-item-price {
+  font-size: 1.2rem;
+  color: var(--color-terracotta);
+  font-weight: bold;
+  margin: 0;
+}
+
+.remove-item-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--color-ink);
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.remove-item-btn:hover {
+  color: var(--color-terracotta);
+}
+
+/* --- SUMMARY SECTION --- */
+.cart-summary {
+  margin-top: 2rem;
+  padding: 2rem;
+  border-top: 4px double var(--color-ink);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  background-color: rgba(244, 228, 188, 0.5);
+}
+
+.summary-row {
+  display: flex;
+  gap: 1rem;
+  font-size: 1.8rem;
+  font-family: "Frank Ruhl Libre", serif;
+  color: var(--color-ink);
+}
+
+.total-price {
+  font-weight: bold;
+  color: var(--color-terracotta);
+}
+
+.checkout-button {
+  background-color: var(--color-ink);
+  color: var(--color-parchment);
+  border: 1px solid var(--color-gold);
+  padding: 1rem 3rem;
+  font-size: 1.2rem;
+  font-family: "Frank Ruhl Libre", serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 1px;
+}
+
+.checkout-button:hover {
+  background-color: var(--color-terracotta);
+  border-color: var(--color-ink);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* סלולר קטן (עד 600px) */
+@media (max-width: 600px) {
+  .cart-card {
+    flex-direction: row;
+  }
+  .cart-card-image {
+    width: 70px;
+    height: 70px;
+  }
+  .cart-item-title {
+    font-size: 1.1rem;
+  }
+}
+
+/* =========================================
+   התאמות למובייל (מסכים צרים) - הדר מרוכז
+   ========================================= */
+@media (max-width: 1000px) {
+  .biblical-header {
+    /* הופך את ההדר לטור במקום שורה */
+    flex-direction: column !important; 
+    /* מאפס את כיוון ה-LTR שכפינו קודם כדי למרכז הכל כראוי */
+    direction: ltr !important; 
+    gap: 1.5rem; /* מרווח בין הלוגו לכלים */
+    padding: 1.5rem; 
+  }
+
+  /* מוודא שהלוגו עולה למעלה (ראשון בטור) */
+  .logo-link {
+    order: 1 !important; 
+    margin: 0 auto; /* ממרכז את הלוגו */
+  }
+
+  /* מוודא שהכלים יורדים למטה (שניים בטור) */
+  .header-tools {
+    order: 2 !important; 
+    justify-content: center; /* ממרכז את הכפתורים זה לצד זה */
+    width: 100%;
+  }
+}
+
+
+/* =========================================
+   עיצוב טופס הזמנה (Checkout Form)
+   ========================================= */
+.checkout-form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.4);
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-gold, #c5a059);
+}
+
+.checkout-notice {
+  font-family: 'Assistant', sans-serif;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: var(--color-ink, #2c241b);
+  font-weight: bold;
+}
+
+.checkout-form .form-group {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.checkout-form label {
+  margin-bottom: 0.5rem;
+  font-family: 'Assistant', sans-serif;
+  font-weight: bold;
+}
+
+.checkout-form input, 
+.checkout-form textarea {
+  padding: 0.8rem;
+  font-family: 'Assistant', sans-serif;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.checkout-form input:focus, 
+.checkout-form textarea:focus {
+  outline: none;
+  border-color: var(--color-gold, #c5a059);
+  box-shadow: 0 0 5px rgba(197, 160, 89, 0.3);
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
+.submit-order-btn, .cancel-btn {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1.2rem;
+  cursor: pointer;
+  flex: 1;
+}
+
+.submit-order-btn {
+  background-color: var(--color-ink, #2c241b);
+  color: #fff;
+}
+
+.submit-order-btn:hover {
+  opacity: 0.9;
+}
+
+.cancel-btn {
+  background-color: transparent;
+  border: 1px solid var(--color-ink, #2c241b);
+  color: var(--color-ink, #2c241b);
+}
+
+@media (max-width: 600px) {
+  .form-actions {
+    flex-direction: column-reverse;
+  }
+}

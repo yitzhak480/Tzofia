@@ -1,0 +1,230 @@
+/* עמוד אילן (גרסה ישנה) ותוכן העצים */
+
+/* --- TREE PAGE STYLES --- */
+
+.tree-page-container-v2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem;
+  background-color: var(--color-parchment);
+  background-image: url("https://www.transparenttextures.com/patterns/aged-paper.png");
+  flex: 1;
+}
+
+.tree-scroll-card {
+  display: flex;
+  flex-direction: row;
+  max-width: 1000px;
+  width: 95%;
+  background: linear-gradient(
+    to right,
+    #fdfbf7,
+    var(--color-parchment),
+    #fdfbf7
+  );
+  border: 3px solid var(--color-gold);
+  box-shadow:
+    0 10px 25px rgba(44, 36, 27, 0.2),
+    inset 0 0 40px rgba(166, 124, 82, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.tree-image-section {
+  flex: 1;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.03);
+  border-left: 2px solid var(--color-gold);
+}
+
+.gold-frame-wrapper {
+  padding: 8px;
+  background: linear-gradient(
+    45deg,
+    var(--color-gold),
+    #d4af37,
+    var(--color-gold)
+  );
+  box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
+  transform: rotate(1deg);
+  transition: all 0.4s ease;
+  max-width: 400px;
+}
+
+.gold-frame-wrapper:hover {
+  transform: rotate(0deg) scale(1.02);
+}
+
+.tree-poster-image-v2 {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--color-ink);
+}
+
+/* --- TREE CONTENT --- */
+.tree-content-section {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.tree-header-group {
+  text-align: center;
+}
+
+.tree-title-he {
+  font-family: "Frank Ruhl Libre", serif;
+  font-size: 2.5rem;
+  color: var(--color-terracotta);
+  margin: 0;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.title-separator {
+  height: 3px;
+  width: 50%;
+  margin: 1rem auto;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--color-gold),
+    transparent
+  );
+}
+
+.tree-size-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: var(--color-ink);
+  color: var(--color-gold);
+  padding: 0.6rem 1rem;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  align-self: center;
+}
+
+.size-icon {
+  font-size: 1.2rem;
+}
+
+.tree-body-text {
+  font-family: "Frank Ruhl Libre", serif;
+  color: var(--color-ink);
+  line-height: 1.6;
+}
+
+.desc-he {
+  font-size: 1.3rem;
+  text-align: center;
+  margin: 0;
+  font-weight: 600;
+}
+
+.tree-contact-ribbon {
+  margin-top: 1rem;
+  text-align: center;
+  padding: 1rem;
+  border-top: 1px dashed var(--color-gold);
+  border-bottom: 1px dashed var(--color-gold);
+  background-color: rgba(227, 210, 166, 0.3);
+}
+
+.contact-heading {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.2rem;
+  color: var(--color-terracotta);
+}
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  font-size: 1rem;
+  font-weight: bold;
+  flex-wrap: wrap;
+}
+
+.contact-link-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-ink);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.contact-link-item:hover {
+  color: var(--color-terracotta);
+}
+
+.separator {
+  color: var(--color-gold);
+}
+
+.tree-purchase-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin: 0.5rem auto;
+  padding: 0.6rem 1.5rem;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 6px;
+  border: 1px solid rgba(166, 124, 82, 0.2);
+  width: fit-content;
+}
+
+.tree-price-tag {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--color-ink);
+  font-family: "Frank Ruhl Libre", serif;
+  line-height: 1;
+}
+
+.tree-add-btn {
+  background-color: var(--color-terracotta);
+  color: #fff;
+  border: none;
+  padding: 6px 16px;
+  font-size: 0.95rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: "Frank Ruhl Libre", serif;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tree-add-btn:hover {
+  background-color: #7a2e24;
+  transform: translateY(-1px);
+}
+
+.tree-add-btn.added {
+  background-color: #2e7d32;
+}
+
+.tree-view-cart-link {
+  color: var(--color-ink);
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 0.8rem;
+  border-bottom: 1px solid var(--color-ink);
+  margin-top: 2px;
+}

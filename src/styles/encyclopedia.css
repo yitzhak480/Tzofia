@@ -1,0 +1,515 @@
+/* לומדות האילן: קטגוריות, כרטיסים ועמוד דמות */
+
+/* =========================================
+   האנציקלופדיה (Encyclopedia)
+   ========================================= */
+
+/* שורת שנות מלוכה / תקופה בכרטיס דמות */
+.card-reign {
+  font-family: "Frank Ruhl Libre", serif;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--color-terracotta, #8e3b30);
+}
+
+/* כרטיס דמות הוא קישור: בלי קו תחתון ובצבע הרגיל */
+.encyc-person-card {
+  text-decoration: none;
+  color: var(--color-ink, #2c241b);
+}
+
+.encyc-person-card .card-content {
+  justify-content: flex-start;
+}
+
+.encyc-card-btn {
+  margin-top: auto;
+  align-self: center;
+}
+
+.encyc-person-card:hover .encyc-card-btn {
+  background-color: #6b251a;
+  border-color: #4a1911;
+}
+
+/* קטגוריה בלי תמונה: גב של קלף משחק */
+.encyc-card-back {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* הדהייה אל הקלף מתחילה נמוך יותר, כדי שהמדליון יישאר גלוי */
+.card-image-wrapper.encyc-no-image::after {
+  background: linear-gradient(to bottom, transparent 42%, rgba(226, 209, 179, 0.95) 68%, #e2d1b3 82%);
+}
+
+/* כרטיס קטגוריה תמיד ברוחב מלא (גם בלי תמונה שתקבע את הרוחב) */
+.encyc-category-card {
+  width: 100%;
+}
+
+/* כרטיסי הקטגוריות באותו גודל כמו בדף הבית, גם כשיש רק אחד או שניים */
+.home-cards-grid.encyc-cards-grid {
+  width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 340px));
+  justify-content: center;
+}
+
+@media (max-width: 900px) {
+  .home-cards-grid.encyc-cards-grid {
+    grid-template-columns: minmax(0, 340px);
+  }
+}
+
+.encyc-bottom-space {
+  margin-bottom: 6rem;
+}
+
+/* פירורי לחם: האנציקלופדיה ‹ מלכים ‹ מלכי יהודה */
+.encyc-breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem 0.6rem;
+  margin: -1rem auto 1rem auto;
+  font-family: "Frank Ruhl Libre", serif;
+  font-size: 1.05rem;
+  color: #5a4f40;
+}
+
+.encyc-breadcrumbs a {
+  color: var(--color-terracotta, #8e3b30);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.encyc-breadcrumbs a:hover {
+  border-bottom-color: var(--color-terracotta, #8e3b30);
+}
+
+.encyc-crumb-sep {
+  color: var(--color-gold, #c5a059);
+  font-weight: bold;
+}
+
+/* מצב טעינה / שגיאה / ריק */
+.encyc-status {
+  text-align: center;
+  padding: 3rem 2rem 6rem;
+  font-size: 1.2rem;
+  color: var(--color-ink, #2c241b);
+}
+
+.encyc-status-note {
+  font-size: 1rem;
+  color: #5a4f40;
+}
+
+/* ===== עמוד דמות ===== */
+.encyc-article {
+  width: 92%;
+  max-width: 1100px;
+  margin: 0 auto 6rem auto;
+  padding: 2.5rem;
+  background-color: #fdf8e9;
+  border: 4px double var(--color-ink, #2c241b);
+  border-radius: 6px;
+  box-shadow: 0 15px 35px rgba(44, 36, 27, 0.1);
+}
+
+.encyc-person {
+  display: flow-root; /* the info box floats beside the text */
+}
+
+.encyc-person.no-infobox {
+  max-width: 880px;
+}
+
+.encyc-link {
+  color: var(--color-terracotta, #8e3b30);
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(142, 59, 48, 0.4);
+}
+
+.encyc-link:hover {
+  border-bottom-color: var(--color-terracotta, #8e3b30);
+}
+
+/* תיבת המידע (תמונה, פרטים, מקורות) */
+.encyc-infobox {
+  float: left; /* בעברית: בצד השני של תחילת הטקסט */
+  width: 330px;
+  margin: 0 2.5rem 1.5rem 0; /* רווח בצד שפונה אל הטקסט */
+  background: #fff9ec;
+  border: 2px solid var(--color-gold, #c5a059);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(44, 36, 27, 0.1);
+}
+
+body[dir="ltr"] .encyc-infobox {
+  float: right;
+  margin: 0 0 1.5rem 2.5rem;
+}
+
+/* באתר באנגלית, כשהמאמר קיים רק בעברית */
+.encyc-lang-note {
+  margin: 0 0 1rem 0;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.95rem;
+  color: #6b6255;
+  background: rgba(197, 160, 89, 0.12);
+  border-inline-start: 3px solid var(--color-gold, #c5a059);
+}
+
+.encyc-infobox-title {
+  background: var(--color-ink, #2c241b);
+  color: var(--color-gold, #c5a059);
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: bold;
+  padding: 0.7rem;
+}
+
+.encyc-infobox-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-bottom: 2px solid var(--color-gold, #c5a059);
+}
+
+.encyc-infobox table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.98rem;
+}
+
+.encyc-infobox th,
+.encyc-infobox td {
+  padding: 0.55rem 0.8rem;
+  vertical-align: top;
+  text-align: start;
+  border-top: 1px solid rgba(197, 160, 89, 0.4);
+  line-height: 1.5;
+}
+
+.encyc-infobox th {
+  width: 36%;
+  color: var(--color-terracotta, #8e3b30);
+  background: rgba(197, 160, 89, 0.12);
+}
+
+.encyc-infobox td small {
+  display: block;
+  color: #6b6255;
+}
+
+.encyc-infobox-sources {
+  border-top: 2px solid var(--color-gold, #c5a059);
+  padding: 0.6rem 0.8rem 0.8rem;
+}
+
+.encyc-infobox-subtitle {
+  color: var(--color-terracotta, #8e3b30);
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+}
+
+.encyc-infobox-sources ol {
+  margin: 0;
+  padding-inline-start: 1.4rem;
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+/* טקסט המאמר שנכתב בעורך */
+.encyc-content {
+  font-size: 1.15rem;
+  line-height: 1.9;
+  color: var(--color-ink, #2c241b);
+  overflow-wrap: break-word;
+}
+
+.encyc-content > :first-child {
+  margin-top: 0;
+}
+
+.encyc-content h1,
+.encyc-content h2,
+.encyc-content h3 {
+  font-family: "Frank Ruhl Libre", serif;
+  color: var(--color-terracotta, #8e3b30);
+  text-align: start;
+  margin: 1.8rem 0 0.5rem 0;
+  max-width: none;
+  line-height: 1.3;
+}
+
+.encyc-content h1 { font-size: 1.8rem; }
+.encyc-content h2 { font-size: 1.5rem; }
+.encyc-content h3 { font-size: 1.25rem; }
+
+.encyc-content p {
+  margin: 0 0 1.1rem 0;
+}
+
+.encyc-content a {
+  color: var(--color-terracotta, #8e3b30);
+}
+
+.encyc-content blockquote {
+  margin: 1.5rem 0;
+  padding: 0.5rem 1.5rem;
+  border-inline-start: 4px solid var(--color-gold, #c5a059);
+  background-color: rgba(197, 160, 89, 0.1);
+  font-style: italic;
+}
+
+.encyc-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* חלקים בתחתית העמוד: באילן שלנו, משפחה */
+.encyc-section {
+  clear: both;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px dashed var(--color-gold, #c5a059);
+}
+
+.encyc-section-title {
+  font-family: "Frank Ruhl Libre", serif;
+  font-size: 1.6rem;
+  color: var(--color-terracotta, #8e3b30);
+  text-align: center;
+  margin: 0 auto 1.8rem auto;
+  max-width: none;
+}
+
+.encyc-section-title::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 2px;
+  margin: 0.6rem auto 0;
+  background: var(--color-terracotta, #8e3b30);
+  opacity: 0.7;
+}
+
+.encyc-caption {
+  display: block;
+  margin-top: 0.8rem;
+  text-align: center;
+  color: #5a4f40;
+  font-size: 0.95rem;
+}
+
+.encyc-in-tree {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.encyc-in-tree + .encyc-in-tree {
+  margin-top: 2.5rem;
+}
+
+.encyc-in-tree-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.encyc-in-tree-card .encyc-tree,
+.encyc-in-tree-card .encyc-zoom {
+  border: 2px solid var(--color-gold, #c5a059);
+  outline: 4px double var(--color-ink, #2c241b);
+  outline-offset: 5px;
+  margin: 10px;
+}
+
+.encyc-tree {
+  position: relative;
+  line-height: 0;
+}
+
+.encyc-tree img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.encyc-tree-ring {
+  position: absolute;
+  width: 14%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border: 3px solid var(--color-terracotta, #8e3b30);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(253, 248, 233, 0.8), 0 0 18px 6px rgba(142, 59, 48, 0.55);
+  animation: encyc-pulse 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes encyc-pulse {
+  50% { box-shadow: 0 0 0 4px rgba(253, 248, 233, 0.8), 0 0 28px 12px rgba(142, 59, 48, 0.35); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .encyc-tree-ring { animation: none; }
+}
+
+.encyc-zoom {
+  position: relative;
+  overflow: hidden;
+  line-height: 0;
+  background: #f0e8d6;
+}
+
+.encyc-zoom img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  user-select: none;
+}
+
+.encyc-zoom.is-pickable {
+  cursor: crosshair;
+}
+
+/* עץ המשפחה */
+.encyc-family {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.encyc-family-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.encyc-family-label {
+  font-size: 0.95rem;
+  font-weight: bold;
+  color: #6b6255;
+}
+
+.encyc-family-group.is-side {
+  margin: 0.4rem 0;
+}
+
+.encyc-family-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.encyc-family-line {
+  width: 2px;
+  height: 26px;
+  background: var(--color-gold, #c5a059);
+}
+
+.encyc-chip {
+  padding: 0.5rem 1.1rem;
+  background: #fff9ec;
+  border: 1px solid var(--color-gold, #c5a059);
+  border-radius: 6px;
+  font-size: 1.15rem;
+  color: var(--color-ink, #2c241b);
+  text-decoration: none;
+}
+
+.encyc-chip.is-link {
+  border: 2px solid var(--color-terracotta, #8e3b30);
+  color: var(--color-terracotta, #8e3b30);
+  font-weight: bold;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.encyc-chip.is-link:hover {
+  background: var(--color-terracotta, #8e3b30);
+  color: #fff;
+}
+
+.encyc-chip-self {
+  background: var(--color-terracotta, #8e3b30);
+  border-color: var(--color-terracotta, #8e3b30);
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.35rem;
+  padding: 0.6rem 1.5rem;
+  box-shadow: 0 6px 14px rgba(142, 59, 48, 0.25);
+}
+
+.encyc-family-group.is-side .encyc-chip {
+  font-size: 1.05rem;
+}
+
+.encyc-back {
+  clear: both;
+  text-align: center;
+  padding-top: 2rem;
+}
+
+/* כרטיס דמות בלי תמונה: האות הראשונה של השם */
+.encyc-card-no-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom, #f7f1e3, #e2d1b3);
+}
+
+.encyc-card-initial {
+  font-size: 6rem;
+  font-weight: bold;
+  color: var(--color-terracotta, #8e3b30);
+  opacity: 0.55;
+}
+
+@media (max-width: 800px) {
+  .encyc-article {
+    padding: 1.5rem 1.2rem;
+  }
+
+  .encyc-infobox,
+  body[dir="ltr"] .encyc-infobox {
+    float: none;
+    width: 100%;
+    margin: 0 0 1.5rem 0;
+  }
+
+  .encyc-in-tree {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .encyc-chip {
+    font-size: 1rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .encyc-chip-self {
+    font-size: 1.15rem;
+  }
+}
+
+/* כותרת העמוד תופסת את כל הרוחב, כך שכותרות קצרות לא נשברות לשתי שורות */
+.encyc-hero {
+  width: 100%;
+}

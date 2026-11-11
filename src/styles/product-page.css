@@ -1,0 +1,331 @@
+/* עמודי המוצר (Biblical, Gmara): גלריה, מחיר וכמות */
+
+/* =========================================
+   Single Tree Product Page (Biblical.jsx)
+   ========================================= */
+.product-page-container {
+  max-width: 1188px; /* הוגדל מ-1140 כדי שהתמונה תוכל להתרחב ולצמוח לגובה! */
+  margin: 4rem auto 6rem auto;
+  padding: 0 2rem;
+  width: 100%;
+}
+
+.product-page-header {
+  text-align: center;
+  margin-bottom: 4rem; 
+}
+
+.main-product-title {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 3rem; 
+  color: var(--color-ink, #2c241b); /* שונה לדיו */
+  margin-bottom: 15px;
+}
+
+.product-page-header .title-separator {
+  margin: 0 auto; 
+}
+
+/* --- יישור הגבהים בין ימין לשמאל --- */
+/* --- יישור הגבהים בין ימין לשמאל --- */
+/* --- פותחים את רוחב העמוד כדי לתת לתמונה מקום לגדול --- */
+
+
+/* --- יישור הגבהים --- */
+.product-split-layout {
+  display: grid;
+  /* נותנים לגלריה יתרון רוחב משמעותי, עם !important כדי לוודא ששום קוד ישן לא דורס את זה */
+  grid-template-columns: 1.8fr 1fr !important; 
+  gap: 4rem;
+  align-items: stretch; 
+}
+
+/* --- אזור הגלריה --- */
+.product-gallery {
+  display: grid;
+  grid-template-columns: 1fr 160px; 
+  gap: 1.5rem;
+  /* פקודת הקסם: מונעת מהמסגרת להימתח ולהשאיר חלל ריק, היא תעטוף בול את התמונה */
+  align-self: start; 
+}
+
+.main-poster-frame {
+  width: 100%;
+  height: max-content; /* כופה על המסגרת להסתיים איפה שהתמונה מסתיימת */
+  padding: 24px;
+  background-color: #f7f1e3;
+  border: 2px solid var(--color-gold, #c5a059);
+  outline: 4px double var(--color-ink, #2c241b);
+  outline-offset: -12px;
+  box-sizing: border-box;
+  box-shadow: 0 15px 35px rgba(44, 36, 27, 0.12);
+  cursor: zoom-in;
+}
+
+.main-poster-frame img {
+  width: 100%;
+  height: auto; /* מחזיר את התמונה להתנהגות טבעית בלי חיתוכים */
+  aspect-ratio: 61 / 91; 
+  object-fit: contain; /* מבטיח ששום דבר לא נחתך */
+  display: block;
+}
+
+.thumbnails-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: 100%; /* מתפרס על כל הגובה כדי להשתוות למסגרת הגדולה */
+}
+
+.thumb-frame {
+  padding: 6px;
+  background-color: #f7f1e3;
+  border: 1px solid var(--color-gold, #c5a059);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  cursor: zoom-in;
+  
+  /* הקסם שמחזיר את חלוקת הגובה השווה: */
+  flex: 1; 
+  display: flex;
+  min-height: 0;
+}
+
+.thumb-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.thumb-frame:hover {
+  transform: translateX(-4px); 
+  border-color: var(--color-ink, #2c241b);
+}
+
+/* --- אזור התוכן והקנייה (eCommerce) --- */
+
+/* --- אזור התוכן והקנייה (eCommerce) --- */
+/* --- יישור הגבהים --- */
+/* --- יישור הגבהים --- */
+.product-split-layout {
+  display: grid;
+  /* נותן קצת יותר רוחב לגלריה כדי שתצמח בגובה ותדביק את הטקסט */
+  grid-template-columns: 1.35fr 1fr; 
+  gap: 4rem;
+  align-items: stretch; 
+}
+
+/* --- אזור הגלריה --- */
+.product-gallery {
+  display: grid;
+  grid-template-columns: 1fr 160px; 
+  gap: 1.5rem;
+  /* הפקודה הקריטית שעוצרת את העיוות: מונעת מהגלריה להידחף למטה בגלל הטקסט */
+  align-self: start; 
+  align-items: stretch; 
+}
+
+/* --- מירכוז המידות --- */
+/* --- מפרט טכני (מידות וחומר) --- */
+.product-specs {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* מתיישר אוטומטית לפי השפה */
+  gap: 0.8rem;
+  margin-top: 1.2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+  color: var(--color-terracotta, #8e3b30);
+  width: 100%;
+}
+
+.spec-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.spec-icon {
+  color: inherit; 
+}
+
+
+.product-content {
+  display: flex;
+  flex-direction: column;
+  /* מרווח בין החלק העליון (הטקסטים) לחלק התחתון (הקנייה), דוחף את הקנייה לתחתית */
+  justify-content: space-between; 
+  height: 100%;
+}
+
+.product-description p {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: var(--color-ink, #2c241b);
+  text-align: start; 
+  margin-bottom: 1rem;
+}
+.product-info-top {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* מתיישר אוטומטית לימין בעברית, ולשמאל באנגלית */
+  text-align: start; /* מתיישר אוטומטית לפי כיוון השפה */
+}
+.product-sources {
+  margin-top: 0.5rem;
+  padding-top: 1.2rem;
+  border-top: 1px dashed rgba(197, 160, 89, 0.4); /* קו מקווקו עדין מזהב */
+}
+
+.product-sources p {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(44, 36, 27, 0.75);
+  text-align: start;
+  margin: 0;
+}
+/* --- מירכוז המידות --- */
+
+
+.product-price-tag {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--color-ink, #2c241b);
+}
+
+/* עיצוב חנות הקניות החדש */
+/* --- אזור הקנייה החדש והמדוגם --- */
+.ecommerce-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.purchase-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(226, 209, 179, 0.3); /* צבע קלף עדין לרקע */
+  padding: 1rem 1.5rem;
+  border: 1px solid var(--color-gold, #c5a059);
+  border-radius: 4px;
+}
+
+.product-price-tag {
+  font-size: 2.2rem; /* הקטנו את המחיר */
+  font-weight: bold;
+  color: var(--color-ink, #2c241b);
+  margin: 0;
+  line-height: 1;
+}
+/* =========================================
+   עיצוב מד הכמות החדש (מחליף את .quantity-wrapper)
+   ========================================= */
+.custom-quantity-selector {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.quantity-label {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1.2rem;
+  color: var(--color-ink, #2c241b);
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  background-color: #f7f1e3;
+  border: 1px solid var(--color-gold, #c5a059);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.qty-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  padding: 0.4rem 0.8rem;
+  color: var(--color-ink, #2c241b);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-family: inherit;
+}
+
+.qty-btn:hover {
+  background-color: rgba(197, 160, 89, 0.2); /* רקע זהוב חלש במעבר עכבר */
+}
+
+.qty-number {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  min-width: 32px;
+  text-align: center;
+  color: var(--color-ink, #2c241b);
+  user-select: none; /* מונע סימון מקרי של המספר עם העכבר */
+}
+.quantity-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.quantity-wrapper label {
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1.2rem;
+  color: var(--color-ink, #2c241b);
+}
+
+.quantity-input {
+  width: 60px;
+  height: 40px;
+  text-align: center;
+  font-size: 1.2rem;
+  font-family: 'Frank Ruhl Libre', serif;
+  background-color: #f7f1e3;
+  border: 1px solid var(--color-gold, #c5a059);
+  color: var(--color-ink, #2c241b);
+  border-radius: 2px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.quantity-input:focus {
+  border-color: var(--color-terracotta, #8e3b30);
+}
+
+.add-to-cart-btn {
+  background-color: var(--color-ink, #2c241b);
+  color: #fdfbf7;
+  border: none;
+  padding: 1rem;
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1.4rem;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(44, 36, 27, 0.15);
+}
+
+.add-to-cart-btn:hover {
+  background-color: var(--color-terracotta, #8e3b30);
+}
+
+.add-to-cart-btn:active {
+  transform: scale(0.98);
+}
+
+.secure-checkout {
+  text-align: center;
+  font-family: 'Frank Ruhl Libre', serif;
+  color: #666;
+  font-size: 1rem;
+}

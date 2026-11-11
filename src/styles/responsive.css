@@ -1,0 +1,97 @@
+/* התאמות כלליות למסכים בגדלים שונים */
+
+/* --- MEDIA QUERIES --- */
+/* =========================================
+   RESPONSIVE DESIGN (התאמה למסכים משתנים)
+   ========================================= */
+
+/* 1. מסכים בינוניים וטאבלטים (עד 1050px) - סידור 
+/* 1. מסכים בינוניים וטאבלטים (עד 1050px) - סידור ההדר */
+@media (max-width: 1050px) {
+  .biblical-header {
+    height: auto;
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2rem;
+    gap: 1.5rem;
+  }
+
+  .header-logo {
+    position: static;
+    height: 130px;
+    margin: 0;
+    order: 1; /* הפקודה ששמה את הלוגו למעלה! */
+  }
+
+  .lang-toggle-btn {
+    position: static;
+    margin: 0;
+    order: 2; /* הפקודה ששמה את הכפתור למטה! */
+  }
+
+  .home-hero {
+    padding-top: 1.5rem;
+  }
+}
+
+/* 2. התאמות למסכי טאבלט (עד 900px) - כרטיסיות ועמודי העץ */
+@media (max-width: 900px) {
+  /* התיקון לכרטיסיות של דף הבית - עמודה אחת מושלמת במרכז */
+  .home-cards-grid {
+    grid-template-columns: 1fr; /* כופה עמודה אחת */
+    max-width: 450px; /* שומר על פרופורציות יפות של הכרטיסייה שלא תימתח מדי */
+    gap: 2rem;
+  }
+
+  .tree-scroll-card {
+    flex-direction: column;
+    max-width: 100%;
+  }
+
+  .tree-image-section {
+    border-left: none;
+    border-bottom: 2px solid var(--color-gold, #c5a059);
+    padding: 1rem;
+  }
+
+  .gold-frame-wrapper {
+    max-width: 80%;
+  }
+
+  .tree-content-section {
+    padding: 1.5rem;
+  }
+
+  .tree-title-he {
+    font-size: 2rem;
+  }
+}
+/* 3. מסכים קטנים וסלולר (עד 768px) - פונטים וטקסטים */
+@media (max-width: 768px) {
+  /* הקטנת כותרות דף הבית כדי שלא יגלשו לשורות מוגזמות */
+  .home-hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .home-hero p {
+    font-size: 1.1rem;
+  }
+
+  .home-cards-grid {
+    gap: 2rem; /* פחות רווח מת בין הכרטיסיות בנייד */
+  }
+
+  /* עיצוב המגילות והטקסט ההיסטורי לשאר האתר */
+  .scroll-paper {
+    padding: 2rem 1.5rem;
+    outline-offset: -8px;
+  }
+
+  .biblical-text {
+    font-size: 1.1rem;
+    /* במקום left (שישבור את העברית), נשתמש ב-start שמתאים את עצמו לשפה באופן דינמי */
+    text-align: start;
+  }
+}

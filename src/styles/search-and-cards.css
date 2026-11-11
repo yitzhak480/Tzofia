@@ -1,0 +1,289 @@
+/* שורת חיפוש, כרטיסי דמויות (biblical-card) ורשת כרטיסים */
+
+/* --- SEARCH BAR STYLES (NEW) --- */
+
+/* --- GALLERY TOOLBAR STYLES --- */
+
+/* Top Row: Search and Sort */
+/* --- GALLERY TOOLBAR STYLES --- */
+
+.gallery-toolbar {
+  width: 90%;
+  max-width: 800px; /* Reduced from 1000px to be more compact */
+  margin: 0 auto 3rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.5rem 2rem; /* Adjusted padding */
+  background-color: rgba(255, 255, 255, 0.4);
+  border: 1px solid var(--color-ink);
+  border-radius: 12px; /* Slightly rounder corners */
+  box-shadow: 0 4px 10px rgba(44, 36, 27, 0.05);
+}
+
+/* Top Row: Search and Sort */
+.toolbar-top {
+  display: flex;
+  justify-content: center; /* Center items instead of pushing them to edges */
+  align-items: center;
+  gap: 1.5rem; /* Space between Sort and Search */
+  flex-wrap: wrap;
+}
+
+.search-wrapper {
+  flex: 0 1 450px; /* Flex-grow: 0 (don't stretch), Base width: 450px */
+  position: relative;
+  width: 100%;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 20px; /* Taller padding for a "chunkier" feel */
+  font-family: "Frank Ruhl Libre", serif;
+  font-size: 1.2rem; /* Larger text */
+  color: var(--color-ink);
+  background-color: var(
+    --color-parchment
+  ); /* Match the Sort button background */
+  border: 1px solid var(--color-ink);
+  border-radius: 50px;
+  outline: none;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+/* Fix for Hebrew Direction (RTL) */
+/* If your site is strictly Hebrew/RTL, the X button should be on the LEFT */
+.search-input:focus {
+  background-color: #fff;
+  border-color: var(--color-terracotta);
+  box-shadow: 0 4px 12px rgba(142, 59, 48, 0.1);
+}
+
+.clear-search-btn {
+  position: absolute;
+  left: 15px; /* Moved to LEFT for Hebrew UI */
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: var(--color-terracotta);
+  cursor: pointer;
+  font-weight: bold;
+  padding: 0;
+}
+
+.sort-dropdown {
+  padding: 12px 20px 12px 35px; /* Matches input padding */
+  font-family: "Frank Ruhl Libre", serif;
+  font-size: 1.1rem;
+  font-weight: bold;
+  background-color: var(--color-parchment);
+  border: 1px solid var(--color-ink);
+  border-radius: 50px;
+  cursor: pointer;
+  color: var(--color-ink);
+  appearance: none;
+  /* Arrow positioning */
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%232c241b%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: left 1rem top 50%; /* Arrow on LEFT for Hebrew */
+  background-size: 0.65rem auto;
+  min-width: 140px;
+}
+/* OPTIONAL: If you want the whole site to flip direction for Hebrew */
+body[dir="rtl"] .toolbar-top {
+  flex-direction: row-reverse;
+}
+/* Bottom Row: Filter Buttons */
+.toolbar-categories {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-top: 1.5rem;
+  border-top: 1px dashed var(--color-gold);
+}
+
+/* ... keep filter-btn and reset-btn styles as they were ... */
+.filter-btn {
+  background: transparent;
+  border: 2px solid transparent; /* Prevents jump on hover */
+  font-family: "Frank Ruhl Libre", serif;
+  font-size: 1.1rem;
+  color: var(--color-ink);
+  cursor: pointer;
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  opacity: 0.7;
+}
+
+.filter-btn:hover {
+  opacity: 1;
+  color: var(--color-terracotta);
+}
+
+.filter-btn.active {
+  opacity: 1;
+  font-weight: bold;
+  border-bottom: 2px solid var(--color-terracotta);
+  background-color: rgba(142, 59, 48, 0.05);
+}
+
+.reset-btn {
+  margin-left: auto; /* Pushes to the right on large screens */
+  background: none;
+  border: 1px solid var(--color-terracotta);
+  color: var(--color-terracotta);
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s;
+}
+
+.reset-btn:hover {
+  background-color: var(--color-terracotta);
+  color: white;
+}
+
+/* No Results State */
+.no-results {
+  width: 100%;
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--color-ink);
+}
+
+.text-btn {
+  background: none;
+  border: none;
+  text-decoration: underline;
+  color: var(--color-terracotta);
+  cursor: pointer;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+}
+
+/* --- PRODUCT CARD STYLES --- */
+
+.biblical-card {
+  width: 260px;
+  background-color: #fdf8e9;
+  border: 4px double var(--color-ink, #2c241b);
+  border-radius: 6px;
+  box-shadow: 0 8px 16px rgba(44, 36, 27, 0.1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.biblical-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(44, 36, 27, 0.2);
+}
+
+.card-image-container {
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  border-bottom: 2px solid var(--color-gold, #c5a059);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-image-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(44, 36, 27, 0.15);
+  pointer-events: none;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.biblical-card:hover .card-image {
+  transform: scale(1.05);
+}
+
+.card-content {
+  padding: 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  flex-grow: 1;
+}
+
+.card-title {
+  font-family: "Frank Ruhl Libre", serif;
+  font-size: 1.4rem;
+  margin: 0;
+  color: var(--color-ink);
+}
+
+.card-price {
+  font-family: "Frank Ruhl Libre", serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--color-terracotta, #8e3b30);
+}
+
+.card-description {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  opacity: 0.9;
+  margin: 0;
+}
+
+.card-button {
+  margin-top: auto;
+  background-color: var(--color-ink, #2c241b);
+  color: var(--color-parchment, #f4e4bc);
+  border: 1px solid var(--color-gold, #c5a059);
+  padding: 0.8rem 1rem;
+  font-family: "Frank Ruhl Libre", serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.card-button:hover {
+  background-color: var(--color-terracotta, #8e3b30);
+  color: white;
+  border-color: var(--color-ink);
+}
+
+/* --- GALLERY GRID STYLES --- */
+
+.gallery-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  max-width: 1600px;
+  width: 95%;
+  padding: 0;
+  margin: 0 auto;
+}
+
+/* --- GLOBAL RESETS --- */
+#root {
+  max-width: none !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: initial !important;
+}
