@@ -53,7 +53,7 @@ const EncyclopediaPerson = () => {
   const roles = (person.roles || []).map((r) => tr(r, lang)).filter(Boolean);
   const lifeText = yearsText(person.life, lang);
   const offices = (person.offices || []).filter((o) => tr(o.label, lang));
-  const sources = person.sources || [];
+  const sources = (!he && person.sourcesEn?.length ? person.sourcesEn : person.sources) || [];
   const spots = (person.treeSpots || []).map((s) => ({ ...s, tree: treeById(s.tree) })).filter((s) => s.tree);
   const related = (person.relations || []).filter((r) => r.type === 'related');
   const family = { ...person, relations: (person.relations || []).filter((r) => r.type !== 'related') };

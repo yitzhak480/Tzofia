@@ -28,6 +28,7 @@ const toForm = (p = {}) => ({
   mainImage: p.mainImage || null,
   relations: (p.relations || []).map((r) => ({ type: r.type, person: r.person ? String(r.person) : null, name: L(r.name) })),
   sources: (p.sources || []).join('\n'),
+  sourcesEn: (p.sourcesEn || []).join('\n'),
   treeSpots: (p.treeSpots || []).map((s) => ({ tree: s.tree, x: s.x, y: s.y })),
   period: L(p.period),
   slug: p.slug || '',
@@ -50,6 +51,7 @@ const toBody = (f) => ({
   mainImage: f.mainImage,
   relations: f.relations.filter((r) => r.person || r.name.he.trim()),
   sources: f.sources.split('\n').map((s) => s.trim()).filter(Boolean),
+  sourcesEn: f.sourcesEn.split('\n').map((s) => s.trim()).filter(Boolean),
   treeSpots: f.treeSpots,
   period: f.period,
   slug: f.slug.trim(),
@@ -273,6 +275,15 @@ const PersonForm = ({ initial, defaultCategory, categoryRows, people, upload, on
           onChange={(e) => set({ sources: e.target.value })}
           placeholder={'שמואל א׳ טז\nתהילים'}
         />
+        {showEnglish && (
+          <textarea
+            rows={4}
+            dir="ltr"
+            value={form.sourcesEn}
+            onChange={(e) => set({ sourcesEn: e.target.value })}
+            placeholder={'Sources in English, one per line\nI Samuel 16\nPsalms'}
+          />
+        )}
       </Section>
 
       <Section title="באילן היוחסין שלנו" hint="סמנו איפה הערך מופיע באילן. בעמוד יוצגו האילן עם סימון ותצוגה מוגדלת.">

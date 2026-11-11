@@ -97,6 +97,8 @@ const personSchema = new mongoose.Schema(
     mainImage: { type: imageSchema, default: null },
     relations: { type: [relationSchema], default: [] },
     sources: { type: [{ type: String, trim: true }], default: [] },
+    // The same sources written in English (for the English site).
+    sourcesEn: { type: [{ type: String, trim: true }], default: [] },
     treeSpots: { type: [treeSpotSchema], default: [] },
     order: { type: Number, default: 0 },
     // Unpublished people are visible only in the admin.
@@ -108,6 +110,7 @@ const personSchema = new mongoose.Schema(
 personSchema.pre('validate', function cleanUp() {
   // Drop empty rows the admin form may send.
   this.sources = (this.sources || []).map((s) => String(s).trim()).filter(Boolean);
+  this.sourcesEn = (this.sourcesEn || []).map((s) => String(s).trim()).filter(Boolean);
   this.roles = (this.roles || []).filter((r) => r && r.he && r.he.trim());
   this.relations = (this.relations || []).filter((r) => r.person || (r.name && r.name.he && r.name.he.trim()));
   this.autoSummary = { he: excerpt(this.content?.he), en: excerpt(this.content?.en) };
