@@ -27,11 +27,11 @@ module.exports = {
         sec('הכרת הבורא', 'אברם בן תרח נולד באור כשדים. לפי הרמב״ם, כבר בילדותו התבונן בעולם עד שהכיר את בורא העולם, ונלחם בעבודה הזרה של בני דורו. ה׳ אמר לו "לך לך מארצך", ואברהם יצא עם שרה אשתו ולוט בן אחיו לארץ כנען.',
           'Recognizing the Creator', 'Avram son of Terach was born in Ur Kasdim. According to the Rambam, already as a child he contemplated the world until he recognized its Creator, and fought the idolatry of his generation. Hashem told him "Go forth from your land", and Avraham went with his wife Sarah and his nephew Lot to the land of Canaan.'),
         sec('עשרה ניסיונות', 'אברהם נתנסה בעשרה ניסיונות ועמד בכולם (אבות ה, ג), ובאחרונם, עקדת יצחק, עקד את בנו על המזבח בהר המוריה. ה׳ כרת איתו ברית בין הבתרים והבטיח את הארץ לזרעו. הכתוב קורא לו נביא: "כי נביא הוא ויתפלל בעדך".',
-          'Ten Trials', 'Avraham was tested with ten trials and withstood them all (Avot 5:3), the last being the Binding of Yitzchak on Mount Moriah. Hashem made the Covenant between the Pieces with him and promised the land to his descendants. Scripture calls him a prophet: "for he is a prophet, and he will pray for you".'),
+          'Ten Trials', 'Avraham was tested with ten trials and withstood them all (Avot 5:3), the last being the Binding of Yitzhak on Mount Moriah. Hashem made the Covenant between the Pieces with him and promised the land to his descendants. Scripture calls him a prophet: "for he is a prophet, and he will pray for you".'),
       ],
     }),
     prophet({
-      slug: 'yitzchak-avinu', name: L('יצחק אבינו', 'Yitzchak Avinu (Isaac)'), cardColor: GREEN,
+      slug: 'yitzchak-avinu', name: L('יצחק אבינו', 'Yitzhak Avinu (Isaac)'), cardColor: GREEN,
       roles: [L('אבי האומה', 'Father of the nation'), L('נביא', 'Prophet')], life: [2048, 2228],
       summary: L('השני מן האבות, שנעקד על המזבח והמשיך את דרכו של אברהם.', 'The second of the Avot, who was bound on the altar and continued Avraham’s path.'),
       rel: [to('father', 'avraham-avinu'), to('mother', 'sarah-imenu'), nm('spouse', 'רבקה', 'Rivkah'), to('child', 'yaakov-avinu'), nm('child', 'עשו', 'Esav'), nm('sibling', 'ישמעאל', 'Yishmael')],
@@ -39,9 +39,9 @@ module.exports = {
       spots: biblical(55.9, 18.0),
       sections: [
         sec('העקדה', 'יצחק נולד לאברהם ולשרה לעת זקנתם, כפי שבישרו המלאכים. כשציווה ה׳ את אברהם לעקוד אותו, הלך עמו יצחק "וילכו שניהם יחדיו", ונעקד על המזבח עד שקרא המלאך "אל תשלח ידך אל הנער".',
-          'The Binding', 'Yitzchak was born to Avraham and Sarah in their old age, as the angels had foretold. When Hashem commanded Avraham to bind him, Yitzchak went with him, "and the two of them walked together", and was bound on the altar until the angel called "Do not lay your hand on the boy".'),
+          'The Binding', 'Yitzhak was born to Avraham and Sarah in their old age, as the angels had foretold. When Hashem commanded Avraham to bind him, Yitzhak went with him, "and the two of them walked together", and was bound on the altar until the angel called "Do not lay your hand on the boy".'),
         sec('בארות וברכות', 'יצחק נשא את רבקה, חפר מחדש את בארות אביו בארץ פלשתים, וזרע בארץ ומצא מאה שערים. בזקנתו בירך את יעקב בברכת אברהם. תהילים מכנה את האבות נביאים: "ובנביאי אל תרעו".',
-          'Wells and Blessings', 'Yitzchak married Rivkah, re-dug his father’s wells in the land of the Philistines, and sowed the land and reaped a hundredfold. In his old age he blessed Yaakov with the blessing of Avraham. Psalms calls the Avot prophets: "and do My prophets no harm".'),
+          'Wells and Blessings', 'Yitzhak married Rivkah, re-dug his father’s wells in the land of the Philistines, and sowed the land and reaped a hundredfold. In his old age he blessed Yaakov with the blessing of Avraham. Psalms calls the Avot prophets: "and do My prophets no harm".'),
       ],
     }),
     prophet({
@@ -54,7 +54,7 @@ module.exports = {
       spots: biblical(50.2, 21.0),
       sections: [
         sec('סולם יעקב', 'יעקב, בנו של יצחק, קיבל את ברכת אביו ונאלץ לברוח מפני עשו אחיו. בדרך לחרן חלם על סולם מוצב ארצה וראשו מגיע השמימה, וה׳ הבטיח לו את הארץ ושמירה בדרכו. בחרן נשא את לאה ואת רחל.',
-          'Yaakov’s Ladder', 'Yaakov son of Yitzchak received his father’s blessing and had to flee from his brother Esav. On the way to Charan he dreamed of a ladder set on the earth with its top reaching heaven, and Hashem promised him the land and protection on his way. In Charan he married Leah and Rachel.'),
+          'Yaakov’s Ladder', 'Yaakov son of Yitzhak received his father’s blessing and had to flee from his brother Esav. On the way to Charan he dreamed of a ladder set on the earth with its top reaching heaven, and Hashem promised him the land and protection on his way. In Charan he married Leah and Rachel.'),
         sec('ישראל', 'בשובו לארץ נאבק עם המלאך, ושמו נקרא ישראל. ממנו יצאו שנים עשר השבטים. לעת זקנתו ירד למצרים אל יוסף, ולפני מותו בירך את בניו ברוח הנבואה, ואמר להם את אשר יקרא אותם באחרית הימים.',
           'Yisrael', 'On his return to the land he wrestled with the angel, and his name was called Yisrael. From him came the twelve tribes. In his old age he went down to Egypt to Yosef, and before his death he blessed his sons in the spirit of prophecy, telling them what would befall them at the end of days.'),
       ],
