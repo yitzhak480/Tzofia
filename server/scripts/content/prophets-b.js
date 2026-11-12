@@ -47,7 +47,7 @@ module.exports = [
   prophet({
     slug: 'chanani-haroeh', name: L('חנני הרואה', 'Chanani the Seer'), cardColor: BLUE,
     summary: L('הרואה שהוכיח את אסא על שנשען על מלך ארם ולא על ה׳.', 'The seer who rebuked Asa for relying on the king of Aram and not on Hashem.'),
-    rel: [unsure('child', 'יהוא בן חנני', 'Yehu son of Chanani'), to('related', 'asa')],
+    rel: [to('related', 'asa')],
     sources: [L('דברי הימים ב׳ טז, ז – י', 'II Chronicles 16:7–10'), L('מלכים א׳ טז, א', 'I Kings 16:1')],
     spots: biblical(74.6, 44.3),
     sections: [
@@ -60,12 +60,12 @@ module.exports = [
   prophet({
     slug: 'yehu-ben-chanani', name: L('יהוא בן חנני', 'Yehu son of Chanani'), cardColor: BLUE,
     summary: L('נביא שהוכיח את בעשא מלך ישראל ואת יהושפט מלך יהודה.', 'A prophet who rebuked Baasha king of Israel and Yehoshafat king of Judah.'),
-    rel: [unsure('father', 'חנני הרואה', 'Chanani the Seer'), to('related', 'baasha'), to('related', 'yehoshafat')],
+    rel: [nm('father', 'חנני', 'Chanani'), to('related', 'baasha'), to('related', 'yehoshafat')],
     sources: [L('מלכים א׳ טז, א – ז; יב', 'I Kings 16:1–7; 12'), L('דברי הימים ב׳ יט, ב – ג; כ, לד', 'II Chronicles 19:2–3; 20:34')],
     spots: biblical(74.6, 45.3),
     sections: [
-      sec('נבואה על בית בעשא', 'יהוא בן חנני ניבא על בעשא מלך ישראל: "יען אשר הרימתיך מן העפר ואתנך נגיד על עמי ישראל ותלך בדרך ירבעם", ולכן יבוער ביתו כבית ירבעם, וכך היה בימי בנו אלה.',
-        'Prophecy against the House of Baasha', 'Yehu son of Chanani prophesied against Baasha king of Israel: "Since I raised you from the dust and made you ruler over My people Israel, and you walked in the way of Yeravam", his house would be swept away like the house of Yeravam, and so it was in the days of his son Elah.'),
+      sec('נבואה על בית בעשא', 'יהוא בן חנני ניבא על בעשא מלך ישראל: "יען אשר הרימתיך מן העפר ואתנך נגיד על עמי ישראל ותלך בדרך ירבעם", ולכן יבוער ביתו כבית ירבעם, וכך היה בימי בנו אלה. באילן שלנו יש סימן שאלה בינו לבין חנני הרואה, כי לא ודאי שחנני אביו הוא חנני הרואה מימי אסא, ולכן לא חיברנו ביניהם.',
+        'Prophecy against the House of Baasha', 'Yehu son of Chanani prophesied against Baasha king of Israel: "Since I raised you from the dust and made you ruler over My people Israel, and you walked in the way of Yeravam", his house would be swept away like the house of Yeravam, and so it was in the days of his son Elah. On our tree there is a question mark between him and Chanani the seer, since it is not certain that his father Chanani is Chanani the seer of Asa’s days, so we have not joined them.'),
       sec('הלרשע לעזור', 'אחרי שיצא יהושפט עם אחאב למלחמה ברמות גלעד, יצא לקראתו יהוא בן חנני החוזה: "הלרשע לעזר ולשנאי ה׳ תאהב?", אך הוסיף שנמצאו בו דברים טובים. יהוא כתב את דברי יהושפט, שנכללו בספר מלכי ישראל.',
         'Should You Help the Wicked', 'After Yehoshafat went out with Achav to the battle at Ramot Gilad, Yehu son of Chanani the seer went out to meet him: "Should you help the wicked and love those who hate Hashem?", but added that good things were found in him. Yehu wrote the chronicles of Yehoshafat, which were included in the book of the kings of Israel.'),
     ],

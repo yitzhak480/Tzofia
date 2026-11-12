@@ -38,7 +38,7 @@ const BATCHES = [
       'nadav-ben-aharon', 'avihu', 'elazar-ben-aharon', 'itamar', 'pinchas', 'kalev-ben-yefuneh', 'otniel-ben-kenaz', 'chur', 'uri', 'betzalel', 'nun', 'yehoshua-bin-nun', 'rachav', 'salmon'],
     relink: {
       'moshe-rabbeinu': { 'עמרם': 'amram', 'יוכבד': 'yocheved', 'ציפורה': 'tziporah', 'גרשם': 'gershom', 'אליעזר': 'eliezer-ben-moshe' },
-      'aharon-hakohen': { 'עמרם': 'amram', 'יוכבד': 'yocheved', 'אלישבע בת עמינדב': 'elisheva-bat-aminadav', 'נדב': 'nadav-ben-aharon', 'אביהוא': 'avihu', 'איתמר': 'itamar' },
+      'aharon-hakohen': { 'אלעזר': 'elazar-ben-aharon', 'עמרם': 'amram', 'יוכבד': 'yocheved', 'אלישבע בת עמינדב': 'elisheva-bat-aminadav', 'נדב': 'nadav-ben-aharon', 'אביהוא': 'avihu', 'איתמר': 'itamar' },
       'miriam-haneviah': { 'עמרם': 'amram', 'יוכבד': 'yocheved', 'חור': 'chur' },
       'yehoshua-bin-nun': { 'נון': 'nun', 'רחב': 'rachav' },
       'kalev-ben-yefuneh': { 'חצרון': 'chetzron', 'אשת חצרון וקנז': 'eshet-chetzron-vekenaz', 'חור': 'chur' },
