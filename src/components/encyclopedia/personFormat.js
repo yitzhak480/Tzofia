@@ -45,12 +45,21 @@ export const RELATION_TYPES = [
 // Words that change with the person's gender ("רבותיו" / "רבותיה").
 export const genderWords = (person, lang) => {
   const female = person.gender === 'female';
-  if (lang !== 'he') return { teachers: 'Teachers', students: 'Students', siblings: 'and siblings', family: 'Family' };
+  if (lang !== 'he') {
+    return {
+      teachers: 'Teachers', students: 'Students', siblings: 'and siblings', family: 'Family',
+      spouses: female ? 'Husband' : 'Wives', before: 'Before in the role', after: 'After in the role', succession: 'role',
+    };
+  }
   return {
     teachers: female ? 'רבותיה' : 'רבותיו',
     students: female ? 'תלמידיה' : 'תלמידיו',
     siblings: female ? 'ואחיה' : 'ואחיו',
     family: 'משפחה',
+    spouses: female ? 'בעלה' : 'נשותיו',
+    before: female ? 'לפניה בתפקיד' : 'לפניו בתפקיד',
+    after: female ? 'אחריה בתפקיד' : 'אחריו בתפקיד',
+    succession: female ? 'תפקידה' : 'תפקידו',
   };
 };
 
@@ -63,11 +72,31 @@ export const familyTitle = (person, lang) => {
     (g.parents.length || g.siblings.length || g.spouses.length || g.children.length) && w.family,
     g.teachers.length && w.teachers,
     g.students.length && w.students,
+    (successionOf(person).before.length || successionOf(person).after.length) && w.succession,
   ].filter(Boolean);
   if (parts.length <= 1) return parts[0] || '';
   const last = parts[parts.length - 1];
   const rest = parts.slice(0, -1).join(', ');
   return lang === 'he' ? `${rest} ו${last}` : `${rest} and ${last.toLowerCase()}`;
+};
+
+// Everyone before / after this person in any of their roles (no repeats).
+export const successionOf = (person) => {
+  const collect = (key) => {
+    const seen = new Set();
+    const out = [];
+    for (const o of person.offices || []) {
+      for (const p of o[key] || []) {
+        const k = p.slug || p.name?.he;
+        if (k && !seen.has(k)) {
+          seen.add(k);
+          out.push(p);
+        }
+      }
+    }
+    return out;
+  };
+  return { before: collect('before'), after: collect('after') };
 };
 
 // Splits a person's relations into the groups the family tree uses.

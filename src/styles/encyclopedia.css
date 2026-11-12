@@ -616,3 +616,27 @@ body[dir="ltr"] .encyc-infobox {
   }
 }
 
+/* לפניו / אחריו בתפקיד */
+.encyc-succession {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.92rem;
+}
+
+.encyc-succession-label {
+  color: #6b6255;
+}
+
+/* לפניו / אחריו בתפקיד בעץ המשפחה */
+.encyc-family-group.is-role .encyc-family-label {
+  color: var(--color-terracotta, #8e3b30);
+}
+
+.encyc-family-group.is-role .encyc-chip {
+  border-style: dashed;
+}
+
+.encyc-family-group.is-role .encyc-chip.is-link {
+  border-style: solid;
+}
+

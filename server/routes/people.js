@@ -8,6 +8,7 @@ const { ancestorChain, removedImages } = require('../lib/tree');
 const { deleteImages } = require('../lib/cloudinary');
 const { toSlug, uniqueSlug } = require('../lib/slug');
 const { resolveRelations } = require('../lib/relations');
+const { resolveOffices } = require('../lib/succession');
 
 const router = express.Router();
 const FIELDS = [
@@ -35,6 +36,14 @@ const cleanRelations = (relations) =>
   Array.isArray(relations)
     ? relations.map((r) => ({ ...r, person: r.person && mongoose.isValidObjectId(r.person) ? r.person : null }))
     : relations;
+
+// Offices: keep only valid links, drop empty rows.
+const cleanLinks = (list) =>
+  (Array.isArray(list) ? list : [])
+    .map((l) => ({ person: l.person && mongoose.isValidObjectId(l.person) ? l.person : null, name: l.name || {} }))
+    .filter((l) => l.person || (l.name.he && String(l.name.he).trim()));
+const cleanOffices = (offices) =>
+  Array.isArray(offices) ? offices.map((o) => ({ ...o, before: cleanLinks(o.before), after: cleanLinks(o.after) })) : offices;
 
 // GET /api/people?q=david&category=<id> -> published people (cards, no article)
 router.get('/', async (req, res) => {
@@ -69,16 +78,17 @@ router.get('/:slug', async (req, res) => {
   const person = await Person.findOne({ slug: req.params.slug.toLowerCase(), published: true }).lean();
   if (!person) return badId(res);
 
-  const [categoryDocs, ancestors, relations] = await Promise.all([
+  const [categoryDocs, ancestors, relations, offices] = await Promise.all([
     Category.find({ _id: { $in: person.categories } }).select('slug name').lean(),
     ancestorChain(person.categories[0]),
     resolveRelations(person),
+    resolveOffices(person),
   ]);
   // Keep the admin's order of categories.
   const byId = new Map(categoryDocs.map((c) => [String(c._id), c]));
   const categories = person.categories.map((id) => byId.get(String(id))).filter(Boolean);
 
-  res.json({ person: { ...person, relations }, categories, ancestors });
+  res.json({ person: { ...person, relations, offices }, categories, ancestors });
 });
 
 // POST /api/people (admin)
@@ -88,6 +98,7 @@ router.post('/', requireAdmin, async (req, res) => {
   if (problem) return res.status(400).json({ message: problem });
 
   data.relations = cleanRelations(data.relations);
+  data.offices = cleanOffices(data.offices);
   data.slug = data.slug
     ? String(data.slug).toLowerCase().trim()
     : await uniqueSlug(Person, toSlug(data.name?.en) || toSlug(data.name?.he));
@@ -112,6 +123,7 @@ router.put('/:id', requireAdmin, async (req, res) => {
     if (problem) return res.status(400).json({ message: problem });
   }
   if ('relations' in data) data.relations = cleanRelations(data.relations);
+  if ('offices' in data) data.offices = cleanOffices(data.offices);
   if ('slug' in data && !data.slug) {
     data.slug = await uniqueSlug(Person, toSlug(data.name?.en || person.name.en) || toSlug(data.name?.he || person.name.he), person._id);
   }

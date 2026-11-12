@@ -68,10 +68,41 @@ export const YearsInput = ({ value, onChange, label }) => {
 
 const OFFICE_SUGGESTIONS = ['שנות מלוכה', 'שנות נבואה', 'שנות כהונה', 'שנות נשיאות', 'שנות שפיטה', 'ראש ישיבה'];
 
-export const OfficesEditor = ({ value, onChange, showEnglish }) => {
+// A short list of names (with page suggestions), for "before" / "after".
+const LinkList = ({ title, addLabel, value, onChange, people, askTeacher }) => {
+  const [focusIndex, setFocusIndex] = useState(null);
+  const [dismissed, setDismissed] = useState(() => new Set());
+  const keyOf = (l) => l.person || l.name.he.trim();
+  const update = (i, patch) => onChange(value.map((l, j) => (j === i ? { ...l, ...patch } : l)));
+  const add = () => {
+    onChange([...value, { person: null, name: { he: '', en: '' } }]);
+    setFocusIndex(value.length);
+  };
+  return (
+    <div className="admin-link-list">
+      <span className="admin-link-list-title">{title}</span>
+      {value.map((l, i) => (
+        <div key={i} className="admin-link-list-row">
+          <PersonNameInput relation={l} people={people} autoFocus={focusIndex === i} onChange={(patch) => update(i, patch)} onEnter={add} />
+          <button type="button" className="admin-icon-btn" onClick={() => onChange(value.filter((_, j) => j !== i))} title="הסרה">×</button>
+          {askTeacher && l.name.he.trim() && !askTeacher.isTeacher(l) && !dismissed.has(keyOf(l)) && (
+            <div className="admin-ask">
+              {`האם ${l.name.he.trim()} ${askTeacher.word}?`}
+              <button type="button" className="admin-btn" onClick={() => askTeacher.add(l)}>כן, להוסיף</button>
+              <button type="button" className="admin-link-btn" onClick={() => setDismissed((d) => new Set(d).add(keyOf(l)))}>לא</button>
+            </div>
+          )}
+        </div>
+      ))}
+      <button type="button" className="admin-link-btn" onClick={add}>{addLabel}</button>
+    </div>
+  );
+};
+
+export const OfficesEditor = ({ value, onChange, showEnglish, people = [], askTeacher }) => {
   const update = (i, patch) => onChange(value.map((o, j) => (j === i ? { ...o, ...patch } : o)));
   const remove = (i) => onChange(value.filter((_, j) => j !== i));
-  const add = () => onChange([...value, { label: { he: '', en: '' }, from: '', to: '', note: { he: '', en: '' } }]);
+  const add = () => onChange([...value, { label: { he: '', en: '' }, from: '', to: '', note: { he: '', en: '' }, before: [], after: [] }]);
 
   return (
     <div className="admin-stack">
@@ -99,6 +130,10 @@ export const OfficesEditor = ({ value, onChange, showEnglish }) => {
             />
           )}
           <button type="button" className="admin-icon-btn" onClick={() => remove(i)} title="הסרה">×</button>
+          <div className="admin-office-succession">
+            <LinkList title="לפניו בתפקיד:" addLabel="+ הוספה" value={o.before || []} onChange={(before) => update(i, { before })} people={people} askTeacher={askTeacher} />
+            <LinkList title="אחריו בתפקיד:" addLabel="+ הוספה" value={o.after || []} onChange={(after) => update(i, { after })} people={people} />
+          </div>
         </div>
       ))}
       <datalist id="office-suggestions">

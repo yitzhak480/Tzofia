@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../../context/context';
 import { tr } from '../../api';
-import { genderWords, groupRelations } from './personFormat';
+import { genderWords, groupRelations, successionOf } from './personFormat';
 
 // A small family tree: teachers on top, parents, the person among the
 // siblings, spouses, children, and students at the bottom.
@@ -12,6 +12,7 @@ const FamilyTree = ({ person, name }) => {
   const he = lang === 'he';
   const g = groupRelations(person.relations);
   const w = genderWords(person, lang);
+  const roles = successionOf(person);
 
   const chip = (r, i) => {
     const label = tr(r.name, lang);
@@ -35,6 +36,8 @@ const FamilyTree = ({ person, name }) => {
 
   return (
     <div className="encyc-family">
+      {row(w.before, roles.before, 'is-side is-role')}
+      {roles.before.length > 0 && line}
       {row(w.teachers, g.teachers, 'is-side')}
       {g.teachers.length > 0 && line}
       {row(he ? 'הורים' : 'Parents', g.parents)}
@@ -49,11 +52,13 @@ const FamilyTree = ({ person, name }) => {
         </div>
       </div>
 
-      {row(he ? 'בני זוג' : 'Spouses', g.spouses, 'is-side')}
+      {row(w.spouses, g.spouses, 'is-side')}
       {g.children.length > 0 && line}
       {row(he ? 'ילדים' : 'Children', g.children)}
       {g.students.length > 0 && line}
       {row(w.students, g.students, 'is-side')}
+      {roles.after.length > 0 && line}
+      {row(w.after, roles.after, 'is-side is-role')}
     </div>
   );
 };

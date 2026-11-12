@@ -8,7 +8,7 @@ import Breadcrumbs from '../../components/encyclopedia/Breadcrumbs';
 import LoadingState from '../../components/encyclopedia/LoadingState';
 import FamilyTree from '../../components/encyclopedia/FamilyTree';
 import { TreeHighlight, TreeZoom } from '../../components/encyclopedia/TreeViews';
-import { cardSummary, familyTitle, yearsText } from '../../components/encyclopedia/personFormat';
+import { cardSummary, familyTitle, successionOf, yearsText } from '../../components/encyclopedia/personFormat';
 import { treeById } from '../../data/trees';
 import { CartContext } from '../../context/context';
 import { tr, useApi } from '../../api';
@@ -24,6 +24,24 @@ DOMPurify.addHook('afterSanitizeAttributes', (node) => {
 // /encyclopedia/person/david — a person's (or place's) page.
 // Layout: info box (picture, details, sources) beside the article, then the
 // person on our tree posters, then the family tree. Empty parts are hidden.
+// "לפניו: שאול" / "אחריו: רחבעם, ירבעם בן נבט" under a role.
+const Succession = ({ label, list, lang }) =>
+  list?.length ? (
+    <span className="encyc-succession">
+      <span className="encyc-succession-label">{label}:</span>{' '}
+      {list.map((p, i) => (
+        <React.Fragment key={i}>
+          {i > 0 && ', '}
+          {p.slug ? (
+            <Link to={`/encyclopedia/person/${p.slug}`} className="encyc-link" dir="auto">{tr(p.name, lang)}</Link>
+          ) : (
+            <span dir="auto">{tr(p.name, lang)}</span>
+          )}
+        </React.Fragment>
+      ))}
+    </span>
+  ) : null;
+
 const EncyclopediaPerson = () => {
   const { slug } = useParams();
   const { lang } = useContext(CartContext);
@@ -53,10 +71,16 @@ const EncyclopediaPerson = () => {
   const roles = (person.roles || []).map((r) => tr(r, lang)).filter(Boolean);
   const lifeText = yearsText(person.life, lang);
   const offices = (person.offices || []).filter((o) => tr(o.label, lang));
+  const female = person.gender === 'female';
   const sources = (!he && person.sourcesEn?.length ? person.sourcesEn : person.sources) || [];
   const spots = (person.treeSpots || []).map((s) => ({ ...s, tree: treeById(s.tree) })).filter((s) => s.tree);
   const related = (person.relations || []).filter((r) => r.type === 'related');
-  const family = { ...person, relations: (person.relations || []).filter((r) => r.type !== 'related') };
+  const family = {
+    ...person,
+    relations: isPlace ? [] : (person.relations || []).filter((r) => r.type !== 'related'),
+  };
+  const roleLinks = successionOf(person);
+  const hasRoles = roleLinks.before.length > 0 || roleLinks.after.length > 0;
   // On the English site, an article written only in Hebrew is shown right-to-left.
   const hebrewOnly = !he && !person.content?.en && Boolean(person.content?.he);
 
@@ -66,8 +90,10 @@ const EncyclopediaPerson = () => {
     ...offices.map((o) => [
       tr(o.label, lang),
       <>
-        {yearsText(o, lang) || '—'}
+        {yearsText(o, lang) || (!o.before?.length && !o.after?.length ? '—' : null)}
         {tr(o.note, lang) && <small dir="auto">{tr(o.note, lang)}</small>}
+        <Succession label={female ? (he ? 'לפניה' : 'Preceded by') : he ? 'לפניו' : 'Preceded by'} list={o.before} lang={lang} />
+        <Succession label={female ? (he ? 'אחריה' : 'Succeeded by') : he ? 'אחריו' : 'Succeeded by'} list={o.after} lang={lang} />
       </>,
     ]),
     data.categories.length > 0 && [
@@ -155,7 +181,7 @@ const EncyclopediaPerson = () => {
             </section>
           )}
 
-          {!isPlace && family.relations.length > 0 && (
+          {((!isPlace && family.relations.length > 0) || hasRoles) && (
             <section className="encyc-section">
               <h2 className="encyc-section-title">{familyTitle(family, lang)}</h2>
               <FamilyTree person={family} name={name} />

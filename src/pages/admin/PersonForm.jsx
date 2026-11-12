@@ -24,7 +24,11 @@ const toForm = (p = {}) => ({
   categories: p.categories ? p.categories.map(String) : [],
   roles: (p.roles || []).map(L),
   life: { from: yearStr(p.life?.from), to: yearStr(p.life?.to) },
-  offices: (p.offices || []).map((o) => ({ label: L(o.label), from: yearStr(o.from), to: yearStr(o.to), note: L(o.note) })),
+  offices: (p.offices || []).map((o) => ({
+    label: L(o.label), from: yearStr(o.from), to: yearStr(o.to), note: L(o.note),
+    before: (o.before || []).map((l) => ({ person: l.person ? String(l.person) : null, name: L(l.name) })),
+    after: (o.after || []).map((l) => ({ person: l.person ? String(l.person) : null, name: L(l.name) })),
+  })),
   content: L(p.content),
   summary: L(p.summary),
   mainImage: p.mainImage || null,
@@ -48,7 +52,11 @@ const toBody = (f) => ({
   life: { from: yearNum(f.life.from), to: yearNum(f.life.to) },
   offices: f.offices
     .filter((o) => o.label.he.trim())
-    .map((o) => ({ label: o.label, from: yearNum(o.from), to: yearNum(o.to), note: o.note })),
+    .map((o) => ({
+      label: o.label, from: yearNum(o.from), to: yearNum(o.to), note: o.note,
+      before: (o.before || []).filter((l) => l.person || l.name.he.trim()),
+      after: (o.after || []).filter((l) => l.person || l.name.he.trim()),
+    })),
   content: f.content,
   summary: f.summary,
   mainImage: f.mainImage,
@@ -266,7 +274,21 @@ const PersonForm = ({ initial, defaultCategory, categoryRows, people, upload, on
         {!isPlace && (
           <div className="form-group">
             <label>תפקיד עם שנים (מלוכה, נבואה, כהונה...):</label>
-            <OfficesEditor value={form.offices} onChange={(offices) => set({ offices })} showEnglish={showEnglish} />
+            <OfficesEditor
+              value={form.offices}
+              onChange={(offices) => set({ offices })}
+              showEnglish={showEnglish}
+              people={otherPeople}
+              askTeacher={{
+                word: form.gender === 'female' ? 'הייתה גם רבה' : 'היה גם רבו',
+                isTeacher: (l) =>
+                  form.relations.some(
+                    (r) => r.type === 'teacher' && (l.person ? r.person === l.person : r.name.he.trim() === l.name.he.trim())
+                  ),
+                add: (l) =>
+                  set({ relations: [...form.relations, { type: 'teacher', person: l.person || null, name: { he: l.name.he, en: l.name.en || '' } }] }),
+              }}
+            />
           </div>
         )}
       </Section>

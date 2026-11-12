@@ -14,12 +14,24 @@ const yearsSchema = new mongoose.Schema(
 );
 
 // A position held for some years: "שנות מלוכה 2884–2924".
+// Someone who held the same role before / after (a page link or just a name).
+const officeLinkSchema = new mongoose.Schema(
+  {
+    person: { type: mongoose.Schema.Types.ObjectId, ref: 'Person', default: null },
+    name: { type: localized(), default: () => ({}) },
+  },
+  { _id: false }
+);
+
 const officeSchema = new mongoose.Schema(
   {
     label: { type: localized(true), required: true },
     from: { type: Number, default: null },
     to: { type: Number, default: null },
     note: { type: localized(), default: () => ({}) },
+    // Several are allowed, e.g. after Shlomo: Rechavam and Yeravam.
+    before: { type: [officeLinkSchema], default: [] },
+    after: { type: [officeLinkSchema], default: [] },
   },
   { _id: false }
 );
