@@ -39,6 +39,10 @@ const main = async () => {
   await mongoose.connect(process.env.MONGO_URI);
   const cats = Object.fromEntries((await Category.find().lean()).map((c) => [c.slug, c._id]));
   if (!cats.prophets) throw new Error('No "prophets" category');
+  // Categories made later (scripts/prophets-subcategories.js, add-kohanim-gedolim.js):
+  // when they exist, entries go there instead of the general category.
+  const LATER = { prophets: 'prophets-of-israel', 'kohanim-gedolim': 'kohanim-gedolim-mishkan' };
+  for (const [from, to] of Object.entries(LATER)) if (cats[to]) cats[from] = cats[to];
   const prophetsId = String(cats.prophets);
 
   const bySlug = new Map((await Person.find()).map((p) => [p.slug, p]));
