@@ -990,3 +990,55 @@ a.admin-btn {
   gap: 0.5rem;
   margin: 0.6rem 0;
 }
+
+/* Changing the order: drag rows, or choose several and move them together */
+.admin-draggable {
+  cursor: grab;
+  position: relative;
+}
+.admin-draggable.is-dragging {
+  opacity: 0.45;
+}
+.admin-draggable.drop-before {
+  box-shadow: 0 -3px 0 0 var(--color-gold, #c5a059);
+}
+.admin-draggable.drop-after {
+  box-shadow: 0 3px 0 0 var(--color-gold, #c5a059);
+}
+.admin-tree-item.is-selected {
+  background-color: rgba(197, 160, 89, 0.28);
+  border-color: var(--color-gold, #c5a059);
+}
+.admin-drag-handle {
+  color: var(--color-gold, #c5a059);
+  font-size: 1.1rem;
+  letter-spacing: -3px;
+  user-select: none;
+}
+.admin-select-box {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.admin-reorder-bar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  margin-bottom: 10px;
+  padding: 10px 14px;
+  background-color: #fffaf0;
+  border: 1px solid var(--color-gold, #c5a059);
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+.admin-reorder-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}

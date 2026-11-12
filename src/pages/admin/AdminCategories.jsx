@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import CategoryForm from './CategoryForm';
 import { buildTree, descendantsOf } from './categoryTree';
+import ReorderBar from './ReorderBar';
+import { edgeBlock, moveBlock, sameOrder, stepBlock, useDragReorder } from './reorder';
 
 const AdminCategories = ({ adminApi }) => {
   const { call, upload } = adminApi;
@@ -11,6 +13,9 @@ const AdminCategories = ({ adminApi }) => {
   // null = no form open; { mode: 'new', parent } or { mode: 'edit', category }
   const [editing, setEditing] = useState(null);
   const [busyId, setBusyId] = useState(null);
+  // chosen categories – all with the same parent, so they can move together
+  const [selected, setSelected] = useState(() => new Set());
+  const [saving, setSaving] = useState(false);
 
   const reload = useCallback(async () => {
     try {
@@ -69,30 +74,43 @@ const AdminCategories = ({ adminApi }) => {
     }
   };
 
-  // Swap a category with its neighbour among its siblings.
-  const move = async (category, direction) => {
-    const siblings = siblingsOf(category.parent);
-    const index = siblings.findIndex((s) => s._id === category._id);
-    const target = index + direction;
-    if (target < 0 || target >= siblings.length) return;
-    const reordered = [...siblings];
-    [reordered[index], reordered[target]] = [reordered[target], reordered[index]];
-
-    setBusyId(category._id);
+  // A new order for categories that share a parent, saved in one go.
+  const saveOrder = async (siblings, list) => {
+    if (sameOrder(list, siblings)) return;
+    setSaving(true);
+    // show it at once, then load what was saved
+    const rank = new Map(list.map((c, i) => [c._id, i + 1]));
+    setCategories((cs) => cs.map((c) => (rank.has(c._id) ? { ...c, order: rank.get(c._id) } : c)));
     try {
-      // Renumber 1, 2, 3... and save only the ones that changed.
-      await Promise.all(
-        reordered
-          .map((s, i) => ({ s, order: i + 1 }))
-          .filter(({ s, order }) => s.order !== order)
-          .map(({ s, order }) => call(`/categories/${s._id}`, { method: 'PUT', body: { order } }))
-      );
-      await reload();
+      await call('/categories/reorder', { method: 'POST', body: { ids: list.map((c) => c._id) } });
     } catch (err) {
       toast.error(err.message);
     } finally {
-      setBusyId(null);
+      await reload();
+      setSaving(false);
     }
+  };
+  const parentOf = (id) => (categories || []).find((c) => c._id === id)?.parent || null;
+  const drag = useDragReorder({
+    selected,
+    canDrop: (from, to) => String(parentOf(from) || '') === String(parentOf(to) || ''),
+    onMove: (ids, targetId, after) => {
+      const siblings = siblingsOf(parentOf(targetId));
+      saveOrder(siblings, moveBlock(siblings, ids, targetId, after));
+    },
+  });
+  // choosing a category under another parent starts a new choice
+  const toggle = (c) => setSelected((old) => {
+    const first = [...old][0];
+    const next = first && String(parentOf(first) || '') !== String(c.parent || '') ? new Set() : new Set(old);
+    if (next.has(c._id)) next.delete(c._id);
+    else next.add(c._id);
+    return next;
+  });
+  const chosenSiblings = () => siblingsOf(parentOf([...selected][0]));
+  const move = (category, direction) => {
+    const siblings = siblingsOf(category.parent);
+    saveOrder(siblings, stepBlock(siblings, new Set([category._id]), direction));
   };
 
   if (loadError) {
@@ -141,6 +159,15 @@ const AdminCategories = ({ adminApi }) => {
           )}
         </div>
 
+        <p className="admin-hint">אפשר לגרור קטגוריה למקום אחר בין הקטגוריות שלצידה, או לסמן כמה קטגוריות (מאותה רמה) ולהזיז את כולן יחד.</p>
+        <ReorderBar
+          count={selected.size}
+          busy={saving}
+          onStep={(dir) => saveOrder(chosenSiblings(), stepBlock(chosenSiblings(), selected, dir))}
+          onEdge={(dir) => saveOrder(chosenSiblings(), edgeBlock(chosenSiblings(), selected, dir))}
+          onClear={() => setSelected(new Set())}
+        />
+
         {rows.length === 0 ? (
           <p className="loading-text">עדיין אין קטגוריות.</p>
         ) : (
@@ -148,9 +175,16 @@ const AdminCategories = ({ adminApi }) => {
             {rows.map((c) => {
               const siblings = siblingsOf(c.parent);
               const index = siblings.findIndex((s) => s._id === c._id);
-              const busy = busyId === c._id;
+              const busy = busyId === c._id || saving;
               return (
-                <li key={c._id} className="admin-tree-item" style={{ marginInlineStart: `${c.depth * 2}rem` }}>
+                <li
+                  key={c._id}
+                  className={`admin-tree-item admin-draggable ${drag.rowClass(c._id)} ${selected.has(c._id) ? 'is-selected' : ''}`}
+                  style={{ marginInlineStart: `${c.depth * 2}rem` }}
+                  {...drag.rowProps(c._id, saving)}
+                >
+                  <span className="admin-drag-handle" title="גררו כדי להזיז" aria-hidden="true">⋮⋮</span>
+                  <input type="checkbox" className="admin-select-box" aria-label={`בחירת ${c.name.he}`} checked={selected.has(c._id)} onChange={() => toggle(c)} />
                   {c.image?.url ? (
                     <img src={c.image.url} alt="" className="admin-thumb" />
                   ) : (

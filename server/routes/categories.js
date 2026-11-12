@@ -119,6 +119,51 @@ router.post('/:id/entry-colors', requireAdmin, async (req, res) => {
   res.json({ updated: people.length });
 });
 
+// The order of the entries in a category, as the site shows it (admin; drafts too).
+const entryOrder = (category, people) => {
+  const pos = (p) => (p.orders && p.orders[String(category._id)] != null ? p.orders[String(category._id)] : p.order);
+  const byManual = (a, b) => pos(a) - pos(b) || String(a.createdAt).localeCompare(String(b.createdAt));
+  const mode = category.sortMode || 'chrono';
+  return people.sort(mode === 'chrono' ? (a, b) => yearOf(a) - yearOf(b) || byManual(a, b) : byManual);
+};
+
+// GET /api/categories/:id/entry-order (admin) → { sortMode, ids }
+router.get('/:id/entry-order', requireAdmin, async (req, res) => {
+  if (!mongoose.isValidObjectId(req.params.id)) return res.status(404).json({ message: 'Category not found' });
+  const category = await Category.findById(req.params.id).lean();
+  if (!category) return res.status(404).json({ message: 'Category not found' });
+  const people = await Person.find({ categories: category._id }).select(CARD_FIELDS + ' createdAt').sort(SORT).lean();
+  res.json({ sortMode: category.sortMode || 'chrono', ids: entryOrder(category, people).map((p) => p._id) });
+});
+
+// POST /api/categories/:id/reorder-entries (admin) { ids } — the entries in this
+// order (1, 2, 3...). The category then keeps this order (manual), and the ones
+// not in the list follow them.
+router.post('/:id/reorder-entries', requireAdmin, async (req, res) => {
+  if (!mongoose.isValidObjectId(req.params.id)) return res.status(404).json({ message: 'Category not found' });
+  const category = await Category.findById(req.params.id);
+  if (!category) return res.status(404).json({ message: 'Category not found' });
+  const ids = Array.isArray(req.body?.ids) ? req.body.ids.filter((id) => mongoose.isValidObjectId(id)) : [];
+  if (!ids.length) return res.status(400).json({ message: 'No entries' });
+  const key = `orders.${category._id}`;
+  await Person.bulkWrite(ids.map((id, i) => ({
+    updateOne: { filter: { _id: id, categories: category._id }, update: { $set: { [key]: i + 1 } } },
+  })));
+  const wasSorted = category.sortMode !== 'manual';
+  if (wasSorted) { category.sortMode = 'manual'; await category.save(); }
+  res.json({ updated: ids.length, switchedToManual: wasSorted });
+});
+
+// POST /api/categories/reorder (admin) { ids } — categories with one parent, in this order
+router.post('/reorder', requireAdmin, async (req, res) => {
+  const ids = Array.isArray(req.body?.ids) ? req.body.ids.filter((id) => mongoose.isValidObjectId(id)) : [];
+  if (!ids.length) return res.status(400).json({ message: 'No categories' });
+  const parents = new Set((await Category.find({ _id: { $in: ids } }).select('parent').lean()).map((c) => String(c.parent || '')));
+  if (parents.size > 1) return res.status(400).json({ message: 'Categories must share a parent' });
+  await Category.bulkWrite(ids.map((id, i) => ({ updateOne: { filter: { _id: id }, update: { $set: { order: i + 1 } } } })));
+  res.json({ updated: ids.length });
+});
+
 // DELETE /api/categories/:id (admin) — only when empty, so nothing is lost by accident
 router.delete('/:id', requireAdmin, async (req, res) => {
   if (!mongoose.isValidObjectId(req.params.id)) return res.status(404).json({ message: 'Category not found' });
