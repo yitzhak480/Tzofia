@@ -17,6 +17,9 @@ const CATEGORIES = {
   'judges-to-david': { order: 0.2, color: 't1-shvatim', name: L('מימי השופטים עד דוד', 'From the Judges to David'), description: L('מימי השופטים ועד תחילת מלכות דוד', 'From the days of the Judges to the start of David’s reign') },
   'david-shlomo': { order: 0.3, color: 't1-yehuda', name: L('ימי דוד ושלמה', 'The Days of David and Shlomo'), description: L('הממלכה המאוחדת, מתחילת מלכות דוד ועד פילוג הממלכה', 'The united kingdom, from the start of David’s reign to the division of the kingdom') },
   'kingdom-of-judah': { order: 0.4, color: 't1-yehuda', name: L('אנשי ממלכת יהודה', 'People of the Kingdom of Judah'), description: L('אנשי ממלכת יהודה שלא היו מלכים או נביאים', 'People of the Kingdom of Judah who were not kings or prophets') },
+  'kingdom-of-israel': { order: 0.5, color: 't1-shvatim', name: L('אנשי ממלכת ישראל', 'People of the Kingdom of Israel'), description: L('אנשי ממלכת ישראל שלא היו מלכים או נביאים', 'People of the Kingdom of Israel who were not kings or prophets') },
+  'galut-bavel': { order: 0.6, color: 't1-yehuda', name: L('גלות בבל', 'The Babylonian Exile'), description: L('הגולים לבבל, מחורבן בית ראשון ועד שיבת ציון, וראשי הגולה', 'The exiles in Bavel, from the destruction of the First Temple to the Return to Zion, and the Heads of the Exile') },
+  'shivat-tzion': { order: 0.7, color: 't1-yehuda', name: L('שיבת ציון', 'The Return to Zion'), description: L('העולים מבבל ובוני הבית השני', 'Those who came up from Bavel and built the Second Temple') },
   levites: { order: 6.5, color: 't1-levi', sortMode: 'chrono', name: L('בני לוי', 'The Levites'), description: L('משפחות שבט לוי: לויים, משוררים ובני משפחות הכהנים', 'The families of the tribe of Levi: Levites, singers and the families of the Kohanim') },
   'gerei-tzedek': { order: 6.6, color: 't1-gerim', sortMode: 'chrono', name: L('גרי צדק', 'Righteous Converts'), description: L('מי שבאו מן העמים ונכנסו תחת כנפי השכינה', 'Those who came from the nations and entered under the wings of the Divine Presence') },
 };
@@ -114,6 +117,42 @@ const BATCHES = [
       'shalum-ben-tzadok': { 'צדוק': 'tzadok-ben-achituv-2' },
     },
   },
+  {
+    category: 'kingdom-of-israel',
+    entries: require('./content/israel-exile-return').israel,
+    order: ['nevat', 'aviya-ben-yeravam', 'achiya-avi-baasha', 'izevel', 'yimla', 'nimshi', 'yehoshafat-ben-nimshi'],
+    relink: {
+      'yeravam-ben-nevat': { 'נבט': 'nevat', 'אביה': 'aviya-ben-yeravam' },
+      achav: { 'איזבל': 'izevel' },
+      baasha: { 'אחיה': 'achiya-avi-baasha' },
+      yehu: { 'יהושפט בן נמשי': 'yehoshafat-ben-nimshi' },
+      'michayhu-ben-yimlah': { 'ימלה': 'yimla' },
+    },
+  },
+  {
+    category: 'galut-bavel',
+    entries: require('./content/israel-exile-return').galut,
+    order: ['daniel', 'chananya-chaver-daniel', 'mishael', 'azarya-chaver-daniel', 'yechezkel-hanavi', 'baruch-ben-neriyah', 'yehotzadak', 'pedaya-rosh-hagola', 'shaltiel',
+      'shimi-avi-yair', 'yair-avi-mordechai', 'avichail', 'mordechai-hayehudi', 'esther-hamalka', 'meshulam-rosh-hagola', 'chananya-rosh-hagola', 'berechya-rosh-hagola'],
+    relink: {
+      'mordechai-hayehudi': { 'יאיר': 'yair-avi-mordechai' },
+      'esther-hamalka': { 'אביחיל': 'avichail' },
+      yehoyachin: { 'שאלתיאל': 'shaltiel', 'פדיה': 'pedaya-rosh-hagola' },
+      'seraya-ben-azaryah': { 'יהוצדק': 'yehotzadak' },
+    },
+  },
+  {
+    category: 'shivat-tzion',
+    entries: require('./content/israel-exile-return').shivat,
+    order: ['zerubavel', 'yehoshua-ben-yehotzadak', 'chaggai-hanavi', 'zecharyah-hanavi', 'mordechai-hayehudi', 'yoyakim', 'ezra-hasofer', 'chachalya', 'nechemya', 'elyashiv', 'malachi-hanavi'],
+    relink: {
+      'seraya-ben-azaryah': { 'עזרא הסופר': 'ezra-hasofer' },
+      'chaggai-hanavi': { 'זרובבל': 'zerubavel' },
+      'zecharyah-hanavi': { 'זרובבל': 'zerubavel' },
+      'malachi-hanavi': { 'עזרא הסופר': 'ezra-hasofer' },
+      'baruch-ben-neriyah': { 'עזרא הסופר': 'ezra-hasofer' },
+    },
+  },
 ];
 
 // Why names have an asterisk on the tree; and a few links from those notes.
@@ -154,10 +193,10 @@ const main = async () => {
     return { type: r.type, person: other._id, name: { he: other.name.he, en: other.name.en || '' } };
   };
 
+  // all pages first, so that links between batches work
   let count = 0;
   for (const batch of BATCHES) {
     const period = cats[batch.category];
-    // pages
     for (const e of batch.entries) {
       const doc = bySlug.get(e.slug) || new Person({ slug: e.slug });
       doc.set({
@@ -171,6 +210,9 @@ const main = async () => {
       bySlug.set(e.slug, doc);
       count += 1;
     }
+  }
+  for (const batch of BATCHES) {
+    const period = cats[batch.category];
     for (const e of batch.entries) {
       const doc = bySlug.get(e.slug);
       doc.relations = e.rel.map((r) => link(r, e.slug));
