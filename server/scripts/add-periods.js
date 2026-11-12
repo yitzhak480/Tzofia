@@ -10,6 +10,7 @@ const mongoose = require('mongoose');
 const Category = require('../models/Category');
 const Person = require('../models/Person');
 const CHECKLIST = require('./content/tree-checklist-biblical');
+const CHECKLIST2 = require('./content/tree-checklist-talmud');
 const EVENT_SLUGS = new Set(require('./content/events-first-tree').map((e) => e.slug));
 const { L } = require('./content/helpers');
 
@@ -324,6 +325,12 @@ const spotOf = (name) => {
   if (!row) throw new Error(`"${name}" is not in the tree checklist`);
   return [{ tree: 'biblical', x: row[3], y: row[4] }];
 };
+// a spot on the second (Talmud) tree, for a name on both posters
+const spot2Of = (name) => {
+  const row = CHECKLIST2.find((r) => r[0] === name);
+  if (!row) throw new Error(`"${name}" is not in the Talmud tree checklist`);
+  return [{ tree: 'gmara', x: row[3], y: row[4] }];
+};
 const html = (sections, lang) => sections.map((s) => `<h2>${lang === 'he' ? s.titleHe : s.titleEn}</h2><p>${lang === 'he' ? s.textHe : s.textEn}</p>`).join('');
 
 const main = async () => {
@@ -374,7 +381,7 @@ const main = async () => {
         name: e.name, titles: [], roles: e.roles || [], life: e.life ? { from: e.life[0], to: e.life[1] } : { from: null, to: null },
         summary: e.summary, content: { he: html(e.sections, 'he'), en: html(e.sections, 'en') },
         sources: e.sources.map((s) => s.he), sourcesEn: e.sources.map((s) => s.en),
-        treeSpots: spotOf(e.spot), cardColor: e.color || doc.cardColor || GROUP[e.spot] || 't1-shvatim', published: true,
+        treeSpots: [...spotOf(e.spot), ...(e.spot2 ? spot2Of(e.spot2) : [])], cardColor: e.color || doc.cardColor || GROUP[e.spot] || 't1-shvatim', published: true,
         titles: e.titles || [],
       });
       if (e.offices) doc.offices = e.offices.map((o) => ({ label: o.label, from: o.from ?? null, to: o.to ?? null, note: o.note || { he: '', en: '' }, before: [], after: [] }));

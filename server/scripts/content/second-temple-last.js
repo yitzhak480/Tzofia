@@ -2,7 +2,7 @@
 // Rav Huna, Kosiva and Bar Kochba, and the figures of the Second Temple
 // (the three rich men of Jerusalem, the Alabarchs of Alexandria, Philo and
 // Yosef ben Matityahu).
-const { L, sec, to } = require('./helpers');
+const { L, sec, to, nm } = require('./helpers');
 
 const p = (e) => ({ gender: 'male', cats: [], ...e });
 const one = (titleHe, he, titleEn, en) => [sec(titleHe, he, titleEn, en)];
@@ -44,13 +44,15 @@ const rasheiHagola = [
     [to('father', 'anan-rosh-hagola'), to('child', 'rav-huna-kama')],
     `נתן בא אחרי ענן בשרשרת ראשי הגולה. ${chain}`, `Natan came after Anan in the chain of the Heads of the Exile. ${chainEn}`),
   p({
-    slug: 'rav-huna-kama', name: L('רב הונא קמא', 'Rav Huna I'), spot: 'רב הונא קמא',
+    slug: 'rav-huna-kama', name: L('רב הונא קמא', 'Rav Huna I'), spot: 'רב הונא קמא', spot2: 'רב הונא קמא',
     roles: [L('ראש הגולה', 'Head of the Exile')],
     summary: L('ראש הגולה בבבל בימי רבי יהודה הנשיא, שרבי אמר עליו שהוא גדול ממנו ביחוסו.', 'Head of the Exile in Bavel in the days of Rabbi Yehudah HaNasi, of whom Rebbi said he was greater than him in lineage.'),
-    rel: [to('father', 'natan-rosh-hagola'), to('related', 'rabbi-yehuda-hanasi')], offices: [RG(['natan-rosh-hagola'], [])],
+    rel: [to('father', 'natan-rosh-hagola'), to('related', 'rabbi-yehuda-hanasi'), nm('child', 'נתן ב׳', 'Natan II')],
+    offices: [{ ...RG(['natan-rosh-hagola'], [L('נתן ב׳', 'Natan II')]), from: 3910, to: 3960 }],
     sources: [L('הוריות יא ע״ב', 'Horayot 11b'), L('ירושלמי כלאים ט, ג', 'Yerushalmi Kilayim 9:3'), L('מועד קטן כה ע״א', 'Moed Katan 25a'), SOZ],
     sections: [
       sec('רב הונא', 'הגמרא (הוריות יא ע״ב) מספרת שרבי שאל את רבי חייא: "כגון אני מהו בשעיר?" – האם אני כמלך? ענה לו: "הרי צרתך בבבל" – רב הונא ראש הגולה, שהוא מבית דוד מצד הזכר, ואילו רבי מבית דוד מצד הנקבה. הוא נפטר בבבל, וארונו הועלה לארץ ישראל ונקבר ליד רבי חייא (מועד קטן כה ע״א). באילן שלנו מתחתיו כתוב שראשי הגולה המשיכו להנהיג את גלות בבל גם בתקופת האמוראים והגאונים.', 'Rav Huna', 'The Gemara (Horayot 11b) relates that Rebbi asked Rabbi Chiya: "One like me – what am I regarding the king’s goat-offering?" – am I like a king? He answered: "Your rival is in Bavel" – Rav Huna the Head of the Exile, who is of the house of David through the male line, while Rebbi is of the house of David through the female line. He died in Bavel, and his coffin was brought up to the Land of Israel and buried beside Rabbi Chiya (Moed Katan 25a). On our tree it says beneath him that the Heads of the Exile went on leading the Babylonian exile in the times of the Amoraim and the Geonim too.'),
+      sec('באילן השני', 'באילן השני, "אילן יוחסין אמוראים לגאונים", רב הונא קמא עומד בראש שושלת ראשי הגולה, ומתחת לשמו "ראש גולה ~3910-3960". ממנו יורד הקו הסגול של משפחת ראשי הגולה אל בנו נתן ב׳, ראש הגולה אחריו (~3960-3980).', 'On the Second Tree', 'On the second tree, "From the Amoraim to the Geonim", Rav Huna I stands at the head of the line of the Heads of the Exile, and beneath his name "Head of the Exile ~3910-3960". The purple line of the family of the Heads of the Exile goes down from him to his son Natan II, Head of the Exile after him (~3960-3980).'),
       RG_NOTE,
     ],
   }),
