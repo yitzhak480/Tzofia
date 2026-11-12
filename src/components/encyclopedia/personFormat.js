@@ -142,3 +142,13 @@ export const groupRelations = (relations = []) => {
     students: of('student'),
   };
 };
+
+// The writing direction of a piece of text, from its first letter: 'rtl' for
+// Hebrew, 'ltr' for English. Text with no letters at all (years, dashes)
+// returns undefined, so it keeps the direction of the page around it.
+// (dir="auto" would turn such text left-to-right, even on the Hebrew site.)
+export const textDir = (text) => {
+  const m = String(text ?? '').match(/[A-Za-z\u00C0-\u024F]|[\u0590-\u05FF\uFB1D-\uFB4F]/);
+  if (!m) return undefined;
+  return /[A-Za-z\u00C0-\u024F]/.test(m[0]) ? 'ltr' : 'rtl';
+};

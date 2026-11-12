@@ -8,7 +8,7 @@ import Breadcrumbs from '../../components/encyclopedia/Breadcrumbs';
 import LoadingState from '../../components/encyclopedia/LoadingState';
 import FamilyTree from '../../components/encyclopedia/FamilyTree';
 import { TreeHighlight, TreeZoom } from '../../components/encyclopedia/TreeViews';
-import { cardSummary, familyTitle, successionOf, yearsText } from '../../components/encyclopedia/personFormat';
+import { cardSummary, familyTitle, successionOf, textDir, yearsText } from '../../components/encyclopedia/personFormat';
 import { treeById } from '../../data/trees';
 import { CartContext } from '../../context/context';
 import { tr, useApi } from '../../api';
@@ -33,9 +33,9 @@ const Succession = ({ label, list, lang }) =>
         <React.Fragment key={i}>
           {i > 0 && ', '}
           {p.slug ? (
-            <Link to={`/encyclopedia/person/${p.slug}`} className="encyc-link" dir="auto">{tr(p.name, lang)}</Link>
+            <Link to={`/encyclopedia/person/${p.slug}`} className="encyc-link" dir={textDir(tr(p.name, lang))}>{tr(p.name, lang)}</Link>
           ) : (
-            <span dir="auto">{tr(p.name, lang)}</span>
+            <span dir={textDir(tr(p.name, lang))}>{tr(p.name, lang)}</span>
           )}
         </React.Fragment>
       ))}
@@ -83,9 +83,9 @@ const EncyclopediaPerson = () => {
       <React.Fragment key={i}>
         {i > 0 && ', '}
         {r.slug ? (
-          <Link to={`/encyclopedia/person/${r.slug}`} className="encyc-link" dir="auto">{tr(r.name, lang)}</Link>
+          <Link to={`/encyclopedia/person/${r.slug}`} className="encyc-link" dir={textDir(tr(r.name, lang))}>{tr(r.name, lang)}</Link>
         ) : (
-          <span dir="auto">{tr(r.name, lang)}</span>
+          <span dir={textDir(tr(r.name, lang))}>{tr(r.name, lang)}</span>
         )}
       </React.Fragment>
     ));
@@ -105,7 +105,7 @@ const EncyclopediaPerson = () => {
       tr(o.label, lang),
       <>
         {yearsText(o, lang) || (!o.before?.length && !o.after?.length ? '—' : null)}
-        {tr(o.note, lang) && <small dir="auto">{tr(o.note, lang)}</small>}
+        {tr(o.note, lang) && <small dir={textDir(tr(o.note, lang))}>{tr(o.note, lang)}</small>}
         <Succession label={female ? (he ? 'לפניה' : 'Preceded by') : he ? 'לפניו' : 'Preceded by'} list={o.before} lang={lang} />
         <Succession label={female ? (he ? 'אחריה' : 'Succeeded by') : he ? 'אחריו' : 'Succeeded by'} list={o.after} lang={lang} />
       </>,
@@ -137,14 +137,14 @@ const EncyclopediaPerson = () => {
 
       <main className="home-main">
         <section className="home-hero encyc-hero" style={{ paddingBottom: '1.5rem' }}>
-          <h1 dir="auto">{name}</h1>
+          <h1 dir={textDir(name)}>{name}</h1>
           <Breadcrumbs categories={data.ancestors} current={name} />
         </section>
 
         <article className={`encyc-article encyc-person ${hasInfobox ? '' : 'no-infobox'}`}>
           {hasInfobox && (
             <aside className="encyc-infobox">
-              <div className="encyc-infobox-title" dir="auto">
+              <div className="encyc-infobox-title" dir={textDir(name)}>
                 {name}
                 {titles.length > 0 && <span className="encyc-infobox-titles">{titles.join(' · ')}</span>}
               </div>
@@ -154,8 +154,8 @@ const EncyclopediaPerson = () => {
                   <tbody>
                     {rows.map(([label, value], i) => (
                       <tr key={i}>
-                        <th scope="row" dir="auto">{label}</th>
-                        <td dir="auto">{value}</td>
+                        <th scope="row">{label}</th>
+                        <td dir={typeof value === 'string' ? textDir(value) : undefined}>{value}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -164,7 +164,7 @@ const EncyclopediaPerson = () => {
               {sources.length > 0 && (
                 <div className="encyc-infobox-sources">
                   <div className="encyc-infobox-subtitle">{he ? 'מקורות' : 'Sources'}</div>
-                  <ol dir="auto">{sources.map((src, i) => <li key={i}>{src}</li>)}</ol>
+                  <ol dir={textDir(sources[0])}>{sources.map((src, i) => <li key={i}>{src}</li>)}</ol>
                 </div>
               )}
             </aside>
@@ -179,7 +179,7 @@ const EncyclopediaPerson = () => {
               dangerouslySetInnerHTML={{ __html: articleHtml }}
             />
           ) : (
-            cardSummary(person, lang) && <p className="encyc-content" dir="auto">{cardSummary(person, lang)}</p>
+            cardSummary(person, lang) && <p className="encyc-content" dir={textDir(cardSummary(person, lang))}>{cardSummary(person, lang)}</p>
           )}
 
           {spots.length > 0 && (
@@ -213,9 +213,9 @@ const EncyclopediaPerson = () => {
               <div className="encyc-family-row">
                 {related.map((r, i) =>
                   r.slug ? (
-                    <Link key={i} to={`/encyclopedia/person/${r.slug}`} className="encyc-chip is-link" dir="auto">{tr(r.name, lang)}</Link>
+                    <Link key={i} to={`/encyclopedia/person/${r.slug}`} className="encyc-chip is-link" dir={textDir(tr(r.name, lang))}>{tr(r.name, lang)}</Link>
                   ) : (
-                    <span key={i} className="encyc-chip" dir="auto">{tr(r.name, lang)}</span>
+                    <span key={i} className="encyc-chip" dir={textDir(tr(r.name, lang))}>{tr(r.name, lang)}</span>
                   )
                 )}
               </div>

@@ -22,6 +22,8 @@ const EXISTING = {
   // Tzadok's father "אחיטוב" is Achituv son of Amaryah, NOT Achituv son of Pinchas: left as a name
   'tzadok-hakohen': { before: ['evyatar-ben-achimelech'], after: ['achimaatz-ben-tzadok'], names: { 'אחימעץ': 'achimaatz-ben-tzadok' } },
   'mishkan-nov': { names: { 'אחימלך הכהן': 'achimelech-ben-achituv' } },
+  // Radak (in his father's name) and Malbim on Yirmeyahu 1:1; joined on the poster
+  'yirmeyahu-hanavi': { names: { 'חלקיהו': 'chilkiyahu-hakohen', 'חלקיהו הכהן הגדול': 'chilkiyahu-hakohen' } },
 };
 
 const main = async () => {

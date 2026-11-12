@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../../context/context';
 import { tr } from '../../api';
-import { cardLine, cardSummary } from './personFormat';
+import { cardLine, cardSummary, textDir } from './personFormat';
 import CardBack from './CardBack';
 import CategoryIcon from './CategoryIcon';
 import { iconForCategory } from './categoryIcons';
@@ -34,9 +34,9 @@ const PersonCard = ({ person, category }) => {
       </div>
 
       <div className="card-content">
-        <h2 className="card-title" dir="auto">{name}</h2>
-        {line && <div className="card-reign" dir="auto">{line}</div>}
-        {summary && <p className="card-description" dir="auto">{summary}</p>}
+        <h2 className="card-title" dir={textDir(name)}>{name}</h2>
+        {line && <div className="card-reign" dir={textDir(line)}>{line}</div>}
+        {summary && <p className="card-description" dir={textDir(summary)}>{summary}</p>}
         <span className="wiki-learn-more-btn encyc-card-btn">
           {lang === 'he' ? 'קרא עוד' : 'Read More'}
         </span>

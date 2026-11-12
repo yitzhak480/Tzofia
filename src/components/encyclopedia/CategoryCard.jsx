@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { CartContext } from '../../context/context';
 import { tr } from '../../api';
 import CardBack from './CardBack';
+import { textDir } from './personFormat';
 
 // A category card in the same style as the cards on the Home page.
 const CategoryCard = ({ category }) => {
@@ -21,9 +22,9 @@ const CategoryCard = ({ category }) => {
         )}
       </div>
       <div className="card-content">
-        <h2 dir="auto">{name}</h2>
+        <h2 dir={textDir(name)}>{name}</h2>
         <div className="title-separator"></div>
-        {description && <p dir="auto">{description}</p>}
+        {description && <p dir={textDir(description)}>{description}</p>}
       </div>
     </Link>
   );
