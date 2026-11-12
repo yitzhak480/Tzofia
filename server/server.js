@@ -16,6 +16,7 @@ app.use('/api/categories', require('./routes/categories'));
 app.use('/api/people', require('./routes/people'));
 app.use('/api/upload', require('./routes/upload'));
 app.use('/api/products', require('./routes/products'));
+app.use('/api/checklist', require('./routes/checklist'));
 
 // Basic route just to check it works
 app.get('/', (req, res) => {

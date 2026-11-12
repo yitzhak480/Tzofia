@@ -36,7 +36,7 @@ module.exports = [
     summary: L('הנביא מבני לוי שבישר לירבעם על מלכותו, ומסר את התורה לאליהו.', 'The Levite prophet who told Yeravam of his kingship, and passed the tradition to Eliyahu.'),
     rel: [to('teacher', 'david'), to('student', 'eliyahu-hanavi'), to('related', 'yeravam-ben-nevat'), to('related', 'shlomo'), to('related', 'shevet-levi')],
     sources: [L('מלכים א׳ יא, כט – לט; יד, א – יח', 'I Kings 11:29–39; 14:1–18'), L('דברי הימים ב׳ ט, כט', 'II Chronicles 9:29'), L('בבא בתרא קכא ע״ב', 'Bava Batra 121b'), L('רמב״ם, הקדמה למשנה תורה', 'Rambam, Introduction to Mishneh Torah')],
-    spots: biblical(81.7, 40.1),
+    spots: biblical(79.5, 40.35),
     sections: [
       sec('השלמה החדשה', 'אחיה הנביא משילה פגש את ירבעם בן נבט בדרך, קרע את שלמתו החדשה לשנים עשר קרעים, ונתן לו עשרה, כסימן לעשרת השבטים שיימסרו בידו בגלל חטאי שלמה בזקנתו. כשחלה בן ירבעם ושלח את אשתו בתחפושת, זיהה אותה אחיה אף שעיניו כהו, וניבא על חורבן בית ירבעם.',
         'The New Cloak', 'Achiyah the prophet of Shiloh met Yeravam son of Nevat on the road, tore his new cloak into twelve pieces and gave him ten, a sign of the ten tribes that would be given to him because of Shlomo’s sins in his old age. When Yeravam’s son fell ill and he sent his wife in disguise, Achiyah recognized her though his eyes were dim, and prophesied the end of Yeravam’s house.'),
