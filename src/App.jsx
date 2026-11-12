@@ -12,6 +12,7 @@ import Cart from './pages/Cart';
 import Biblical from './pages/Biblical';
 import Gmara from './pages/Gmara';
 import About from './pages/About'; // הנה הייבוא של עמוד האודות
+import CardPreview from './pages/CardPreview'; // עמוד נסתר: עיצובים לכרטיסים
 import SiteSplash from './components/SiteSplash';
 import './App.css';
 
@@ -62,6 +63,7 @@ function App() {
             {/* the old Gallery address now leads to the Encyclopedia */}
             <Route path="/gallery" element={<Navigate to="/encyclopedia" replace />} />
             <Route path="/tree" element={<Tree />} />
+            <Route path="/card-preview" element={<CardPreview />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/accessibility" element={<Accessibility />} />
             <Route path="/about" element={<About />} /> {/* והנה הנתיב עצמו! */}
