@@ -172,8 +172,8 @@ const families = [
   }),
 ];
 
-const RG_LINE = sec('בית הלל', 'מהלל יצאה שושלת הנשיאים, אב אחר בן: הלל, רבן שמעון בנו, רבן גמליאל הזקן, רבן שמעון בן גמליאל, רבן גמליאל דיבנה, רבן שמעון בן גמליאל, ורבי יהודה הנשיא. הגמרא (שבת טו ע״א) אומרת: "הלל ושמעון, גמליאל ושמעון, נהגו נשיאותן בפני הבית מאה שנה". באילן החצים השחורים מראים את סדר הנשיאות.',
-  'The House of Hillel', 'From Hillel came the line of Nesi’im, father to son: Hillel, his son Rabban Shimon, Rabban Gamliel the Elder, Rabban Shimon ben Gamliel, Rabban Gamliel of Yavneh, Rabban Shimon ben Gamliel, and Rabbi Yehudah HaNasi. The Gemara (Shabbat 15a) says: "Hillel and Shimon, Gamliel and Shimon held their office as Nasi while the Temple stood, a hundred years". On our tree the black arrows show the order of the Nesi’im.');
+const RG_LINE = sec('בית הלל', 'מהלל יצאה שושלת הנשיאים, אב אחר בן: הלל, רבן שמעון בנו, רבן גמליאל הזקן, רבן שמעון בן גמליאל, רבן גמליאל דיבנה, רבן שמעון בן גמליאל, ורבי יהודה הנשיא. הגמרא (שבת טו ע״א) אומרת: "הלל ושמעון, גמליאל ושמעון, נהגו נשיאותן בפני הבית מאה שנה". באילן החצים השחורים מראים את סדר הנשיאות, והנשיאים ממוספרים: רבן שמעון א׳ בן הלל, רבן גמליאל א׳ הזקן, רבן שמעון ב׳ בן גמליאל (שנהרג), רבן גמליאל ב׳ דיבנה, ורבן שמעון ג׳ בן גמליאל, אבי רבי.',
+  'The House of Hillel', 'From Hillel came the line of Nesi’im, father to son: Hillel, his son Rabban Shimon, Rabban Gamliel the Elder, Rabban Shimon ben Gamliel, Rabban Gamliel of Yavneh, Rabban Shimon ben Gamliel, and Rabbi Yehudah HaNasi. The Gemara (Shabbat 15a) says: "Hillel and Shimon, Gamliel and Shimon held their office as Nasi while the Temple stood, a hundred years". On our tree the black arrows show the order of the Nesi’im, and they are numbered: Rabban Shimon I son of Hillel, Rabban Gamliel I the Elder, Rabban Shimon II ben Gamliel (who was killed), Rabban Gamliel II of Yavneh, and Rabban Shimon III ben Gamliel, Rebbi’s father.');
 
 const nesiim = [
   p({
@@ -193,7 +193,7 @@ const nesiim = [
     sections: [sec('רבן גמליאל הזקן', 'רבן גמליאל הזקן תיקן תקנות רבות "מפני תיקון העולם", כגון שהגט ייכתב בשמות המלאים של האיש והאשה (גיטין ד, ב). המשנה אומרת: "משמת רבן גמליאל הזקן בטל כבוד התורה, ומתה טהרה ופרישות".', 'Rabban Gamliel the Elder', 'Rabban Gamliel the Elder enacted many ordinances "for the betterment of the world", such as that a get be written with the full names of the man and the woman (Gittin 4:2). The Mishnah says: "When Rabban Gamliel the Elder died, the honour of the Torah ceased, and purity and separateness died".'), RG_LINE],
   }),
   p({
-    slug: 'rabban-shimon-ben-gamliel-1', cats: ['tannaim'], name: L('רבן שמעון בן גמליאל הראשון', 'Rabban Shimon ben Gamliel I'), spot: 'רבן שמעון בן גמליאל (הנהרג)',
+    slug: 'rabban-shimon-ben-gamliel-1', cats: ['tannaim'], name: L('רבן שמעון ב׳ בן גמליאל', 'Rabban Shimon II ben Gamliel'), spot: 'רבן שמעון בן גמליאל (הנהרג)',
     roles: [L('נשיא', 'Nasi')],
     summary: L('הנשיא בימי החורבן, מעשרת הרוגי מלכות: "לא מצאתי לגוף טוב אלא שתיקה".', 'The Nasi at the time of the Destruction, one of the Ten Martyrs: "I have found nothing better for the body than silence".'),
     rel: [to('father', 'rabban-gamliel-hazaken'), to('child', 'rabban-gamliel-deyavne'), to('related', 'harigat-rashbag'), to('related', 'churban-bayit-sheni')],
@@ -219,7 +219,7 @@ const nesiim = [
     ],
   }),
   p({
-    slug: 'rabban-shimon-ben-gamliel-2', cats: ['tannaim'], name: L('רבן שמעון בן גמליאל השני', 'Rabban Shimon ben Gamliel II'), spot: 'רבן שמעון בן גמליאל (ג׳)',
+    slug: 'rabban-shimon-ben-gamliel-2', cats: ['tannaim'], name: L('רבן שמעון ג׳ בן גמליאל', 'Rabban Shimon III ben Gamliel'), spot: 'רבן שמעון בן גמליאל (ג׳)',
     roles: [L('נשיא', 'Nasi')],
     summary: L('הנשיא באושא אחרי מרד בר כוכבא, אבי רבי יהודה הנשיא.', 'The Nasi in Usha after the Bar Kochba revolt, father of Rabbi Yehudah HaNasi.'),
     rel: [to('father', 'rabban-gamliel-deyavne'), to('child', 'rabbi-yehuda-hanasi')], offices: [NASI(['rabban-gamliel-deyavne'], ['rabbi-yehuda-hanasi'])],
@@ -249,14 +249,14 @@ const tannaim = [
     roles: [L('אב בית דין', 'Av Beit Din'), L('ראש החכמים ביבנה', 'Head of the sages in Yavneh')],
     summary: L('הקטן שבתלמידי הלל, שהציל את התורה בחורבן: "תן לי יבנה וחכמיה".', 'The youngest of Hillel’s students, who saved the Torah at the Destruction: "Give me Yavneh and its sages".'),
     rel: [to('teacher', 'hillel-hazaken'), to('teacher', 'shammai'), to('related', 'rabban-gamliel-deyavne'), to('related', 'churban-bayit-sheni'),
-      nm('student', 'רבי אליעזר בן הורקנוס', 'Rabbi Eliezer ben Hurkanos'), nm('student', 'רבי יהושע בן חנניה', 'Rabbi Yehoshua ben Chananya'), nm('student', 'רבי יוסי הכהן', 'Rabbi Yose HaKohen'),
-      nm('student', 'רבי שמעון בן נתנאל', 'Rabbi Shimon ben Netanel'), nm('student', 'רבי אלעזר בן ערך', 'Rabbi Elazar ben Arach')],
+      to('student', 'rabbi-eliezer-ben-hurkanos'), to('student', 'rabbi-yehoshua-ben-chananya'), to('student', 'rabbi-yose-hakohen'), to('student', 'rabbi-shimon-ben-netanel'),
+      to('student', 'rabbi-elazar-ben-arach'), to('student', 'rabbi-chanina-ben-dosa'), to('student', 'rabbi-nechunya-ben-hakana'), to('student', 'rabbi-tarfon')],
     offices: [ABD(['shammai'], [])],
     sources: [L('משנה אבות ב, ח – ט', 'Mishnah Avot 2:8–9'), L('סוכה כח ע״א', 'Sukkah 28a'), L('גיטין נו ע״א – ע״ב', 'Gittin 56a–b'), L('ברכות כח ע״ב', 'Berachot 28b')],
     sections: [
       sec('רבן יוחנן בן זכאי', 'רבן יוחנן בן זכאי "קיבל מהלל ומשמאי". הגמרא אומרת שהיה הקטן שבשמונים תלמידי הלל, ובכל זאת "לא הניח מקרא ומשנה, גמרא, הלכות ואגדות" (סוכה כח ע״א). הוא אמר: "אם למדת תורה הרבה, אל תחזיק טובה לעצמך, כי לכך נוצרת".', 'Rabban Yochanan ben Zakai', 'Rabban Yochanan ben Zakai "received from Hillel and from Shammai". The Gemara says he was the youngest of Hillel’s eighty students, and still "he did not leave aside Scripture, Mishnah, Gemara, laws and aggadot" (Sukkah 28a). He said: "If you have learned much Torah, do not take credit for yourself, for that is what you were created for".'),
       sec('יבנה וחכמיה', 'בזמן המצור על ירושלים יצא מן העיר בארון, ובא לפני אספסיינוס. כשהתברר שאספסיינוס יהיה קיסר, ביקש: "תן לי יבנה וחכמיה, ושושילתא דרבן גמליאל, ואסוותא דמסיין ליה לרבי צדוק" (גיטין נו ע״ב). ביבנה הקים מחדש את בית הדין ותיקן תקנות אחרי החורבן.', 'Yavneh and Its Sages', 'During the siege of Jerusalem he left the city in a coffin, and came before Vespasian. When it turned out that Vespasian would be emperor, he asked: "Give me Yavneh and its sages, the dynasty of Rabban Gamliel, and doctors to heal Rabbi Tzadok" (Gittin 56b). In Yavneh he set up the court again and made ordinances after the Destruction.'),
-      sec('באילן', 'באילן שלנו מגיעים אליו חצים חומים מהלל ומשמאי, ויוצאים ממנו חצים לחמשת תלמידיו: רבי אליעזר בן הורקנוס, רבי יהושע בן חנניה, רבי יוסי הכהן, רבי שמעון בן נתנאל ורבי אלעזר בן ערך.', 'On Our Tree', 'On our tree brown arrows reach him from Hillel and Shammai, and arrows go from him to his five students: Rabbi Eliezer ben Hurkanos, Rabbi Yehoshua ben Chananya, Rabbi Yose HaKohen, Rabbi Shimon ben Netanel and Rabbi Elazar ben Arach.'),
+      sec('באילן', 'באילן שלנו מגיעים אליו חצים חומים מהלל ומשמאי, ויוצאים ממנו חצים לתלמידיו: חמשת התלמידים שהמשנה מונה (אבות ב, ח) – רבי אליעזר בן הורקנוס, רבי יהושע בן חנניה, רבי יוסי הכהן, רבי שמעון בן נתנאל ורבי אלעזר בן ערך – וגם רבי חנינא בן דוסא, רבי נחוניה בן הקנה ורבי טרפון.', 'On Our Tree', 'On our tree brown arrows reach him from Hillel and Shammai, and arrows go from him to his students: the five the Mishnah counts (Avot 2:8) – Rabbi Eliezer ben Hurkanos, Rabbi Yehoshua ben Chananya, Rabbi Yose HaKohen, Rabbi Shimon ben Netanel and Rabbi Elazar ben Arach – and also Rabbi Chanina ben Dosa, Rabbi Nechunya ben HaKanah and Rabbi Tarfon.'),
     ],
   }),
   p({

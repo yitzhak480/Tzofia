@@ -216,6 +216,22 @@ const BATCHES = [
     relink: {},
   },
   {
+    category: 'tannaim',
+    entries: require('./content/tannaim').sages,
+    order: [],
+    relink: {
+      'rabbi-akiva': { 'רחל': 'rachel-eshet-rabbi-akiva', 'רבי אליעזר בן הורקנוס': 'rabbi-eliezer-ben-hurkanos', 'רבי יהושע בן חנניה': 'rabbi-yehoshua-ben-chananya',
+        'נחום איש גם זו': 'nachum-ish-gamzu', 'רבי מאיר': 'rabbi-meir', 'רבי יהודה בר אלעאי': 'rabbi-yehuda-bar-ilai', 'רבי יוסי בן חלפתא': 'rabbi-yose-ben-chalafta',
+        'רבי שמעון בר יוחאי': 'rabbi-shimon-bar-yochai', 'רבי אלעזר בן שמוע': 'rabbi-elazar-ben-shamua' },
+    },
+  },
+  {
+    category: 'ishei-bayit-sheni',
+    entries: require('./content/tannaim').families,
+    order: ['harkinas', 'bat-rabban-gamliel', 'rachel-eshet-rabbi-akiva', 'bat-rabbi-pinchas-ben-yair'],
+    relink: {},
+  },
+  {
     category: 'av-beit-din',
     entries: [],
     order: ['yose-ben-yochanan', 'nitai-haarbeli', 'yehuda-ben-tabai', 'avtalyon', 'menachem-av-beit-din', 'shammai', 'rabban-yochanan-ben-zakai'],
@@ -248,6 +264,10 @@ const EXTRA = [
   { slug: 'yehoshua-ben-yehotzadak', offices: [{ label: L('כהונה גדולה', 'High Priesthood'), before: [], after: ['yoyakim'] }] },
   { slug: 'yoyakim', offices: [{ label: L('כהונה גדולה', 'High Priesthood'), before: ['yehoshua-ben-yehotzadak'], after: ['elyashiv'] }] },
   { slug: 'elyashiv', offices: [{ label: L('כהונה גדולה', 'High Priesthood'), before: ['yoyakim'], after: ['yoyada-kg'] }] },
+  {
+    slug: 'rabbi-akiva',
+    note: (() => { const m = require('./content/tannaim').MARTYR(4); return { he: [m.titleHe, m.textHe], en: [m.titleEn, m.textEn] }; })(),
+  },
   { slug: 'hillel-hazaken', offices: [{ label: L('שנות נשיאות', 'Years as Nasi'), before: ['shmaya'], after: ['rabban-shimon-ben-hillel'] }],
     rels: [{ type: 'related', slug: 'beteira' }] },
   { slug: 'shimon-hatzadik', offices: [{ label: L('כהונה גדולה', 'High Priesthood'), before: ['choniyo-1'], after: ['elazar-kg2'] }],
@@ -387,6 +407,22 @@ const main = async () => {
         && ((r.person && family.has(String(r.person))) || (!r.person && familyNames.has(r.name?.he?.trim())))));
       doc.markModified('relations');
       await doc.save();
+    }
+  }
+
+  // the Tannaim: every card gets one of the site's ten colours at random (a
+  // colour given once, or chosen in the admin, is kept)
+  const SITE_COLORS = ['burgundy', 'blue', 'purple', 'brown', 'marble', 'emerald', 'teal', 'ink', 'olive', 'slate'];
+  if (cats.tannaim) {
+    const id = String(cats.tannaim._id);
+    let last = '';
+    for (const doc of [...bySlug.values()].filter((d) => d.categories.map(String).includes(id))) {
+      if (!SITE_COLORS.includes(doc.cardColor)) {
+        const choices = SITE_COLORS.filter((c) => c !== last);
+        doc.cardColor = choices[Math.floor(Math.random() * choices.length)];
+        await doc.save();
+      }
+      last = doc.cardColor;
     }
   }
 
