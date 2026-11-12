@@ -8,13 +8,13 @@
 /* --- GALLERY TOOLBAR STYLES --- */
 
 .gallery-toolbar {
-  width: 90%;
-  max-width: 800px; /* Reduced from 1000px to be more compact */
-  margin: 0 auto 3rem auto;
+  width: fit-content; /* just around the search box */
+  max-width: 90%;
+  margin: 0 auto 2rem auto;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  padding: 1.5rem 2rem; /* Adjusted padding */
+  padding: 0.8rem 1.2rem;
   background-color: rgba(255, 255, 255, 0.4);
   border: 1px solid var(--color-ink);
   border-radius: 12px; /* Slightly rounder corners */
@@ -31,16 +31,16 @@
 }
 
 .search-wrapper {
-  flex: 0 1 450px; /* Flex-grow: 0 (don't stretch), Base width: 450px */
+  flex: 0 1 225px; /* half the old size (450px); doesn't stretch */
   position: relative;
   width: 100%;
 }
 
 .search-input {
   width: 100%;
-  padding: 12px 20px; /* Taller padding for a "chunkier" feel */
+  padding: 6px 30px 6px 14px; /* room for the ✕ */
   font-family: "Frank Ruhl Libre", serif;
-  font-size: 1.2rem; /* Larger text */
+  font-size: 0.95rem;
   color: var(--color-ink);
   background-color: var(
     --color-parchment
@@ -62,12 +62,12 @@
 
 .clear-search-btn {
   position: absolute;
-  left: 15px; /* Moved to LEFT for Hebrew UI */
+  left: 10px; /* Moved to LEFT for Hebrew UI */
   top: 50%;
   transform: translateY(-50%);
   background: none;
   border: none;
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   color: var(--color-terracotta);
   cursor: pointer;
   font-weight: bold;
