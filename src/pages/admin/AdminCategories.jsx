@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import CategoryForm from './CategoryForm';
@@ -37,6 +37,25 @@ const AdminCategories = ({ adminApi }) => {
     const excluded = descendantsOf(editing.category._id, byParent);
     return rows.filter((r) => !excluded.has(r._id));
   }, [rows, byParent, editing]);
+
+  // Opening a form jumps to it; closing it goes back to where you were in the list.
+  const formRef = useRef(null);
+  const listY = useRef(null);
+  const pageY = () => document.scrollingElement?.scrollTop || window.scrollY || 0;
+  useEffect(() => {
+    if (editing) {
+      formRef.current?.scrollIntoView({ block: 'start' });
+    } else if (listY.current != null) {
+      const y = listY.current;
+      listY.current = null;
+      window.scrollTo({ top: y, behavior: 'instant' });
+      if (document.scrollingElement) document.scrollingElement.scrollTop = y;
+    }
+  }, [editing]);
+  const startEditing = (value) => {
+    if (!editing) listY.current = pageY();
+    setEditing(value);
+  };
 
   const siblingsOf = (parent) => byParent.get(parent || 'root') || [];
 
@@ -127,7 +146,7 @@ const AdminCategories = ({ adminApi }) => {
   return (
     <>
       {editing && (
-        <div className="admin-card">
+        <div className="admin-card admin-form-card" ref={formRef}>
           <h2>{editing.mode === 'edit' ? `עריכת "${editing.category.name.he}"` : 'קטגוריה חדשה'}</h2>
           <CategoryForm
             key={editing.mode === 'edit' ? editing.category._id : `new-${editing.parent}`}
@@ -153,7 +172,7 @@ const AdminCategories = ({ adminApi }) => {
         <div className="admin-card-header">
           <h2>קטגוריות</h2>
           {!editing && (
-            <button className="admin-submit-btn admin-add-btn" onClick={() => setEditing({ mode: 'new', parent: '' })}>
+            <button className="admin-submit-btn admin-add-btn" onClick={() => startEditing({ mode: 'new', parent: '' })}>
               + קטגוריה חדשה
             </button>
           )}
@@ -200,8 +219,8 @@ const AdminCategories = ({ adminApi }) => {
                   <div className="admin-row-actions">
                     <button className="admin-icon-btn" title="הזזה למעלה" disabled={busy || index === 0} onClick={() => move(c, -1)}>▲</button>
                     <button className="admin-icon-btn" title="הזזה למטה" disabled={busy || index === siblings.length - 1} onClick={() => move(c, 1)}>▼</button>
-                    <button className="admin-btn" disabled={busy} onClick={() => setEditing({ mode: 'new', parent: c._id })}>+ תת-קטגוריה</button>
-                    <button className="admin-btn" disabled={busy} onClick={() => setEditing({ mode: 'edit', category: c })}>עריכה</button>
+                    <button className="admin-btn" disabled={busy} onClick={() => startEditing({ mode: 'new', parent: c._id })}>+ תת-קטגוריה</button>
+                    <button className="admin-btn" disabled={busy} onClick={() => startEditing({ mode: 'edit', category: c })}>עריכה</button>
                     <button className="admin-btn admin-btn-danger" disabled={busy} onClick={() => handleDelete(c)}>מחיקה</button>
                   </div>
                 </li>

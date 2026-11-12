@@ -13,6 +13,7 @@ import Biblical from './pages/Biblical';
 import Gmara from './pages/Gmara';
 import About from './pages/About'; // הנה הייבוא של עמוד האודות
 import SiteSplash from './components/SiteSplash';
+import ScrollToTop from './components/ScrollToTop';
 import './App.css';
 
 // The admin page (with its text editor) loads only when someone opens /admin.
@@ -50,6 +51,7 @@ function App() {
 
       <SiteSplash />
       <Router>
+        <ScrollToTop />
         <MainLayout>
           <Routes>
             <Route path="/Biblical" element={<Biblical />} />

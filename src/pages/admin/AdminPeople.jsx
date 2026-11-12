@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import PersonForm from './PersonForm';
@@ -67,11 +67,30 @@ const AdminPeople = ({ adminApi }) => {
     return list;
   }, [people, filterCat, search, catOrder]);
 
+  // Opening a form jumps to it; closing it goes back to where you were in the list.
+  const formRef = useRef(null);
+  const listY = useRef(null);
+  const pageY = () => document.scrollingElement?.scrollTop || window.scrollY || 0;
+  useEffect(() => {
+    if (editing) {
+      formRef.current?.scrollIntoView({ block: 'start' });
+    } else if (listY.current != null) {
+      const y = listY.current;
+      listY.current = null;
+      window.scrollTo({ top: y, behavior: 'instant' });
+      if (document.scrollingElement) document.scrollingElement.scrollTop = y;
+    }
+  }, [editing]);
+  const startEditing = (value) => {
+    if (!editing) listY.current = pageY();
+    setEditing(value);
+  };
+
   const openEdit = async (person) => {
     setBusyId(person._id);
     try {
-      setEditing({ mode: 'edit', person: await call(`/people/admin/${person._id}`) });
-      window.scrollTo({ top: 0 });
+      const full = await call(`/people/admin/${person._id}`);
+      startEditing({ mode: 'edit', person: full });
     } catch (err) {
       toast.error(err.message);
     } finally {
@@ -95,7 +114,7 @@ const AdminPeople = ({ adminApi }) => {
       );
       await reload();
       if (!andAnother) setEditing(null);
-      else setEditing({ mode: 'new', key: Date.now() });
+      else startEditing({ mode: 'new', key: Date.now() });
       return saved;
     } catch (err) {
       toast.error(err.status === 409 ? 'כתובת הדף כבר בשימוש. שנו אותה ב"הגדרות נוספות".' : err.message);
@@ -162,7 +181,7 @@ const AdminPeople = ({ adminApi }) => {
 
   if (editing) {
     return (
-      <div className="admin-card">
+      <div className="admin-card admin-form-card" ref={formRef}>
         <h2>{editing.mode === 'edit' ? `עריכת "${editing.person.name.he}"` : 'ערך חדש'}</h2>
         {categories.length === 0 ? (
           <p className="admin-error">כדי להוסיף ערך צריך קודם ליצור קטגוריה (בלשונית "קטגוריות").</p>
@@ -186,7 +205,7 @@ const AdminPeople = ({ adminApi }) => {
     <div className="admin-card">
       <div className="admin-card-header">
         <h2>ערכים <span className="admin-muted">({people.length})</span></h2>
-        <button className="admin-submit-btn admin-add-btn" onClick={() => setEditing({ mode: 'new', key: Date.now() })}>
+        <button className="admin-submit-btn admin-add-btn" onClick={() => startEditing({ mode: 'new', key: Date.now() })}>
           + ערך חדש
         </button>
       </div>

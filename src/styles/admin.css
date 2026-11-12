@@ -955,3 +955,6 @@ a.admin-btn {
   flex-wrap: wrap;
   gap: 6px;
 }
+
+/* a form scrolled into view leaves a little room above it */
+.admin-form-card { scroll-margin-top: 12px; }
