@@ -10,7 +10,8 @@ import { entryColor } from '../../components/encyclopedia/cardColors';
 
 const DRAFT_KEY = 'tzofia_new_person_draft';
 const PLACE_SUGGESTIONS = ['עיר', 'מקום', 'בית מקדש', 'כלי המקדש', 'ספר', 'אירוע', 'שבט', 'הר', 'נהר', 'ארץ', 'ישיבה', 'בית כנסת', 'מערה', 'מדבר', 'מסכת', 'חפץ'];
-const ROLE_SUGGESTIONS = ['מלך', 'נביא', 'נביאה', 'כהן גדול', 'שופט', 'תנא', 'אמורא', 'סבורא', 'גאון', 'נשיא', 'ראש ישיבה', 'אב בית דין'];
+const ROLE_SUGGESTIONS = ['מלך', 'נביא', 'נביאה', 'כהן גדול', 'שופט', 'נשיא', 'ראש ישיבה', 'אב בית דין'];
+const TITLE_SUGGESTIONS = ['תנא', 'אמורא', 'סבורא', 'גאון', 'ראשון', 'אחרון'];
 
 const L = (v) => ({ he: v?.he || '', en: v?.en || '' });
 const yearStr = (n) => (n === null || n === undefined ? '' : String(n));
@@ -22,6 +23,7 @@ const toForm = (p = {}) => ({
   name: L(p.name),
   gender: p.gender || 'male',
   categories: p.categories ? p.categories.map(String) : [],
+  titles: (p.titles || []).map(L),
   roles: (p.roles || []).map(L),
   life: { from: yearStr(p.life?.from), to: yearStr(p.life?.to) },
   offices: (p.offices || []).map((o) => ({
@@ -48,6 +50,7 @@ const toBody = (f) => ({
   name: f.name,
   gender: f.gender,
   categories: f.categories,
+  titles: f.titles.filter((r) => r.he.trim()),
   roles: f.roles.filter((r) => r.he.trim()),
   life: { from: yearNum(f.life.from), to: yearNum(f.life.to) },
   offices: f.offices
@@ -258,6 +261,17 @@ const PersonForm = ({ initial, defaultCategory, categoryRows, people, upload, on
       </Section>
 
       <Section title="פרטים" hint="יופיעו בתיבת המידע ליד הטקסט.">
+        {!isPlace && (
+          <div className="form-group">
+            <label>תואר: <span className="admin-hint">(תנא, אמורא, גאון... מופיע מתחת לשם, לא כתפקיד)</span></label>
+            <TagInput
+              value={form.titles.map((r) => r.he)}
+              onChange={(list) => set({ titles: list.map((he) => form.titles.find((r) => r.he === he) || { he, en: '' }) })}
+              suggestions={TITLE_SUGGESTIONS}
+              placeholder="למשל: אמורא"
+            />
+          </div>
+        )}
         <div className="form-group">
           <label>{isPlace ? 'סוג (מקום, ספר, כלי, אירוע...):' : 'תפקידים:'}</label>
           <TagInput

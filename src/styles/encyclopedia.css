@@ -640,3 +640,13 @@ body[dir="ltr"] .encyc-infobox {
   border-style: solid;
 }
 
+/* התואר (תנא, אמורא, גאון...) מתחת לשם בתיבת המידע */
+.encyc-infobox-titles {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 1rem;
+  font-weight: normal;
+  color: var(--color-parchment, #f4e4bc);
+  opacity: 0.85;
+}
+

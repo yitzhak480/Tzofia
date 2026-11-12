@@ -96,6 +96,9 @@ const personSchema = new mongoose.Schema(
     name: { type: localized(true), required: true },
     // Used for wording on the page: "רבותיו" / "רבותיה".
     gender: { type: String, enum: ['male', 'female'], default: 'male' },
+    // A title that tells which era / kind of sage: תנא, אמורא, סבורא, גאון...
+    // Shown on its own under the name (it isn't a role).
+    titles: { type: [localized(true)], default: [] },
     roles: { type: [localized(true)], default: [] },
     life: { type: yearsSchema, default: () => ({}) },
     offices: { type: [officeSchema], default: [] },
@@ -127,6 +130,7 @@ personSchema.pre('validate', function cleanUp() {
   this.sources = (this.sources || []).map((s) => String(s).trim()).filter(Boolean);
   this.sourcesEn = (this.sourcesEn || []).map((s) => String(s).trim()).filter(Boolean);
   this.roles = (this.roles || []).filter((r) => r && r.he && r.he.trim());
+  this.titles = (this.titles || []).filter((r) => r && r.he && r.he.trim());
   this.relations = (this.relations || []).filter((r) => r.person || (r.name && r.name.he && r.name.he.trim()));
   this.autoSummary = { he: excerpt(this.content?.he), en: excerpt(this.content?.en) };
 });

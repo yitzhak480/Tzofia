@@ -69,6 +69,7 @@ const EncyclopediaPerson = () => {
 
   const isPlace = person.kind !== 'person' && Boolean(person.kind); // place, book, vessel, event...
   const roles = (person.roles || []).map((r) => tr(r, lang)).filter(Boolean);
+  const titles = (person.titles || []).map((r) => tr(r, lang)).filter(Boolean);
   const lifeText = yearsText(person.life, lang);
   const offices = (person.offices || []).filter((o) => tr(o.label, lang));
   const female = person.gender === 'female';
@@ -106,7 +107,7 @@ const EncyclopediaPerson = () => {
       )),
     ],
   ].filter(Boolean);
-  const hasInfobox = rows.length > 0 || person.mainImage?.url || sources.length > 0;
+  const hasInfobox = rows.length > 0 || person.mainImage?.url || sources.length > 0 || titles.length > 0;
   const parent = data.ancestors[data.ancestors.length - 1];
   const arrow = he ? '←' : '→';
 
@@ -128,7 +129,10 @@ const EncyclopediaPerson = () => {
         <article className={`encyc-article encyc-person ${hasInfobox ? '' : 'no-infobox'}`}>
           {hasInfobox && (
             <aside className="encyc-infobox">
-              <div className="encyc-infobox-title" dir="auto">{name}</div>
+              <div className="encyc-infobox-title" dir="auto">
+                {name}
+                {titles.length > 0 && <span className="encyc-infobox-titles">{titles.join(' · ')}</span>}
+              </div>
               {person.mainImage?.url && <img src={person.mainImage.url} alt={name} className="encyc-infobox-image" />}
               {rows.length > 0 && (
                 <table>

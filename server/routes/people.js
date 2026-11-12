@@ -12,7 +12,7 @@ const { resolveOffices } = require('../lib/succession');
 
 const router = express.Router();
 const FIELDS = [
-  'slug', 'kind', 'categories', 'name', 'gender', 'roles', 'life', 'offices', 'period', 'summary', 'content',
+  'slug', 'kind', 'categories', 'name', 'gender', 'titles', 'roles', 'life', 'offices', 'period', 'summary', 'content',
   'mainImage', 'relations', 'sources', 'sourcesEn', 'treeSpots', 'order', 'published', 'cardColor',
 ];
 const SORT = { order: 1, createdAt: 1 };
