@@ -91,6 +91,18 @@ module.exports = [
     sections: one('עודד', 'עודד נזכר כאביו של עזריהו הנביא, שעודד את אסא לבער את העבודה הזרה. בפסוק ח הנבואה מכונה "הנבואה עודד הנביא", ולכן יש שראו גם בעודד נביא. יש להבחין בינו לבין עודד הנביא בימי פקח.', 'Oded', 'Oded is mentioned as the father of Azaryahu the prophet, who encouraged Asa to remove idolatry. In verse 8 the prophecy is called "the prophecy of Oded the prophet", so some see Oded too as a prophet. He should be distinguished from Oded the prophet in the days of Pekach.'),
   }),
   p({
+    slug: 'zecharyahu-avi-yachaziel', cats: LV, name: L('זכריהו אבי יחזיאל', 'Zecharyahu, Father of Yachaziel'), spot: 'זכריהו אבי יחזיאל',
+    summary: L('אבי יחזיאל הלוי, מבני אסף.', 'Father of Yachaziel the Levite, of the sons of Asaf.'),
+    rel: [to('child', 'yachaziel-halevi')], sources: [L('דברי הימים ב׳ כ, יד', 'II Chronicles 20:14')],
+    sections: one('מבני אסף', 'יחזיאל, שעליו הייתה רוח ה׳ בתוך הקהל בימי יהושפט, נקרא "יחזיאל בן זכריהו בן בניה בן יעיאל בן מתניה הלוי מן בני אסף". יש להבחין בינו לבין הנביאים בשם זכריה.', 'Of the Sons of Asaf', 'Yachaziel, upon whom the spirit of Hashem came in the midst of the congregation in Yehoshafat’s days, is called "Yachaziel son of Zecharyahu son of Benayah son of Ye’iel son of Matanyah the Levite, of the sons of Asaf". He should be distinguished from the prophets named Zecharyah.'),
+  }),
+  p({
+    slug: 'dodavahu', name: L('דודוהו ממרשה', 'Dodavahu of Mareshah'), spot: 'דודוהו',
+    summary: L('אבי אליעזר הנביא, בימי יהושפט.', 'Father of Eliezer the prophet, in Yehoshafat’s days.'),
+    rel: [to('child', 'eliezer-ben-dodavahu')], sources: [L('דברי הימים ב׳ כ, לז', 'II Chronicles 20:37')],
+    sections: one('דודוהו', 'אליעזר, שניבא על יהושפט כשהתחבר עם אחזיה מלך ישראל לבנות אניות, נקרא "אליעזר בן דדוהו ממרשה".', 'Dodavahu', 'Eliezer, who prophesied against Yehoshafat when he joined Achazyah king of Israel to build ships, is called "Eliezer son of Dodavahu of Mareshah".'),
+  }),
+  p({
     slug: 'shemayahu-avi-uriyahu', name: L('שמעיהו מקרית היערים', 'Shemayahu of Kiryat-Ye’arim'), spot: 'שמעיהו',
     summary: L('אבי אוריהו הנביא.', 'Father of Uriyahu the prophet.'),
     rel: [to('child', 'uriyahu-ben-shemayahu')], sources: [L('ירמיהו כו, כ', 'Jeremiah 26:20')],

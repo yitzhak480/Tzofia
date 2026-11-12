@@ -51,6 +51,7 @@ const BATCHES = [
       'shevet-asher': { 'שרח בת אשר': 'serach-bat-asher' },
       'elazar-ben-aharon': { 'אלישבע בת עמינדב': 'elisheva-bat-aminadav' },
       'betzalel': {},
+      pinchas: { 'אלעזר': 'elazar-ben-aharon' },
     },
   },
   {
@@ -100,7 +101,7 @@ const BATCHES = [
     entries: require('./content/judah'),
     order: ['naama-haamonit', 'maacha-bat-avishalom', 'azuva', 'oded-avi-azaryahu', 'yochanan-ben-azarya', 'azarya-ben-yochanan', 'amarya-ben-azarya', 'yehoshavat',
       'achituv-ben-amarya-2', 'chefzi-ba', 'tzadok-ben-achituv-2', 'meshulam-saba-shafan', 'atzalyahu', 'shafan', 'achikam', 'gemaryahu', 'shemayahu-avi-uriyahu', 'yigdalyahu',
-      'chanan-ben-yigdalyahu', 'shalum-hanavi', 'chanamel', 'buzi', 'gedalya'],
+      'chanan-ben-yigdalyahu', 'shalum-hanavi', 'chanamel', 'buzi', 'gedalya', 'zecharyahu-avi-yachaziel', 'dodavahu'],
     relink: {
       rechavam: { 'מעכה בת אבישלום': 'maacha-bat-avishalom' },
       abiyam: { 'מעכה בת אבישלום': 'maacha-bat-avishalom' },
@@ -115,6 +116,8 @@ const BATCHES = [
       'yechezkel-hanavi': { 'בוזי הכהן': 'buzi' },
       'azaryah-ben-achimaatz': { 'יוחנן': 'yochanan-ben-azarya' },
       'shalum-ben-tzadok': { 'צדוק': 'tzadok-ben-achituv-2' },
+      'yachaziel-halevi': { 'זכריהו': 'zecharyahu-avi-yachaziel' },
+      'eliezer-ben-dodavahu': { 'דודוהו': 'dodavahu' },
     },
   },
   {
