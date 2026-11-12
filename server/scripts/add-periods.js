@@ -16,6 +16,7 @@ const CATEGORIES = {
   'egypt-exodus': { order: 0.1, color: 't1-levi', name: L('מצרים ויציאת מצרים', 'Egypt and the Exodus'), description: L('מבני בני יעקב ועד ימי יהושע', 'From the children of Yaakov’s sons to the days of Yehoshua') },
   'judges-to-david': { order: 0.2, color: 't1-shvatim', name: L('מימי השופטים עד דוד', 'From the Judges to David'), description: L('מימי השופטים ועד תחילת מלכות דוד', 'From the days of the Judges to the start of David’s reign') },
   'david-shlomo': { order: 0.3, color: 't1-yehuda', name: L('ימי דוד ושלמה', 'The Days of David and Shlomo'), description: L('הממלכה המאוחדת, מתחילת מלכות דוד ועד פילוג הממלכה', 'The united kingdom, from the start of David’s reign to the division of the kingdom') },
+  'kingdom-of-judah': { order: 0.4, color: 't1-yehuda', name: L('אנשי ממלכת יהודה', 'People of the Kingdom of Judah'), description: L('אנשי ממלכת יהודה שלא היו מלכים או נביאים', 'People of the Kingdom of Judah who were not kings or prophets') },
   levites: { order: 6.5, color: 't1-levi', sortMode: 'chrono', name: L('בני לוי', 'The Levites'), description: L('משפחות שבט לוי: לויים, משוררים ובני משפחות הכהנים', 'The families of the tribe of Levi: Levites, singers and the families of the Kohanim') },
   'gerei-tzedek': { order: 6.6, color: 't1-gerim', sortMode: 'chrono', name: L('גרי צדק', 'Righteous Converts'), description: L('מי שבאו מן העמים ונכנסו תחת כנפי השכינה', 'Those who came from the nations and entered under the wings of the Divine Presence') },
 };
@@ -91,6 +92,36 @@ const BATCHES = [
       rechavam: { 'נעמה העמונית': 'naama-haamonit' },
     },
   },
+  {
+    category: 'kingdom-of-judah',
+    entries: require('./content/judah'),
+    order: ['naama-haamonit', 'maacha-bat-avishalom', 'azuva', 'oded-avi-azaryahu', 'yochanan-ben-azarya', 'azarya-ben-yochanan', 'amarya-ben-azarya', 'yehoshavat',
+      'achituv-ben-amarya-2', 'chefzi-ba', 'tzadok-ben-achituv-2', 'meshulam-saba-shafan', 'atzalyahu', 'shafan', 'achikam', 'gemaryahu', 'shemayahu-avi-uriyahu', 'yigdalyahu',
+      'chanan-ben-yigdalyahu', 'shalum-hanavi', 'chanamel', 'buzi', 'gedalya'],
+    relink: {
+      rechavam: { 'מעכה בת אבישלום': 'maacha-bat-avishalom' },
+      abiyam: { 'מעכה בת אבישלום': 'maacha-bat-avishalom' },
+      asa: { 'מעכה בת אבישלום': 'maacha-bat-avishalom', 'עזובה בת שלחי': 'azuva' },
+      yehoshafat: { 'עזובה בת שלחי': 'azuva' },
+      achazyahu: { 'יהושבע': 'yehoshavat' },
+      'yehoyada-hakohen': { 'יהושבעת בת יהורם': 'yehoshavat' },
+      chizkiyahu: { 'חפצי-בה': 'chefzi-ba' },
+      menashe: { 'חפצי-בה': 'chefzi-ba' },
+      'azaryahu-ben-oded': { 'עודד': 'oded-avi-azaryahu' },
+      'uriyahu-ben-shemayahu': { 'שמעיהו': 'shemayahu-avi-uriyahu' },
+      'yechezkel-hanavi': { 'בוזי הכהן': 'buzi' },
+      'azaryah-ben-achimaatz': { 'יוחנן': 'yochanan-ben-azarya' },
+      'shalum-ben-tzadok': { 'צדוק': 'tzadok-ben-achituv-2' },
+    },
+  },
+];
+
+// Why names have an asterisk on the tree; and a few links from those notes.
+const ASTERISKS = require('./content/asterisks');
+const ASTERISK_TITLE = { he: 'הכוכבית שבאילן', en: 'The Asterisk on Our Tree' };
+const EXTRA = [
+  { slug: 'ovadyah-hanavi', addCategory: 'gerei-tzedek' },
+  { slug: 'tzefanyah-hanavi', related: 'chizkiyahu' },
 ];
 
 const GROUP = Object.fromEntries(CHECKLIST.map((r) => [r[0], r[1]]));
@@ -111,6 +142,9 @@ const main = async () => {
     await doc.save();
     cats[slug] = doc;
   }
+
+  // categories made elsewhere (e.g. prophets-of-israel) can be used too
+  for (const c of await Category.find()) if (!cats[c.slug]) cats[c.slug] = c;
 
   const bySlug = new Map((await Person.find()).map((p) => [p.slug, p]));
   const link = (r, owner) => {
@@ -170,7 +204,33 @@ const main = async () => {
     }
   }
 
-  console.log(`✓ Periods: ${count} pages in ${BATCHES.length} batch(es)`);
+  // asterisk notes, at the end of each page (replaced, not repeated)
+  for (const [slug, note] of Object.entries(ASTERISKS)) {
+    const doc = bySlug.get(slug);
+    if (!doc) throw new Error(`asterisk: no page "${slug}"`);
+    const content = { he: doc.content?.he || '', en: doc.content?.en || '' };
+    for (const lang of ['he', 'en']) {
+      const head = `<h2>${ASTERISK_TITLE[lang]}</h2>`;
+      const cut = content[lang].indexOf(head);
+      // the note goes last; anything after an old note (e.g. a list) is kept before it
+      let rest = cut >= 0 ? content[lang].slice(0, cut) + content[lang].slice(content[lang].indexOf('</p>', cut) + 4) : content[lang];
+      content[lang] = `${rest}${head}<p>${note[lang]}</p>`;
+    }
+    doc.content = content;
+    doc.markModified('content');
+    await doc.save();
+  }
+  for (const x of EXTRA) {
+    const doc = bySlug.get(x.slug);
+    if (!doc) continue;
+    if (x.addCategory && !doc.categories.map(String).includes(String(cats[x.addCategory]._id))) doc.categories.push(cats[x.addCategory]._id);
+    if (x.related && !doc.relations.some((r) => String(r.person) === String(bySlug.get(x.related)?._id))) {
+      doc.relations.push(link({ type: 'related', slug: x.related }, x.slug));
+    }
+    await doc.save();
+  }
+
+  console.log(`✓ Periods: ${count} pages in ${BATCHES.length} batch(es); ${Object.keys(ASTERISKS).length} asterisk notes`);
   await mongoose.disconnect();
 };
 
