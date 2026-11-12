@@ -14,6 +14,7 @@ const { L } = require('./content/helpers');
 
 const CATEGORIES = {
   'egypt-exodus': { order: 0.1, color: 't1-levi', name: L('מצרים ויציאת מצרים', 'Egypt and the Exodus'), description: L('מבני בני יעקב ועד ימי יהושע', 'From the children of Yaakov’s sons to the days of Yehoshua') },
+  'judges-to-david': { order: 0.2, color: 't1-shvatim', name: L('מימי השופטים עד דוד', 'From the Judges to David'), description: L('מימי השופטים ועד תחילת מלכות דוד', 'From the days of the Judges to the start of David’s reign') },
   levites: { order: 6.5, color: 't1-levi', sortMode: 'chrono', name: L('בני לוי', 'The Levites'), description: L('משפחות שבט לוי: לויים, משוררים ובני משפחות הכהנים', 'The families of the tribe of Levi: Levites, singers and the families of the Kohanim') },
   'gerei-tzedek': { order: 6.6, color: 't1-gerim', sortMode: 'chrono', name: L('גרי צדק', 'Righteous Converts'), description: L('מי שבאו מן העמים ונכנסו תחת כנפי השכינה', 'Those who came from the nations and entered under the wings of the Divine Presence') },
 };
@@ -45,6 +46,33 @@ const BATCHES = [
       'shevet-asher': { 'שרח בת אשר': 'serach-bat-asher' },
       'elazar-ben-aharon': { 'אלישבע בת עמינדב': 'elisheva-bat-aminadav' },
       'betzalel': {},
+    },
+  },
+  {
+    category: 'judges-to-david',
+    entries: require('./content/judges-era'),
+    order: ['otniel-ben-kenaz', 'gera', 'ehud-ben-gera', 'anat', 'shamgar-ben-anat', 'devorah-haneviah', 'avinoam', 'barak', 'yoash-haaviezri', 'gideon', 'avimelech', 'yotam-ben-gideon',
+      'puah', 'tola-ben-puah', 'yair-hagiladi', 'yiftach', 'ivtzan-boaz', 'rut', 'oved', 'elon-hazevuloni', 'hillel-hapiratoni', 'avdon-ben-hillel', 'manoach', 'tzlelponit', 'shimshon', 'delila',
+      'yehonatan-ben-gershom', 'zerachya', 'merayot', 'amarya', 'achituv-ben-amarya', 'elkanah', 'chana-haneviah', 'eli-hakohen', 'chofni', 'pinchas-ben-eli', 'achituv-ben-pinchas',
+      'shmuel-hanavi', 'yoel-ben-shmuel', 'aviya-ben-shmuel', 'aviel', 'kish', 'ner', 'shaul-hamelech', 'avner', 'yehonatan-ben-shaul', 'achimelech-ben-achituv', 'yishai', 'nitzevet', 'adael'],
+    relink: {
+      'ehud-ben-gera': { 'גרא': 'gera' },
+      'shamgar-ben-anat': { 'ענת': 'anat' },
+      'devorah-haneviah': { 'לפידות': 'barak' },
+      gideon: { 'יואש האביעזרי': 'yoash-haaviezri', 'יותם בן גדעון': 'yotam-ben-gideon' },
+      avimelech: { 'יותם בן גדעון': 'yotam-ben-gideon' },
+      'tola-ben-puah': { 'פואה בן דודו': 'puah' },
+      'avdon-ben-hillel': { 'הלל הפרעתוני': 'hillel-hapiratoni' },
+      shimshon: { 'מנוח': 'manoach', 'צללפונית': 'tzlelponit', 'דלילה': 'delila' },
+      'ivtzan-boaz': { 'רות המואביה': 'rut', 'עובד': 'oved' },
+      'uzzi-ben-bukki': { 'זרחיה': 'zerachya' },
+      'tzadok-hakohen': { 'אחיטוב': 'achituv-ben-amarya' },
+      'eli-hakohen': { 'חפני': 'chofni', 'פינחס': 'pinchas-ben-eli' },
+      'achituv-ben-pinchas': { 'פינחס בן עלי': 'pinchas-ben-eli' },
+      'shmuel-hanavi': { 'אלקנה': 'elkanah', 'חנה': 'chana-haneviah' },
+      'chana-haneviah': { 'אלקנה': 'elkanah' },
+      'shaul-hamelech': { 'קיש': 'kish', 'יהונתן': 'yehonatan-ben-shaul' },
+      david: { 'ישי': 'yishai', 'נצבת בת עדאל': 'nitzevet' },
     },
   },
 ];
@@ -115,6 +143,9 @@ const main = async () => {
         const target = !r.person && names[r.name?.he?.trim()];
         if (target && bySlug.get(target)) r.person = bySlug.get(target)._id;
       }
+      // a "related" link to someone who is now linked as family is dropped
+      const family = new Set(doc.relations.filter((r) => r.type !== 'related' && r.person).map((r) => String(r.person)));
+      doc.relations = doc.relations.filter((r) => !(r.type === 'related' && r.person && family.has(String(r.person))));
       doc.markModified('relations');
       await doc.save();
     }

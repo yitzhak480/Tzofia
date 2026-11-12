@@ -13,7 +13,7 @@ const GR = ['gerei-tzedek'];
 module.exports = [
   // ── Yehudah's family ──
   w({
-    slug: 'tamar-eshet-er', name: L('תמר', 'Tamar'), spot: 'תמר',
+    slug: 'tamar-eshet-er', name: L('תמר כלת יהודה', 'Tamar, Yehudah’s Daughter-in-Law'), spot: 'תמר',
     summary: L('כלתו של יהודה, אם פרץ וזרח, שממנה יצא בית דוד.', 'Yehudah’s daughter-in-law, mother of Peretz and Zerach, from whom the house of David came.'),
     rel: [to('spouse', 'er'), to('spouse', 'shevet-yehuda'), to('child', 'peretz'), to('child', 'zerach')],
     sources: [L('בראשית לח', 'Genesis 38'), L('סוטה י ע״ב', 'Sotah 10b'), L('בראשית רבה פה, י', 'Bereishit Rabbah 85:10')],
