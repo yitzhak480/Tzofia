@@ -232,6 +232,25 @@ const BATCHES = [
     relink: {},
   },
   {
+    category: 'rashei-hagola',
+    entries: require('./content/second-temple-last').rasheiHagola,
+    order: ['chizkiya-rosh-hagola', 'akuv-rosh-hagola', 'nachum-rosh-hagola', 'yochanan-rosh-hagola', 'shafat-rosh-hagola', 'anan-rosh-hagola', 'natan-rosh-hagola',
+      'rav-huna-kama', 'kosiva', 'shimon-ben-koziva'],
+    relink: {},
+  },
+  {
+    category: 'tannaim',
+    entries: require('./content/second-temple-last').tanna,
+    order: [],
+    relink: {},
+  },
+  {
+    category: 'ishei-bayit-sheni',
+    entries: require('./content/second-temple-last').ishim,
+    order: ['nakdimon-ben-gurion', 'ben-tzitzit-hakeset', 'kalba-savua', 'alexander-alabarch', 'philo', 'demetrius-alabarch', 'yosef-ben-matityahu'],
+    relink: {},
+  },
+  {
     category: 'av-beit-din',
     entries: [],
     order: ['yose-ben-yochanan', 'nitai-haarbeli', 'yehuda-ben-tabai', 'avtalyon', 'menachem-av-beit-din', 'shammai', 'rabban-yochanan-ben-zakai'],
