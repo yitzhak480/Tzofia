@@ -3,8 +3,10 @@ import ImageUpload from '../../components/admin/ImageUpload';
 import { SLUG_PATTERN, toSlug } from './adminApi';
 import CardBack from '../../components/encyclopedia/CardBack';
 import { CARD_COLORS } from '../../components/encyclopedia/cardColors';
+import CategoryIcon from '../../components/encyclopedia/CategoryIcon';
+import { ICON_LIST, iconForCategory } from '../../components/encyclopedia/categoryIcons';
 
-const emptyCategory = { name: { he: '', en: '' }, description: { he: '', en: '' }, slug: '', parent: '', image: null, cardColor: 'burgundy' };
+const emptyCategory = { name: { he: '', en: '' }, description: { he: '', en: '' }, slug: '', parent: '', image: null, cardColor: 'burgundy', icon: '' };
 
 // Add / edit form for a category. `options` is the list of possible parents
 // (already without this category and its subcategories).
@@ -19,6 +21,7 @@ const CategoryForm = ({ initial, options, defaultParent = '', onSave, onCancel, 
           parent: initial.parent || '',
           image: initial.image || null,
           cardColor: initial.cardColor || 'burgundy',
+          icon: initial.icon || '',
         }
       : { ...emptyCategory, parent: defaultParent }
   );
@@ -130,6 +133,37 @@ const CategoryForm = ({ initial, options, defaultParent = '', onSave, onCancel, 
             >
               <span className="admin-color-swatch"><CardBack color={key} /></span>
               {c.he}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="form-group">
+        <label>סמל לכרטיסים של ערכים בלי תמונה:</label>
+        <div className="admin-icon-picker" role="radiogroup">
+          <button
+            type="button"
+            role="radio"
+            aria-checked={!form.icon}
+            className={`admin-icon-option ${!form.icon ? 'is-selected' : ''}`}
+            onClick={() => setForm((f) => ({ ...f, icon: '' }))}
+            title="אוטומטי"
+          >
+            <CategoryIcon kind={iconForCategory(form.slug)} />
+            <span>אוטומטי</span>
+          </button>
+          {ICON_LIST.map(([key, label]) => (
+            <button
+              key={key}
+              type="button"
+              role="radio"
+              aria-checked={form.icon === key}
+              className={`admin-icon-option ${form.icon === key ? 'is-selected' : ''}`}
+              onClick={() => setForm((f) => ({ ...f, icon: key }))}
+              title={label}
+            >
+              <CategoryIcon kind={key} />
+              <span>{label}</span>
             </button>
           ))}
         </div>

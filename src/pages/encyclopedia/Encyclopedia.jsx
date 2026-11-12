@@ -39,6 +39,7 @@ const Encyclopedia = () => {
   const results = query ? (found.q ? found.people : null) : null;
 
   const topLevel = (categories || []).filter((c) => !c.parent);
+  const categoryOf = (p) => (categories || []).find((c) => c._id === p.categories?.[0]);
 
   return (
     <div className="page-wrapper">
@@ -81,7 +82,7 @@ const Encyclopedia = () => {
         {results ? (
           results.length > 0 ? (
             <div className="gallery-grid encyc-bottom-space">
-              {results.map((p) => <PersonCard key={p._id} person={p} />)}
+              {results.map((p) => <PersonCard key={p._id} person={p} category={categoryOf(p)} />)}
             </div>
           ) : (
             <div className="no-results">

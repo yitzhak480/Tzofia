@@ -4,7 +4,8 @@ import { CARD_COLORS } from './cardColors';
 // A decorative "back of a playing card" for categories without a picture:
 // a coloured background with a gold lattice, a double frame and a medallion.
 // The admin picks the colour per category.
-const CardBack = ({ color = 'burgundy' }) => {
+// medallion={false} leaves only the pattern and frame (for a symbol on top).
+const CardBack = ({ color = 'burgundy', medallion = true }) => {
   const c = CARD_COLORS[color] || CARD_COLORS.burgundy;
   const id = useId().replace(/:/g, '');
   const cx = 305;
@@ -60,17 +61,21 @@ const CardBack = ({ color = 'burgundy' }) => {
       {corner(574, 874)}
 
       {/* medallion */}
-      <circle cx={cx} cy={cy} r="118" fill={c.base} stroke={c.line} strokeWidth="4" />
-      <circle cx={cx} cy={cy} r="104" fill="none" stroke={c.line} strokeWidth="1.5" strokeDasharray="2 7" strokeLinecap="round" />
-      <g fill="none" stroke={c.accent} strokeWidth="3">
-        <rect x={cx - 58} y={cy - 58} width="116" height="116" />
-        <rect x={cx - 58} y={cy - 58} width="116" height="116" transform={`rotate(45 ${cx} ${cy})`} />
-      </g>
-      <circle cx={cx} cy={cy} r="34" fill="none" stroke={c.accent} strokeWidth="2" />
-      <circle cx={cx} cy={cy} r="14" fill={c.accent} />
-      {[0, 90, 180, 270].map((a) => (
-        <circle key={a} cx={cx} cy={cy - 140} r="6" fill={c.line} transform={`rotate(${a} ${cx} ${cy})`} />
-      ))}
+      {medallion && (
+        <>
+          <circle cx={cx} cy={cy} r="118" fill={c.base} stroke={c.line} strokeWidth="4" />
+          <circle cx={cx} cy={cy} r="104" fill="none" stroke={c.line} strokeWidth="1.5" strokeDasharray="2 7" strokeLinecap="round" />
+          <g fill="none" stroke={c.accent} strokeWidth="3">
+            <rect x={cx - 58} y={cy - 58} width="116" height="116" />
+            <rect x={cx - 58} y={cy - 58} width="116" height="116" transform={`rotate(45 ${cx} ${cy})`} />
+          </g>
+          <circle cx={cx} cy={cy} r="34" fill="none" stroke={c.accent} strokeWidth="2" />
+          <circle cx={cx} cy={cy} r="14" fill={c.accent} />
+          {[0, 90, 180, 270].map((a) => (
+            <circle key={a} cx={cx} cy={cy - 140} r="6" fill={c.line} transform={`rotate(${a} ${cx} ${cy})`} />
+          ))}
+        </>
+      )}
     </svg>
   );
 };

@@ -8,10 +8,10 @@ const { ancestorChain, wouldCreateLoop, removedImages } = require('../lib/tree')
 const { deleteImages } = require('../lib/cloudinary');
 
 const router = express.Router();
-const FIELDS = ['slug', 'name', 'description', 'image', 'parent', 'order', 'cardColor'];
+const FIELDS = ['slug', 'name', 'description', 'image', 'parent', 'order', 'cardColor', 'icon'];
 const SORT = { order: 1, createdAt: 1 };
 // What a person's card needs (no full article).
-const CARD_FIELDS = 'slug kind name period summary autoSummary mainImage order categories life offices';
+const CARD_FIELDS = 'slug kind name period summary autoSummary mainImage order categories life offices treeSpots cardColor';
 
 const normalizeParent = (data) => {
   if (data.parent === '' || data.parent === undefined) data.parent = null;

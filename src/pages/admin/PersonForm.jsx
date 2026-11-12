@@ -5,6 +5,8 @@ import RichTextEditor from '../../components/admin/RichTextEditor';
 import TagInput from '../../components/admin/TagInput';
 import { CategoryPicker, OfficesEditor, RelationsEditor, TreeSpotsEditor, YearsInput } from './PersonFormParts';
 import { SLUG_PATTERN } from './adminApi';
+import CardBack from '../../components/encyclopedia/CardBack';
+import { CARD_COLORS, entryColor } from '../../components/encyclopedia/cardColors';
 
 const DRAFT_KEY = 'tzofia_new_person_draft';
 const PLACE_SUGGESTIONS = ['עיר', 'מקום', 'בית מקדש', 'כלי המקדש', 'ספר', 'אירוע', 'שבט', 'הר', 'נהר', 'ארץ', 'ישיבה', 'בית כנסת', 'מערה', 'מדבר', 'מסכת', 'חפץ'];
@@ -33,6 +35,7 @@ const toForm = (p = {}) => ({
   period: L(p.period),
   slug: p.slug || '',
   published: p.published ?? true,
+  cardColor: p.cardColor || '',
 });
 
 // Form state -> what the server expects.
@@ -56,6 +59,7 @@ const toBody = (f) => ({
   period: f.period,
   slug: f.slug.trim(),
   published: f.published,
+  cardColor: f.cardColor,
 });
 
 const readDraft = () => {
@@ -232,6 +236,36 @@ const PersonForm = ({ initial, defaultCategory, categoryRows, people, upload, on
 
       <Section title="תמונה ראשית">
         <ImageUpload label="" value={form.mainImage} onChange={(mainImage) => set({ mainImage })} upload={upload} />
+        {!form.mainImage && (
+          <div className="form-group">
+            <label>צבע הכרטיס כשאין תמונה:</label>
+            <div className="admin-color-picker" role="radiogroup">
+              <button
+                type="button"
+                role="radio"
+                aria-checked={!form.cardColor}
+                className={`admin-color-option ${!form.cardColor ? 'is-selected' : ''}`}
+                onClick={() => set({ cardColor: '' })}
+              >
+                <span className="admin-color-swatch"><CardBack color={entryColor({ slug: form.slug || form.name.he })} medallion={false} /></span>
+                אוטומטי
+              </button>
+              {Object.entries(CARD_COLORS).map(([key, c]) => (
+                <button
+                  key={key}
+                  type="button"
+                  role="radio"
+                  aria-checked={form.cardColor === key}
+                  className={`admin-color-option ${form.cardColor === key ? 'is-selected' : ''}`}
+                  onClick={() => set({ cardColor: key })}
+                >
+                  <span className="admin-color-swatch"><CardBack color={key} medallion={false} /></span>
+                  {c.he}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
       </Section>
 
       <Section title="פרטים" hint="יופיעו בתיבת המידע ליד הטקסט.">

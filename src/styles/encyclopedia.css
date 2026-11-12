@@ -467,19 +467,29 @@ body[dir="ltr"] .encyc-infobox {
   padding-top: 2rem;
 }
 
-/* כרטיס דמות בלי תמונה: האות הראשונה של השם */
-.encyc-card-no-image {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(to bottom, #f7f1e3, #e2d1b3);
+/* כרטיס בלי תמונה: גב קלף בצבע הערך עם סמל הקטגוריה */
+.encyc-card-art::after {
+  display: none;
 }
 
-.encyc-card-initial {
-  font-size: 6rem;
-  font-weight: bold;
-  color: var(--color-terracotta, #8e3b30);
-  opacity: 0.55;
+.encyc-card-art .encyc-card-back {
+  position: absolute;
+  inset: 0;
+}
+
+.encyc-card-symbol {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 56%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.35));
+}
+
+.encyc-card-symbol svg {
+  width: 100%;
+  height: 100%;
 }
 
 @media (max-width: 800px) {

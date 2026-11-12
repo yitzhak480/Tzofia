@@ -48,7 +48,7 @@ const EncyclopediaCategory = () => {
 
             {data.people.length > 0 && (
               <div className="gallery-grid encyc-bottom-space">
-                {data.people.map((p) => <PersonCard key={p._id} person={p} />)}
+                {data.people.map((p) => <PersonCard key={p._id} person={p} category={data.category} />)}
               </div>
             )}
 

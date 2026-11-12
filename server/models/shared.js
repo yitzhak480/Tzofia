@@ -33,4 +33,7 @@ const slugField = {
   match: [/^[a-z0-9]+(?:-[a-z0-9]+)*$/, 'Slug may contain only English letters, numbers and dashes'],
 };
 
-module.exports = { localized, imageSchema, slugField };
+// Colours for cards without a picture (must match src/components/encyclopedia/cardColors.js).
+const COLOR_KEYS = ['burgundy', 'blue', 'purple', 'brown', 'marble', 'emerald', 'teal', 'ink', 'olive', 'slate'];
+
+module.exports = { localized, imageSchema, slugField, COLOR_KEYS };

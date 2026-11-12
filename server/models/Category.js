@@ -1,7 +1,7 @@
 // A group of people in the encyclopedia, e.g. "Kings" or "Kings of Judah".
 // Categories nest through `parent`: a category with no parent is top level.
 const mongoose = require('mongoose');
-const { localized, imageSchema, slugField } = require('./shared');
+const { localized, imageSchema, slugField, COLOR_KEYS } = require('./shared');
 
 const categorySchema = new mongoose.Schema(
   {
@@ -13,7 +13,9 @@ const categorySchema = new mongoose.Schema(
     parent: { type: mongoose.Schema.Types.ObjectId, ref: 'Category', default: null, index: true },
     order: { type: Number, default: 0 },
     // Colour of the decorative card shown when there is no picture.
-    cardColor: { type: String, enum: ['burgundy', 'blue', 'purple', 'brown', 'marble'], default: 'burgundy' },
+    cardColor: { type: String, enum: COLOR_KEYS, default: 'burgundy' },
+    // Symbol on the cards of entries without a picture; empty = automatic.
+    icon: { type: String, trim: true, default: '' },
   },
   { timestamps: true }
 );

@@ -2,7 +2,7 @@
 // Only the Hebrew name and the article text are really needed; everything
 // else is optional and the page hides whatever is empty.
 const mongoose = require('mongoose');
-const { localized, imageSchema, slugField } = require('./shared');
+const { localized, imageSchema, slugField, COLOR_KEYS } = require('./shared');
 
 // A span of years, e.g. 2854–2924. Either end may be missing.
 const yearsSchema = new mongoose.Schema(
@@ -104,6 +104,8 @@ const personSchema = new mongoose.Schema(
     order: { type: Number, default: 0 },
     // Unpublished people are visible only in the admin.
     published: { type: Boolean, default: true },
+    // Card colour when there is no picture; empty = picked automatically.
+    cardColor: { type: String, enum: ['', ...COLOR_KEYS], default: '' },
   },
   { timestamps: true }
 );
