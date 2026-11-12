@@ -80,6 +80,35 @@ export const familyTitle = (person, lang) => {
   return lang === 'he' ? `${rest} ו${last}` : `${rest} and ${last.toLowerCase()}`;
 };
 
+// The role's name inside a sentence: "שנות מלוכה" -> "מלוכה",
+// "ראש ישיבת סורא" -> "ראשות ישיבת סורא", "Years as judge" -> "judge".
+const roleNoun = (label, lang) => {
+  const t = (label || '').trim();
+  if (lang !== 'he') return t.replace(/^years as /i, '').replace(/^years of /i, '').toLowerCase();
+  return t
+    .replace(/^שנות /, '')
+    .replace(/^ראש /, 'ראשות ')
+    .replace(/^גאון /, 'גאונות ');
+};
+
+// Before / after, grouped by role (someone with two roles gets two groups),
+// each with its own title: "לפניו במלוכה", "אחריו בכהונה גדולה".
+export const successionGroups = (person, lang = 'he') => {
+  const female = person.gender === 'female';
+  const he = lang === 'he';
+  return (person.offices || [])
+    .filter((o) => o.before?.length || o.after?.length)
+    .map((o) => {
+      const noun = roleNoun(he ? o.label?.he : o.label?.en || o.label?.he, lang);
+      return {
+        beforeTitle: he ? `${female ? 'לפניה' : 'לפניו'} ב${noun}` : `Before, as ${noun}`,
+        afterTitle: he ? `${female ? 'אחריה' : 'אחריו'} ב${noun}` : `After, as ${noun}`,
+        before: o.before || [],
+        after: o.after || [],
+      };
+    });
+};
+
 // Everyone before / after this person in any of their roles (no repeats).
 export const successionOf = (person) => {
   const collect = (key) => {

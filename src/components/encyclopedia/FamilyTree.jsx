@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../../context/context';
 import { tr } from '../../api';
-import { genderWords, groupRelations, successionOf } from './personFormat';
+import { genderWords, groupRelations, successionGroups } from './personFormat';
 
 // A small family tree: teachers on top, parents, the person among the
 // siblings, spouses, children, and students at the bottom.
@@ -12,7 +12,7 @@ const FamilyTree = ({ person, name }) => {
   const he = lang === 'he';
   const g = groupRelations(person.relations);
   const w = genderWords(person, lang);
-  const roles = successionOf(person);
+  const roles = successionGroups(person, lang);
 
   const chip = (r, i) => {
     const label = tr(r.name, lang);
@@ -36,8 +36,8 @@ const FamilyTree = ({ person, name }) => {
 
   return (
     <div className="encyc-family">
-      {row(w.before, roles.before, 'is-side is-role')}
-      {roles.before.length > 0 && line}
+      {roles.map((r, i) => <React.Fragment key={`b${i}`}>{row(r.beforeTitle, r.before, 'is-side is-role')}</React.Fragment>)}
+      {roles.some((r) => r.before.length) && line}
       {row(w.teachers, g.teachers, 'is-side')}
       {g.teachers.length > 0 && line}
       {row(he ? 'הורים' : 'Parents', g.parents)}
@@ -57,8 +57,8 @@ const FamilyTree = ({ person, name }) => {
       {row(he ? 'ילדים' : 'Children', g.children)}
       {g.students.length > 0 && line}
       {row(w.students, g.students, 'is-side')}
-      {roles.after.length > 0 && line}
-      {row(w.after, roles.after, 'is-side is-role')}
+      {roles.some((r) => r.after.length) && line}
+      {roles.map((r, i) => <React.Fragment key={`a${i}`}>{row(r.afterTitle, r.after, 'is-side is-role')}</React.Fragment>)}
     </div>
   );
 };

@@ -63,6 +63,13 @@ const NAMES = {
   'rav-saadia-gaon': { before: [['רב יום טוב כהנא', 'Rav Yom Tov Kahana']] },
 };
 
+// A second role for people who held two (each with its own before / after).
+const EXTRA_OFFICES = {
+  'eli-hakohen': [
+    { label: ['כהונה גדולה', 'High Priesthood'], before: [['בוקי', 'Buki']], after: [['אחיטוב', 'Achituv']] },
+  ],
+};
+
 const main = async () => {
   await mongoose.connect(process.env.MONGO_URI);
   const slugs = new Set([...Object.keys(AFTER), ...Object.values(AFTER).flat(), ...Object.keys(NAMES), ...Object.keys(NEW_OFFICE)]);
@@ -85,6 +92,16 @@ const main = async () => {
     const names = (list) => (list || []).map(([he, en]) => ({ person: null, name: { he, en } }));
     office.before = names(NAMES[slug]?.before);
     office.after = [...after, ...names(NAMES[slug]?.after)];
+    for (const extra of EXTRA_OFFICES[slug] || []) {
+      const [he, en] = extra.label;
+      let o = person.offices.find((x) => x.label?.he === he);
+      if (!o) {
+        person.offices.push({ label: { he, en }, from: null, to: null, note: { he: '', en: '' } });
+        o = person.offices[person.offices.length - 1];
+      }
+      o.before = names(extra.before);
+      o.after = names(extra.after);
+    }
     person.markModified('offices');
     await person.save();
     n += 1;
