@@ -12,6 +12,7 @@ import Cart from './pages/Cart';
 import Biblical from './pages/Biblical';
 import Gmara from './pages/Gmara';
 import About from './pages/About'; // הנה הייבוא של עמוד האודות
+import SiteSplash from './components/SiteSplash';
 import './App.css';
 
 // The admin page (with its text editor) loads only when someone opens /admin.
@@ -47,6 +48,7 @@ function App() {
         }}
       />
 
+      <SiteSplash />
       <Router>
         <MainLayout>
           <Routes>

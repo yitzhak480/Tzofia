@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { HOLD_STEPS, STEP_MS } from './treeLoaderTiming';
 
 // A loading animation of a growing family tree, in the colours of our
 // posters: one box, then two branches, then four, then eight, then again.
@@ -17,8 +18,6 @@ const GENERATIONS = [
   { y: 154, w: 30, h: 14, colors: ['blue', 'blue', 'blue', 'blue', 'red', 'red', 'red', 'red'] },
 ];
 const WIDTH = 320;
-const STEP_MS = 520;
-const HOLD_STEPS = 3; // pause on the full tree before starting again
 
 // Centre x of box i in a generation of n boxes.
 const xOf = (i, n) => (WIDTH / n) * (i + 0.5);

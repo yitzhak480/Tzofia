@@ -585,3 +585,34 @@ body[dir="ltr"] .encyc-infobox {
   padding-top: 1rem;
 }
 
+/* מסך הפתיחה של האתר */
+.site-splash {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background-color: var(--color-parchment, #f4e4bc);
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.05));
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.site-splash.is-leaving {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.site-splash-logo {
+  width: 12vw;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .site-splash-logo {
+    width: 34vw;
+  }
+}
+

@@ -7,13 +7,17 @@ import PersonCard from '../../components/encyclopedia/PersonCard';
 import LoadingState from '../../components/encyclopedia/LoadingState';
 import { CartContext } from '../../context/context';
 import { api, useApi } from '../../api';
+import { LOADER_CYCLE_MS, useMinTime } from '../../components/encyclopedia/treeLoaderTiming';
 
 // /encyclopedia — the top-level categories (Kings, Prophets, Rabbis...) and a
 // search box that finds a person anywhere in the encyclopedia.
 const Encyclopedia = () => {
   const { lang } = useContext(CartContext);
   const he = lang === 'he';
-  const { data: categories, loading, error } = useApi('/categories');
+  const { data: categories, loading: fetching, error } = useApi('/categories');
+  // Show the growing tree at least once, even when the server answers fast.
+  const shownOnce = useMinTime(LOADER_CYCLE_MS);
+  const loading = fetching || !shownOnce;
 
   const [search, setSearch] = useState('');
   const [found, setFound] = useState({ q: '', people: [] });
