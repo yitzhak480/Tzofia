@@ -11,8 +11,9 @@ const Person = require('../models/Person');
 const { entries: partA } = require('./content/prophets-a');
 const partB = require('./content/prophets-b');
 const partC = require('./content/prophets-c');
+const partD = require('./content/prophets-d');
 
-const ENTRIES = [...partA, ...partB, ...partC];
+const ENTRIES = [...partA, ...partB, ...partC, ...partD];
 
 // Rashi's order of the 48 prophets.
 const ORDER = [
@@ -42,6 +43,7 @@ const main = async () => {
 
   const bySlug = new Map((await Person.find()).map((p) => [p.slug, p]));
   const pos = Object.fromEntries(ORDER.map((s, i) => [s, i + 1]));
+  partD.forEach((e, i) => { pos[e.slug] = ORDER.length + i + 1; });
   if (ORDER.length !== 48) throw new Error(`Expected 48 prophets, got ${ORDER.length}`);
   const missingContent = ORDER.filter((s) => !ENTRIES.some((e) => e.slug === s) && !EXISTING[s]);
   if (missingContent.length) throw new Error(`No content for: ${missingContent.join(', ')}`);

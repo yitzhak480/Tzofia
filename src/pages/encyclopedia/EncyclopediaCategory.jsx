@@ -12,6 +12,13 @@ import { tr, useApi } from '../../api';
 
 // /encyclopedia/kings — shows the subcategories of a category (as large cards)
 // and/or the people in it (as person cards).
+// Alphabetical order is done here, in the visitor's language.
+const sortPeople = (people, category, lang) => {
+  if (category?.sortMode !== 'alpha') return people;
+  const collator = new Intl.Collator(lang === 'he' ? 'he' : 'en');
+  return [...people].sort((a, b) => collator.compare(tr(a.name, lang), tr(b.name, lang)));
+};
+
 const EncyclopediaCategory = () => {
   const { slug } = useParams();
   const { lang } = useContext(CartContext);
@@ -48,7 +55,7 @@ const EncyclopediaCategory = () => {
 
             {data.people.length > 0 && (
               <div className="gallery-grid encyc-bottom-space">
-                {data.people.map((p) => <PersonCard key={p._id} person={p} category={data.category} />)}
+                {sortPeople(data.people, data.category, lang).map((p) => <PersonCard key={p._id} person={p} category={data.category} />)}
               </div>
             )}
 

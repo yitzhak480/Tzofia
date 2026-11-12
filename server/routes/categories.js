@@ -6,9 +6,10 @@ const { requireAdmin } = require('../middleware/auth');
 const { pick } = require('../lib/pick');
 const { ancestorChain, wouldCreateLoop, removedImages } = require('../lib/tree');
 const { deleteImages } = require('../lib/cloudinary');
+const { yearOf } = require('../lib/chrono');
 
 const router = express.Router();
-const FIELDS = ['slug', 'name', 'description', 'image', 'parent', 'order', 'cardColor', 'icon', 'colorEntries'];
+const FIELDS = ['slug', 'name', 'description', 'image', 'parent', 'order', 'cardColor', 'icon', 'colorEntries', 'sortMode'];
 const SORT = { order: 1, createdAt: 1 };
 // What a person's card needs (no full article).
 const CARD_FIELDS = 'slug kind name period summary autoSummary mainImage order categories life offices treeSpots cardColor orders';
@@ -37,7 +38,10 @@ router.get('/:slug', async (req, res) => {
 
   // Order inside this category (falls back to the general order).
   const pos = (p) => (p.orders && p.orders[String(category._id)] != null ? p.orders[String(category._id)] : p.order);
-  const people = unsorted.sort((a, b) => pos(a) - pos(b) || String(a.createdAt).localeCompare(String(b.createdAt)));
+  const byManual = (a, b) => pos(a) - pos(b) || String(a.createdAt).localeCompare(String(b.createdAt));
+  // 'alpha' is sorted on the site, in the visitor's language.
+  const mode = category.sortMode || 'chrono';
+  const people = unsorted.sort(mode === 'chrono' ? (a, b) => yearOf(a) - yearOf(b) || byManual(a, b) : byManual);
 
   res.json({ category, ancestors, children, people });
 });

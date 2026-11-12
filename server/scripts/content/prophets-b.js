@@ -71,22 +71,22 @@ module.exports = [
     ],
   }),
   prophet({
-    slug: 'oded', name: L('עודד', 'Oded'), cardColor: BLUE,
-    summary: L('נביא בימי אסא, אביו של עזריהו הנביא.', 'A prophet in the days of Asa, father of Azaryahu the prophet.'),
-    rel: [to('child', 'azaryahu-ben-oded'), to('related', 'asa')],
-    sources: [L('דברי הימים ב׳ טו, א; ח', 'II Chronicles 15:1; 8'), L('מגילה יד ע״א (רש״י)', 'Megillah 14a (Rashi)')],
-    spots: biblical(78.3, 43.6),
+    slug: 'oded', name: L('עודד הנביא', 'Oded the Prophet'), cardColor: GOLD,
+    summary: L('נביא בשומרון בימי פקח, שהחזיר את שבויי יהודה לביתם.', 'A prophet in Shomron in the days of Pekach, who had the captives of Judah sent home.'),
+    rel: [to('related', 'pekach'), to('related', 'achaz')],
+    sources: [L('דברי הימים ב׳ כח, ה – טו', 'II Chronicles 28:5–15'), L('מגילה יד ע״א (רש״י)', 'Megillah 14a (Rashi)')],
+    spots: biblical(25.0, 57.3),
     sections: [
-      sec('אבי עזריהו', 'עודד הנביא נזכר בדברי הימים כאביו של עזריהו, ו"הנבואה עדד הנביא" נאמרה לאסא מלך יהודה. רש״י מונה אותו בין ארבעים ושמונה הנביאים.',
-        'Father of Azaryahu', 'Oded the prophet is mentioned in Chronicles as the father of Azaryahu, and "the prophecy of Oded the prophet" was spoken to Asa king of Judah. Rashi counts him among the forty-eight prophets.'),
-      sec('לא לבלבל', 'יש להבחין בינו לבין נביא אחר בשם עודד, שפעל בשומרון בימי פקח בן רמליהו מלך ישראל, והוכיח את צבא ישראל עד שהשיבו את שבויי יהודה (דברי הימים ב׳ כח, ט – טו).',
-        'Not to Be Confused', 'He should be distinguished from another prophet named Oded, who was active in Shomron in the days of Pekach son of Remalyahu king of Israel, and rebuked the army of Israel until they returned the captives of Judah (II Chronicles 28:9–15).'),
+      sec('השבויים מיהודה', 'בימי אחז מלך יהודה הכה פקח בן רמליהו מלך ישראל ביהודה מכה גדולה, ובני ישראל שבו מאחיהם מאתיים אלף נשים, בנים ובנות, והביאו אותם לשומרון. עודד, נביא לה׳, יצא לפני הצבא ואמר: "הנה בחמת ה׳ אלהי אבותיכם על יהודה נתנם בידכם... ועתה בני יהודה וירושלם אתם אמרים לכבש לעבדים ולשפחות לכם... השיבו השביה".',
+        'The Captives of Judah', 'In the days of Achaz king of Judah, Pekach son of Remalyahu king of Israel struck Judah a heavy blow, and the people of Israel took two hundred thousand women, sons and daughters captive from their brothers and brought them to Shomron. Oded, a prophet of Hashem, went out before the army and said: "Because of the wrath of Hashem, the God of your fathers, against Judah, He gave them into your hand... and now you intend to make the people of Judah and Jerusalem your slaves... Send back the captives".'),
+      sec('הצדקה', 'ראשי בני אפרים שמעו לדבריו, עמדו מול הבאים מן הצבא, הלבישו את השבויים מן השלל, נעלו אותם, האכילו והשקו אותם, הובילו את הכושלים על חמורים, והביאו אותם ליריחו עיר התמרים, אל אחיהם. באילן שלנו עודד מופיע בצד ממלכת ישראל, בימי פקח. יש להבחין בינו לבין עודד אביו של עזריהו הנביא, בימי אסא.',
+        'Kindness', 'The leaders of the sons of Ephraim heeded his words, stood against those returning from the army, clothed the captives from the spoil, gave them shoes, food and drink, carried the weak on donkeys, and brought them to Yericho, the city of palms, to their brothers. On our tree Oded appears on the side of the Kingdom of Israel, in the days of Pekach. He should be distinguished from Oded the father of Azaryahu the prophet, in the days of Asa.'),
     ],
   }),
   prophet({
     slug: 'azaryahu-ben-oded', name: L('עזריהו בן עודד', 'Azaryahu son of Oded'), cardColor: BLUE,
     summary: L('הנביא שעודד את אסא לטהר את הארץ, והעם כרת ברית לדרוש את ה׳.', 'The prophet who encouraged Asa to purify the land, and the people made a covenant to seek Hashem.'),
-    rel: [to('father', 'oded'), to('related', 'asa')],
+    rel: [nm('father', 'עודד', 'Oded'), to('related', 'asa')],
     sources: [L('דברי הימים ב׳ טו, א – טו', 'II Chronicles 15:1–15')],
     spots: biblical(78.4, 44.6),
     sections: [
@@ -139,7 +139,7 @@ module.exports = [
   prophet({
     slug: 'elisha-hanavi', name: L('אלישע הנביא', 'Elisha the Prophet'), cardColor: GOLD,
     summary: L('תלמידו של אליהו, שקיבל פי שניים ברוחו וחולל ניסים רבים.', 'Eliyahu’s student, who received a double portion of his spirit and performed many miracles.'),
-    rel: [nm('father', 'שפט', 'Shafat'), to('teacher', 'eliyahu-hanavi'), to('student', 'yonah-ben-amitai'), to('related', 'yehoram-ben-achav'), to('related', 'yehu'), to('related', 'yoash-ben-yehoachaz')],
+    rel: [nm('father', 'שפט', 'Shafat'), to('teacher', 'eliyahu-hanavi'), to('student', 'yonah-ben-amitai'), nm('student', 'יהוידע הכהן', 'Yehoyada the Kohen'), to('related', 'yehoram-ben-achav'), to('related', 'yehu'), to('related', 'yoash-ben-yehoachaz')],
     sources: [L('מלכים א׳ יט, טז – כא', 'I Kings 19:16–21'), L('מלכים ב׳ ב – ט; יג, יד – כא', 'II Kings 2–9; 13:14–21'), L('סנהדרין מז ע״א', 'Sanhedrin 47a')],
     spots: biblical(25.0, 49.4),
     sections: [
@@ -165,7 +165,7 @@ module.exports = [
   prophet({
     slug: 'hoshea-ben-beeri', name: L('הושע בן בארי', 'Hoshea son of Beeri (Hosea)'), cardColor: GOLD,
     summary: L('הראשון מנביאי תרי עשר, שקרא לישראל לשוב אל ה׳.', 'The first of the Twelve Prophets, who called on Israel to return to Hashem.'),
-    rel: [nm('father', 'בארי', 'Beeri'), nm('teacher', 'זכריה בן יהוידע', 'Zecharyah son of Yehoyada'), to('student', 'amos-hanavi'), to('related', 'yeravam-ben-yoash'), to('related', 'uziyahu')],
+    rel: [nm('father', 'בארי', 'Beeri'), to('teacher', 'zecharyah-ben-yehoyada'), to('student', 'amos-hanavi'), to('related', 'yeravam-ben-yoash'), to('related', 'uziyahu')],
     sources: [L('ספר הושע', 'The Book of Hosea'), L('פסחים פז ע״א', 'Pesachim 87a'), L('בבא בתרא יד ע״ב', 'Bava Batra 14b')],
     spots: biblical(43.6, 52.3),
     sections: [
@@ -230,7 +230,7 @@ module.exports = [
     ],
   }),
   prophet({
-    slug: 'yoel-ben-petuel', name: L('יואל בן פתואל', 'Yoel son of Petuel (Joel)'), cardColor: GOLD,
+    slug: 'yoel-ben-petuel', name: L('יואל בן פתואל', 'Yoel son of Petuel (Joel)'), cardColor: BLUE,
     summary: L('נביא הארבה והתשובה: "וקרעו לבבכם ואל בגדיכם".', 'Prophet of the locust and of repentance: "Rend your hearts and not your garments".'),
     rel: [nm('father', 'פתואל', 'Petuel'), to('teacher', 'michah-hamorashti'), to('student', 'nachum-haelkoshi')],
     sources: [L('ספר יואל', 'The Book of Joel'), L('סדר עולם רבה כ', 'Seder Olam Rabbah 20')],

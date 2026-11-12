@@ -37,7 +37,8 @@ const officeSchema = new mongoose.Schema(
 );
 
 // 'related' connects any two entries, e.g. David and Jerusalem.
-const RELATION_TYPES = ['father', 'mother', 'sibling', 'spouse', 'child', 'teacher', 'student', 'related'];
+// 'prophet' on a king's page = a prophet in his days; 'king' is the reverse.
+const RELATION_TYPES = ['father', 'mother', 'sibling', 'spouse', 'child', 'teacher', 'student', 'related', 'prophet', 'king'];
 
 // A relative / teacher / student. If `person` is set it links to that page;
 // otherwise only the name is shown (and linked automatically if a page with

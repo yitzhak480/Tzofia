@@ -17,6 +17,9 @@ const categorySchema = new mongoose.Schema(
     // When true, entries without a picture (and without their own colour)
     // use this category's colour.
     colorEntries: { type: Boolean, default: false },
+    // How the entries are ordered: chosen by the admin, alphabetically, or
+    // chronologically by the tree.
+    sortMode: { type: String, enum: ['manual', 'alpha', 'chrono'], default: 'chrono' },
     // Symbol on the cards of entries without a picture; empty = automatic.
     icon: { type: String, trim: true, default: '' },
   },

@@ -76,9 +76,22 @@ const EncyclopediaPerson = () => {
   const sources = (!he && person.sourcesEn?.length ? person.sourcesEn : person.sources) || [];
   const spots = (person.treeSpots || []).map((s) => ({ ...s, tree: treeById(s.tree) })).filter((s) => s.tree);
   const related = (person.relations || []).filter((r) => r.type === 'related');
+  const prophetsInDays = (person.relations || []).filter((r) => r.type === 'prophet');
+  const kingsInDays = (person.relations || []).filter((r) => r.type === 'king');
+  const linksOf = (list) =>
+    list.map((r, i) => (
+      <React.Fragment key={i}>
+        {i > 0 && ', '}
+        {r.slug ? (
+          <Link to={`/encyclopedia/person/${r.slug}`} className="encyc-link" dir="auto">{tr(r.name, lang)}</Link>
+        ) : (
+          <span dir="auto">{tr(r.name, lang)}</span>
+        )}
+      </React.Fragment>
+    ));
   const family = {
     ...person,
-    relations: isPlace ? [] : (person.relations || []).filter((r) => r.type !== 'related'),
+    relations: isPlace ? [] : (person.relations || []).filter((r) => !['related', 'prophet', 'king'].includes(r.type)),
   };
   const roleLinks = successionOf(person);
   const hasRoles = roleLinks.before.length > 0 || roleLinks.after.length > 0;
@@ -97,6 +110,8 @@ const EncyclopediaPerson = () => {
         <Succession label={female ? (he ? 'אחריה' : 'Succeeded by') : he ? 'אחריו' : 'Succeeded by'} list={o.after} lang={lang} />
       </>,
     ]),
+    prophetsInDays.length > 0 && [he ? 'נביאים בימיו' : 'Prophets in his days', linksOf(prophetsInDays)],
+    kingsInDays.length > 0 && [he ? 'מלכים בימיו' : 'Kings in his days', linksOf(kingsInDays)],
     data.categories.length > 0 && [
       he ? 'קטגוריות' : 'Categories',
       data.categories.map((c, i) => (

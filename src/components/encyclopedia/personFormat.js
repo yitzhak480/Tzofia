@@ -40,6 +40,8 @@ export const RELATION_TYPES = [
   { id: 'teacher', he: 'רב / מורה', en: 'Teacher', heMany: 'רבותיו', enMany: 'Teachers' },
   { id: 'student', he: 'תלמיד', en: 'Student', heMany: 'תלמידיו', enMany: 'Students' },
   { id: 'related', he: 'ערך קשור', en: 'Related', heMany: 'ערכים קשורים', enMany: 'Related' },
+  { id: 'prophet', he: 'נביא בימיו', en: 'Prophet in his days', heMany: 'נביאים בימיו', enMany: 'Prophets in his days' },
+  { id: 'king', he: 'מלך בימיו', en: 'King in his days', heMany: 'מלכים בימיו', enMany: 'Kings in his days' },
 ];
 
 // Words that change with the person's gender ("רבותיו" / "רבותיה").

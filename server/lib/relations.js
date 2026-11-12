@@ -15,6 +15,8 @@ const INVERSE = {
   teacher: 'student',
   student: 'teacher',
   related: 'related',
+  prophet: 'king',
+  king: 'prophet',
 };
 
 // Relations that count as the same group when removing duplicates.

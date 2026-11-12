@@ -5,7 +5,7 @@ import ColorPicker from '../../components/admin/ColorPicker';
 import CategoryIcon from '../../components/encyclopedia/CategoryIcon';
 import { ICON_LIST, iconForCategory } from '../../components/encyclopedia/categoryIcons';
 
-const emptyCategory = { name: { he: '', en: '' }, description: { he: '', en: '' }, slug: '', parent: '', image: null, cardColor: 'burgundy', icon: '', colorEntries: false };
+const emptyCategory = { name: { he: '', en: '' }, description: { he: '', en: '' }, slug: '', parent: '', image: null, cardColor: 'burgundy', icon: '', colorEntries: false, sortMode: 'chrono' };
 
 // Add / edit form for a category. `options` is the list of possible parents
 // (already without this category and its subcategories).
@@ -22,6 +22,7 @@ const CategoryForm = ({ initial, options, defaultParent = '', onSave, onCancel, 
           cardColor: initial.cardColor || 'burgundy',
           icon: initial.icon || '',
           colorEntries: Boolean(initial.colorEntries),
+          sortMode: initial.sortMode || 'chrono',
         }
       : { ...emptyCategory, parent: defaultParent }
   );
@@ -118,6 +119,15 @@ const CategoryForm = ({ initial, options, defaultParent = '', onSave, onCancel, 
         onChange={(image) => setForm((f) => ({ ...f, image }))}
         upload={upload}
       />
+
+      <div className="form-group">
+        <label>סדר הערכים בקטגוריה:</label>
+        <select value={form.sortMode} onChange={(e) => setForm((f) => ({ ...f, sortMode: e.target.value }))}>
+          <option value="chrono">כרונולוגי (לפי האילן)</option>
+          <option value="alpha">אלפביתי (עברית / אנגלית לפי שפת האתר)</option>
+          <option value="manual">סדר שאני קובע (בחיצים ברשימת הערכים)</option>
+        </select>
+      </div>
 
       <div className="form-group">
         <label>צבע הכרטיס כשאין תמונה:</label>
