@@ -221,3 +221,30 @@
   .cp-v .cp-row-cats .encyc-card-back { height: auto; aspect-ratio: 610 / 910; transform: translateY(-14%); }
   .cp-v10 .cp-row-cats .encyc-card-back { transform: translateY(-17%); }
 }
+
+
+/* ══ 0. the merge of 2 and 5: a parchment mount with gold corners ══ */
+.cp-v0 .cp-card { background: linear-gradient(to bottom, var(--cp-paper), var(--cp-paper-2)); border: 1px solid var(--cp-gold); border-radius: 6px; }
+.cp-v0 .cp-img { inset: 14px; border-radius: 3px; box-shadow: 0 0 0 1px var(--cp-gold), 0 0 0 5px var(--cp-paper), 0 0 0 6px rgba(44, 36, 27, 0.4); }
+.cp-v0 .cp-body { inset: auto 14px 14px 14px; border-radius: 0 0 3px 3px; text-align: center; padding-bottom: 2rem; }
+.cp-v0 .cp-body h3 { color: #e9c87c; letter-spacing: 0.02em; }
+.cp-v0 .cp-sep { position: relative; width: 90px; height: 1px; margin-inline: auto; background: linear-gradient(to left, transparent, var(--cp-gold), transparent); }
+.cp-v0 .cp-sep::after { content: '◆'; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -55%); font-size: 9px; color: var(--cp-gold); }
+.cp-v0 .cp-corners {
+  display: block; position: absolute; inset: 24px; z-index: 3; pointer-events: none;
+  --c: var(--cp-gold);
+  background:
+    linear-gradient(var(--c), var(--c)) top left / 30px 2px no-repeat,
+    linear-gradient(var(--c), var(--c)) top left / 2px 30px no-repeat,
+    linear-gradient(var(--c), var(--c)) top right / 30px 2px no-repeat,
+    linear-gradient(var(--c), var(--c)) top right / 2px 30px no-repeat,
+    linear-gradient(var(--c), var(--c)) bottom left / 30px 2px no-repeat,
+    linear-gradient(var(--c), var(--c)) bottom left / 2px 30px no-repeat,
+    linear-gradient(var(--c), var(--c)) bottom right / 30px 2px no-repeat,
+    linear-gradient(var(--c), var(--c)) bottom right / 2px 30px no-repeat;
+}
+@media (max-width: 900px) {
+  .cp-v0 .cp-img { inset: 10px; }
+  .cp-v0 .cp-body { inset: auto 10px 10px 10px; padding-bottom: 1.5rem; }
+  .cp-v0 .cp-corners { inset: 18px; }
+}

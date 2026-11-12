@@ -28,6 +28,7 @@ const CARDS = [
 
 // round 2: variations on design 3 (the picture fills the card)
 const STYLES = [
+  ['קלף ופינות זהב (2 ו־5)', 'Parchment and gold corners (2 and 5)', 'השילוב שביקשת: התמונה בתוך שולי קלף עם קו זהב (2), עם עיטורי זהב בפינות, כותרת בזהב וקישוט ◆ (5).'],
   ['3 המקורי', 'The original 3', 'כמו שהיה בסיבוב הקודם, להשוואה.'],
   ['במסגרת קלף', 'In a parchment mount', 'התמונה המלאה בתוך שוליים של קלף וקו זהב, כמו תמונה במסגרת.'],
   ['נמס לקלף', 'Melting into parchment', 'בלי רקע כהה: התמונה נמסה בתחתית לצבע הקלף, והכותרת באדום – בהיר ורך.'],
@@ -94,13 +95,13 @@ const CardPreview = () => {
         </section>
 
         <nav className="cp-jump" aria-label={he ? 'מעבר לעיצוב' : 'Jump to a design'}>
-          {STYLES.map((s, n) => <a key={s[0]} href={`#style-${n + 1}`}>{n + 1}</a>)}
+          {STYLES.map((s, n) => <a key={s[0]} href={`#style-${n}`}>{n === 0 ? '★' : n}</a>)}
         </nav>
 
         {STYLES.map(([nameHe, nameEn, desc], n) => (
-          <section key={nameHe} id={`style-${n + 1}`} className={`cp-section cp-v cp-v${n + 1}`}>
+          <section key={nameHe} id={`style-${n}`} className={`cp-section cp-v cp-v${n}`}>
             <header className="cp-section-head">
-              <span className="cp-badge">{n + 1}</span>
+              <span className="cp-badge">{n === 0 ? '★' : n}</span>
               <div>
                 <h2>{he ? nameHe : nameEn}</h2>
                 {he && <p>{desc}</p>}
