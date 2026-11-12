@@ -168,7 +168,7 @@ module.exports = [
   p({
     slug: 'yigal', name: L('יגאל', 'Yigal'), spot: 'יגאל',
     summary: L('מגיבורי דוד.', 'One of David’s warriors.'),
-    rel: [to('related', 'david')], sources: [L('שמואל ב׳ כג, לו', 'II Samuel 23:36')],
-    sections: one('יגאל', 'יגאל נמנה בין גיבורי דוד, ובשמואל נקרא "יגאל בן נתן מצבה". באילן שלנו יש קו עם סימן שאלה בינו לבין נתן הנביא, כי לא ברור שנתן אביו הוא נתן הנביא.', 'Yigal', 'Yigal is counted among David’s warriors, and in Shmuel he is called "Yigal son of Natan of Tzovah". On our tree there is a line with a question mark between him and Natan the prophet, since it is not clear that his father Natan was Natan the prophet.'),
+    rel: [{ type: 'father', slug: 'natan-hanavi', uncertain: true }, to('related', 'david')], sources: [L('שמואל ב׳ כג, לו', 'II Samuel 23:36')],
+    sections: one('יגאל', 'יגאל נמנה בין גיבורי דוד, ובשמואל נקרא "יגאל בן נתן מצבה". באילן שלנו יש קו עם סימן שאלה בינו לבין נתן הנביא, כי לא ברור שנתן אביו הוא נתן הנביא, ולכן הקשר מסומן בסימן שאלה.', 'Yigal', 'Yigal is counted among David’s warriors, and in Shmuel he is called "Yigal son of Natan of Tzovah". On our tree there is a line with a question mark between him and Natan the prophet, since it is not clear that his father Natan was Natan the prophet, so the link is marked with a question mark.'),
   }),
 ];

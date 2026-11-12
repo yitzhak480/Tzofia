@@ -7,6 +7,7 @@ const w = (e) => ({ gender: 'female', cats: [], ...e });
 const one = (titleHe, he, titleEn, en) => [sec(titleHe, he, titleEn, en)];
 const LV = ['levites'];
 const PR = ['prophets-of-israel'];
+const maybe = (type, slug) => ({ type, slug, uncertain: true }); // a "?" on the tree
 
 module.exports = [
   // ── queens and queen mothers ──
@@ -47,7 +48,7 @@ module.exports = [
     slug: 'meshulam-saba-shafan', name: L('משולם', 'Meshulam'), spot: 'משולם',
     summary: L('סבו של שפן הסופר.', 'Grandfather of Shafan the scribe.'),
     rel: [to('child', 'atzalyahu')], sources: [L('מלכים ב׳ כב, ג', 'II Kings 22:3')],
-    sections: one('משולם', 'שפן הסופר נקרא בספר מלכים "שפן בן אצליהו בן משלם". באילן שלנו יש קו מנוקד עם סימן שאלה בין משפחה זו למשפחת המלוכה, כי הם היו חלק מן האצולה אך הקשר אינו ידוע.', 'Meshulam', 'Shafan the scribe is called in the Book of Kings "Shafan son of Atzalyahu son of Meshullam". On our tree there is a dotted line with a question mark between this family and the royal family, since they were part of the nobility but the connection is not known.'),
+    sections: one('משולם', 'שפן הסופר נקרא בספר מלכים "שפן בן אצליהו בן משלם".', 'Meshulam', 'Shafan the scribe is called in the Book of Kings "Shafan son of Atzalyahu son of Meshullam".'),
   }),
   p({
     slug: 'atzalyahu', name: L('אצליהו בן משולם', 'Atzalyahu son of Meshulam'), spot: 'אצליהו',
@@ -126,9 +127,9 @@ module.exports = [
     slug: 'shalum-hanavi', cats: [...PR, ...LV], name: L('שלום הנביא', 'Shalum the Prophet'), spot: 'שלום הנביא',
     roles: [L('נביא', 'Prophet')],
     summary: L('דודו של ירמיהו ואבי חנמאל, ולפי חז״ל בעלה של חולדה הנביאה.', 'Yirmeyahu’s uncle and Chanamel’s father, and according to Chazal the husband of Chuldah the prophetess.'),
-    rel: [to('child', 'chanamel'), to('related', 'yirmeyahu-hanavi')],
+    rel: [maybe('father', 'shalum-ben-tzadok'), to('child', 'chanamel'), to('related', 'yirmeyahu-hanavi')],
     sources: [L('ירמיהו לב, ז', 'Jeremiah 32:7'), L('מלכים ב׳ כב, יד', 'II Kings 22:14'), L('מגילה יד ע״ב', 'Megillah 14b')],
-    sections: one('דוד ירמיהו', 'ירמיהו נקרא לקנות "את שדי אשר בענתות" מחנמאל "בן שלם דדך". חז״ל (מגילה יד ע״ב) מזהים אותו עם שלום בן תקוה, בעלה של חולדה הנביאה, ומכאן שחולדה וירמיהו היו קרובים. באילן שלנו יש קו עם סימן שאלה בינו לבין שלום הכהן הגדול, כי לא ברור שהוא בנו (ראו בערך חנמאל).', 'Yirmeyahu’s Uncle', 'Yirmeyahu was told to buy "my field in Anatot" from Chanamel "son of Shalum your uncle". Chazal (Megillah 14b) identify him with Shalum son of Tikvah, the husband of Chuldah the prophetess, so that Chuldah and Yirmeyahu were relatives. On our tree there is a line with a question mark between him and Shalum the High Priest, since it is not clear he was his son (see the entry for Chanamel).'),
+    sections: one('דוד ירמיהו', 'ירמיהו נקרא לקנות "את שדי אשר בענתות" מחנמאל "בן שלם דדך". חז״ל (מגילה יד ע״ב) מזהים אותו עם שלום בן תקוה, בעלה של חולדה הנביאה, ומכאן שחולדה וירמיהו היו קרובים. באילן שלנו יש קו עם סימן שאלה בינו לבין שלום הכהן הגדול, כי לא ברור שהוא בנו: הדבר תלוי בדעה שחלקיהו אבי ירמיהו הוא חלקיהו בן שלום הכהן הגדול, ולכן הוא מחובר אליו בסימן שאלה (ראו בערך חנמאל).', 'Yirmeyahu’s Uncle', 'Yirmeyahu was told to buy "my field in Anatot" from Chanamel "son of Shalum your uncle". Chazal (Megillah 14b) identify him with Shalum son of Tikvah, the husband of Chuldah the prophetess, so that Chuldah and Yirmeyahu were relatives. On our tree there is a line with a question mark between him and Shalum the High Priest, since it is not clear he was his son: it depends on the view that Yirmeyahu’s father Chilkiyahu is Chilkiyahu son of Shalum the High Priest, so he is joined to him with a question mark (see the entry for Chanamel).'),
   }),
   p({
     slug: 'chanamel', cats: [...PR, ...LV], name: L('חנמאל בן שלום', 'Chanamel son of Shalum'), spot: 'חנמאל',
@@ -144,8 +145,8 @@ module.exports = [
   p({
     slug: 'buzi', cats: LV, name: L('בוזי', 'Buzi'), spot: 'בוזי',
     summary: L('אבי יחזקאל הנביא, ולפי רש״י הוא ירמיהו.', 'Father of Yechezkel the prophet, and according to Rashi he is Yirmeyahu.'),
-    rel: [to('child', 'yechezkel-hanavi')], sources: [L('יחזקאל א, ג', 'Ezekiel 1:3'), L('רש״י שם', 'Rashi there')],
-    sections: one('בוזי הוא ירמיהו?', 'יחזקאל נקרא "יחזקאל בן בוזי הכהן". רש״י מביא מדרש ש"בוזי" הוא ירמיהו, שנקרא כך כי היו מבזים אותו. באילן שלנו יש סימן שאלה מעל בוזי, כי הזיהוי אינו ודאי, ולכן לא חיברנו אותו לירמיהו.', 'Is Buzi Yirmeyahu?', 'Yechezkel is called "Yechezkel son of Buzi the Kohen". Rashi brings a Midrash that "Buzi" is Yirmeyahu, so called because people despised (bazu) him. On our tree there is a question mark above Buzi, since the identification is not certain, so we have not joined him to Yirmeyahu.'),
+    rel: [maybe('father', 'chilkiyahu-hakohen'), to('child', 'yechezkel-hanavi')], sources: [L('יחזקאל א, ג', 'Ezekiel 1:3'), L('רש״י שם', 'Rashi there')],
+    sections: one('בוזי הוא ירמיהו?', 'יחזקאל נקרא "יחזקאל בן בוזי הכהן". רש״י מביא מדרש ש"בוזי" הוא ירמיהו, שנקרא כך כי היו מבזים אותו. לפי זה בוזי הוא בנו של חלקיהו. באילן שלנו הוא מחובר לחלקיהו בקו עם סימן שאלה, כי הזיהוי אינו ודאי.', 'Is Buzi Yirmeyahu?', 'Yechezkel is called "Yechezkel son of Buzi the Kohen". Rashi brings a Midrash that "Buzi" is Yirmeyahu, so called because people despised (bazu) him. By this Buzi is the son of Chilkiyahu. On our tree he is joined to Chilkiyahu with a line and a question mark, since the identification is not certain.'),
   }),
   // ── the family line of the house of Tzadok (Divrei HaYamim I 5) ──
   p({

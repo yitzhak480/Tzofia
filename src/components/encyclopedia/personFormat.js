@@ -37,6 +37,8 @@ export const RELATION_TYPES = [
   { id: 'sibling', he: 'אח / אחות', en: 'Sibling', heMany: 'אחים', enMany: 'Siblings' },
   { id: 'spouse', he: 'בן / בת זוג', en: 'Spouse', heMany: 'בני זוג', enMany: 'Spouses' },
   { id: 'child', he: 'ילד / ילדה', en: 'Child', heMany: 'ילדים', enMany: 'Children' },
+  { id: 'ancestor', he: 'מאבותיו (כמה דורות קודם)', en: 'Ancestor (generations earlier)', heMany: 'מאבותיו', enMany: 'Ancestors' },
+  { id: 'descendant', he: 'מצאצאיו (כמה דורות אחר כך)', en: 'Descendant (generations later)', heMany: 'מצאצאיו', enMany: 'Descendants' },
   { id: 'teacher', he: 'רב / מורה', en: 'Teacher', heMany: 'רבותיו', enMany: 'Teachers' },
   { id: 'student', he: 'תלמיד', en: 'Student', heMany: 'תלמידיו', enMany: 'Students' },
   { id: 'related', he: 'ערך קשור', en: 'Related', heMany: 'ערכים קשורים', enMany: 'Related' },
@@ -71,7 +73,7 @@ export const familyTitle = (person, lang) => {
   const g = groupRelations(person.relations);
   const w = genderWords(person, lang);
   const parts = [
-    (g.parents.length || g.siblings.length || g.spouses.length || g.children.length) && w.family,
+    (g.parents.length || g.siblings.length || g.spouses.length || g.children.length || g.ancestors.length || g.descendants.length) && w.family,
     g.teachers.length && w.teachers,
     g.students.length && w.students,
     (successionOf(person).before.length || successionOf(person).after.length) && w.succession,
@@ -138,6 +140,8 @@ export const groupRelations = (relations = []) => {
     siblings: of('sibling'),
     spouses: of('spouse'),
     children: of('child'),
+    ancestors: of('ancestor'),
+    descendants: of('descendant'),
     teachers: of('teacher'),
     students: of('student'),
   };

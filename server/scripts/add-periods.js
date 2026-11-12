@@ -163,7 +163,24 @@ const ASTERISKS = require('./content/asterisks');
 const ASTERISK_TITLE = { he: 'הכוכבית שבאילן', en: 'The Asterisk on Our Tree' };
 const EXTRA = [
   { slug: 'ovadyah-hanavi', addCategory: 'gerei-tzedek' },
-  { slug: 'tzefanyah-hanavi', related: 'chizkiyahu' },
+  // Ibn Ezra: Tzefanyah descended from Chizkiyahu (the tree follows him)
+  { slug: 'tzefanyah-hanavi', rels: [{ type: 'ancestor', slug: 'chizkiyahu' }] },
+  // a Kohen, branch unknown; the tree joins him to Pinchas with a "?"
+  {
+    slug: 'natan-hanavi',
+    rels: [{ type: 'ancestor', slug: 'pinchas', uncertain: true }],
+    note: {
+      he: ['משפחתו', 'נתן הנביא היה כהן, אך לא ידוע מאיזה ענף של הכהונה. באילן שלנו הוא מחובר לפינחס בן אלעזר, הענף הבולט שבבית אלעזר, בקו מנוקד עם סימן שאלה, כי הקשר אינו ידוע. מתחתיו מופיע יגאל, מגיבורי דוד, שנקרא "יגאל בן נתן", גם הוא בסימן שאלה.'],
+      en: ['His Family', 'Natan the prophet was a Kohen, but it is not known from which branch of the priesthood. On our tree he is joined to Pinchas son of Elazar, the most prominent branch of the house of Elazar, with a dotted line and a question mark, since the connection is not known. Below him appears Yigal, one of David’s warriors, called "Yigal son of Natan", also with a question mark.'],
+    },
+  },
+  {
+    slug: 'gad-hachozeh',
+    note: {
+      he: ['משפחתו', 'באילן שלנו יש מעל גד קו קצר עם סימן שאלה, כי לא ידוע מאיזו משפחה בא.'],
+      en: ['His Family', 'On our tree there is a short line with a question mark above Gad, since it is not known which family he came from.'],
+    },
+  },
   // Megillah 13a: Mordechai took Esther "as a daughter" – read "as a wife"
   {
     slug: 'esther-hamalka',
@@ -202,7 +219,7 @@ const main = async () => {
     if (!r.slug) return { type: r.type, person: null, name: { he: r.he, en: r.en } };
     const other = bySlug.get(r.slug);
     if (!other) throw new Error(`${owner}: no page "${r.slug}"`);
-    return { type: r.type, person: other._id, name: { he: other.name.he, en: other.name.en || '' } };
+    return { type: r.type, person: other._id, name: { he: other.name.he, en: other.name.en || '' }, uncertain: Boolean(r.uncertain) };
   };
 
   // all pages first, so that links between batches work
@@ -278,8 +295,12 @@ const main = async () => {
     const doc = bySlug.get(x.slug);
     if (!doc) continue;
     if (x.addCategory && !doc.categories.map(String).includes(String(cats[x.addCategory]._id))) doc.categories.push(cats[x.addCategory]._id);
-    if (x.related && !doc.relations.some((r) => String(r.person) === String(bySlug.get(x.related)?._id))) {
-      doc.relations.push(link({ type: 'related', slug: x.related }, x.slug));
+    for (const r of x.rels || []) {
+      const target = bySlug.get(r.slug);
+      if (!target) continue;
+      // replaces any earlier link to the same person (e.g. an old "related")
+      doc.relations = doc.relations.filter((q) => String(q.person) !== String(target._id));
+      doc.relations.push(link(r, x.slug));
     }
     for (const s of x.spouses || []) {
       // an earlier "related" link to the same person becomes the spouse link

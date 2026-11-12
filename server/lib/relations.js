@@ -17,6 +17,8 @@ const INVERSE = {
   related: 'related',
   prophet: 'king',
   king: 'prophet',
+  ancestor: 'descendant', // a line on the tree that skips generations
+  descendant: 'ancestor',
 };
 
 // Relations that count as the same group when removing duplicates.

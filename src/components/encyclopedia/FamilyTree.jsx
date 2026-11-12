@@ -45,6 +45,8 @@ const FamilyTree = ({ person, name }) => {
       {roles.some((r) => r.before.length) && line}
       {row(w.teachers, g.teachers, 'is-side')}
       {g.teachers.length > 0 && line}
+      {row(he ? (person.gender === 'female' ? 'מאבותיה' : 'מאבותיו') : 'Ancestors', g.ancestors, 'is-side')}
+      {g.ancestors.length > 0 && line}
       {row(he ? 'הורים' : 'Parents', g.parents)}
       {g.parents.length > 0 && line}
 
@@ -60,6 +62,8 @@ const FamilyTree = ({ person, name }) => {
       {row(w.spouses, g.spouses, 'is-side')}
       {g.children.length > 0 && line}
       {row(he ? 'ילדים' : 'Children', g.children)}
+      {g.descendants.length > 0 && line}
+      {row(he ? (person.gender === 'female' ? 'מצאצאיה' : 'מצאצאיו') : 'Descendants', g.descendants, 'is-side')}
       {g.students.length > 0 && line}
       {row(w.students, g.students, 'is-side')}
       {roles.some((r) => r.after.length) && line}
