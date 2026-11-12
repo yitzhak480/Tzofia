@@ -16,6 +16,9 @@ const SUBS = [
   { slug: 'events-second-tree', order: 2, name: L('האילן השני', 'The Second Tree'), description: L('האירועים בסרגל הזמן של אילן התלמוד', 'The events on the time line of the Talmud tree') },
 ];
 
+// names on the time line whose page has another name
+const ALIAS = { 'רבן שמעון בן גמליאל (הנהרג)': 'rabban-shimon-ben-gamliel-1' };
+
 const html = (sections, lang) => sections.map((s) => `<h2>${lang === 'he' ? s.titleHe : s.titleEn}</h2><p>${lang === 'he' ? s.textHe : s.textEn}</p>`).join('');
 
 const main = async () => {
@@ -61,6 +64,10 @@ const main = async () => {
     doc.relations = e.rel.map((r) => {
       if (!r.slug) {
         // a name that is now exactly one page's name links to it
+        if (ALIAS[r.he] && bySlug.get(ALIAS[r.he])) {
+          const other = bySlug.get(ALIAS[r.he]);
+          return { type: r.type, person: other._id, name: { he: other.name.he, en: other.name.en || '' } };
+        }
         const same = [...bySlug.values()].filter((p) => p.kind !== 'other' && p.name?.he === r.he);
         if (same.length === 1) return { type: r.type, person: same[0]._id, name: { he: same[0].name.he, en: same[0].name.en || '' } };
         return { type: r.type, person: null, name: { he: r.he, en: r.en } };

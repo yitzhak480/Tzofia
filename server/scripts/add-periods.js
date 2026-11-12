@@ -185,6 +185,43 @@ const BATCHES = [
     relink: { 'shimon-hatzadik': { 'חוניו א׳': 'choniyo-1', 'חוניו ב׳': 'choniyo-2' } },
   },
   {
+    category: 'zugot',
+    entries: require('./content/second-temple-sages').zugot,
+    order: ['antigonus-ish-socho', 'yose-ben-yoezer', 'yose-ben-yochanan', 'yehoshua-ben-perachya', 'nitai-haarbeli', 'shimon-ben-shetach', 'yehuda-ben-tabai',
+      'shmaya', 'avtalyon', 'hillel-hazaken', 'menachem-av-beit-din', 'shammai'],
+    relink: {
+      'shimon-hatzadik': { 'אנטיגנוס איש סוכו': 'antigonus-ish-socho' },
+      'hillel-hazaken': { 'שמעיה': 'shmaya', 'אבטליון': 'avtalyon', 'רבן שמעון בן הלל': 'rabban-shimon-ben-hillel', 'יונתן בן עוזיאל': 'yonatan-ben-uziel',
+        'רבן יוחנן בן זכאי': 'rabban-yochanan-ben-zakai', 'שמאי הזקן': 'shammai' },
+    },
+  },
+  {
+    category: 'ishei-bayit-sheni',
+    entries: require('./content/second-temple-sages').families,
+    order: ['tzadok-talmid-antigonus', 'baitos', 'yoezer', 'bat-yoezer', 'yakim-ish-tzerorot', 'beteira', 'bat-choni', 'ben-choni'],
+    relink: {},
+  },
+  {
+    category: 'nesiim',
+    manual: true, // the order of the Nesi'im
+    entries: require('./content/second-temple-sages').nesiim,
+    order: ['yose-ben-yoezer', 'yehoshua-ben-perachya', 'shimon-ben-shetach', 'shmaya', 'hillel-hazaken', 'rabban-shimon-ben-hillel', 'rabban-gamliel-hazaken',
+      'rabban-shimon-ben-gamliel-1', 'rabban-gamliel-deyavne', 'rabban-shimon-ben-gamliel-2', 'rabbi-yehuda-hanasi'],
+    relink: {},
+  },
+  {
+    category: 'tannaim',
+    entries: require('./content/second-temple-sages').tannaim,
+    order: [],
+    relink: {},
+  },
+  {
+    category: 'av-beit-din',
+    entries: [],
+    order: ['yose-ben-yochanan', 'nitai-haarbeli', 'yehuda-ben-tabai', 'avtalyon', 'menachem-av-beit-din', 'shammai', 'rabban-yochanan-ben-zakai'],
+    relink: {},
+  },
+  {
     category: 'beit-chashmonai',
     entries: require('./content/second-temple-houses').chashmonai,
     order: ['shimon-hachashmonai', 'yochanan-hachashmonai', 'matityahu-hachashmonai', 'yochanan-ben-matityahu', 'elazar-ben-matityahu', 'yehuda-hamaccabi', 'yonatan-havofsi',
@@ -211,6 +248,8 @@ const EXTRA = [
   { slug: 'yehoshua-ben-yehotzadak', offices: [{ label: L('כהונה גדולה', 'High Priesthood'), before: [], after: ['yoyakim'] }] },
   { slug: 'yoyakim', offices: [{ label: L('כהונה גדולה', 'High Priesthood'), before: ['yehoshua-ben-yehotzadak'], after: ['elyashiv'] }] },
   { slug: 'elyashiv', offices: [{ label: L('כהונה גדולה', 'High Priesthood'), before: ['yoyakim'], after: ['yoyada-kg'] }] },
+  { slug: 'hillel-hazaken', offices: [{ label: L('שנות נשיאות', 'Years as Nasi'), before: ['shmaya'], after: ['rabban-shimon-ben-hillel'] }],
+    rels: [{ type: 'related', slug: 'beteira' }] },
   { slug: 'shimon-hatzadik', offices: [{ label: L('כהונה גדולה', 'High Priesthood'), before: ['choniyo-1'], after: ['elazar-kg2'] }],
     rels: [{ type: 'teacher', he: 'אנשי כנסת הגדולה', en: 'The Men of the Great Assembly' }] },
   // a Kohen, branch unknown; the tree joins him to Pinchas with a "?"
@@ -253,7 +292,11 @@ const main = async () => {
 
   const cats = {};
   for (const [slug, c] of Object.entries(CATEGORIES)) {
-    const doc = (await Category.findOne({ slug })) || new Category({ slug, cardColor: c.color });
+    // a category that exists already is left as it is (it may have been
+    // renamed, moved or reordered in the admin)
+    const existing = await Category.findOne({ slug });
+    if (existing) { cats[slug] = existing; continue; }
+    const doc = new Category({ slug, cardColor: c.color });
     const parentCat = c.parent ? await Category.findOne({ slug: c.parent }) : null;
     doc.set({ name: c.name, description: c.description, parent: parentCat ? parentCat._id : null, order: c.order, sortMode: c.sortMode || 'manual' });
     await doc.save();
@@ -315,12 +358,17 @@ const main = async () => {
     }
     // existing pages join the list; the list's order
     const id = String(period._id);
-    if (batch.manual && period.sortMode !== 'manual') { period.sortMode = 'manual'; await period.save(); }
+    // a list sorted by years becomes this list's own order; a list that
+    // already has its own order (maybe arranged by hand) keeps the places it
+    // has, and only pages new to it get a place
+    const wasManual = period.sortMode === 'manual';
+    if (batch.manual && !wasManual) { period.sortMode = 'manual'; await period.save(); }
     for (const [i, slug] of batch.order.entries()) {
       const doc = bySlug.get(slug);
       if (!doc) throw new Error(`order: no page "${slug}"`);
       if (!doc.categories.map(String).includes(id)) doc.categories.push(period._id);
-      doc.set(`orders.${id}`, i + 1);
+      const has = doc.orders?.get ? doc.orders.get(id) != null : doc.orders?.[id] != null;
+      if (!(wasManual && has)) doc.set(`orders.${id}`, i + 1);
       await doc.save();
     }
     // names on existing pages
