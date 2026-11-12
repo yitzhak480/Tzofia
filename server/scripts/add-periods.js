@@ -161,6 +161,15 @@ const ASTERISK_TITLE = { he: 'הכוכבית שבאילן', en: 'The Asterisk on
 const EXTRA = [
   { slug: 'ovadyah-hanavi', addCategory: 'gerei-tzedek' },
   { slug: 'tzefanyah-hanavi', related: 'chizkiyahu' },
+  // Megillah 13a: Mordechai took Esther "as a daughter" – read "as a wife"
+  {
+    slug: 'esther-hamalka',
+    spouses: [{ slug: 'mordechai-hayehudi' }, { he: 'אחשורוש', en: 'Achashverosh' }],
+    note: {
+      he: ['אסתר, מרדכי ואחשורוש', 'על הפסוק "לקחה מרדכי לו לבת" אמרו חז״ל: "אל תקרי לבת אלא לבית" – כלומר לאשה (מגילה יג ע״א), ולכן באילן ובאתר מרדכי ואסתר מחוברים כבעל ואשה. אחשורוש לקח אותה למלכה במקום ושתי, והיא הצילה את עם ישראל מגזרת המן.'],
+      en: ['Esther, Mordechai and Achashverosh', 'On the verse "Mordechai took her as his daughter (bat)", Chazal said: "do not read bat (daughter) but bayit (house)" – that is, as a wife (Megillah 13a), so on the tree and on our site Mordechai and Esther are joined as husband and wife. Achashverosh took her as queen in place of Vashti, and she saved the people of Israel from Haman’s decree.'],
+    },
+  },
 ];
 
 const GROUP = Object.fromEntries(CHECKLIST.map((r) => [r[0], r[1]]));
@@ -268,6 +277,25 @@ const main = async () => {
     if (x.addCategory && !doc.categories.map(String).includes(String(cats[x.addCategory]._id))) doc.categories.push(cats[x.addCategory]._id);
     if (x.related && !doc.relations.some((r) => String(r.person) === String(bySlug.get(x.related)?._id))) {
       doc.relations.push(link({ type: 'related', slug: x.related }, x.slug));
+    }
+    for (const s of x.spouses || []) {
+      // an earlier "related" link to the same person becomes the spouse link
+      const target = s.slug ? bySlug.get(s.slug) : null;
+      doc.relations = doc.relations.filter((r) => !(
+        (target && String(r.person) === String(target._id)) || (!s.slug && r.name?.he?.trim() === s.he)));
+      doc.relations.push(link({ type: 'spouse', ...s }, x.slug));
+    }
+    if (x.note) {
+      const content = { he: doc.content?.he || '', en: doc.content?.en || '' };
+      for (const lang of ['he', 'en']) {
+        const [title, text] = x.note[lang];
+        const head = `<h2>${title}</h2>`;
+        const cut = content[lang].indexOf(head);
+        const rest = cut >= 0 ? content[lang].slice(0, cut) + content[lang].slice(content[lang].indexOf('</p>', cut) + 4) : content[lang];
+        content[lang] = `${rest}${head}<p>${text}</p>`;
+      }
+      doc.content = content;
+      doc.markModified('content');
     }
     await doc.save();
   }
