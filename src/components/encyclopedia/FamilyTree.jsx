@@ -15,11 +15,16 @@ const FamilyTree = ({ person, name }) => {
   const roles = successionGroups(person, lang);
 
   const chip = (r, i) => {
-    const label = tr(r.name, lang);
+    const label = (
+      <>
+        {tr(r.name, lang)}
+        {r.uncertain && <span className="encyc-uncertain" title={he ? 'הקשר אינו ודאי' : 'The connection is uncertain'}>?</span>}
+      </>
+    );
     return r.slug ? (
       <Link key={`${r.slug}-${i}`} to={`/encyclopedia/person/${r.slug}`} className="encyc-chip is-link" dir="auto">{label}</Link>
     ) : (
-      <span key={`${label}-${i}`} className="encyc-chip" dir="auto">{label}</span>
+      <span key={`${tr(r.name, lang)}-${i}`} className="encyc-chip" dir="auto">{label}</span>
     );
   };
 

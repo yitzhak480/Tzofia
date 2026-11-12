@@ -52,7 +52,7 @@ const resolveRelations = async (person) => {
 
   const out = [];
   const seen = new Set();
-  const add = (type, name, linked) => {
+  const add = (type, name, linked, uncertain = false) => {
     const key = `${groupOf(type)}|${linked ? String(linked._id) : name?.he?.trim()}`;
     if (!name?.he || seen.has(key)) return;
     seen.add(key);
@@ -60,19 +60,20 @@ const resolveRelations = async (person) => {
       type,
       name: linked ? linked.name : name,
       slug: linked ? linked.slug : null,
+      uncertain: Boolean(uncertain),
     });
   };
 
   for (const r of own) {
     const linked = r.person ? idMap.get(String(r.person)) : nameMap.get(r.name?.he?.trim());
     // A link to a page that was deleted or hidden: show the saved name only.
-    add(r.type, r.person && !linked ? r.name : linked ? linked.name : r.name, linked);
+    add(r.type, r.person && !linked ? r.name : linked ? linked.name : r.name, linked, r.uncertain);
   }
 
   for (const other of pointingHere) {
     for (const r of other.relations || []) {
       const pointsHere = r.person ? String(r.person) === String(person._id) : r.name?.he?.trim() === nameHe;
-      if (pointsHere && INVERSE[r.type]) add(INVERSE[r.type], other.name, other);
+      if (pointsHere && INVERSE[r.type]) add(INVERSE[r.type], other.name, other, r.uncertain);
     }
   }
 

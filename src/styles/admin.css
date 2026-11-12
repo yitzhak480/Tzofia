@@ -881,3 +881,12 @@ a.admin-btn {
   flex-wrap: wrap;
 }
 
+.admin-uncertain {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  font-weight: bold !important;
+  color: var(--color-terracotta, #8e3b30);
+  cursor: pointer;
+}
+

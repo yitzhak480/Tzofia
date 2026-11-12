@@ -47,6 +47,8 @@ const relationSchema = new mongoose.Schema(
     type: { type: String, enum: RELATION_TYPES, required: true },
     person: { type: mongoose.Schema.Types.ObjectId, ref: 'Person', default: null },
     name: { type: localized(), default: () => ({}) },
+    // A question mark on the poster: the connection isn't certain.
+    uncertain: { type: Boolean, default: false },
   },
   { _id: false }
 );
@@ -117,6 +119,9 @@ const personSchema = new mongoose.Schema(
     sourcesEn: { type: [{ type: String, trim: true }], default: [] },
     treeSpots: { type: [treeSpotSchema], default: [] },
     order: { type: Number, default: 0 },
+    // Position inside a specific category (category id -> number); falls
+    // back to `order` when not set.
+    orders: { type: Map, of: Number, default: () => ({}) },
     // Unpublished people are visible only in the admin.
     published: { type: Boolean, default: true },
     // Card colour when there is no picture; empty = picked automatically.

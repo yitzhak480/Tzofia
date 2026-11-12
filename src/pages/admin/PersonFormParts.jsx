@@ -233,9 +233,13 @@ export const RelationsEditor = ({ value, onChange, people, types }) => {
             relation={r}
             people={people}
             autoFocus={focusIndex === i}
-            onChange={(patch) => update(i, patch)}
+            onChange={(patch) => update(i, { ...patch, uncertain: r.uncertain })}
             onEnter={() => add(r.type, i + 1)}
           />
+          <label className="admin-uncertain" title="הקשר אינו ודאי (סימן שאלה באילן)">
+            <input type="checkbox" checked={Boolean(r.uncertain)} onChange={(e) => update(i, { uncertain: e.target.checked })} />
+            ?
+          </label>
           <button type="button" className="admin-icon-btn" onClick={() => remove(i)} title="הסרה">×</button>
         </div>
       ))}

@@ -650,3 +650,11 @@ body[dir="ltr"] .encyc-infobox {
   opacity: 0.85;
 }
 
+/* סימן שאלה על קשר לא ודאי, כמו באילן */
+.encyc-uncertain {
+  display: inline-block;
+  margin-inline-start: 0.3rem;
+  font-weight: bold;
+  color: var(--color-terracotta, #8e3b30);
+}
+

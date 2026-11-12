@@ -35,7 +35,10 @@ const AdminPeople = ({ adminApi }) => {
 
   const visible = useMemo(() => {
     let list = people || [];
-    if (filterCat) list = list.filter((p) => p.categories.includes(filterCat));
+    if (filterCat) {
+      const pos = (p) => (p.orders && p.orders[filterCat] != null ? p.orders[filterCat] : p.order);
+      list = list.filter((p) => p.categories.includes(filterCat)).sort((a, b) => pos(a) - pos(b));
+    }
     const q = search.trim().toLowerCase();
     if (q) list = list.filter((p) => p.name.he.includes(q) || (p.name.en || '').toLowerCase().includes(q));
     return list;
@@ -103,8 +106,7 @@ const AdminPeople = ({ adminApi }) => {
       await Promise.all(
         reordered
           .map((p, i) => ({ p, order: i + 1 }))
-          .filter(({ p, order }) => p.order !== order)
-          .map(({ p, order }) => call(`/people/${p._id}`, { method: 'PUT', body: { order } }))
+          .map(({ p, order }) => call(`/people/${p._id}`, { method: 'PUT', body: { orders: { ...(p.orders || {}), [filterCat]: order } } }))
       );
       await reload();
     } catch (err) {

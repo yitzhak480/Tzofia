@@ -11,7 +11,7 @@ const router = express.Router();
 const FIELDS = ['slug', 'name', 'description', 'image', 'parent', 'order', 'cardColor', 'icon', 'colorEntries'];
 const SORT = { order: 1, createdAt: 1 };
 // What a person's card needs (no full article).
-const CARD_FIELDS = 'slug kind name period summary autoSummary mainImage order categories life offices treeSpots cardColor';
+const CARD_FIELDS = 'slug kind name period summary autoSummary mainImage order categories life offices treeSpots cardColor orders';
 
 const normalizeParent = (data) => {
   if (data.parent === '' || data.parent === undefined) data.parent = null;
@@ -29,11 +29,15 @@ router.get('/:slug', async (req, res) => {
   const category = await Category.findOne({ slug: req.params.slug.toLowerCase() }).lean();
   if (!category) return res.status(404).json({ message: 'Category not found' });
 
-  const [ancestors, children, people] = await Promise.all([
+  const [ancestors, children, unsorted] = await Promise.all([
     ancestorChain(category.parent),
     Category.find({ parent: category._id }).sort(SORT).lean(),
     Person.find({ categories: category._id, published: true }).select(CARD_FIELDS).sort(SORT).lean(),
   ]);
+
+  // Order inside this category (falls back to the general order).
+  const pos = (p) => (p.orders && p.orders[String(category._id)] != null ? p.orders[String(category._id)] : p.order);
+  const people = unsorted.sort((a, b) => pos(a) - pos(b) || String(a.createdAt).localeCompare(String(b.createdAt)));
 
   res.json({ category, ancestors, children, people });
 });
