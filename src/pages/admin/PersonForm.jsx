@@ -279,7 +279,8 @@ const PersonForm = ({ initial, defaultCategory, categoryRows, people, upload, on
               onChange={(offices) => set({ offices })}
               showEnglish={showEnglish}
               people={otherPeople}
-              askTeacher={{
+              // The "was he also the teacher?" question is shown only for men.
+              askTeacher={form.gender === 'female' ? undefined : {
                 word: 'היה גם רבו',
                 isTeacher: (l) =>
                   form.relations.some(
