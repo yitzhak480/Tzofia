@@ -50,15 +50,23 @@
 }
 
 /* כרטיסי הקטגוריות באותו גודל כמו בדף הבית, גם כשיש רק אחד או שניים */
+/* (a wrapping row, so a last row that isn't full stays in the middle) */
 .home-cards-grid.encyc-cards-grid {
   width: 100%;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 340px));
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
+.home-cards-grid.encyc-cards-grid > * {
+  flex: 0 1 340px;
+  min-width: 280px;
+}
+
 @media (max-width: 900px) {
-  .home-cards-grid.encyc-cards-grid {
-    grid-template-columns: minmax(0, 340px);
+  .home-cards-grid.encyc-cards-grid > * {
+    flex-basis: 340px;
+    min-width: 0;
   }
 }
 
