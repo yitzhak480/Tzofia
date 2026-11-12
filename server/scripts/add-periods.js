@@ -15,6 +15,7 @@ const { L } = require('./content/helpers');
 const CATEGORIES = {
   'egypt-exodus': { order: 0.1, color: 't1-levi', name: L('מצרים ויציאת מצרים', 'Egypt and the Exodus'), description: L('מבני בני יעקב ועד ימי יהושע', 'From the children of Yaakov’s sons to the days of Yehoshua') },
   'judges-to-david': { order: 0.2, color: 't1-shvatim', name: L('מימי השופטים עד דוד', 'From the Judges to David'), description: L('מימי השופטים ועד תחילת מלכות דוד', 'From the days of the Judges to the start of David’s reign') },
+  'david-shlomo': { order: 0.3, color: 't1-yehuda', name: L('ימי דוד ושלמה', 'The Days of David and Shlomo'), description: L('הממלכה המאוחדת, מתחילת מלכות דוד ועד פילוג הממלכה', 'The united kingdom, from the start of David’s reign to the division of the kingdom') },
   levites: { order: 6.5, color: 't1-levi', sortMode: 'chrono', name: L('בני לוי', 'The Levites'), description: L('משפחות שבט לוי: לויים, משוררים ובני משפחות הכהנים', 'The families of the tribe of Levi: Levites, singers and the families of the Kohanim') },
   'gerei-tzedek': { order: 6.6, color: 't1-gerim', sortMode: 'chrono', name: L('גרי צדק', 'Righteous Converts'), description: L('מי שבאו מן העמים ונכנסו תחת כנפי השכינה', 'Those who came from the nations and entered under the wings of the Divine Presence') },
 };
@@ -73,6 +74,21 @@ const BATCHES = [
       'chana-haneviah': { 'אלקנה': 'elkanah' },
       'shaul-hamelech': { 'קיש': 'kish', 'יהונתן': 'yehonatan-ben-shaul' },
       david: { 'ישי': 'yishai', 'נצבת בת עדאל': 'nitzevet' },
+    },
+  },
+  {
+    category: 'david-shlomo',
+    entries: require('./content/david-shlomo'),
+    order: ['david', 'tzruya', 'yoav', 'avishai', 'asael', 'michal', 'avigayil-haneviah', 'ish-boshet', 'avner', 'yehonatan-ben-shaul', 'mefiboshet', 'gad-hachozeh', 'natan-hanavi', 'yigal',
+      'tzadok-hakohen', 'evyatar-ben-achimelech', 'achimaatz-ben-tzadok', 'yehoyada-avi-benayahu', 'benayahu', 'berachyahu', 'asaf', 'heiman', 'yedutun', 'eliam', 'achitofel', 'uriya-hachiti',
+      'bat-sheva', 'amnon', 'avshalom', 'tamar-bat-david', 'shefatya', 'adoniyahu', 'shlomo', 'naama-haamonit', 'achiyah-hashiloni'],
+    relink: {
+      david: { 'אמנון': 'amnon', 'אבשלום': 'avshalom', 'אדוניהו': 'adoniyahu', 'תמר': 'tamar-bat-david', 'מיכל בת שאול': 'michal', 'בת שבע': 'bat-sheva', 'אחיתופל': 'achitofel', 'צרויה': 'tzruya' },
+      shlomo: { 'בת שבע': 'bat-sheva', 'אמנון': 'amnon', 'אבשלום': 'avshalom', 'אדוניהו': 'adoniyahu', 'תמר': 'tamar-bat-david', 'נעמה העמונית': 'naama-haamonit' },
+      'shaul-hamelech': { 'מיכל': 'michal' },
+      yishai: { 'צרויה': 'tzruya' },
+      'yehonatan-ben-shaul': { 'מפיבושת': 'mefiboshet' },
+      rechavam: { 'נעמה העמונית': 'naama-haamonit' },
     },
   },
 ];
