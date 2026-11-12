@@ -958,3 +958,95 @@ a.admin-btn {
 
 /* a form scrolled into view leaves a little room above it */
 .admin-form-card { scroll-margin-top: 12px; }
+
+/* רשימת האילן */
+.admin-checklist-summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+  margin: 0.5rem 0 1.5rem;
+}
+.admin-checklist-bar {
+  flex: 1 1 220px;
+  height: 12px;
+  border-radius: 6px;
+  background: rgba(197, 160, 89, 0.2);
+  overflow: hidden;
+}
+.admin-checklist-bar span {
+  display: block;
+  height: 100%;
+  background: var(--color-gold, #c5a059);
+}
+.admin-checklist-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+}
+.admin-checklist-group {
+  margin-bottom: 1.75rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid rgba(197, 160, 89, 0.45);
+  border-inline-start: 6px solid var(--group-color, #c5a059);
+  border-radius: 6px;
+  background: #fffaf0;
+}
+.admin-checklist-group h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0 0 0.75rem;
+}
+.admin-checklist-group h3 small,
+.admin-checklist-kind h4 small {
+  font-weight: normal;
+  color: #6b6255;
+}
+.admin-checklist-swatch {
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 3px;
+  background: var(--group-color, #c5a059);
+}
+.admin-checklist-kinds {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem 2rem;
+}
+.admin-checklist-kind h4 {
+  margin: 0 0 0.4rem;
+}
+.admin-checklist-kind ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  columns: 2 170px;
+  column-gap: 1.5rem;
+}
+.admin-checklist-kind li {
+  break-inside: avoid;
+  padding: 0.15rem 0;
+}
+.admin-checklist-kind label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+}
+.admin-checklist-kind li.is-done span {
+  color: #6b6255;
+}
+.admin-checklist-link {
+  display: block;
+  margin-inline-start: 1.6rem;
+  font-size: 0.85rem;
+  color: var(--color-terracotta, #8e3b30);
+}
+
+.admin-checklist-sub {
+  display: block;
+  font-size: 0.8rem;
+  color: #7a6d5a;
+}

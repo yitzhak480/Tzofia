@@ -5,12 +5,14 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import AdminLogin from './AdminLogin';
 import AdminCategories from './AdminCategories';
+import AdminChecklist from './AdminChecklist';
 import AdminPeople from './AdminPeople';
 import { loadToken, makeAdminApi, saveToken } from './adminApi';
 
 const TABS = [
   { id: 'people', label: 'ערכים' },
   { id: 'categories', label: 'קטגוריות' },
+  { id: 'checklist', label: 'רשימת האילן' },
 ];
 
 // /admin — manage the encyclopedia. Shows the login until the admin signs in.
@@ -71,6 +73,7 @@ const AdminPage = () => {
 
             {tab === 'categories' && <AdminCategories adminApi={adminApi} />}
             {tab === 'people' && <AdminPeople adminApi={adminApi} />}
+            {tab === 'checklist' && <AdminChecklist adminApi={adminApi} />}
           </>
         )}
       </main>

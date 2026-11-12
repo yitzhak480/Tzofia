@@ -13,6 +13,8 @@ const checklistItemSchema = new mongoose.Schema(
     x: { type: Number, required: true },
     y: { type: Number, required: true },
     order: { type: Number, default: 0 },
+    sub: { type: String, default: '' }, // the text under the name in the box (role, years)
+    note: { type: String, default: '' }, // the poster's marks around it
     done: { type: Boolean, default: false }, // ticked by hand
   },
   { timestamps: true }
