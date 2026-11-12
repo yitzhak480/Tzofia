@@ -144,8 +144,11 @@ const main = async () => {
         if (target && bySlug.get(target)) r.person = bySlug.get(target)._id;
       }
       // a "related" link to someone who is now linked as family is dropped
-      const family = new Set(doc.relations.filter((r) => r.type !== 'related' && r.person).map((r) => String(r.person)));
-      doc.relations = doc.relations.filter((r) => !(r.type === 'related' && r.person && family.has(String(r.person))));
+      const familyLinks = doc.relations.filter((r) => r.type !== 'related' && r.person);
+      const family = new Set(familyLinks.map((r) => String(r.person)));
+      const familyNames = new Set(familyLinks.map((r) => [...bySlug.values()].find((p) => String(p._id) === String(r.person))?.name.he));
+      doc.relations = doc.relations.filter((r) => !(r.type === 'related'
+        && ((r.person && family.has(String(r.person))) || (!r.person && familyNames.has(r.name?.he?.trim())))));
       doc.markModified('relations');
       await doc.save();
     }
