@@ -1,7 +1,6 @@
 // Fills in the details of the Kings of Judah: roles, years, family, teachers,
 // sources, their place on the Biblical tree poster and an article.
-// Sources: Tanach and Chazal only. Years and tree positions follow the poster;
-// years of life are not set, because the poster shows only the reigns.
+// Sources: Tanach and Chazal only. Years and tree positions follow the poster.
 //
 // Safe to run more than once. It does NOT touch pictures, card summaries,
 // Wikipedia links or the order of the kings.
@@ -20,6 +19,7 @@ const p = (title, text) => `<h2>${title}</h2><p>${text}</p>`;
 const KINGS = {
   david: {
     roles: ['מלך ישראל', 'נביא', 'נעים זמירות ישראל'],
+    life: [2854, 2924],
     offices: reign(2884, 2924, '7 שנים בחברון, 33 בירושלים'),
     relations: [
       { type: 'father', name: 'ישי' },
@@ -40,6 +40,7 @@ const KINGS = {
 
   shlomo: {
     roles: ['מלך ישראל', 'בונה בית המקדש', 'החכם מכל אדם'],
+    life: [2912, 2964],
     offices: reign(2924, 2964),
     relations: [
       { type: 'father', slug: 'david' },
@@ -59,6 +60,7 @@ const KINGS = {
 
   rechavam: {
     roles: ['מלך יהודה'],
+    life: [2923, 2981],
     offices: reign(2964, 2981),
     relations: [
       { type: 'father', slug: 'shlomo' },
@@ -105,6 +107,7 @@ const KINGS = {
 
   yehoshafat: {
     roles: ['מלך יהודה'],
+    life: [2989, 3047],
     offices: reign(3024, 3047, 'בתנ״ך: 25 שנה (מלכים א׳ כב, מב)'),
     relations: [
       { type: 'father', slug: 'asa' },
@@ -120,6 +123,7 @@ const KINGS = {
 
   yehoram: {
     roles: ['מלך יהודה'],
+    life: [3015, 3055],
     offices: reign(3047, 3055),
     relations: [
       { type: 'father', slug: 'yehoshafat' },
@@ -135,6 +139,7 @@ const KINGS = {
 
   achazyahu: {
     roles: ['מלך יהודה'],
+    life: [3033, 3056],
     offices: reign(3055, 3056),
     relations: [
       { type: 'father', slug: 'yehoram' },
@@ -166,6 +171,7 @@ const KINGS = {
 
   yehoash: {
     roles: ['מלך יהודה'],
+    life: [3054, 3100],
     offices: reign(3061, 3100, 'בתנ״ך: 40 שנה'),
     relations: [
       { type: 'father', slug: 'achazyahu' },
@@ -198,6 +204,7 @@ const KINGS = {
 
   uziyahu: {
     roles: ['מלך יהודה'],
+    life: [3099, 3167],
     offices: reign(3115, 3167),
     relations: [
       { type: 'father', slug: 'amatzyah' },
@@ -214,6 +221,7 @@ const KINGS = {
 
   yotam: {
     roles: ['מלך יהודה'],
+    life: [3142, 3183],
     offices: reign(3167, 3183),
     relations: [
       { type: 'father', slug: 'uziyahu' },
@@ -228,6 +236,7 @@ const KINGS = {
 
   achaz: {
     roles: ['מלך יהודה'],
+    life: [3163, 3199],
     offices: reign(3183, 3199),
     relations: [{ type: 'father', slug: 'yotam' }],
     sources: ['מלכים ב׳ טז', 'דברי הימים ב׳ כח', 'ישעיהו ז – ח', 'בראשית רבה מב, ג'],
@@ -240,6 +249,7 @@ const KINGS = {
 
   chizkiyahu: {
     roles: ['מלך יהודה'],
+    life: [3174, 3228],
     offices: reign(3199, 3228),
     relations: [
       { type: 'father', slug: 'achaz' },
@@ -257,6 +267,7 @@ const KINGS = {
 
   menashe: {
     roles: ['מלך יהודה'],
+    life: [3216, 3283],
     offices: reign(3228, 3283),
     relations: [
       { type: 'father', slug: 'chizkiyahu' },
@@ -272,6 +283,7 @@ const KINGS = {
 
   amon: {
     roles: ['מלך יהודה'],
+    life: [3261, 3285],
     offices: reign(3283, 3285),
     relations: [
       { type: 'father', slug: 'menashe' },
@@ -286,6 +298,7 @@ const KINGS = {
 
   yoshiyahu: {
     roles: ['מלך יהודה'],
+    life: [3277, 3316],
     offices: reign(3285, 3316),
     relations: [
       { type: 'father', slug: 'amon' },
@@ -301,6 +314,7 @@ const KINGS = {
 
   yehoachaz: {
     roles: ['מלך יהודה'],
+    life: [3293, null],
     offices: reign(3316, 3316, 'שלושה חודשים'),
     relations: [
       { type: 'father', slug: 'yoshiyahu' },
@@ -317,6 +331,7 @@ const KINGS = {
 
   yehoyakim: {
     roles: ['מלך יהודה'],
+    life: [3291, 3327],
     offices: reign(3316, 3327),
     relations: [
       { type: 'father', slug: 'yoshiyahu' },
@@ -331,6 +346,7 @@ const KINGS = {
 
   yehoyachin: {
     roles: ['מלך יהודה'],
+    life: [3309, null],
     offices: reign(3327, 3327, 'שלושה חודשים'),
     relations: [
       { type: 'father', slug: 'yehoyakim' },
@@ -346,6 +362,7 @@ const KINGS = {
 
   tzidkiyahu: {
     roles: ['מלך יהודה', 'המלך האחרון בבית ראשון'],
+    life: [3306, null],
     offices: reign(3327, 3338),
     relations: [
       { type: 'father', slug: 'yoshiyahu' },

@@ -119,6 +119,8 @@ const ENTRIES = [
     categories: ['nesiim'],
     name: L('הלל הזקן', 'Hillel the Elder'),
     roles: [L('נשיא', 'Nasi'), L('ראש בית הלל', 'Head of Beit Hillel')],
+    life: [3648, 3768],
+    offices: [office('שנות נשיאות', 'Years as Nasi', 3728, 3768, 'מאה שנה לפני החורבן (שבת טו ע״א)', 'A hundred years before the Destruction (Shabbat 15a)')],
     summary: L('נשיא ישראל, ענו ואוהב שלום, שמבית מדרשו יצאו רוב ההלכות.', 'Nasi of Israel, humble and peace-loving, whose school is followed in most of halachah.'),
     rel: [
       { type: 'teacher', he: 'שמעיה', en: 'Shemayah' },
@@ -218,6 +220,7 @@ const ENTRIES = [
     kind: 'other',
     name: L('בית המקדש הראשון', 'The First Temple'),
     roles: [L('בית מקדש', 'Temple')],
+    life: [2928, 3338],
     summary: L('בית המקדש שבנה שלמה המלך בירושלים, ועמד ארבע מאות ועשר שנים.', 'The Temple built by King Shlomo in Jerusalem, which stood for four hundred and ten years.'),
     rel: [
       { type: 'related', slug: 'shlomo' },
@@ -338,6 +341,7 @@ const ENTRIES = [
     categories: ['geonim'],
     name: L('רב סעדיה גאון', 'Rav Saadia Gaon'),
     roles: [L('גאון', 'Gaon'), L('ראש ישיבת סורא', 'Head of the Sura academy')],
+    life: [4642, 4702],
     offices: [office('גאון ישיבת סורא', 'Gaon of the Sura academy', 4688, 4702)],
     summary: L('גאון סורא, מגדולי חכמי ישראל, שלחם בקראים וחיבר את "האמונות והדעות".', 'Gaon of Sura, one of the greatest Jewish sages, who fought the Karaites and wrote "Emunot VeDeot".'),
     rel: [
