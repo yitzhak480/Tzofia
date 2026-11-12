@@ -12,33 +12,37 @@ const Category = require('../models/Category');
 const Person = require('../models/Person');
 
 const PROPHETS = {
-  // the united kingdom
-  'shaul-hamelech': ['shmuel-hanavi'],
-  'ish-boshet': ['gad-hachozeh', 'natan-hanavi'],
-  david: ['shmuel-hanavi', 'gad-hachozeh', 'natan-hanavi'],
-  shlomo: ['natan-hanavi', 'achiyah-hashiloni', 'ido-hachozeh'],
-  // the Kingdom of Judah
-  rechavam: ['shemayah-ish-haelokim', 'ido-hachozeh', 'achiyah-hashiloni'],
+  // The kings of Judah follow Seder Olam Zuta, chapters 5–7, which names the
+  // prophets of each king. Added from explicit verses (marked "Tanach"):
+  // Natan with Shlomo (I Kings 1), Elisha with Yehoshafat (II Kings 3),
+  // Zecharyahu with Uziyahu (II Chron. 26:5), Michah with Chizkiyahu
+  // (Yirmeyahu 26:18), Baruch (Yirmeyahu 36; 32) and Seraiah (Yirmeyahu 51:59).
+  'shaul-hamelech': ['shmuel-hanavi'], // Tanach
+  'ish-boshet': [],
+  david: ['natan-hanavi', 'gad-hachozeh'],
+  shlomo: ['ido-hachozeh', 'achiyah-hashiloni', 'natan-hanavi'],
+  rechavam: ['shemayah-ish-haelokim', 'ido-hachozeh'],
   abiyam: ['ido-hachozeh'],
-  asa: ['azaryahu-ben-oded', 'chanani-haroeh'],
-  yehoshafat: ['yehu-ben-chanani', 'yachaziel-halevi', 'eliezer-ben-dodavahu', 'michayhu-ben-yimlah', 'eliyahu-hanavi', 'elisha-hanavi'],
-  yehoram: ['eliyahu-hanavi', 'elisha-hanavi'],
+  asa: ['azaryahu-ben-oded', 'chanani-haroeh', 'yehu-ben-chanani'],
+  yehoshafat: ['yehu-ben-chanani', 'ovadyah-hanavi', 'michayhu-ben-yimlah', 'yachaziel-halevi', 'eliezer-ben-dodavahu', 'elisha-hanavi'],
+  yehoram: ['eliyahu-hanavi'],
   achazyahu: ['elisha-hanavi'],
-  atalyah: ['elisha-hanavi'],
-  yehoash: ['zecharyah-ben-yehoyada', 'elisha-hanavi'],
-  amatzyah: ['yonah-ben-amitai'],
-  uziyahu: ['zecharyahu-hamevin', 'hoshea-ben-beeri', 'amos-hanavi', 'yeshayahu-hanavi', 'amotz'],
-  yotam: ['hoshea-ben-beeri', 'yeshayahu-hanavi', 'michah-hamorashti'],
-  achaz: ['hoshea-ben-beeri', 'yeshayahu-hanavi', 'michah-hamorashti', 'oded'],
-  chizkiyahu: ['hoshea-ben-beeri', 'yeshayahu-hanavi', 'michah-hamorashti'],
-  menashe: ['yeshayahu-hanavi', 'yoel-ben-petuel', 'nachum-haelkoshi', 'chavakuk-hanavi'],
-  amon: [],
+  atalyah: [],
+  yehoash: ['zecharyah-ben-yehoyada'],
+  amatzyah: ['amotz'],
+  uziyahu: ['hoshea-ben-beeri', 'yeshayahu-hanavi', 'amos-hanavi', 'michah-hamorashti', 'zecharyahu-hamevin'],
+  yotam: ['hoshea-ben-beeri', 'yeshayahu-hanavi', 'amos-hanavi', 'michah-hamorashti', 'oded'],
+  achaz: ['hoshea-ben-beeri', 'yeshayahu-hanavi', 'amos-hanavi', 'michah-hamorashti', 'oded'],
+  chizkiyahu: ['hoshea-ben-beeri', 'yeshayahu-hanavi', 'amos-hanavi', 'michah-hamorashti'],
+  menashe: ['yoel-ben-petuel', 'nachum-haelkoshi', 'chavakuk-hanavi'],
+  amon: [], // "חוזים", unnamed
   yoshiyahu: ['tzefanyah-hanavi', 'yirmeyahu-hanavi', 'chulda-haneviah'],
   yehoachaz: ['yirmeyahu-hanavi'],
   yehoyakim: ['yirmeyahu-hanavi', 'uriyahu-ben-shemayahu', 'baruch-ben-neriyah'],
-  yehoyachin: ['yirmeyahu-hanavi', 'yechezkel-hanavi'],
+  yehoyachin: ['yirmeyahu-hanavi'],
   tzidkiyahu: ['yirmeyahu-hanavi', 'yechezkel-hanavi', 'baruch-ben-neriyah', 'seraiah-ben-neriyah'],
-  // the Kingdom of Israel
+  // Seder Olam Zuta does not list the kings of Israel; these are from Tanach
+  // and Seder Olam Rabbah.
   'yeravam-ben-nevat': ['achiyah-hashiloni', 'ido-hachozeh'],
   'nadav-ben-yeravam': [],
   baasha: ['yehu-ben-chanani'],
