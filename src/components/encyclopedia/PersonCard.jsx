@@ -16,7 +16,7 @@ const PersonCard = ({ person, category }) => {
   const name = tr(person.name, lang);
   const line = cardLine(person, lang);
   const summary = cardSummary(person, lang);
-  const color = entryColor(person);
+  const color = entryColor(person, category);
 
   return (
     <Link to={`/encyclopedia/person/${person.slug}`} className="biblical-card encyc-person-card">
@@ -26,7 +26,7 @@ const PersonCard = ({ person, category }) => {
         ) : (
           <>
             <CardBack color={color} medallion={false} />
-            <div className="encyc-card-symbol" style={{ color: CARD_COLORS[color].marble ? '#8a6a2c' : '#d9b56b' }}>
+            <div className="encyc-card-symbol" style={{ color: CARD_COLORS[color].icon }}>
               <CategoryIcon kind={iconForCategory(category?.slug, category?.icon)} />
             </div>
           </>

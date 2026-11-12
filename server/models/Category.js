@@ -14,6 +14,9 @@ const categorySchema = new mongoose.Schema(
     order: { type: Number, default: 0 },
     // Colour of the decorative card shown when there is no picture.
     cardColor: { type: String, enum: COLOR_KEYS, default: 'burgundy' },
+    // When true, entries without a picture (and without their own colour)
+    // use this category's colour.
+    colorEntries: { type: Boolean, default: false },
     // Symbol on the cards of entries without a picture; empty = automatic.
     icon: { type: String, trim: true, default: '' },
   },

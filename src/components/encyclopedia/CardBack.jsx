@@ -23,8 +23,8 @@ const CardBack = ({ color = 'burgundy', medallion = true }) => {
       <defs>
         <pattern id={`lattice-${id}`} width="38" height="38" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
           <rect width="38" height="38" fill={c.base} />
-          <path d="M0 0H38M0 0V38" stroke={c.line} strokeOpacity={c.marble ? 0.18 : 0.45} strokeWidth="1.4" />
-          <circle cx="19" cy="19" r="2.2" fill={c.line} fillOpacity={c.marble ? 0.3 : 0.6} />
+          <path d="M0 0H38M0 0V38" stroke={c.line} strokeOpacity={c.marble ? 0.18 : c.light ? 0.3 : 0.45} strokeWidth="1.4" />
+          <circle cx="19" cy="19" r="2.2" fill={c.line} fillOpacity={c.marble ? 0.3 : c.light ? 0.4 : 0.6} />
         </pattern>
         <radialGradient id={`glow-${id}`} cx="50%" cy="31%" r="45%">
           <stop offset="0%" stopColor={c.glow} stopOpacity="0.55" />

@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../../context/context';
+import TreeLoader from './TreeLoader';
 
 // Shown while a page loads, or when it fails / isn't found.
 // The free Render server "sleeps" when unused and can take up to a minute to
@@ -18,8 +19,8 @@ const LoadingState = ({ loading, error }) => {
 
   if (loading) {
     return (
-      <div className="encyc-status" role="status">
-        <p>{he ? 'טוען...' : 'Loading...'}</p>
+      <div className="encyc-status encyc-status-loading">
+        <TreeLoader label={he ? 'טוען...' : 'Loading...'} />
         {slow && (
           <p className="encyc-status-note">
             {he ? 'השרת מתעורר, זה עשוי לקחת עד דקה.' : 'The server is waking up, this can take up to a minute.'}

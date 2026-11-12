@@ -1,12 +1,11 @@
 import React, { useMemo, useState } from 'react';
 import ImageUpload from '../../components/admin/ImageUpload';
 import { SLUG_PATTERN, toSlug } from './adminApi';
-import CardBack from '../../components/encyclopedia/CardBack';
-import { CARD_COLORS } from '../../components/encyclopedia/cardColors';
+import ColorPicker from '../../components/admin/ColorPicker';
 import CategoryIcon from '../../components/encyclopedia/CategoryIcon';
 import { ICON_LIST, iconForCategory } from '../../components/encyclopedia/categoryIcons';
 
-const emptyCategory = { name: { he: '', en: '' }, description: { he: '', en: '' }, slug: '', parent: '', image: null, cardColor: 'burgundy', icon: '' };
+const emptyCategory = { name: { he: '', en: '' }, description: { he: '', en: '' }, slug: '', parent: '', image: null, cardColor: 'burgundy', icon: '', colorEntries: false };
 
 // Add / edit form for a category. `options` is the list of possible parents
 // (already without this category and its subcategories).
@@ -22,6 +21,7 @@ const CategoryForm = ({ initial, options, defaultParent = '', onSave, onCancel, 
           image: initial.image || null,
           cardColor: initial.cardColor || 'burgundy',
           icon: initial.icon || '',
+          colorEntries: Boolean(initial.colorEntries),
         }
       : { ...emptyCategory, parent: defaultParent }
   );
@@ -121,21 +121,16 @@ const CategoryForm = ({ initial, options, defaultParent = '', onSave, onCancel, 
 
       <div className="form-group">
         <label>צבע הכרטיס כשאין תמונה:</label>
-        <div className="admin-color-picker" role="radiogroup">
-          {Object.entries(CARD_COLORS).map(([key, c]) => (
-            <button
-              key={key}
-              type="button"
-              role="radio"
-              aria-checked={form.cardColor === key}
-              className={`admin-color-option ${form.cardColor === key ? 'is-selected' : ''}`}
-              onClick={() => setForm((f) => ({ ...f, cardColor: key }))}
-            >
-              <span className="admin-color-swatch"><CardBack color={key} /></span>
-              {c.he}
-            </button>
-          ))}
-        </div>
+        <ColorPicker value={form.cardColor} onChange={(cardColor) => setForm((f) => ({ ...f, cardColor }))} />
+        <label className="admin-inline-check">
+          <input
+            type="checkbox"
+            checked={form.colorEntries}
+            onChange={(e) => setForm((f) => ({ ...f, colorEntries: e.target.checked }))}
+          />
+          לצבוע בצבע הזה את כל הערכים בקטגוריה שאין להם תמונה
+          <span className="admin-hint">(ערך שנבחר לו צבע משלו ישמור על הצבע שלו)</span>
+        </label>
       </div>
 
       <div className="form-group">

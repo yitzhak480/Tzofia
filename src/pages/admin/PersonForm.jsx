@@ -5,8 +5,8 @@ import RichTextEditor from '../../components/admin/RichTextEditor';
 import TagInput from '../../components/admin/TagInput';
 import { CategoryPicker, OfficesEditor, RelationsEditor, TreeSpotsEditor, YearsInput } from './PersonFormParts';
 import { SLUG_PATTERN } from './adminApi';
-import CardBack from '../../components/encyclopedia/CardBack';
-import { CARD_COLORS, entryColor } from '../../components/encyclopedia/cardColors';
+import ColorPicker from '../../components/admin/ColorPicker';
+import { entryColor } from '../../components/encyclopedia/cardColors';
 
 const DRAFT_KEY = 'tzofia_new_person_draft';
 const PLACE_SUGGESTIONS = ['עיר', 'מקום', 'בית מקדש', 'כלי המקדש', 'ספר', 'אירוע', 'שבט', 'הר', 'נהר', 'ארץ', 'ישיבה', 'בית כנסת', 'מערה', 'מדבר', 'מסכת', 'חפץ'];
@@ -239,31 +239,12 @@ const PersonForm = ({ initial, defaultCategory, categoryRows, people, upload, on
         {!form.mainImage && (
           <div className="form-group">
             <label>צבע הכרטיס כשאין תמונה:</label>
-            <div className="admin-color-picker" role="radiogroup">
-              <button
-                type="button"
-                role="radio"
-                aria-checked={!form.cardColor}
-                className={`admin-color-option ${!form.cardColor ? 'is-selected' : ''}`}
-                onClick={() => set({ cardColor: '' })}
-              >
-                <span className="admin-color-swatch"><CardBack color={entryColor({ slug: form.slug || form.name.he })} medallion={false} /></span>
-                אוטומטי
-              </button>
-              {Object.entries(CARD_COLORS).map(([key, c]) => (
-                <button
-                  key={key}
-                  type="button"
-                  role="radio"
-                  aria-checked={form.cardColor === key}
-                  className={`admin-color-option ${form.cardColor === key ? 'is-selected' : ''}`}
-                  onClick={() => set({ cardColor: key })}
-                >
-                  <span className="admin-color-swatch"><CardBack color={key} medallion={false} /></span>
-                  {c.he}
-                </button>
-              ))}
-            </div>
+            <ColorPicker
+              value={form.cardColor}
+              onChange={(cardColor) => set({ cardColor })}
+              autoColor={entryColor({ slug: form.slug || form.name.he })}
+              autoLabel="אוטומטי"
+            />
           </div>
         )}
       </Section>

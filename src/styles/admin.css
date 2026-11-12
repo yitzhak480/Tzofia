@@ -795,3 +795,37 @@ a.admin-btn {
   background: #fff;
 }
 
+/* מגירות צבעים מהאילנות */
+.admin-color-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.admin-color-drawer {
+  border: 1px solid #e0d6c2;
+  border-radius: 6px;
+  padding: 0.4rem 0.6rem;
+  background: #fffdf8;
+}
+
+.admin-color-drawer summary {
+  cursor: pointer;
+  font-weight: bold;
+  color: var(--color-terracotta, #8e3b30);
+}
+
+.admin-color-drawer[open] summary {
+  margin-bottom: 0.5rem;
+}
+
+.admin-inline-check {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: normal !important;
+  font-size: 1rem !important;
+  cursor: pointer;
+}
+

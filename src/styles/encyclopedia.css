@@ -523,3 +523,65 @@ body[dir="ltr"] .encyc-infobox {
 .encyc-hero {
   width: 100%;
 }
+
+/* אנימציית טעינה: אילן יוחסין שגדל */
+.tree-loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 2rem 1rem;
+}
+
+/* גודל יחסי לרוחב המסך: 30% במחשב, 78% בטלפון */
+.tree-loader-svg {
+  width: 30vw;
+  height: auto;
+  overflow: visible;
+  transition: opacity 0.4s ease;
+}
+
+.tree-loader-svg.is-fading {
+  opacity: 0;
+}
+
+.tree-loader-line {
+  fill: none;
+  stroke-width: 2.4;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 0.32s ease;
+}
+
+.tree-loader-line.is-on {
+  stroke-dashoffset: 0;
+}
+
+.tree-loader-box {
+  opacity: 0;
+  transform: scale(0.4);
+  transition: opacity 0.25s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.tree-loader-box.is-on {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.tree-loader-label {
+  margin: 0;
+  font-size: max(1.1rem, 1.25vw);
+  color: var(--color-ink, #2c241b);
+}
+
+@media (max-width: 768px) {
+  .tree-loader-svg {
+    width: 78vw;
+  }
+}
+
+.encyc-status-loading {
+  padding-top: 1rem;
+}
+
