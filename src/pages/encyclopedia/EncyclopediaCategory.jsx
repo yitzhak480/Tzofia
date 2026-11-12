@@ -48,7 +48,7 @@ const EncyclopediaCategory = () => {
             </section>
 
             {data.children.length > 0 && (
-              <section className="home-cards-grid encyc-cards-grid">
+              <section className="picture-cards">
                 {data.children.map((c) => <CategoryCard key={c._id} category={c} />)}
               </section>
             )}

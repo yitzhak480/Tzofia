@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom"; 
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import PictureCard from "../components/PictureCard";
 import { CartContext } from '../context/context';
 
 const Home = () => {
@@ -31,56 +31,28 @@ const Home = () => {
         </section>
 
         {/* רשת הכרטיסיות */}
-        <section className="home-cards-grid">
-          
-          {/* כרטיסייה 1: אילנות היוחסין -> מוביל לדף העצים */}
-          <Link to="/tree" className="tzofia-card">
-            <div className="card-image-wrapper">
-              <img src="/images/tilt.jpg" alt="רכישת אילנות היוחסין" />
-            </div>
-            <div className="card-content">
-              <h2>{lang === 'he' ? 'אילנות היוחסין שלנו' : 'Our Family Trees'}</h2>
-              <div className="title-separator"></div>
-              <p>
-                {lang === 'he' 
-                  ? 'צפו בשני הכרכים המקיפים שלנו: תקופת המקרא, ותקופת המשנה והגאונים.'
-                  : 'View our two comprehensive volumes: The Biblical Era, and the Mishnaic to Geonic Era.'}
-              </p>
-            </div>
-          </Link>
-
-          {/* כרטיסייה 2: לומדות האילן -> מוביל ללומדות האילן */}
-          <Link to="/encyclopedia" className="tzofia-card">
-            <div className="card-image-wrapper">
-              <img src="/images/temple.jpg" alt="לומדות האילן" />
-            </div>
-            <div className="card-content">
-              <h2>{lang === 'he' ? 'לומדות האילן' : 'Tree Learning Guides'}</h2>
-              <div className="title-separator"></div>
-              <p>
-                {lang === 'he' 
-                  ? 'העמיקו את הידע: הכירו את הקבוצות והדמויות המופיעות באילנות שלנו ולמדו עליהן בהרחבה.'
-                  : 'Deepen your knowledge: Get to know the groups and figures featured in our trees and learn about them in detail.'}
-              </p>
-            </div>
-          </Link>
-
-          {/* כרטיסייה 3: אודותינו -> מוביל לדף שבנינו הרגע */}
-          <Link to="/about" className="tzofia-card">
-            <div className="card-image-wrapper">
-              <img src="/images/knesset.jpg" alt="אודותינו" />
-            </div>
-            <div className="card-content">
-              <h2>{lang === 'he' ? 'אודותינו' : 'About Us'}</h2>
-              <div className="title-separator"></div>
-              <p>
-                {lang === 'he' 
-                  ? 'קראו על החזון מאחורי Tzofia Art, על תהליך המחקר המעמיק, והכירו את הצוות שמאחורי היצירות.'
-                  : 'Read about the vision behind Tzofia Art, the deep research process, and meet the team behind the creations.'}
-              </p>
-            </div>
-          </Link>
-
+        <section className="picture-cards">
+          <PictureCard
+            to="/tree" image="/images/tilt.jpg" alt={lang === 'he' ? 'אילנות היוחסין' : 'Our family trees'}
+            title={lang === 'he' ? 'אילנות היוחסין שלנו' : 'Our Family Trees'}
+            text={lang === 'he'
+              ? 'צפו בשני הכרכים המקיפים שלנו: תקופת המקרא, ותקופת המשנה והגאונים.'
+              : 'View our two comprehensive volumes: The Biblical Era, and the Mishnaic to Geonic Era.'}
+          />
+          <PictureCard
+            to="/encyclopedia" image="/images/temple.jpg" alt={lang === 'he' ? 'לומדות האילן' : 'Tree Learning Guides'}
+            title={lang === 'he' ? 'לומדות האילן' : 'Tree Learning Guides'}
+            text={lang === 'he'
+              ? 'העמיקו את הידע: הכירו את הקבוצות והדמויות המופיעות באילנות שלנו ולמדו עליהן בהרחבה.'
+              : 'Deepen your knowledge: Get to know the groups and figures featured in our trees and learn about them in detail.'}
+          />
+          <PictureCard
+            to="/about" image="/images/knesset.jpg" alt={lang === 'he' ? 'אודותינו' : 'About Us'}
+            title={lang === 'he' ? 'אודותינו' : 'About Us'}
+            text={lang === 'he'
+              ? 'קראו על החזון מאחורי Tzofia Art, על תהליך המחקר המעמיק, והכירו את הצוות שמאחורי היצירות.'
+              : 'Read about the vision behind Tzofia Art, the deep research process, and meet the team behind the creations.'}
+          />
         </section>
       </main>
 

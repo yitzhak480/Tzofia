@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import PictureCard from "../components/PictureCard";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { CartContext } from '../context/context';
@@ -30,46 +30,25 @@ const Tree = () => {
         </section>
 
         {/* תצוגת הכרכים (כרטיסיות רוחביות גדולות) */}
-        <section className="trees-showcase-container">
-          
-{/* כרך 1: תקופת המקרא */}
-          <Link to="/Biblical" className="tree-showcase-card">
-            <div className="showcase-image-wrapper">
-                  <img src="/images/torah-tree.jpg" alt="אילן יוחסין תנ״ך" />
-            </div>
-            <div className="showcase-content">
-              <h2>{lang === 'he' ? 'חלק ראשון: מאדם לתנאים' : 'Volume 1: From Adam to the Tanaim'}</h2>
-              <div className="title-separator" style={{ margin: '15px 0' }}></div>
-              <p>
-                {lang === 'he' 
-                  ? 'מאדם וחווה דרך תקופת האבות, יציאת מצרים, שלטון המלכים וחורבן בית ראשון ושני ועד לימי חתימת המשנה.'
-                  : 'From Adam and Eve through the era of the Patriarchs, the Exodus, the reigns of the Kings, the destruction of the First and Second Temples, up to the sealing of the Mishna.'}
-              </p>
-              <span className="showcase-btn">
-                {lang === 'he' ? 'צפו באילן המלא ←' : 'View Full Tree ←'}
-              </span>
-            </div>
-          </Link>
+        <section className="picture-cards picture-cards-posters">
+          {/* כרך 1: תקופת המקרא */}
+          <PictureCard
+            to="/Biblical" shape="poster" image="/images/torah-tree.jpg" alt="אילן יוחסין תנ״ך"
+            title={lang === 'he' ? 'חלק ראשון: מאדם לתנאים' : 'Volume 1: From Adam to the Tanaim'}
+            text={lang === 'he'
+              ? 'מאדם וחווה דרך תקופת האבות, יציאת מצרים, שלטון המלכים וחורבן בית ראשון ושני ועד לימי חתימת המשנה.'
+              : 'From Adam and Eve through the era of the Patriarchs, the Exodus, the reigns of the Kings, the destruction of the First and Second Temples, up to the sealing of the Mishna.'}
+            cta={lang === 'he' ? 'צפו באילן המלא ←' : 'View Full Tree →'}
+          />
           {/* כרך 2: משנה וגאונים */}
-          <Link to="/Gmara" className="tree-showcase-card">
-            <div className="showcase-image-wrapper">
-              {/* אפשר לשנות לתמונה המתאימה בתיקיית public */}
-              <img src="/images/talmud-tree.jpg" alt="אילן יוחסין משנה וגאונים" />
-            </div>
-            <div className="showcase-content">
-              <h2>{lang === 'he' ? 'חלק שני: אמוראים לגאונים' : 'Volume 2: Mishna to Geonim'}</h2>
-              <div className="title-separator" style={{ margin: '15px 0' }}></div>
-              <p>
-                {lang === 'he' 
-                  ? 'הדורות שעיצבו את התורה שבעל פה. מאחרוני התנאים, דרך האמוראים בבבל ובארץ ישראל, ועד תקופת הגאונים.'
-                  : 'The generations that shaped the Oral Torah. From the Zugot and Tannaim, through the Amoraim, to the Geonic period.'}
-              </p>
-              <span className="showcase-btn">
-                {lang === 'he' ? 'צפו באילן המלא ←' : 'View Full Tree ←'}
-              </span>
-            </div>
-          </Link>
-
+          <PictureCard
+            to="/Gmara" shape="poster" image="/images/talmud-tree.jpg" alt="אילן יוחסין משנה וגאונים"
+            title={lang === 'he' ? 'חלק שני: אמוראים לגאונים' : 'Volume 2: Mishna to Geonim'}
+            text={lang === 'he'
+              ? 'הדורות שעיצבו את התורה שבעל פה. מאחרוני התנאים, דרך האמוראים בבבל ובארץ ישראל, ועד תקופת הגאונים.'
+              : 'The generations that shaped the Oral Torah. From the Zugot and Tannaim, through the Amoraim, to the Geonic period.'}
+            cta={lang === 'he' ? 'צפו באילן המלא ←' : 'View Full Tree →'}
+          />
         </section>
       </main>
 

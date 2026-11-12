@@ -1,0 +1,152 @@
+/* The picture card (home page, trees page, encyclopedia categories): the
+   picture fills the card inside a parchment mount with gold corners; the
+   title and text sit on a soft shade at the bottom. */
+
+/* the rows of cards: a centred, wrapping row (a last row that isn't full
+   stays in the middle); one column on a phone */
+.picture-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 6rem;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+.picture-cards > * { flex: 0 1 340px; min-width: 260px; }
+.picture-cards-posters { max-width: 860px; }
+.picture-cards-posters > * { flex-basis: 380px; }
+
+.picture-card {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border: 1px solid var(--color-gold, #c5a059);
+  border-radius: 6px;
+  background: linear-gradient(to bottom, #f7f1e3, #e2d1b3);
+  box-shadow: 0 14px 30px rgba(44, 36, 27, 0.22);
+  text-decoration: none;
+  font-family: "Frank Ruhl Libre", serif;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.picture-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(44, 36, 27, 0.28); }
+.picture-card-poster { aspect-ratio: 2 / 3; }
+
+/* the picture, in the parchment mount */
+.picture-card-img {
+  position: absolute;
+  inset: 14px;
+  overflow: hidden;
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px var(--color-gold, #c5a059), 0 0 0 5px #f7f1e3, 0 0 0 6px rgba(44, 36, 27, 0.4);
+}
+.picture-card-img img,
+.picture-card-img .encyc-card-back {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.7s ease;
+}
+.picture-card:hover .picture-card-img img { transform: scale(1.05); }
+
+/* the gold corners */
+.picture-card-corners {
+  position: absolute;
+  inset: 24px;
+  z-index: 3;
+  pointer-events: none;
+  --c: var(--color-gold, #c5a059);
+  background:
+    linear-gradient(var(--c), var(--c)) top left / 30px 2px no-repeat,
+    linear-gradient(var(--c), var(--c)) top left / 2px 30px no-repeat,
+    linear-gradient(var(--c), var(--c)) top right / 30px 2px no-repeat,
+    linear-gradient(var(--c), var(--c)) top right / 2px 30px no-repeat,
+    linear-gradient(var(--c), var(--c)) bottom left / 30px 2px no-repeat,
+    linear-gradient(var(--c), var(--c)) bottom left / 2px 30px no-repeat,
+    linear-gradient(var(--c), var(--c)) bottom right / 30px 2px no-repeat,
+    linear-gradient(var(--c), var(--c)) bottom right / 2px 30px no-repeat;
+}
+
+/* the title and text, on a soft shade */
+.picture-card-body {
+  position: absolute;
+  inset: auto 14px 14px 14px;
+  z-index: 2;
+  padding: 5rem 1.6rem 2rem;
+  border-radius: 0 0 3px 3px;
+  text-align: center;
+  background: linear-gradient(to bottom, transparent, rgba(30, 24, 18, 0.55) 38%, rgba(30, 24, 18, 0.78));
+}
+.picture-card-body h2 {
+  margin: 0;
+  padding: 0;
+  border: none;
+  font-size: 1.7rem;
+  line-height: 1.25;
+  color: #e9c87c;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.45);
+}
+.picture-card-sep {
+  position: relative;
+  width: 90px;
+  height: 1px;
+  margin: 10px auto 12px;
+  background: linear-gradient(to left, transparent, var(--color-gold, #c5a059), transparent);
+}
+.picture-card-sep::after {
+  content: '◆';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -55%);
+  font-size: 9px;
+  color: var(--color-gold, #c5a059);
+}
+.picture-card-body p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: #efe6d2;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.5);
+}
+.picture-card-cta {
+  display: inline-block;
+  margin-top: 12px;
+  font-weight: 700;
+  font-size: 0.98rem;
+  color: #e8c983;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.5);
+}
+
+/* a phone: one column; wide, lower cards (the posters stay taller) */
+@media (max-width: 900px) {
+  .picture-cards { gap: 1.2rem; margin-bottom: 4rem; }
+  .picture-cards > * { flex: 0 1 520px; min-width: 0; }
+  .picture-card { aspect-ratio: 16 / 11; }
+  .picture-card-poster { aspect-ratio: 4 / 5; }
+  .picture-card-img { inset: 10px; }
+  .picture-card-corners { inset: 18px; }
+  .picture-card-body { inset: auto 10px 10px 10px; padding: 3.5rem 1.2rem 1.5rem; }
+  .picture-card-body h2 { font-size: 1.35rem; }
+  .picture-card-body p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  /* a category without a picture: lift the card back so its medallion sits
+     in the free upper part */
+  .picture-card:not(.picture-card-poster) .picture-card-img .encyc-card-back {
+    height: auto;
+    aspect-ratio: 610 / 910;
+    transform: translateY(-19%);
+  }
+}

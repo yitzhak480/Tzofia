@@ -99,7 +99,7 @@ const Encyclopedia = () => {
         ) : loading || error ? (
           <LoadingState loading={loading} error={error} />
         ) : topLevel.length > 0 ? (
-          <section className="home-cards-grid encyc-cards-grid">
+          <section className="picture-cards">
             {topLevel.map((c) => <CategoryCard key={c._id} category={c} />)}
           </section>
         ) : (

@@ -39,36 +39,7 @@
   height: 100%;
 }
 
-/* הדהייה אל הקלף מתחילה נמוך יותר, כדי שהמדליון יישאר גלוי */
-.card-image-wrapper.encyc-no-image::after {
-  background: linear-gradient(to bottom, transparent 42%, rgba(226, 209, 179, 0.95) 68%, #e2d1b3 82%);
-}
 
-/* כרטיס קטגוריה תמיד ברוחב מלא (גם בלי תמונה שתקבע את הרוחב) */
-.encyc-category-card {
-  width: 100%;
-}
-
-/* כרטיסי הקטגוריות באותו גודל כמו בדף הבית, גם כשיש רק אחד או שניים */
-/* (a wrapping row, so a last row that isn't full stays in the middle) */
-.home-cards-grid.encyc-cards-grid {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.home-cards-grid.encyc-cards-grid > * {
-  flex: 0 1 340px;
-  min-width: 280px;
-}
-
-@media (max-width: 900px) {
-  .home-cards-grid.encyc-cards-grid > * {
-    flex-basis: 340px;
-    min-width: 0;
-  }
-}
 
 .encyc-bottom-space {
   margin-bottom: 6rem;
