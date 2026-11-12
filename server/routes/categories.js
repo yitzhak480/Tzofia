@@ -7,6 +7,7 @@ const { pick } = require('../lib/pick');
 const { ancestorChain, wouldCreateLoop, removedImages } = require('../lib/tree');
 const { deleteImages } = require('../lib/cloudinary');
 const { yearOf } = require('../lib/chrono');
+const { COLOR_KEYS } = require('../models/shared');
 
 const router = express.Router();
 const FIELDS = ['slug', 'name', 'description', 'image', 'parent', 'order', 'cardColor', 'icon', 'colorEntries', 'sortMode'];
@@ -78,6 +79,44 @@ router.put('/:id', requireAdmin, async (req, res) => {
   await category.save();
   await deleteImages(removedImages(oldImage, [category.image]));
   res.json(category);
+});
+
+// POST /api/categories/:id/entry-colors (admin) — the card colour of every entry
+// in the category (and its subcategories, unless includeSubcategories is false):
+//   { mode: 'color', color }  one colour for all
+//   { mode: 'random' }        a random colour for each, from the site's ten
+//   { mode: 'clear' }         no colour of their own (the category decides)
+const SITE_COLORS = ['burgundy', 'blue', 'purple', 'brown', 'marble', 'emerald', 'teal', 'ink', 'olive', 'slate'];
+router.post('/:id/entry-colors', requireAdmin, async (req, res) => {
+  if (!mongoose.isValidObjectId(req.params.id)) return res.status(404).json({ message: 'Category not found' });
+  const category = await Category.findById(req.params.id);
+  if (!category) return res.status(404).json({ message: 'Category not found' });
+  const { mode, color, includeSubcategories = true } = req.body || {};
+  if (!['color', 'random', 'clear'].includes(mode)) return res.status(400).json({ message: 'Unknown mode' });
+  if (mode === 'color' && !COLOR_KEYS.includes(color)) return res.status(400).json({ message: 'Unknown colour' });
+
+  // this category and (optionally) everything under it
+  const ids = [category._id];
+  if (includeSubcategories) {
+    const all = await Category.find().select('_id parent').lean();
+    for (let i = 0; i < ids.length; i += 1) {
+      for (const c of all) if (String(c.parent) === String(ids[i])) ids.push(c._id);
+    }
+  }
+  const people = await Person.find({ categories: { $in: ids } }).select('_id');
+  let last = '';
+  for (const p of people) {
+    let value = '';
+    if (mode === 'color') value = color;
+    if (mode === 'random') {
+      // random, but never the same colour twice in a row
+      const choices = SITE_COLORS.filter((c) => c !== last);
+      value = choices[Math.floor(Math.random() * choices.length)];
+      last = value;
+    }
+    await Person.updateOne({ _id: p._id }, { $set: { cardColor: value } });
+  }
+  res.json({ updated: people.length });
 });
 
 // DELETE /api/categories/:id (admin) — only when empty, so nothing is lost by accident

@@ -976,3 +976,17 @@ a.admin-btn {
   font-size: 0.85rem;
   color: var(--color-terracotta, #8e3b30);
 }
+
+/* colouring all the entries of a category at once */
+.admin-bulk-colors {
+  padding: 0.8rem 1rem;
+  border: 1px dashed rgba(197, 160, 89, 0.7);
+  border-radius: 6px;
+  background: #fffaf0;
+}
+.admin-bulk-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.6rem 0;
+}

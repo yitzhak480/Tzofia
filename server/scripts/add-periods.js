@@ -10,6 +10,7 @@ const mongoose = require('mongoose');
 const Category = require('../models/Category');
 const Person = require('../models/Person');
 const CHECKLIST = require('./content/tree-checklist-biblical');
+const EVENT_SLUGS = new Set(require('./content/events-first-tree').map((e) => e.slug));
 const { L } = require('./content/helpers');
 
 const CATEGORIES = {
@@ -20,6 +21,16 @@ const CATEGORIES = {
   'kingdom-of-israel': { order: 0.5, color: 't1-shvatim', name: L('אנשי ממלכת ישראל', 'People of the Kingdom of Israel'), description: L('אנשי ממלכת ישראל שלא היו מלכים או נביאים', 'People of the Kingdom of Israel who were not kings or prophets') },
   'galut-bavel': { order: 0.6, color: 't1-yehuda', name: L('גלות בבל', 'The Babylonian Exile'), description: L('הגולים לבבל, מחורבן בית ראשון ועד שיבת ציון, וראשי הגולה', 'The exiles in Bavel, from the destruction of the First Temple to the Return to Zion, and the Heads of the Exile') },
   'shivat-tzion': { order: 0.7, color: 't1-yehuda', name: L('שיבת ציון', 'The Return to Zion'), description: L('העולים מבבל ובוני הבית השני', 'Those who came up from Bavel and built the Second Temple') },
+  // the Second Temple period
+  'anshei-knesset-hagedola': { order: 0.8, color: 't1-yehuda', name: L('אנשי כנסת הגדולה', 'The Men of the Great Assembly'), description: L('מאה ועשרים הזקנים, ובהם נביאים, שעמדו בראש העם בתחילת ימי הבית השני', 'The hundred and twenty elders, prophets among them, who led the people at the start of the Second Temple') },
+  zugot: { order: 0.81, color: 't1-yehuda', name: L('הזוגות', 'The Pairs (Zugot)'), description: L('חמשת הזוגות – נשיא ואב בית דין – מיוסי בן יועזר ויוסי בן יוחנן ועד הלל ושמאי', 'The five pairs – a Nasi and an Av Beit Din – from Yose ben Yoezer and Yose ben Yochanan to Hillel and Shammai') },
+  'beit-chashmonai': { order: 0.82, color: 't1-levi', name: L('בית חשמונאי', 'The House of Chashmonai'), description: L('הכהנים שמרדו ביוונים, ובית המלוכה שיצא מהם', 'The Kohanim who rose against the Greeks, and the royal house that came from them') },
+  'beit-hordos': { order: 0.83, color: 't1-hordos', name: L('בית הורדוס', 'The House of Herod'), description: L('הורדוס ומשפחתו, ששלטו בארץ בחסות רומא', 'Herod and his family, who ruled the land under Rome') },
+  'ishei-bayit-sheni': { order: 0.84, color: 't1-yehuda', name: L('אישי בית שני', 'Figures of the Second Temple'), description: L('אישים בימי הבית השני שלא היו חכמים, מלכים או כהנים גדולים', 'People of the Second Temple period who were not sages, kings or High Priests') },
+  'rashei-hagola': { order: 0.85, color: 't1-yehuda', name: L('ראשי הגולה', 'The Heads of the Exile'), description: L('צאצאי בית דוד שהנהיגו את יהודי בבל, ומשפחותיהם', 'Descendants of the house of David who led the Jews of Bavel, and their families') },
+  'av-beit-din': { order: 5.5, color: 't1-yehuda', name: L('אבות בית הדין', 'The Heads of the Court (Av Beit Din)'), description: L('אבות בית הדין שעמדו לצד הנשיא בראש הסנהדרין', 'The heads of the court who stood beside the Nasi at the head of the Sanhedrin') },
+  'kings-chashmonai': { parent: 'kings', order: 3, color: 't1-levi', sortMode: 'chrono', name: L('מלכי בית חשמונאי', 'The Hasmonean Kings'), description: L('המלכים והמלכה מבית חשמונאי', 'The kings and the queen of the house of Chashmonai') },
+  'kings-hordos': { parent: 'kings', order: 4, color: 't1-hordos', sortMode: 'chrono', name: L('מלכי בית הורדוס', 'The Herodian Kings'), description: L('הורדוס וצאצאיו שנשאו תואר מלך', 'Herod and his descendants who bore the title of king') },
   levites: { order: 6.5, color: 't1-levi', sortMode: 'chrono', name: L('בני לוי', 'The Levites'), description: L('משפחות שבט לוי: לויים, משוררים ובני משפחות הכהנים', 'The families of the tribe of Levi: Levites, singers and the families of the Kohanim') },
   'gerei-tzedek': { order: 6.6, color: 't1-gerim', sortMode: 'chrono', name: L('גרי צדק', 'Righteous Converts'), description: L('מי שבאו מן העמים ונכנסו תחת כנפי השכינה', 'Those who came from the nations and entered under the wings of the Divine Presence') },
 };
@@ -156,6 +167,37 @@ const BATCHES = [
       'baruch-ben-neriyah': { 'עזרא הסופר': 'ezra-hasofer' },
     },
   },
+  // ── the Second Temple ──
+  {
+    category: 'anshei-knesset-hagedola',
+    entries: [],
+    order: ['ezra-hasofer', 'nechemya', 'mordechai-hayehudi', 'daniel', 'chananya-chaver-daniel', 'mishael', 'azarya-chaver-daniel', 'chaggai-hanavi', 'zecharyah-hanavi',
+      'malachi-hanavi', 'shimon-hatzadik'],
+    relink: {},
+  },
+  {
+    category: 'kohanim-gedolim-second-temple',
+    manual: true, // the order of the High Priests, not by height on the tree
+    entries: require('./content/second-temple-priests'),
+    order: ['yehoshua-ben-yehotzadak', 'yoyakim', 'elyashiv', 'yoyada-kg', 'yonatan-kg', 'yadua', 'choniyo-1', 'shimon-hatzadik', 'elazar-kg2', 'menashe-kg',
+      'choniyo-2', 'shimon-2', 'choniyo-3', 'yason', 'menelaus', 'yehuda-hamaccabi', 'alkimus', 'yonatan-havofsi', 'shimon-hatarsi', 'yochanan-hurkanos-1',
+      'yehuda-aristobulus-1', 'alexander-yanai', 'yochanan-hurkanos-2', 'yehuda-aristobulus-2', 'matityahu-antigonus-2', 'aristobulus-kg'],
+    relink: { 'shimon-hatzadik': { 'חוניו א׳': 'choniyo-1', 'חוניו ב׳': 'choniyo-2' } },
+  },
+  {
+    category: 'beit-chashmonai',
+    entries: require('./content/second-temple-houses').chashmonai,
+    order: ['shimon-hachashmonai', 'yochanan-hachashmonai', 'matityahu-hachashmonai', 'yochanan-ben-matityahu', 'elazar-ben-matityahu', 'yehuda-hamaccabi', 'yonatan-havofsi',
+      'shimon-hatarsi', 'yochanan-hurkanos-1', 'yehuda-aristobulus-1', 'matityahu-antigonus-1', 'alexander-yanai', 'shlomtzion', 'yochanan-hurkanos-2', 'yehuda-aristobulus-2',
+      'matityahu-antigonus-2', 'alexander-ben-aristobulus', 'alexandra', 'miriam-hachashmonait', 'aristobulus-kg'],
+    relink: {},
+  },
+  {
+    category: 'beit-hordos',
+    entries: require('./content/second-temple-houses').hordos,
+    order: ['antipater', 'hordos', 'shlomit', 'miriam-hachashmonait', 'aristobulus-ben-hordos', 'archelaus', 'hordos-antipas', 'philipus', 'agripas-1', 'agripas-2', 'miriam-bat-agripas'],
+    relink: {},
+  },
 ];
 
 // Why names have an asterisk on the tree; and a few links from those notes.
@@ -165,6 +207,12 @@ const EXTRA = [
   { slug: 'ovadyah-hanavi', addCategory: 'gerei-tzedek' },
   // Ibn Ezra: Tzefanyah descended from Chizkiyahu (the tree follows him)
   { slug: 'tzefanyah-hanavi', rels: [{ type: 'ancestor', slug: 'chizkiyahu' }] },
+  // the High Priesthood of the Second Temple, before and after (black arrows)
+  { slug: 'yehoshua-ben-yehotzadak', offices: [{ label: L('כהונה גדולה', 'High Priesthood'), before: [], after: ['yoyakim'] }] },
+  { slug: 'yoyakim', offices: [{ label: L('כהונה גדולה', 'High Priesthood'), before: ['yehoshua-ben-yehotzadak'], after: ['elyashiv'] }] },
+  { slug: 'elyashiv', offices: [{ label: L('כהונה גדולה', 'High Priesthood'), before: ['yoyakim'], after: ['yoyada-kg'] }] },
+  { slug: 'shimon-hatzadik', offices: [{ label: L('כהונה גדולה', 'High Priesthood'), before: ['choniyo-1'], after: ['elazar-kg2'] }],
+    rels: [{ type: 'teacher', he: 'אנשי כנסת הגדולה', en: 'The Men of the Great Assembly' }] },
   // a Kohen, branch unknown; the tree joins him to Pinchas with a "?"
   {
     slug: 'natan-hanavi',
@@ -206,7 +254,8 @@ const main = async () => {
   const cats = {};
   for (const [slug, c] of Object.entries(CATEGORIES)) {
     const doc = (await Category.findOne({ slug })) || new Category({ slug, cardColor: c.color });
-    doc.set({ name: c.name, description: c.description, parent: null, order: c.order, sortMode: c.sortMode || 'manual' });
+    const parentCat = c.parent ? await Category.findOne({ slug: c.parent }) : null;
+    doc.set({ name: c.name, description: c.description, parent: parentCat ? parentCat._id : null, order: c.order, sortMode: c.sortMode || 'manual' });
     await doc.save();
     cats[slug] = doc;
   }
@@ -218,11 +267,21 @@ const main = async () => {
   const link = (r, owner) => {
     if (!r.slug) return { type: r.type, person: null, name: { he: r.he, en: r.en } };
     const other = bySlug.get(r.slug);
+    // an event page is made by add-events.js; until it exists the link waits
+    if (!other && EVENT_SLUGS.has(r.slug)) { console.log(`  ${owner}: event "${r.slug}" not made yet`); return null; }
     if (!other) throw new Error(`${owner}: no page "${r.slug}"`);
     return { type: r.type, person: other._id, name: { he: other.name.he, en: other.name.en || '' }, uncertain: Boolean(r.uncertain) };
   };
 
   // all pages first, so that links between batches work
+  // a link in a role: a page (by slug) or just a name
+  const officeLink = (b, owner) => {
+    if (typeof b !== 'string') return { person: null, name: b };
+    const other = bySlug.get(b);
+    if (!other) throw new Error(`${owner}: no page "${b}" (role)`);
+    return { person: other._id, name: { he: other.name.he, en: other.name.en || '' } };
+  };
+
   let count = 0;
   for (const batch of BATCHES) {
     const period = cats[batch.category];
@@ -233,8 +292,10 @@ const main = async () => {
         name: e.name, titles: [], roles: e.roles || [], life: e.life ? { from: e.life[0], to: e.life[1] } : { from: null, to: null },
         summary: e.summary, content: { he: html(e.sections, 'he'), en: html(e.sections, 'en') },
         sources: e.sources.map((s) => s.he), sourcesEn: e.sources.map((s) => s.en),
-        treeSpots: spotOf(e.spot), cardColor: doc.cardColor || GROUP[e.spot] || 't1-shvatim', published: true,
+        treeSpots: spotOf(e.spot), cardColor: e.color || doc.cardColor || GROUP[e.spot] || 't1-shvatim', published: true,
+        titles: e.titles || [],
       });
+      if (e.offices) doc.offices = e.offices.map((o) => ({ label: o.label, from: o.from ?? null, to: o.to ?? null, note: o.note || { he: '', en: '' }, before: [], after: [] }));
       await doc.save();
       bySlug.set(e.slug, doc);
       count += 1;
@@ -244,11 +305,17 @@ const main = async () => {
     const period = cats[batch.category];
     for (const e of batch.entries) {
       const doc = bySlug.get(e.slug);
-      doc.relations = e.rel.map((r) => link(r, e.slug));
+      doc.relations = e.rel.map((r) => link(r, e.slug)).filter(Boolean);
+      if (e.offices) {
+        doc.offices = e.offices.map((o) => ({ label: o.label, from: o.from ?? null, to: o.to ?? null, note: o.note || { he: '', en: '' },
+          before: (o.before || []).map((b) => officeLink(b, e.slug)), after: (o.after || []).map((b) => officeLink(b, e.slug)) }));
+        doc.markModified('offices');
+      }
       await doc.save();
     }
     // existing pages join the list; the list's order
     const id = String(period._id);
+    if (batch.manual && period.sortMode !== 'manual') { period.sortMode = 'manual'; await period.save(); }
     for (const [i, slug] of batch.order.entries()) {
       const doc = bySlug.get(slug);
       if (!doc) throw new Error(`order: no page "${slug}"`);
@@ -296,6 +363,12 @@ const main = async () => {
     if (!doc) continue;
     if (x.addCategory && !doc.categories.map(String).includes(String(cats[x.addCategory]._id))) doc.categories.push(cats[x.addCategory]._id);
     for (const r of x.rels || []) {
+      if (!r.slug) {
+        // a name without a page: added once
+        doc.relations = doc.relations.filter((q) => !(q.type === r.type && !q.person && q.name?.he === r.he));
+        doc.relations.push(link(r, x.slug));
+        continue;
+      }
       const target = bySlug.get(r.slug);
       if (!target) continue;
       // replaces any earlier link to the same person (e.g. an old "related")
@@ -308,6 +381,13 @@ const main = async () => {
       doc.relations = doc.relations.filter((r) => !(
         (target && String(r.person) === String(target._id)) || (!s.slug && r.name?.he?.trim() === s.he)));
       doc.relations.push(link({ type: 'spouse', ...s }, x.slug));
+    }
+    for (const o of x.offices || []) {
+      let office = doc.offices.find((q) => q.label?.he === o.label.he);
+      if (!office) { doc.offices.push({ label: o.label, from: o.from ?? null, to: o.to ?? null, note: { he: '', en: '' }, before: [], after: [] }); office = doc.offices[doc.offices.length - 1]; }
+      if (o.before) office.before = o.before.map((b) => officeLink(b, x.slug));
+      if (o.after) office.after = o.after.map((b) => officeLink(b, x.slug));
+      doc.markModified('offices');
     }
     if (x.note) {
       const content = { he: doc.content?.he || '', en: doc.content?.en || '' };

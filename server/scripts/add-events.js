@@ -59,7 +59,12 @@ const main = async () => {
   for (const e of EVENTS) {
     const doc = bySlug.get(e.slug);
     doc.relations = e.rel.map((r) => {
-      if (!r.slug) return { type: r.type, person: null, name: { he: r.he, en: r.en } };
+      if (!r.slug) {
+        // a name that is now exactly one page's name links to it
+        const same = [...bySlug.values()].filter((p) => p.kind !== 'other' && p.name?.he === r.he);
+        if (same.length === 1) return { type: r.type, person: same[0]._id, name: { he: same[0].name.he, en: same[0].name.en || '' } };
+        return { type: r.type, person: null, name: { he: r.he, en: r.en } };
+      }
       const other = bySlug.get(r.slug);
       if (!other) { missing += 1; console.log(`  ${e.slug}: no page "${r.slug}"`); return null; }
       return { type: r.type, person: other._id, name: { he: other.name.he, en: other.name.en || '' } };

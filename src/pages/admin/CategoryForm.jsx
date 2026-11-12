@@ -9,7 +9,7 @@ const emptyCategory = { name: { he: '', en: '' }, description: { he: '', en: '' 
 
 // Add / edit form for a category. `options` is the list of possible parents
 // (already without this category and its subcategories).
-const CategoryForm = ({ initial, options, defaultParent = '', onSave, onCancel, upload }) => {
+const CategoryForm = ({ initial, options, defaultParent = '', onSave, onCancel, upload, onEntryColors }) => {
   const editing = Boolean(initial);
   const [form, setForm] = useState(() =>
     initial
@@ -29,6 +29,17 @@ const CategoryForm = ({ initial, options, defaultParent = '', onSave, onCancel, 
   // New categories get their URL name from the English name until the admin edits it.
   const [slugTouched, setSlugTouched] = useState(editing);
   const [busy, setBusy] = useState(false);
+  // colouring all the entries at once (only when editing)
+  const [bulkColor, setBulkColor] = useState(initial?.cardColor || 'burgundy');
+  const [withSubs, setWithSubs] = useState(true);
+  const runEntryColors = async (mode) => {
+    setBusy(true);
+    try {
+      await onEntryColors({ mode, color: bulkColor, includeSubcategories: withSubs });
+    } finally {
+      setBusy(false);
+    }
+  };
 
   const setText = (field, lang) => (e) => {
     const value = e.target.value;
@@ -173,6 +184,31 @@ const CategoryForm = ({ initial, options, defaultParent = '', onSave, onCancel, 
           ))}
         </div>
       </div>
+
+      {editing && onEntryColors && (
+        <div className="form-group admin-bulk-colors">
+          <label>צבע לכל הערכים בקטגוריה בבת אחת:</label>
+          <ColorPicker value={bulkColor} onChange={setBulkColor} />
+          <div className="admin-bulk-actions">
+            <button type="button" className="admin-btn" disabled={busy} onClick={() => runEntryColors('color')}>
+              צביעת כל הערכים בצבע הזה
+            </button>
+            <button type="button" className="admin-btn" disabled={busy} onClick={() => runEntryColors('random')}>
+              🎲 צבע אקראי לכל ערך (מעשרת צבעי האתר)
+            </button>
+            <button type="button" className="admin-btn" disabled={busy} onClick={() => runEntryColors('clear')}>
+              ביטול הצבעים של הערכים
+            </button>
+          </div>
+          <label className="admin-inline-check">
+            <input type="checkbox" checked={withSubs} onChange={(e) => setWithSubs(e.target.checked)} />
+            גם הערכים שבקטגוריות שבתוכה
+          </label>
+          <span className="admin-hint">
+            הכפתורים משנים מיד את הצבע של כל הערכים (בלי צורך לשמור). הסמל של הכרטיסים נקבע לכל הקטגוריה יחד, בבחירת הסמל למעלה.
+          </span>
+        </div>
+      )}
 
       <div className="admin-form-actions">
         <button type="submit" className="admin-submit-btn" disabled={busy || Boolean(slugError)}>

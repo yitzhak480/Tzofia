@@ -119,6 +119,14 @@ const AdminCategories = ({ adminApi }) => {
             onSave={handleSave}
             onCancel={() => setEditing(null)}
             upload={upload}
+            onEntryColors={async (body) => {
+              try {
+                const r = await call(`/categories/${editing.category._id}/entry-colors`, { method: 'POST', body });
+                toast.success(`הצבע עודכן ב-${r.updated} ערכים`);
+              } catch (err) {
+                toast.error(err.message);
+              }
+            }}
           />
         </div>
       )}
