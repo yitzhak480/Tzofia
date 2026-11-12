@@ -136,7 +136,7 @@ module.exports = [
     slug: 'aviya-ben-shmuel', cats: LV, name: L('אביה בן שמואל', 'Aviyah son of Shmuel'), spot: 'אביה בן שמואל',
     summary: L('בנו השני של שמואל, שופט בבאר שבע.', 'Shmuel’s second son, a judge in Be’er Sheva.'),
     rel: [to('father', 'shmuel-hanavi'), to('sibling', 'yoel-ben-shmuel')], sources: [L('שמואל א׳ ח, א – ה', 'I Samuel 8:1–5')],
-    sections: one('אביה', 'אביה שפט עם יואל אחיו בבאר שבע. באילן שלנו יורד ממנו קו עם סימן שאלה אל ידותון המשורר, כי לא ברור שידותון מצאצאיו.', 'Aviyah', 'Aviyah judged with his brother Yoel in Be’er Sheva. On our tree a line with a question mark runs from him to Yedutun the singer, because it is not clear that Yedutun was his descendant.'),
+    sections: one('אביה', 'אביה שפט עם יואל אחיו בבאר שבע.', 'Aviyah', 'Aviyah judged with his brother Yoel in Be’er Sheva.'),
   }),
   // ── Shaul's family ──
   p({
