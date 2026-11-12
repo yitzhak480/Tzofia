@@ -280,7 +280,7 @@ const PersonForm = ({ initial, defaultCategory, categoryRows, people, upload, on
               showEnglish={showEnglish}
               people={otherPeople}
               askTeacher={{
-                word: form.gender === 'female' ? 'הייתה גם רבה' : 'היה גם רבו',
+                word: 'היה גם רבו',
                 isTeacher: (l) =>
                   form.relations.some(
                     (r) => r.type === 'teacher' && (l.person ? r.person === l.person : r.name.he.trim() === l.name.he.trim())
