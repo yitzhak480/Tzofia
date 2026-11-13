@@ -85,35 +85,35 @@ module.exports = [
   A({
     slug: 'ravin', spot2: 'רבין', roles: [GEN4, NECHUTA],
     name: L('רבין', 'Ravin'), summary: L('מן ה"נחותי", שהעביר את תורת ארץ ישראל לבבל.', 'One of the "Nechutei", who carried the Torah of the Land of Israel to Bavel.'),
-    rel: [to('teacher', 'rabbi-yehuda-ben-pazi')], sources: [TTA, L('שבת קח ע״ב', 'Shabbat 108b')],
+    rel: [to('teacher', 'rabbi-yehuda-ben-pazi'), to('teacher', 'rabbi-abahu')], sources: [TTA, L('שבת קח ע״ב', 'Shabbat 108b')],
     sections: [
       sec('רבין', 'רבין היה מן ה"נחותי" – החכמים שהלכו ושבו בין ארץ ישראל לבבל. בבבלי מובאות פעמים רבות הלכות בשמו: "כי אתא רבין אמר..." – כשבא רבין מארץ ישראל, מסר כך.', 'Ravin', 'Ravin was one of the "Nechutei" – the sages who went back and forth between the Land of Israel and Bavel. In the Bavli laws are brought many times in his name: "When Ravin came, he said..." – when Ravin came from the Land of Israel, he handed down so.'),
       sec('סימן השאלה', 'הרב אהרן היימן, בספרו "תולדות תנאים ואמוראים", מזהה את רבין עם רבי בון, מחכמי ארץ ישראל. לכן באילן שלנו יורד ממנו קו אל בנו של רבי בון, רבי יוסי ברבי בון – בסימן שאלה, משום שזיהוי זה אינו ודאי.', 'The Question Mark', 'Rabbi Aharon Hyman, in his book "Toldot Tannaim VeAmoraim", identifies Ravin with Rabbi Bun, of the sages of the Land of Israel. So on our tree a line goes down from him to Rabbi Bun’s son, Rabbi Yose son of Rabbi Bun – with a question mark, since this identification is not certain.'),
-      TS('רבו היה רבי יהודה בן פזי.', 'His teacher was Rabbi Yehudah ben Pazi.'),
+      TS('רבותיו היו רבי יהודה בן פזי ורבי אבהו.', 'His teachers were Rabbi Yehudah ben Pazi and Rabbi Abahu.'),
     ],
   }),
   A({
     slug: 'rabbi-zerika', spot2: 'רבי זריקא', roles: [GEN4],
     name: L('רבי זריקא', 'Rabbi Zerika'), summary: L('מתלמידי רבי אלעזר.', 'One of Rabbi Elazar’s students.'),
-    rel: [to('teacher', 'rabbi-elazar-ben-pedat')], sources: [TTA],
-    sections: [TS('רבו היה רבי אלעזר בן פדת.', 'His teacher was Rabbi Elazar ben Pedat.')],
+    rel: [to('teacher', 'rabbi-elazar-ben-pedat'), to('teacher', 'rabbi-abahu')], sources: [TTA],
+    sections: [TS('רבותיו היו רבי אלעזר בן פדת ורבי אבהו.', 'His teachers were Rabbi Elazar ben Pedat and Rabbi Abahu.')],
   }),
   A({
     slug: 'rabbi-chizkiya', spot2: 'רבי חזקיה', roles: [GEN4],
     name: L('רבי חזקיה', 'Rabbi Chizkiyah'), summary: L('תלמידו של רבי ירמיה.', 'Rabbi Yirmeyah’s student.'),
-    rel: [to('teacher', 'rabbi-yirmeya')], sources: [TTA],
-    sections: [TS('רבו היה רבי ירמיה.', 'His teacher was Rabbi Yirmeyah.')],
+    rel: [to('teacher', 'rabbi-yirmeya'), to('teacher', 'rabbi-abahu')], sources: [TTA],
+    sections: [TS('רבותיו היו רבי ירמיה ורבי אבהו.', 'His teachers were Rabbi Yirmeyah and Rabbi Abahu.')],
   }),
   A({
     slug: 'rabbi-yirmeya', spot2: 'רבי ירמיה', roles: [GEN4, L('ראש ישיבת טבריה', 'Head of the Yeshivah of Tiberias')],
     name: L('רבי ירמיה', 'Rabbi Yirmeyah'), summary: L('תלמיד רבי זירא, שעמד בראש ישיבת טבריה אחרי רבי אמי.', 'Rabbi Zeira’s student, who headed the Yeshivah of Tiberias after Rabbi Ami.'),
-    rel: [to('teacher', 'rabbi-zeira')],
+    rel: [to('teacher', 'rabbi-zeira'), to('teacher', 'rabbi-abahu')],
     offices: [HEAD('ראש ישיבת טבריה', 'Head of the Yeshivah of Tiberias', 4070, 4100, ['rabbi-ami'], [L('רבי יונה', 'Rabbi Yonah')])],
     sources: [L('ירושלמי שבת יט, א', 'Yerushalmi Shabbat 19:1'), L('בבא בתרא כג ע״ב', 'Bava Batra 23b'), TTA],
     sections: [
       sec('רבי ירמיה', 'רבי ירמיה עלה מבבל לארץ ישראל ולמד לפני רבי זירא. הוא נודע בשאלותיו החריפות; הגמרא (בבא בתרא כג ע״ב) מספרת ששאל שאלה שנראתה לחכמים כמתריסה, והוציאוהו מבית המדרש.', 'Rabbi Yirmeyah', 'Rabbi Yirmeyah came up from Bavel to the Land of Israel and learned before Rabbi Zeira. He was known for his sharp questions; the Gemara (Bava Batra 23b) relates that he asked a question which seemed to the sages provocative, and they put him out of the study hall.'),
       sec('ראש הישיבה?', 'באילן שלנו כתוב לידו "ראש ישיבת טבריה?": מקובל שעמד בראש הישיבה אחרי רבי אמי, אבל הדבר אינו כתוב במפורש. המקור לכך הוא הירושלמי: "בימי ר׳ ירמיה אינשון מפתחייא דסדרא רובא, אתון ושאלון ליה, אמר לון: כד תחמון..." – בימי רבי ירמיה שכחו את מפתחות הסדר הגדול, ובאו ושאלו אותו.', 'Head of the Yeshivah?', 'On our tree it says beside him "head of the Yeshivah of Tiberias?": it is generally accepted that he headed the yeshivah after Rabbi Ami, but it is not written explicitly. The source for this is the Yerushalmi: "In the days of Rabbi Yirmeyah they forgot the keys of the great hall (sidra rabba), and they came and asked him, and he told them..." – which shows that he was the one people turned to.'),
-      TS('רבו היה רבי זירא, ותלמידו רבי חזקיה. אחרי רבי אמי עמד, כנראה, בראש ישיבת טבריה.', 'His teacher was Rabbi Zeira, and his student Rabbi Chizkiyah. After Rabbi Ami he apparently headed the Yeshivah of Tiberias.'),
+      TS('רבותיו היו רבי זירא ורבי אבהו, ותלמידו רבי חזקיה. אחרי רבי אמי עמד, כנראה, בראש ישיבת טבריה.', 'His teachers were Rabbi Zeira and Rabbi Abahu, and his student Rabbi Chizkiyah. After Rabbi Ami he apparently headed the Yeshivah of Tiberias.'),
     ],
   }),
   A({
