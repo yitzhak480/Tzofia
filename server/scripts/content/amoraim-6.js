@@ -76,7 +76,7 @@ module.exports = [
     offices: [TZI(null, 4160, [], ['rabbi-mana'])],
     sources: [TTA],
     sections: [
-      sec('רבי חנניה דציפורין', 'רבי חנניה עמד בראש הישיבה בציפורי, ואחריו עמד בראשה רבי מנא, בר פלוגתיה – הם היו חברים, ולא רב ותלמיד, ורבי מנא בא אחריו משום שרבי חנניה נפטר לפניו.', 'Rabbi Chananyah of Tzippori', 'Rabbi Chananyah headed the yeshivah in Tzippori, and after him Rabbi Mana, his bar plugta, headed it – they were colleagues, not teacher and student, and Rabbi Mana followed him because Rabbi Chananyah died first.'),
+      sec('רבי חנניה דציפורין', 'רבי חנניה עמד בראש הישיבה בציפורי. כשעזב רבי מנא את טבריה בגלל הגזירות ובא לציפורי, מסר לו רבי חנניה את ראשות הישיבה. הם היו בני פלוגתא – חברים, ולא רב ותלמיד.', 'Rabbi Chananyah of Tzippori', 'Rabbi Chananyah headed the yeshivah in Tzippori. When Rabbi Mana left Tiberias because of the decrees and came to Tzippori, Rabbi Chananyah handed the headship of the yeshivah over to him. They were bar plugta – colleagues, not teacher and student.'),
       TS('רבותיו היו רבי פנחס, שהיה תלמידו המובהק, ורבי אבהו.', 'His teachers were Rabbi Pinchas, whose talmid muvhak he was, and Rabbi Abahu.'),
     ],
   }),
@@ -88,8 +88,8 @@ module.exports = [
     offices: [TVE(4130, 4160, ['rabbi-yona'], ['rabbi-avin']), TZI(4160, null, ['rabbi-chanania-detziporin'], [])],
     sources: [TTA],
     sections: [
-      sec('רבי מנא', 'רבי מנא, בנו של רבי יונה, היה מגדולי חכמי התלמוד הירושלמי. אחרי אביו עמד בראש ישיבת טבריה יחד עם רבי יוסי, עד שנפטר רבי יוסי, ואחר כך עבר לציפורי ועמד בראש הישיבה שם אחרי רבי חנניה – ולכן באילן שלנו תיבתו צבועה בשני צבעים, של טבריה ושל ציפורי.', 'Rabbi Mana', 'Rabbi Mana, the son of Rabbi Yonah, was one of the greatest sages of the Jerusalem Talmud. After his father he headed the Tiberias yeshivah together with Rabbi Yose, until Rabbi Yose died, and afterwards he moved to Tzippori and headed the yeshivah there after Rabbi Chananyah – so on our tree his box is in two colours, of Tiberias and of Tzippori.'),
-      TS('רבותיו היו אביו רבי יונה, שאחריו עמד בראש ישיבת טבריה, ורבי יוסי. רבי חנניה דציפורין היה בר פלוגתיה, ואחריו עמד בראש ישיבת ציפורי. אחריו עמד בראש ישיבת טבריה רבי אבין.', 'His teachers were his father Rabbi Yonah, after whom he headed the Tiberias yeshivah, and Rabbi Yose. Rabbi Chananyah of Tzippori was his bar plugta, and he followed him at the head of the Tzippori yeshivah. After him Rabbi Avin headed the Tiberias yeshivah.'),
+      sec('רבי מנא', 'רבי מנא, בנו של רבי יונה, היה מגדולי חכמי התלמוד הירושלמי. אחרי אביו עמד בראש ישיבת טבריה יחד עם רבי יוסי, עד שנפטר רבי יוסי. בגלל הגזירות עזב את טבריה, ורבי אבין בא במקומו בראש הישיבה שם. כשהגיע לציפורי, מסר לו רבי חנניה דציפורין את ראשות הישיבה – ולכן באילן שלנו תיבתו צבועה בשני צבעים, של טבריה ושל ציפורי.', 'Rabbi Mana', 'Rabbi Mana, the son of Rabbi Yonah, was one of the greatest sages of the Jerusalem Talmud. After his father he headed the Tiberias yeshivah together with Rabbi Yose, until Rabbi Yose died. Because of the decrees he left Tiberias, and Rabbi Avin took his place at the head of the yeshivah there. When he reached Tzippori, Rabbi Chananyah of Tzippori handed the headship of the yeshivah over to him – so on our tree his box is in two colours, of Tiberias and of Tzippori.'),
+      TS('רבותיו היו אביו רבי יונה, שאחריו עמד בראש ישיבת טבריה, ורבי יוסי. רבי חנניה דציפורין היה בר פלוגתיה, ומסר לו את ראשות ישיבת ציפורי. אחריו עמד בראש ישיבת טבריה רבי אבין.', 'His teachers were his father Rabbi Yonah, after whom he headed the Tiberias yeshivah, and Rabbi Yose. Rabbi Chananyah of Tzippori was his bar plugta, and handed the headship of the Tzippori yeshivah over to him. After him Rabbi Avin headed the Tiberias yeshivah.'),
     ],
   }),
   A({
@@ -116,7 +116,10 @@ module.exports = [
     rel: [to('teacher', 'rabbi-acha'), to('teacher', 'rabbi-chilkiya'), to('teacher', 'rabbi-zeira')],
     offices: [TVE(4160, null, ['rabbi-mana'], [])],
     sources: [TTA],
-    sections: [TS('רבותיו היו רבי אחא, רבי חלקיה ורבי זירא, ורבי מנא, שאחריו עמד בראש ישיבת טבריה.', 'His teachers were Rabbi Acha, Rabbi Chilkiyah and Rabbi Zeira, and Rabbi Mana, after whom he headed the Tiberias yeshivah.')],
+    sections: [
+      sec('רבי אבין', 'כשעזב רבי מנא את טבריה בגלל הגזירות ועבר לציפורי, בא רבי אבין במקומו בראש ישיבת טבריה.', 'Rabbi Avin', 'When Rabbi Mana left Tiberias because of the decrees and moved to Tzippori, Rabbi Avin took his place at the head of the Tiberias yeshivah.'),
+      TS('רבותיו היו רבי אחא, רבי חלקיה ורבי זירא, ורבי מנא, שבמקומו עמד בראש ישיבת טבריה.', 'His teachers were Rabbi Acha, Rabbi Chilkiyah and Rabbi Zeira, and Rabbi Mana, in whose place he headed the Tiberias yeshivah.'),
+    ],
   }),
 
   // ── Sura ──
@@ -124,13 +127,13 @@ module.exports = [
     slug: 'rav-ashi', spot2: 'רב אשי', roles: [GEN6, KOLELET, L('ראש ישיבת סורא', 'Head of the Sura yeshivah'), L('מסדר התלמוד הבבלי', 'Compiler of the Babylonian Talmud')],
     name: L('רב אשי', 'Rav Ashi'),
     summary: L('ראש ישיבת סורא כשישים שנה ומסדר התלמוד הבבלי.', 'Head of the Sura yeshivah for some sixty years and compiler of the Babylonian Talmud.'),
-    rel: [to('teacher', 'rava')],
+    rel: [to('teacher', 'rava'), to('teacher', 'rav-kahana-3')],
     offices: [HEAD('ראש ישיבת סורא', 'Head of the Sura yeshivah', 4127, 4187, ['rav-papa'], [])],
     sources: [IRSG, RAMBAM, L('בבא מציעא פו ע״א', 'Bava Metzia 86a'), L('גיטין נט ע״א', 'Gittin 59a'), L('בבא בתרא ג ע״ב', 'Bava Batra 3b'), K61],
     sections: [
       sec('מסדר התלמוד', 'רב אשי עמד בראש ישיבת סורא, במתא מחסיא, כשישים שנה, ובימיו סודר התלמוד הבבלי. הגמרא אומרת: "רבינא ורב אשי סוף הוראה" (בבא מציעא פו ע״א). הוא בנה מחדש את בית המדרש של מתא מחסיא (בבא בתרא ג ע״ב), ועליו נאמר שמימות רבי ועד רב אשי לא נמצאו "תורה וגדולה במקום אחד" (גיטין נט ע״א).', 'Compiler of the Talmud', 'Rav Ashi headed the Sura yeshivah, in Mata Mechasya, for some sixty years, and in his days the Babylonian Talmud was arranged. The Gemara says: "Ravina and Rav Ashi are the end of hora’ah" (Bava Metzia 86a). He rebuilt the study hall of Mata Mechasya (Bava Batra 3b), and of him it was said that from the days of Rebbi until Rav Ashi, "Torah and greatness in one place" were not found together (Gittin 59a).'),
       KING_GATE,
-      TS('רב אשי היה ראש המתיבתא הכוללת. רבו היה רבא, והוא חוליה בשלשלת הקבלה שמונה הרמב״ם. הוא עמד בראש ישיבת סורא אחרי רב פפא, רבו – ישיבת נרש של רב פפא היא חלק משושלת ישיבת סורא. רבינא ורב אחא בריה דרב אויא היו תלמידים־חברים שלו – למדו ממנו, אך היו גם חבריו.', 'Rav Ashi was Rosh HaMetivta HaKolelet. His teacher was Rava, and he is a link in the chain of tradition listed by the Rambam. He headed the Sura yeshivah after Rav Papa, his teacher – Rav Papa’s Naresh yeshivah is part of the line of the Sura yeshivah. Ravina and Rav Acha son of Rav Avya were his talmidim chaverim – they learned from him, but were also his colleagues.'),
+      TS('רב אשי היה ראש המתיבתא הכוללת. רבותיו היו רבא – והוא חוליה בשלשלת הקבלה שמונה הרמב״ם – ורב כהנא (השלישי). הוא עמד בראש ישיבת סורא אחרי רב פפא, רבו – ישיבת נרש של רב פפא היא חלק משושלת ישיבת סורא. רבינא ורב אחא בריה דרב אויא היו תלמידים־חברים שלו – למדו ממנו, אך היו גם חבריו.', 'Rav Ashi was Rosh HaMetivta HaKolelet. His teachers were Rava – and he is a link in the chain of tradition listed by the Rambam – and Rav Kahana (the third). He headed the Sura yeshivah after Rav Papa, his teacher – Rav Papa’s Naresh yeshivah is part of the line of the Sura yeshivah. Ravina and Rav Acha son of Rav Avya were his talmidim chaverim – they learned from him, but were also his colleagues.'),
     ],
   }),
   A({
@@ -244,7 +247,7 @@ module.exports = [
     summary: L('ראש ישיבת פומבדיתא אחרי רב דימי.', 'Head of the Pumbedita yeshivah after Rav Dimi.'),
     rel: [], offices: [PUM(4143, 4143, ['rav-dimi-minehardea'], ['rav-kahana-4'])],
     sources: [IRSG],
-    sections: [TS('הוא עמד בראש ישיבת פומבדיתא אחרי רב דימי מנהרדעא, רבו, ואחריו רב כהנא.', 'He headed the Pumbedita yeshivah after Rav Dimi of Nehardea, his teacher, and after him came Rav Kahana.')],
+    sections: [TS('הוא עמד בראש ישיבת פומבדיתא אחרי רב דימי מנהרדעא, רבו, ואחריו רב כהנא. אביו, פפא, אינו רב פפא ראש ישיבת נרש.', 'He headed the Pumbedita yeshivah after Rav Dimi of Nehardea, his teacher, and after him came Rav Kahana. His father, Papa, is not Rav Papa the head of the Naresh yeshivah.')],
   }),
   A({
     slug: 'rav-kahana-4', spot2: 'רב כהנא ד׳', roles: [GEN6, L('ראש ישיבת פומבדיתא', 'Head of the Pumbedita yeshivah')],
