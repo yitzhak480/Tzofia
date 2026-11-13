@@ -280,6 +280,7 @@ const BATCHES = [
   { category: null, orderBase: 400, entries: require('./content/amoraim-5'), order: [], relink: {} },
   { category: null, orderBase: 500, entries: require('./content/amoraim-6'), order: [], relink: {} },
   { category: null, orderBase: 600, entries: require('./content/amoraim-7'), order: [], relink: {} },
+  { category: null, orderBase: 700, entries: require('./content/amoraim-8'), order: [], relink: {} },
   {
     category: 'beit-chashmonai',
     entries: require('./content/second-temple-houses').chashmonai,
@@ -303,8 +304,8 @@ const EXTRA = [
   { slug: 'ovadyah-hanavi', addCategory: 'gerei-tzedek' },
   { slug: 'rav-huna-kama', addCategory: 'amoraim-rashei-hagola' },
   // the heads of the yeshivot (new heads are added here generation by generation)
-  ...['rav-abba-arikha', 'rav-huna', 'rav-chisda', 'rabba-bar-rav-huna', 'rav-papa', 'rav-ashi', 'marimar', 'rav-idi-bar-avin-2', 'rav-nachman-bar-rav-huna', 'mar-bar-rav-ashi'].map((slug, i) => ({ slug, addCategory: 'roshei-yeshivat-sura', catOrder: i + 1 })),
-  ...['rav-yehuda', 'rav-huna-bar-chiya', 'rabba', 'rav-yosef', 'abaye', 'rava', 'rav-nachman-bar-yitzhak', 'rav-chama', 'rav-zvid', 'rav-dimi-minehardea', 'rafram-1', 'rav-kahana-4', 'rav-acha-bar-rava', 'rav-gviha-mibei-katil', 'rafram-2', 'rav-rechumi-2'].map((slug, i) => ({ slug, addCategory: 'roshei-yeshivat-pumbedita', catOrder: i + 1 })),
+  ...['rav-abba-arikha', 'rav-huna', 'rav-chisda', 'rabba-bar-rav-huna', 'rav-papa', 'rav-ashi', 'marimar', 'rav-idi-bar-avin-2', 'rav-nachman-bar-rav-huna', 'mar-bar-rav-ashi', 'rabba-tosfaa', 'ravina-2'].map((slug, i) => ({ slug, addCategory: 'roshei-yeshivat-sura', catOrder: i + 1 })),
+  ...['rav-yehuda', 'rav-huna-bar-chiya', 'rabba', 'rav-yosef', 'abaye', 'rava', 'rav-nachman-bar-yitzhak', 'rav-chama', 'rav-zvid', 'rav-dimi-minehardea', 'rafram-1', 'rav-kahana-4', 'rav-acha-bar-rava', 'rav-gviha-mibei-katil', 'rafram-2', 'rav-rechumi-2', 'rav-sama-brei-drava'].map((slug, i) => ({ slug, addCategory: 'roshei-yeshivat-pumbedita', catOrder: i + 1 })),
   // the Savoraim's heads come long after the Amoraim's
   { slug: 'rabbah-yossi', addCategory: 'roshei-yeshivat-pumbedita', catOrder: 100, forceOrder: true },
   ...['rabbi-yochanan', 'rabbi-elazar-ben-pedat', 'rabbi-ami', 'rabbi-yirmeya', 'rabbi-yona', 'rabbi-yose-ben-zevida', 'rabbi-mana', 'rabbi-avin'].map((slug, i) => ({ slug, addCategory: 'roshei-yeshivat-tveria', catOrder: i + 1 })),
