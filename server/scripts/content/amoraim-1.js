@@ -264,7 +264,7 @@ const gen1 = [
     name: L('רבי יהודה נשיאה הראשון', 'Rabbi Yehudah Nesiah I'),
     summary: L('נכדו של רבי והנשיא אחרי אביו, שהתיר את שמן הגויים.', 'Rebbi’s grandson and the Nasi after his father, who permitted the oil of gentiles.'),
     rel: [to('father', 'rabban-gamliel-berabbi')],
-    offices: [{ label: L('שנות נשיאות', 'Years as Nasi'), from: 4000, to: 4030, before: ['rabban-gamliel-berabbi'], after: [] }],
+    offices: [{ label: L('שנות נשיאות', 'Years as Nasi'), from: 4000, to: 4030, before: ['rabban-gamliel-berabbi'], after: ['rabban-gamliel-4'] }],
     sources: [L('עבודה זרה לו ע״א', 'Avodah Zarah 36a'), L('משנה עבודה זרה ב, ו', 'Mishnah Avodah Zarah 2:6')],
     sections: one('רבי יהודה נשיאה', 'רבי יהודה נשיאה, בן רבן גמליאל ברבי, עמד בראש הנשיאות בימי רבי יוחנן. הוא ובית דינו התירו את שמן הגויים, שנאסר בגזירה בימי שמאי והלל (עבודה זרה לו ע״א).', 'Rabbi Yehudah Nesiah', 'Rabbi Yehudah Nesiah, son of Rabban Gamliel son of Rebbi, headed the patriarchate in the days of Rabbi Yochanan. He and his court permitted the oil of gentiles, which had been forbidden by decree in the days of Shammai and Hillel (Avodah Zarah 36a).'),
   }),
@@ -280,7 +280,7 @@ const gen1 = [
     name: L('רבי יוחנן בר נפחא', 'Rabbi Yochanan bar Nafcha'),
     summary: L('מייסד ישיבת טבריה ומסדר התלמוד הירושלמי, גדול אמוראי ארץ ישראל.', 'Founder of the Yeshivah of Tiberias and compiler of the Jerusalem Talmud, the greatest of the Amoraim of the Land of Israel.'),
     rel: [to('teacher', 'rabbi-yehuda-hanasi'), to('father', 'nafcha'), to('related', 'reish-lakish')],
-    offices: [HEAD('ראש ישיבת טבריה', 'Head of the Yeshivah of Tiberias', 3990, 4039, [], [])],
+    offices: [HEAD('ראש ישיבת טבריה', 'Head of the Yeshivah of Tiberias', 3990, 4039, [], ['rabbi-elazar-ben-pedat'])],
     sources: [L('בבא מציעא פד ע״א', 'Bava Metzia 84a'), L('ברכות ה ע״ב', 'Berachot 5b'), L('קידושין לא ע״ב', 'Kiddushin 31b'), L('רמב״ם, הקדמה למשנה תורה', 'Rambam, Introduction to the Mishneh Torah')],
     sections: [
       sec('רבי יוחנן', 'רבי יוחנן נולד יתום, ולמד בצעירותו לפני רבי. הוא ייסד את הישיבה בטבריה ועמד בראשה כחמישים שנה, ולפי הרמב״ם הוא שסידר את התלמוד הירושלמי. הוא היה יפה מאוד, ואחרי שמתו עשרה מבניו היה נושא עמו עצם של בנו העשירי ומנחם בה אבלים: "דין גרמא דעשיראה ביר" (ברכות ה ע״ב).', 'Rabbi Yochanan', 'Rabbi Yochanan was born an orphan, and learned in his youth before Rebbi. He founded the yeshivah in Tiberias and headed it for about fifty years, and according to the Rambam it was he who arranged the Jerusalem Talmud. He was very handsome, and after ten of his sons died he would carry a bone of his tenth son and comfort mourners with it: "this is the bone of my tenth son" (Berachot 5b).'),
@@ -368,7 +368,7 @@ const gen1 = [
     name: L('רב (אבא בר איבו)', 'Rav (Abba bar Ibo)'),
     summary: L('תלמיד רבי ורבי חייא, שייסד את ישיבת סורא; "הלכתא כרב באיסורי".', 'Student of Rebbi and Rabbi Chiya, who founded the Sura yeshivah; "the law follows Rav in prohibitions".'),
     rel: [to('teacher', 'rabbi-yehuda-hanasi'), to('teacher', 'rabbi-chiya'), to('father', 'aivu'), to('mother', 'ima-em-rav'), to('related', 'shmuel')],
-    offices: [HEAD('ראש ישיבת סורא', 'Head of the Sura yeshivah', 3979, 4003, [], [])],
+    offices: [HEAD('ראש ישיבת סורא', 'Head of the Sura yeshivah', 3979, 4003, [], ['rav-huna'])],
     sources: [IRSG, SAN5, L('עירובין נ ע״ב', 'Eruvin 50b'), L('בכורות מט ע״ב', 'Bechorot 49b'), L('ירושלמי ראש השנה א, ג', 'Yerushalmi Rosh Hashanah 1:3')],
     sections: [
       sec('בבית מדרשו של רבי', 'רב, ששמו אבא בר איבו, נולד בבבל ועלה לארץ ישראל עם דודו רבי חייא, ולמד תורה מפי רבי יהודה הנשיא. בשל גדולתו נקרא בפי כל "רב" סתם, כרבן של כל בני הגולה. חז״ל אומרים עליו "רב תנא הוא ופליג": מעמדו כמעמד תנא, ולכן הוא רשאי לחלוק על דברי תנאים (עירובין נ ע״ב).', 'In the Study Hall of Rebbi', 'Rav, whose name was Abba bar Ibo, was born in Babylon and went up to the Land of Israel with his uncle Rabbi Chiya, where he learned Torah from Rabbi Yehudah HaNasi. Because of his greatness he was called simply "Rav", the teacher of all the Diaspora. Chazal say of him "Rav is a Tanna and may disagree": his standing was like that of a Tanna, so he could disagree with Tannaim (Eruvin 50b).'),
@@ -383,7 +383,7 @@ const gen1 = [
     name: L('שמואל (האמורא)', 'Shmuel (the Amora)'),
     summary: L('ראש ישיבת נהרדעא, חברו של רב, רופא ותוכן: "דינא דמלכותא דינא".', 'Head of the Nehardea yeshivah, Rav’s colleague, physician and astronomer: "the law of the land is the law".'),
     rel: [to('teacher', 'rabbi-yehuda-hanasi'), to('teacher', 'levi-bar-sisi'), to('father', 'abba-bar-abba'), to('related', 'rav-abba-arikha')],
-    offices: [HEAD('ראש ישיבת נהרדעא', 'Head of the Nehardea yeshivah', 3979, 4010, ['rav-shila'], [])],
+    offices: [HEAD('ראש ישיבת נהרדעא', 'Head of the Nehardea yeshivah', 3979, 4010, ['rav-shila'], ['rav-nachman'])],
     sources: [L('ברכות נח ע״ב', 'Berachot 58b'), L('נדרים כה ע״א', 'Nedarim 25a'), L('בבא קמא קיג ע״א', 'Bava Kamma 113a'), L('בכורות מט ע״ב', 'Bechorot 49b'), IRSG],
     sections: [
       sec('שמואל ירחינאה', 'שמואל היה בקי באסטרונומיה, ואמר: "נהירין לי שבילי דשמיא כשבילי דנהרדעא" (ברכות נח ע״ב), ולכן נקרא "ירחינאה". הוא היה גם רופא, ופסק "דינא דמלכותא דינא" – חוק המדינה מחייב (בבא קמא קיג ע״א). ההלכה כמותו בדיני ממונות: "הלכתא כרב באיסורי, וכשמואל בדיני".', 'Shmuel Yarchina’ah', 'Shmuel was expert in astronomy, and said: "the paths of the heavens are as clear to me as the paths of Nehardea" (Berachot 58b), and so he was called "Yarchina’ah" (of the moon). He was also a physician, and ruled "the law of the land is the law" (Bava Kamma 113a). The law follows him in monetary matters: "the law follows Rav in prohibitions, and Shmuel in money law".'),
@@ -429,8 +429,8 @@ const gen1 = [
     slug: 'nechemya-rosh-hagola', spot2: 'נחמיה', roles: [L('ראש הגולה', 'Head of the Exile')],
     name: L('נחמיה ראש הגולה', 'Nechemyah, Head of the Exile'),
     summary: L('בנו של נתן ב׳, ראש הגולה בימי רב ושמואל.', 'Son of Natan II, Head of the Exile in the days of Rav and Shmuel.'),
-    rel: [to('father', 'natan-2-rosh-hagola')], offices: [RG(['natan-2-rosh-hagola'], [], 3980, 4000)], sources: [SOZ],
-    sections: one('נחמיה', 'לפי סדר עולם זוטא עמד נחמיה בראש הגולה אחרי אביו נתן, בדורם של רב ושמואל. באילן יש סימן שאלה בינו לבין ראשי הגולה שאחריו, החל במר עוקבא: לא ברור אם היו מצאצאיו.', 'Nechemyah', 'According to Seder Olam Zuta, Nechemyah headed the Exile after his father Natan, in the generation of Rav and Shmuel. On our tree there is a question mark between him and the Heads of the Exile after him, beginning with Mar Ukva: it is not clear whether they were his descendants.'),
+    rel: [to('father', 'natan-2-rosh-hagola')], offices: [RG(['natan-2-rosh-hagola'], ['mar-ukva-1'], 3980, 4000)], sources: [SOZ],
+    sections: one('נחמיה', 'לפי סדר עולם זוטא עמד נחמיה בראש הגולה אחרי אביו נתן, בדורם של רב ושמואל. אחריו עמד בראש הגולה בנו, מר עוקבא. ילתא, אשת רב נחמן, מצאצאיו בסימן שאלה – לא ידוע בוודאות בתו של מי הייתה.', 'Nechemyah', 'According to Seder Olam Zuta, Nechemyah headed the Exile after his father Natan, in the generation of Rav and Shmuel. After him his son Mar Ukva headed the Exile. Yalta, Rav Nachman’s wife, is his descendant with a question mark – it is not known for certain whose daughter she was.'),
   }),
 ];
 
