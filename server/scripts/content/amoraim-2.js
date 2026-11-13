@@ -1,7 +1,7 @@
 // The Talmud tree, second band: the second generation of the Amoraim, with
 // their families. Teachers and students follow the poster's lines, each one
 // traced to its end; the pages say what each connection means.
-const { L, sec, to } = require('./helpers');
+const { L, sec, to, nm } = require('./helpers');
 const T2 = require('./tree-checklist-talmud');
 
 const CAT = {
@@ -238,7 +238,7 @@ module.exports = [
   F({
     slug: 'rachel-bat-shmuel', spot2: 'רחל (אם רב מרי)', name: L('רחל (בת שמואל)', 'Rachel, daughter of Shmuel'),
     summary: L('בתו של שמואל שנשבתה, ואם רב מרי בר רחל.', 'Shmuel’s daughter who was taken captive, and the mother of Rav Mari bar Rachel.'),
-    rel: [to('father', 'shmuel')], sources: [L('יבמות מה ע״ב', 'Yevamot 45b'), L('כתובות כג ע״א', 'Ketubot 23a')],
+    rel: [to('father', 'shmuel'), nm('spouse', 'איסור גיורא', 'Issur Giyora')], sources: [L('יבמות מה ע״ב', 'Yevamot 45b'), L('כתובות כג ע״א', 'Ketubot 23a'), L('בבא בתרא קמט ע״א', 'Bava Batra 149a')],
     sections: one('רחל', 'הגמרא (כתובות כג ע״א) מספרת על בנותיו של שמואל שנשבו והועלו לארץ ישראל. רחל, בתו של שמואל, נישאה לאיסור הגר, וילדה את רב מרי בר רחל, שנולד לפני שאביו התגייר ולכן נקרא על שם אמו (יבמות מה ע״ב).', 'Rachel', 'The Gemara (Ketubot 23a) tells of Shmuel’s daughters who were taken captive and brought up to the Land of Israel. Rachel, Shmuel’s daughter, married Issur the convert, and bore Rav Mari bar Rachel, who was conceived before his father converted and so was called after his mother (Yevamot 45b).'),
   }),
   A({

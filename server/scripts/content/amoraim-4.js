@@ -1,6 +1,6 @@
 // The Talmud tree, fourth band: the fourth generation of the Amoraim, with
 // their families. Teachers and students follow the poster's lines.
-const { L, sec, to } = require('./helpers');
+const { L, sec, to, nm } = require('./helpers');
 const T2 = require('./tree-checklist-talmud');
 
 const CAT = {
@@ -162,15 +162,15 @@ module.exports = [
   A({
     slug: 'rav-kahana-3', spot2: 'רב כהנא ג׳', roles: [GEN4, L('ראש ישיבת פום נהרא', 'Head of the yeshivah of Pum Nahara')],
     name: L('רב כהנא ג׳', 'Rav Kahana III'), summary: L('ראש ישיבת פום נהרא, רבו של רב אשי.', 'Head of the yeshivah of Pum Nahara, Rav Ashi’s teacher.'),
-    rel: [to('teacher', 'rabba'), to('teacher', 'rabbi-zeira'), to('teacher', 'rav-chiya-bar-rav'), to('teacher', 'rav-chisda'), to('plugta', 'rav-zvid-minehardea')],
+    rel: [to('teacher', 'rabba'), to('teacher', 'rabbi-zeira'), to('teacher', 'rav-chiya-bar-rav'), to('teacher', 'rav-chisda'), to('teacher', 'rav-zvid-minehardea')],
     sources: [L('זבחים ב ע״ב', 'Zevachim 2b'), TTA],
-    sections: [TS('רבותיו היו רבה, רבי זירא, רב חייא בר רב ורב חסדא, ובר פלוגתיה היה רב זביד מנהרדעא. הוא עמד בראש הישיבה בפום נהרא, ומתלמידיו היה רב אשי.', 'His teachers were Rabba, Rabbi Zeira, Rav Chiya son of Rav and Rav Chisda, and his sparring partner was Rav Zvid of Nehardea. He headed the yeshivah in Pum Nahara, and one of his students was Rav Ashi.')],
+    sections: [TS('רבותיו היו רבה, רבי זירא, רב חייא בר רב, רב חסדא ורב זביד מנהרדעא. הוא עמד בראש הישיבה בפום נהרא, ומתלמידיו היה רב אשי.', 'His teachers were Rabba, Rabbi Zeira, Rav Chiya son of Rav, Rav Chisda and Rav Zvid of Nehardea. He headed the yeshivah in Pum Nahara, and one of his students was Rav Ashi.')],
   }),
   A({
     slug: 'rav-zvid-minehardea', spot2: 'רב זביד מנהרדעא', roles: [GEN4],
-    name: L('רב זביד מנהרדעא', 'Rav Zvid of Nehardea'), summary: L('מחכמי נהרדעא, בר פלוגתיה של רב כהנא.', 'Of the sages of Nehardea, Rav Kahana’s sparring partner.'),
-    rel: [to('plugta', 'rav-kahana-3')], sources: [TTA],
-    sections: [TS('בר פלוגתיה היה רב כהנא ג׳.', 'His sparring partner was Rav Kahana III.')],
+    name: L('רב זביד מנהרדעא', 'Rav Zvid of Nehardea'), summary: L('מחכמי נהרדעא, רבו של רב כהנא.', 'Of the sages of Nehardea, Rav Kahana’s teacher.'),
+    rel: [to('student', 'rav-kahana-3')], sources: [TTA],
+    sections: [TS('תלמידו היה רב כהנא ג׳, ראש ישיבת פום נהרא.', 'His student was Rav Kahana III, head of the yeshivah of Pum Nahara.')],
   }),
   A({
     slug: 'rechava', spot2: 'רחבא דפומבדיתא', roles: [GEN4],
@@ -252,9 +252,14 @@ module.exports = [
   }),
   A({
     slug: 'rav-mari-bar-rachel', spot2: 'רב מרי בר רחל', roles: [GEN4],
-    name: L('רב מרי בר רחל', 'Rav Mari bar Rachel'), summary: L('בנם של איסור הגר ורחל בת שמואל, שנקרא על שם אמו.', 'Son of Issur the convert and Rachel daughter of Shmuel, called after his mother.'),
-    rel: [to('mother', 'rachel-bat-shmuel')], sources: [L('יבמות מה ע״ב', 'Yevamot 45b'), L('בבא בתרא קמט ע״א', 'Bava Batra 149a')],
-    sections: one('רב מרי בר רחל', 'רב מרי היה בנו של איסור הגר ושל רחל, בתו של שמואל. הוא נולד לפני שאביו התגייר, ולכן נקרא על שם אמו. הגמרא (יבמות מה ע״ב) מביאה שמינו אותו לשררה, אף שאביו היה גר, משום שאמו מישראל.', 'Rav Mari bar Rachel', 'Rav Mari was the son of Issur the convert and Rachel, Shmuel’s daughter. He was conceived before his father converted, and so was called after his mother. The Gemara (Yevamot 45b) relates that he was appointed to office, although his father was a convert, since his mother was of Israel.'),
+    name: L('רב מרי בר רחל', 'Rav Mari bar Rachel'),
+    summary: L('בנם של רחל בת שמואל ואיסור גיורא, גוי שהתגייר אחר כך; רבא מינהו לממונה בבבל.', 'Son of Rachel daughter of Shmuel and Issur Giyora, a gentile who later converted; Rava appointed him an official in Bavel.'),
+    rel: [to('mother', 'rachel-bat-shmuel'), nm('father', 'איסור גיורא', 'Issur Giyora')], sources: [L('כתובות כג ע״א', 'Ketubot 23a'), L('יבמות מה ע״ב', 'Yevamot 45b'), L('בבא בתרא קמט ע״א', 'Bava Batra 149a')],
+    sections: [
+      sec('בן רחל', 'רחל, בתו של שמואל, נשבתה (כתובות כג ע״א), ואיסור – גוי באותה עת – חי עמה, ורב מרי נולד להם. איסור התגייר כשרחל הייתה מעוברת: "הורתו שלא בקדושה ולידתו בקדושה" (בבא בתרא קמט ע״א). לכן נקרא רב מרי על שם אמו – "בר רחל".', 'Son of Rachel', 'Rachel, Shmuel’s daughter, was taken captive (Ketubot 23a), and Issur – then a gentile – lived with her, and Rav Mari was born to them. Issur converted while Rachel was pregnant: "his conception was not in holiness and his birth was in holiness" (Bava Batra 149a). So Rav Mari was called after his mother – "bar Rachel".'),
+      sec('הממון של איסור', 'לאיסור גיורא היו שנים עשר אלף זוז מופקדים אצל רבא. רב מרי, שנולד אחרי הגיור, לא יכול היה לרשת את אביו, ורבא עיין איך יוכל לזכות בהם – בירושה, במתנה, במשיכה, בחליפין או אגב קרקע – ולא מצא דרך. רב איקא בריה דרב אמי הציע שאיסור יודה שהכסף שייך לרב מרי, וכך עשה (בבא בתרא קמט ע״א).', 'Issur’s Money', 'Issur Giyora had twelve thousand zuz deposited with Rava. Rav Mari, born after the conversion, could not inherit his father, and Rava considered how he might acquire them – by inheritance, gift, pulling, exchange or along with land – and found no way. Rav Ika son of Rav Ami suggested that Issur admit the money belonged to Rav Mari, and so he did (Bava Batra 149a).'),
+      sec('ממונה בבבל', 'רבא מינה את רב מרי בר רחל לממונה על פורסי דבבל, ואף שנאמר "מקרב אחיך תשים עליך מלך", כיוון שאמו מישראל – "מקרב אחיך" קרינן ביה (יבמות מה ע״ב).', 'An Official in Bavel', 'Rava appointed Rav Mari bar Rachel an official over the districts of Bavel, and although it says "from among your brothers you shall set a king over you", since his mother was of Israel – he is considered "from among your brothers" (Yevamot 45b).'),
+    ],
   }),
   A({
     slug: 'rav-sheorim', spot2: 'רב שעורים', roles: [GEN4],
