@@ -56,29 +56,35 @@ const resolveRelations = async (person) => {
   const nameMap = new Map(byName.filter((p) => nameCounts.get(p.name.he) === 1).map((p) => [p.name.he, p]));
 
   const out = [];
-  const seen = new Set();
-  const add = (type, name, linked, uncertain = false) => {
+  const seen = new Map();
+  const add = (type, name, linked, uncertain = false, muvhak = false) => {
     const key = `${groupOf(type)}|${linked ? String(linked._id) : name?.he?.trim()}`;
-    if (!name?.he || seen.has(key)) return;
-    seen.add(key);
+    if (!name?.he) return;
+    // written on both pages: one link, "muvhak" if either page says so
+    if (seen.has(key)) {
+      if (muvhak && ['teacher', 'student'].includes(type)) seen.get(key).muvhak = true;
+      return;
+    }
     out.push({
       type,
       name: linked ? linked.name : name,
       slug: linked ? linked.slug : null,
       uncertain: Boolean(uncertain),
+      muvhak: Boolean(muvhak) && ['teacher', 'student'].includes(type),
     });
+    seen.set(key, out[out.length - 1]);
   };
 
   for (const r of own) {
     const linked = r.person ? idMap.get(String(r.person)) : nameMap.get(r.name?.he?.trim());
     // A link to a page that was deleted or hidden: show the saved name only.
-    add(r.type, r.person && !linked ? r.name : linked ? linked.name : r.name, linked, r.uncertain);
+    add(r.type, r.person && !linked ? r.name : linked ? linked.name : r.name, linked, r.uncertain, r.muvhak);
   }
 
   for (const other of pointingHere) {
     for (const r of other.relations || []) {
       const pointsHere = r.person ? String(r.person) === String(person._id) : r.name?.he?.trim() === nameHe;
-      if (pointsHere && INVERSE[r.type]) add(INVERSE[r.type], other.name, other, r.uncertain);
+      if (pointsHere && INVERSE[r.type]) add(INVERSE[r.type], other.name, other, r.uncertain, r.muvhak);
     }
   }
 

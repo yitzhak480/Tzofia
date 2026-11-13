@@ -4,7 +4,7 @@
 // black arrow = teacher → student, brown = the Rambam's chain, grey = a role
 // passed on, a circle = a student who was also a colleague, "hands" = a
 // chavruta / bar plugta, coloured lines = family, dotted = through a woman.
-const { L, sec, to } = require('./helpers');
+const { L, sec, to, muv } = require('./helpers');
 const T2 = require('./tree-checklist-talmud');
 
 const CAT = {
@@ -185,7 +185,7 @@ const transition = [
     slug: 'rabbi-chanina-bar-chama', spot2: 'רבי חנינא בר חמא', roles: [GEN0, L('ראש ישיבת ציפורי', 'Head of the Yeshivah of Tzippori')],
     name: L('רבי חנינא בר חמא', 'Rabbi Chanina bar Chama'),
     summary: L('תלמיד רבי, שרבי ציווה שישב בראש, וראש ישיבת ציפורי.', 'Rebbi’s student, whom Rebbi commanded to sit at the head, and head of the Yeshivah of Tzippori.'),
-    rel: [to('teacher', 'rabbi-yehuda-hanasi'), to('teacher', 'rabbi-yishmael-berabbi-yose'), to('teacher', 'bar-kappara')],
+    rel: [muv('rabbi-yehuda-hanasi'), to('teacher', 'rabbi-yishmael-berabbi-yose'), to('teacher', 'bar-kappara')],
     offices: [HEAD('ראש ישיבת ציפורי', 'Head of the Yeshivah of Tzippori', 3980, 3990, ['rabbi-afes'], [])],
     sources: [KET103, L('יומא מט ע״א', 'Yoma 49a'), TTA],
     sections: one('חנינא בר חמא ישב בראש', 'רבי ציווה לפני מותו: "חנינא בר חמא ישב בראש" (כתובות קג ע״ב). רבי חנינא לא קיבל את התפקיד, משום שרבי אפס היה גדול ממנו בשתיים ומחצה שנים, וישב בחוץ ולמד; רק אחרי מות רבי אפס נכנס לראש הישיבה. רבותיו היו רבי, רבי ישמעאל ברבי יוסי ובר קפרא, והוא עמד בראש ישיבת ציפורי אחרי רבי אפס.', 'Chanina bar Chama Shall Sit at the Head', 'Rebbi commanded before his death: "Chanina bar Chama shall sit at the head" (Ketubot 103b). Rabbi Chanina did not take the post, since Rabbi Afes was older than he by two and a half years, and he sat outside and learned; only after Rabbi Afes died did he take the head of the yeshivah. His teachers were Rebbi, Rabbi Yishmael son of Rabbi Yose and Bar Kappara, and he headed the Yeshivah of Tzippori after Rabbi Afes.'),
@@ -329,7 +329,7 @@ const gen1 = [
     slug: 'rabbi-oshaya-rabba', spot2: 'רבי אושעיא רבה', roles: [GEN1, L('מסדר ברייתות', 'Compiler of baraitot')],
     name: L('רבי אושעיא רבה', 'Rabbi Oshaya the Great'),
     summary: L('בנו של רבי חמא בר ביסא, שסידר ברייתות ונקרא "אבי המשנה".', 'Son of Rabbi Chama bar Bisa, who arranged baraitot and was called "father of the Mishnah".'),
-    rel: [to('father', 'rabbi-chama-bar-bisa'), to('teacher', 'bar-kappara'), to('teacher', 'rabbi-chiya')],
+    rel: [to('father', 'rabbi-chama-bar-bisa'), to('teacher', 'bar-kappara'), muv('rabbi-chiya')],
     sources: [L('חולין קמא ע״א – ע״ב', 'Chullin 141a–b'), L('כתובות סב ע״ב', 'Ketubot 62b'), L('ירושלמי בבא קמא ד, ו', 'Yerushalmi Bava Kamma 4:6')],
     sections: one('רבי אושעיא', 'רבי אושעיא סידר ברייתות, כמו רבי חייא: "כל מתניתא דלא תניא בי רבי חייא ובי רבי אושעיא – משבשתא היא" (חולין קמא ע״א). בירושלמי הוא נקרא "אבוהון דמתניתא" – אבי המשנה. רבותיו היו בר קפרא ורבי חייא.', 'Rabbi Oshaya', 'Rabbi Oshaya arranged baraitot, like Rabbi Chiya: "any baraita not taught in the school of Rabbi Chiya and of Rabbi Oshaya is corrupt" (Chullin 141a). In the Yerushalmi he is called "the father of the Mishnah". His teachers were Bar Kappara and Rabbi Chiya.'),
   }),

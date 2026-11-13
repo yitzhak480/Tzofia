@@ -34,7 +34,7 @@ const toForm = (p = {}) => ({
   content: L(p.content),
   summary: L(p.summary),
   mainImage: p.mainImage || null,
-  relations: (p.relations || []).map((r) => ({ type: r.type, person: r.person ? String(r.person) : null, name: L(r.name), uncertain: Boolean(r.uncertain) })),
+  relations: (p.relations || []).map((r) => ({ type: r.type, person: r.person ? String(r.person) : null, name: L(r.name), uncertain: Boolean(r.uncertain), muvhak: Boolean(r.muvhak) })),
   sources: (p.sources || []).join('\n'),
   sourcesEn: (p.sourcesEn || []).join('\n'),
   treeSpots: (p.treeSpots || []).map((s) => ({ tree: s.tree, x: s.x, y: s.y })),

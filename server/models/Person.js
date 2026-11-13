@@ -50,6 +50,8 @@ const relationSchema = new mongoose.Schema(
     name: { type: localized(), default: () => ({}) },
     // A question mark on the poster: the connection isn't certain.
     uncertain: { type: Boolean, default: false },
+    // the pointed arrow on the poster: a teacher and his talmid muvhak (closest student)
+    muvhak: { type: Boolean, default: false },
   },
   { _id: false }
 );

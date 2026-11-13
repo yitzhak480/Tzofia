@@ -382,7 +382,7 @@ const main = async () => {
     // an event page is made by add-events.js; until it exists the link waits
     if (!other && EVENT_SLUGS.has(r.slug)) { console.log(`  ${owner}: event "${r.slug}" not made yet`); return null; }
     if (!other) throw new Error(`${owner}: no page "${r.slug}"`);
-    return { type: r.type, person: other._id, name: { he: other.name.he, en: other.name.en || '' }, uncertain: Boolean(r.uncertain) };
+    return { type: r.type, person: other._id, name: { he: other.name.he, en: other.name.en || '' }, uncertain: Boolean(r.uncertain), muvhak: Boolean(r.muvhak) };
   };
 
   // all pages first, so that links between batches work
@@ -488,6 +488,39 @@ const main = async () => {
       }
       last = doc.cardColor;
     }
+  }
+
+  // teacher and talmid muvhak (the pointed arrow): a few words on both pages (replaced, not repeated)
+  const MUV_TITLE = { he: 'רב ותלמיד מובהק', en: 'Teacher and Closest Student' };
+  const muvText = new Map(); // slug -> { he: [], en: [] }
+  const say = (slug, he, en) => {
+    if (!muvText.has(slug)) muvText.set(slug, { he: [], en: [] });
+    muvText.get(slug).he.push(he); muvText.get(slug).en.push(en);
+  };
+  for (const batch of BATCHES) for (const e of batch.entries) for (const r of e.rel || []) {
+    if (!r.muvhak) continue;
+    const st = bySlug.get(e.slug), t = bySlug.get(r.slug);
+    say(e.slug, `${st.name.he} היה תלמידו המובהק של ${t.name.he} – תלמידו העיקרי, שקיבל את רוב תורתו ממנו.`,
+      `${st.name.en} was the talmid muvhak of ${t.name.en} – his principal student, who received most of his Torah from him.`);
+    say(r.slug, `${st.name.he} היה תלמידו המובהק – תלמידו העיקרי, שקיבל את רוב תורתו ממנו.`,
+      `${st.name.en} was his talmid muvhak – his principal student, who received most of his Torah from him.`);
+  }
+  for (const doc of bySlug.values()) {
+    const add = muvText.get(doc.slug);
+    const content = { he: doc.content?.he || '', en: doc.content?.en || '' };
+    let changed = false;
+    for (const lang of ['he', 'en']) {
+      const head = `<h2>${MUV_TITLE[lang]}</h2>`;
+      const cut = content[lang].indexOf(head);
+      if (cut < 0 && !add) continue;
+      let rest = cut >= 0 ? content[lang].slice(0, cut) + content[lang].slice(content[lang].indexOf('</p>', cut) + 4) : content[lang];
+      // before the asterisk note, which goes last
+      const star = rest.indexOf(`<h2>${ASTERISK_TITLE[lang]}</h2>`);
+      const block = add ? `${head}<p>${add[lang].join(' ')}</p>` : '';
+      content[lang] = star >= 0 ? rest.slice(0, star) + block + rest.slice(star) : rest + block;
+      changed = true;
+    }
+    if (changed) { doc.content = content; doc.markModified('content'); await doc.save(); }
   }
 
   // asterisk notes, at the end of each page (replaced, not repeated)

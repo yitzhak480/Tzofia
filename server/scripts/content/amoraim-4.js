@@ -1,6 +1,6 @@
 // The Talmud tree, fourth band: the fourth generation of the Amoraim, with
 // their families. Teachers and students follow the poster's lines.
-const { L, sec, to, nm } = require('./helpers');
+const { L, sec, to, nm, muv } = require('./helpers');
 const T2 = require('./tree-checklist-talmud');
 
 const CAT = {
@@ -101,13 +101,13 @@ module.exports = [
   A({
     slug: 'rabbi-chizkiya', spot2: 'רבי חזקיה', roles: [GEN4],
     name: L('רבי חזקיה', 'Rabbi Chizkiyah'), summary: L('תלמידו של רבי ירמיה.', 'Rabbi Yirmeyah’s student.'),
-    rel: [to('teacher', 'rabbi-yirmeya'), to('teacher', 'rabbi-abahu')], sources: [TTA],
+    rel: [muv('rabbi-yirmeya'), to('teacher', 'rabbi-abahu')], sources: [TTA],
     sections: [TS('רבותיו היו רבי ירמיה ורבי אבהו.', 'His teachers were Rabbi Yirmeyah and Rabbi Abahu.')],
   }),
   A({
     slug: 'rabbi-yirmeya', spot2: 'רבי ירמיה', roles: [GEN4, L('ראש ישיבת טבריה', 'Head of the Yeshivah of Tiberias')],
     name: L('רבי ירמיה', 'Rabbi Yirmeyah'), summary: L('תלמיד רבי זירא, שעמד בראש ישיבת טבריה אחרי רבי אמי.', 'Rabbi Zeira’s student, who headed the Yeshivah of Tiberias after Rabbi Ami.'),
-    rel: [to('teacher', 'rabbi-zeira'), to('teacher', 'rabbi-abahu')],
+    rel: [muv('rabbi-zeira'), to('teacher', 'rabbi-abahu')],
     offices: [HEAD('ראש ישיבת טבריה', 'Head of the Yeshivah of Tiberias', 4070, 4100, ['rabbi-ami'], [L('רבי יונה', 'Rabbi Yonah')])],
     sources: [L('ירושלמי שבת יט, א', 'Yerushalmi Shabbat 19:1'), L('בבא בתרא כג ע״ב', 'Bava Batra 23b'), TTA],
     sections: [

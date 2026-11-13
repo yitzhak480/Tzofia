@@ -629,6 +629,19 @@ body[dir="ltr"] .encyc-infobox {
   opacity: 0.85;
 }
 
+/* רב ותלמיד מובהק (החץ המחודד באילן) */
+.encyc-muvhak {
+  display: inline-block;
+  margin-inline-start: 0.35rem;
+  padding: 0 0.35rem;
+  border-radius: 0.6rem;
+  font-size: 0.72em;
+  font-weight: bold;
+  background: var(--color-terracotta, #8e3b30);
+  color: #fff;
+  vertical-align: middle;
+}
+
 /* סימן שאלה על קשר לא ודאי, כמו באילן */
 .encyc-uncertain {
   display: inline-block;

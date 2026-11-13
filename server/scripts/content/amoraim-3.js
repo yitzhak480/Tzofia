@@ -1,6 +1,6 @@
 // The Talmud tree, third band: the third generation of the Amoraim, with
 // their families. Teachers and students follow the poster's lines.
-const { L, sec, to } = require('./helpers');
+const { L, sec, to, muv } = require('./helpers');
 const { CHUMA } = require('./amoraim-4');
 const T2 = require('./tree-checklist-talmud');
 
@@ -102,7 +102,7 @@ module.exports = [
   A({
     slug: 'rabbi-ami', spot2: 'רבי אמי בן נתן', roles: [GEN3, L('ראש ישיבת טבריה', 'Head of the Yeshivah of Tiberias')],
     name: L('רבי אמי בן נתן', 'Rabbi Ami'), summary: L('ראש ישיבת טבריה אחרי רבי אלעזר, חברו של רבי אסי.', 'Head of the Yeshivah of Tiberias after Rabbi Elazar, Rabbi Assi’s companion.'),
-    rel: [to('teacher', 'rabbi-oshaya-rabba'), to('teacher', 'rabbi-yochanan'), to('teacher', 'rabbi-elazar-ben-pedat'), to('plugta', 'rabbi-assi')],
+    rel: [to('teacher', 'rabbi-oshaya-rabba'), muv('rabbi-yochanan'), to('teacher', 'rabbi-elazar-ben-pedat'), to('plugta', 'rabbi-assi')],
     offices: [HEAD('ראש ישיבת טבריה', 'Head of the Yeshivah of Tiberias', 4039, 4070, ['rabbi-elazar-ben-pedat'], ['rabbi-yirmeya'])],
     sources: [L('מגילה כב ע״א', 'Megillah 22a'), L('בבא בתרא ח ע״א', 'Bava Batra 8a'), TTA],
     sections: [
@@ -258,7 +258,7 @@ module.exports = [
   A({
     slug: 'rav-hamnuna', spot2: 'רב המנונא', roles: [GEN3],
     name: L('רב המנונא', 'Rav Hamnuna'), summary: L('תלמיד רב הונא ורב יהודה, שתיקן את התפילה "אלקי, עד שלא נוצרתי".', 'Student of Rav Huna and Rav Yehudah, who composed the prayer "My G-d, before I was formed".'),
-    rel: [to('teacher', 'rav-huna'), to('teacher', 'rav-yehuda')], sources: [L('ברכות יז ע״א', 'Berachot 17a'), L('ברכות יא ע״ב', 'Berachot 11b'), TTA],
+    rel: [to('teacher', 'rav-huna'), muv('rav-yehuda')], sources: [L('ברכות יז ע״א', 'Berachot 17a'), L('ברכות יא ע״ב', 'Berachot 11b'), TTA],
     sections: [
       sec('רב המנונא', 'רב המנונא הוא שאמר את התפילה "אלקי, עד שלא נוצרתי איני כדאי, ועכשיו שנוצרתי כאילו לא נוצרתי" (ברכות יז ע״א), ואת ברכת התורה "אשר בחר בנו מכל העמים ונתן לנו את תורתו", ש"היא מעולה שבברכות" (ברכות יא ע״ב).', 'Rav Hamnuna', 'Rav Hamnuna is the one who said the prayer "My G-d, before I was formed I was not worthy, and now that I have been formed it is as if I had not been formed" (Berachot 17a), and the blessing of the Torah "who chose us from all the nations and gave us His Torah", which "is the finest of the blessings" (Berachot 11b).'),
       TS('רבותיו היו רב הונא ורב יהודה.', 'His teachers were Rav Huna and Rav Yehudah.'),

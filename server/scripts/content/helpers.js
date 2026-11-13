@@ -24,6 +24,8 @@ const yearsCount = (n) => {
 
 // rel helpers: link to a page by slug, or a name only
 const to = (type, slug) => ({ type, slug });
+// a teacher whose talmid muvhak (closest student) this was – the pointed arrow on the poster
+const muv = (slug) => ({ type: 'teacher', slug, muvhak: true });
 const nm = (type, he, en) => ({ type, he, en });
 
-module.exports = { L, sec, article, office, reign, judged, biblical, yearsCount, to, nm };
+module.exports = { L, sec, article, office, reign, judged, biblical, yearsCount, to, muv, nm };

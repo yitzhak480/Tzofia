@@ -18,6 +18,11 @@ const FamilyTree = ({ person, name }) => {
     const label = (
       <>
         {tr(r.name, lang)}
+        {r.muvhak && (
+          <span className="encyc-muvhak" title={he ? 'רב ותלמיד מובהק' : 'Teacher and closest student (talmid muvhak)'}>
+            {he ? (r.type === 'teacher' ? 'רבו המובהק' : 'תלמיד מובהק') : r.type === 'teacher' ? 'primary teacher' : 'closest student'}
+          </span>
+        )}
         {r.uncertain && <span className="encyc-uncertain" title={he ? 'הקשר אינו ודאי' : 'The connection is uncertain'}>?</span>}
       </>
     );

@@ -1,7 +1,7 @@
 // The Talmud tree, second band: the second generation of the Amoraim, with
 // their families. Teachers and students follow the poster's lines, each one
 // traced to its end; the pages say what each connection means.
-const { L, sec, to, nm } = require('./helpers');
+const { L, sec, to, nm, muv } = require('./helpers');
 const T2 = require('./tree-checklist-talmud');
 
 const CAT = {
@@ -49,14 +49,14 @@ module.exports = [
   A({
     slug: 'rabbi-yoshiya', spot2: 'רבי יאשיה', roles: [GEN2],
     name: L('רבי יאשיה', 'Rabbi Yoshiyah'), summary: L('מתלמידי רבי יוחנן.', 'One of Rabbi Yochanan’s students.'),
-    rel: [to('teacher', 'rabbi-yochanan')], sources: [TTA],
+    rel: [muv('rabbi-yochanan')], sources: [TTA],
     sections: [TS('רבי יאשיה, מאמוראי ארץ ישראל בדור השני, היה מתלמידי רבי יוחנן.', 'Rabbi Yoshiyah, of the Amoraim of the Land of Israel in the second generation, was one of Rabbi Yochanan’s students.')],
   }),
   A({
     slug: 'rabbi-simlai', spot2: 'רבי שמלאי בר אבא', roles: [GEN2],
     name: L('רבי שמלאי בר אבא', 'Rabbi Simlai'),
     summary: L('שדרש: "שש מאות ושלוש עשרה מצוות נאמרו לו למשה".', 'Who taught: "Six hundred and thirteen mitzvot were said to Moshe".'),
-    rel: [to('teacher', 'rabbi-yehuda-nesia-1'), to('teacher', 'rabbi-yochanan')], sources: [L('מכות כג ע״ב – כד ע״א', 'Makkot 23b–24a'), L('סוטה יד ע״א', 'Sotah 14a')],
+    rel: [muv('rabbi-yehuda-nesia-1'), to('teacher', 'rabbi-yochanan')], sources: [L('מכות כג ע״ב – כד ע״א', 'Makkot 23b–24a'), L('סוטה יד ע״א', 'Sotah 14a')],
     sections: [
       sec('תרי״ג מצוות', 'רבי שמלאי דרש: "שש מאות ושלוש עשרה מצוות נאמרו לו למשה – שלוש מאות וששים וחמש לאוין כמניין ימות החמה, ומאתיים וארבעים ושמונה עשה כנגד איבריו של אדם"; ואחר כך: "בא דוד והעמידן על אחת עשרה... בא חבקוק והעמידן על אחת – וצדיק באמונתו יחיה" (מכות כג ע״ב – כד ע״א). הוא גם דרש: "תורה תחילתה גמילות חסדים וסופה גמילות חסדים" (סוטה יד ע״א).', 'The 613 Mitzvot', 'Rabbi Simlai taught: "Six hundred and thirteen mitzvot were said to Moshe – 365 prohibitions like the days of the solar year, and 248 commandments like the limbs of a person"; and then: "David came and set them on eleven... Chavakuk came and set them on one – the righteous shall live by his faith" (Makkot 23b–24a). He also taught: "The Torah begins with kindness and ends with kindness" (Sotah 14a).'),
       TS('רבותיו היו רבי יהודה נשיאה ורבי יוחנן.', 'His teachers were Rabbi Yehudah Nesiah and Rabbi Yochanan.'),
@@ -83,7 +83,7 @@ module.exports = [
     slug: 'rabbi-shmuel-bar-nachmani', spot2: 'רבי שמואל בר נחמני', roles: [GEN2],
     name: L('רבי שמואל בר נחמני', 'Rabbi Shmuel bar Nachmani'),
     summary: L('גדול בעלי האגדה, תלמיד רבי יונתן.', 'The greatest of the masters of aggadah, student of Rabbi Yonatan.'),
-    rel: [to('teacher', 'rabbi-yochanan'), to('teacher', 'rabbi-yonatan-ben-elazar'), to('plugta', 'rabbi-yaakov-bar-idi')],
+    rel: [to('teacher', 'rabbi-yochanan'), muv('rabbi-yonatan-ben-elazar'), to('plugta', 'rabbi-yaakov-bar-idi')],
     sources: [L('סנהדרין צז ע״ב', 'Sanhedrin 97b'), L('בבא בתרא טו ע״א', 'Bava Batra 15a'), TTA],
     sections: [
       sec('בעל אגדה', 'רבי שמואל בר נחמני מוסר בגמרא אגדות רבות בשם רבו רבי יונתן, ובהן "תיפח עצמן של מחשבי קיצין" (סנהדרין צז ע״ב), ודעתו ש"איוב לא היה ולא נברא, אלא משל היה" (בבא בתרא טו ע״א). בארץ ישראל דרש לפני הציבור, ונשלח גם למלכות בענייני הציבור.', 'A Master of Aggadah', 'Rabbi Shmuel bar Nachmani hands down in the Gemara many aggadot in the name of his teacher Rabbi Yonatan, among them "may the bones of those who calculate the end be blasted" (Sanhedrin 97b), and the view that "Iyov never existed, but was a parable" (Bava Batra 15a).'),
@@ -94,7 +94,7 @@ module.exports = [
     slug: 'rabbi-yaakov-bar-idi', spot2: 'רבי יעקב בר אידי', roles: [GEN2],
     name: L('רבי יעקב בר אידי', 'Rabbi Yaakov bar Idi'),
     summary: L('תלמיד רבי יהושע בן לוי ורבי יוחנן.', 'Student of Rabbi Yehoshua ben Levi and Rabbi Yochanan.'),
-    rel: [to('teacher', 'rabbi-yehoshua-ben-levi'), to('teacher', 'rabbi-yochanan'), to('plugta', 'rabbi-shmuel-bar-nachmani')], sources: [L('ברכות ד ע״א', 'Berachot 4a'), TTA],
+    rel: [muv('rabbi-yehoshua-ben-levi'), to('teacher', 'rabbi-yochanan'), to('plugta', 'rabbi-shmuel-bar-nachmani')], sources: [L('ברכות ד ע״א', 'Berachot 4a'), TTA],
     sections: [
       sec('שמא יגרום החטא', 'רבי יעקב בר אידי דרש את הפסוק שבו פחד יעקב מעשו אף שה׳ הבטיחו "והנה אנכי עמך": "שמא יגרום החטא" (ברכות ד ע״א).', 'Lest Sin Cause It', 'Rabbi Yaakov bar Idi expounded the verse in which Yaakov feared Esav although G-d had promised him "Behold, I am with you": "lest sin cause it" (Berachot 4a).'),
       TS('רבותיו היו רבי יהושע בן לוי ורבי יוחנן, וחברו לתורה היה רבי שמואל בר נחמני.', 'His teachers were Rabbi Yehoshua ben Levi and Rabbi Yochanan, and his study partner was Rabbi Shmuel bar Nachmani.'),
@@ -136,7 +136,7 @@ module.exports = [
   A({
     slug: 'zeiri', spot2: 'זעירי', roles: [GEN2],
     name: L('זעירי', 'Ze’iri'), summary: L('חכם בבלי שעלה לארץ ישראל ולמד מרבי חנינא ורבי יוחנן.', 'A Babylonian sage who went up to the Land of Israel and learned from Rabbi Chanina and Rabbi Yochanan.'),
-    rel: [to('teacher', 'rabbi-chanina-bar-chama'), to('teacher', 'rabbi-yochanan')], sources: [L('קידושין נב ע״ב', 'Kiddushin 52b'), TTA],
+    rel: [muv('rabbi-chanina-bar-chama'), to('teacher', 'rabbi-yochanan')], sources: [L('קידושין נב ע״ב', 'Kiddushin 52b'), TTA],
     sections: [
       sec('זעירי', 'זעירי עלה מבבל לארץ ישראל. הגמרא (קידושין נב ע״ב) מספרת שרבי יוחנן הציע לו את בתו לאשה, וזעירי לא רצה, משום שהיה עתיד לחזור לבבל.', 'Ze’iri', 'Ze’iri went up from Bavel to the Land of Israel. The Gemara (Kiddushin 52b) relates that Rabbi Yochanan offered him his daughter in marriage, and Ze’iri did not want to, since he was going to return to Bavel.'),
       TS('רבותיו היו רבי חנינא בר חמא ורבי יוחנן.', 'His teachers were Rabbi Chanina bar Chama and Rabbi Yochanan.'),
@@ -185,7 +185,7 @@ module.exports = [
     slug: 'rav-ada-bar-ahava', spot2: 'רב אדא בר אהבה', roles: [GEN2],
     name: L('רב אדא בר אהבה', 'Rav Ada bar Ahava'),
     summary: L('תלמיד רב, שנולד ביום שנפטר רבי; "במה הארכת ימים?".', 'Rav’s student, born on the day Rebbi died; "By what merit did you live long?".'),
-    rel: [to('teacher', 'rav-abba-arikha')], sources: [L('קידושין עב ע״ב', 'Kiddushin 72b'), L('תענית כ ע״ב', 'Taanit 20b')],
+    rel: [muv('rav-abba-arikha')], sources: [L('קידושין עב ע״ב', 'Kiddushin 72b'), L('תענית כ ע״ב', 'Taanit 20b')],
     sections: [
       sec('במה הארכת ימים', 'רב אדא בר אהבה נולד ביום שנפטר רבי (קידושין עב ע״ב). תלמידיו שאלו אותו במה האריך ימים, ואמר: "מימי לא הקפדתי בתוך ביתי, ולא צעדתי בפני מי שגדול ממני, ולא הרהרתי בדברי תורה במבואות המטונפות, ולא הלכתי ארבע אמות בלא תורה ובלא תפילין, ולא ישנתי בבית המדרש... ולא שמחתי בתקלת חברי" (תענית כ ע״ב).', 'By What Merit Did You Live Long', 'Rav Ada bar Ahava was born on the day Rebbi died (Kiddushin 72b). His students asked him by what merit he lived long, and he said: "I was never strict within my house, I never walked ahead of one greater than me, I never thought words of Torah in filthy alleys, I never walked four cubits without Torah and tefillin, I never slept in the study hall... and I never rejoiced at my fellow’s downfall" (Taanit 20b).'),
       TS('הוא היה תלמידו של רב.', 'He was Rav’s student.'),
@@ -245,7 +245,7 @@ module.exports = [
     slug: 'rav-anan', spot2: 'רב ענן בר תחליפא', roles: [GEN2],
     name: L('רב ענן בר תחליפא', 'Rav Anan'),
     summary: L('תלמיד שמואל, שאליהו הנביא לימד אותו את "תנא דבי אליהו".', 'Shmuel’s student, whom Eliyahu the prophet taught "Tanna DeVei Eliyahu".'),
-    rel: [to('teacher', 'shmuel')], sources: [L('כתובות קו ע״א', 'Ketubot 106a')],
+    rel: [muv('shmuel')], sources: [L('כתובות קו ע״א', 'Ketubot 106a')],
     sections: [
       sec('סדר אליהו', 'הגמרא (כתובות קו ע״א) מספרת שאליהו הנביא היה רגיל אצל רב ענן, ולימד אותו את "סדר אליהו רבה" ו"סדר אליהו זוטא" – הספר שנקרא "תנא דבי אליהו". כשרב ענן נכשל בעניין של דין, נסתלק ממנו אליהו, והוא ישב בתענית וביקש רחמים עד שחזר.', 'Seder Eliyahu', 'The Gemara (Ketubot 106a) relates that Eliyahu the prophet used to visit Rav Anan, and taught him "Seder Eliyahu Rabba" and "Seder Eliyahu Zuta" – the book called "Tanna DeVei Eliyahu". When Rav Anan stumbled in a matter of judgement, Eliyahu stayed away from him, and he fasted and prayed until he returned.'),
       TS('הוא היה תלמידו של שמואל.', 'He was Shmuel’s student.'),
@@ -255,7 +255,7 @@ module.exports = [
     slug: 'rav-nachman', spot2: 'רב נחמן בר יעקב', roles: [GEN2, L('ראש ישיבת נהרדעא', 'Head of the Nehardea yeshivah'), L('דיין', 'Judge')],
     name: L('רב נחמן בר יעקב', 'Rav Nachman bar Yaakov'),
     summary: L('תלמיד שמואל ודיינו של ראש הגולה, שההלכה כמותו בדינים.', 'Shmuel’s student and the Exilarch’s judge, whom the law follows in money matters.'),
-    rel: [to('teacher', 'shmuel'), to('teacher', 'rabba-bar-avuha'), to('spouse', 'yalta'), to('plugta', 'rav-sheshet')],
+    rel: [to('teacher', 'shmuel'), muv('rabba-bar-avuha'), to('spouse', 'yalta'), to('plugta', 'rav-sheshet')],
     offices: [
       HEAD('ראש ישיבת נהרדעא', 'Head of the Nehardea yeshivah', 4010, 4018, ['shmuel'], []),
       HEAD('מרביץ תורה במחוזא', 'Teacher of Torah in Mechoza', 4018, 4079, [], []),
