@@ -275,6 +275,7 @@ const BATCHES = [
   { category: null, orderBase: 100, entries: require('./content/amoraim-2'), order: [], relink: {} },
   { category: null, orderBase: 200, entries: require('./content/amoraim-3'), order: [], relink: {} },
   { category: null, orderBase: 300, entries: require('./content/amoraim-4'), order: [], relink: {} },
+  { category: null, orderBase: 400, entries: require('./content/amoraim-5'), order: [], relink: {} },
   {
     category: 'beit-chashmonai',
     entries: require('./content/second-temple-houses').chashmonai,
@@ -298,9 +299,11 @@ const EXTRA = [
   { slug: 'ovadyah-hanavi', addCategory: 'gerei-tzedek' },
   { slug: 'rav-huna-kama', addCategory: 'amoraim-rashei-hagola' },
   // the heads of the yeshivot (new heads are added here generation by generation)
-  ...['rav-abba-arikha', 'rav-huna', 'rav-chisda', 'rabba-bar-rav-huna'].map((slug, i) => ({ slug, addCategory: 'roshei-yeshivat-sura', catOrder: i + 1 })),
-  ...['rav-yehuda', 'rav-huna-bar-chiya', 'rabba', 'rav-yosef', 'abaye', 'rava', 'rabbah-yossi'].map((slug, i) => ({ slug, addCategory: 'roshei-yeshivat-pumbedita', catOrder: i + 1 })),
-  ...['rabbi-yochanan', 'rabbi-elazar-ben-pedat', 'rabbi-ami', 'rabbi-yirmeya'].map((slug, i) => ({ slug, addCategory: 'roshei-yeshivat-tveria', catOrder: i + 1 })),
+  ...['rav-abba-arikha', 'rav-huna', 'rav-chisda', 'rabba-bar-rav-huna', 'rav-papa'].map((slug, i) => ({ slug, addCategory: 'roshei-yeshivat-sura', catOrder: i + 1 })),
+  ...['rav-yehuda', 'rav-huna-bar-chiya', 'rabba', 'rav-yosef', 'abaye', 'rava', 'rav-nachman-bar-yitzhak', 'rav-chama', 'rav-zvid'].map((slug, i) => ({ slug, addCategory: 'roshei-yeshivat-pumbedita', catOrder: i + 1 })),
+  // the Savoraim's heads come long after the Amoraim's
+  { slug: 'rabbah-yossi', addCategory: 'roshei-yeshivat-pumbedita', catOrder: 100, forceOrder: true },
+  ...['rabbi-yochanan', 'rabbi-elazar-ben-pedat', 'rabbi-ami', 'rabbi-yirmeya', 'rabbi-yona', 'rabbi-yose-ben-zevida'].map((slug, i) => ({ slug, addCategory: 'roshei-yeshivat-tveria', catOrder: i + 1 })),
   // Ibn Ezra: Tzefanyah descended from Chizkiyahu (the tree follows him)
   { slug: 'tzefanyah-hanavi', rels: [{ type: 'ancestor', slug: 'chizkiyahu' }] },
   // the High Priesthood of the Second Temple, before and after (black arrows)
@@ -547,7 +550,7 @@ const main = async () => {
     if (x.catOrder != null) {
       const cid = String(cats[x.addCategory]._id);
       const has = doc.orders?.get ? doc.orders.get(cid) != null : doc.orders?.[cid] != null;
-      if (!has) doc.set(`orders.${cid}`, x.catOrder);
+      if (!has || x.forceOrder) doc.set(`orders.${cid}`, x.catOrder);
     }
     for (const r of x.rels || []) {
       if (!r.slug) {

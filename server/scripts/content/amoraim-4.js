@@ -43,7 +43,7 @@ module.exports = [
     name: L('הלל נשיאה', 'Hillel Nesiah'),
     summary: L('הנשיא שקבע את הלוח העברי הקבוע, שבו אנו משתמשים עד היום.', 'The Nasi who fixed the permanent Hebrew calendar, which we use to this day.'),
     rel: [to('father', 'rabbi-yehuda-nesia-2')],
-    offices: [{ label: L('שנות נשיאות', 'Years as Nasi'), from: 4090, to: 4125, before: ['rabbi-yehuda-nesia-2'], after: [L('רבן גמליאל ה׳', 'Rabban Gamliel V')] }],
+    offices: [{ label: L('שנות נשיאות', 'Years as Nasi'), from: 4090, to: 4125, before: ['rabbi-yehuda-nesia-2'], after: ['rabban-gamliel-5'] }],
     sources: [L('רמב״ן, ספר הזכות, גיטין', 'Ramban, Sefer HaZechut, Gittin'), L('ספר העיבור לר׳ אברהם בר חייא', 'Sefer HaIbbur of Rabbi Avraham bar Chiya')],
     sections: [
       sec('הלוח העברי', 'עד ימי הלל נשיאה קידשו את החודש בבית הדין על פי עדים שראו את הירח החדש, ועיברו את השנים לפי הצורך. כשגברו גזירות הרומאים ונפוצו קהילות ישראל, קבע הלל נשיאה ובית דינו את חשבון הלוח לכל השנים הבאות – והלוח הזה הוא הלוח העברי שבו אנו משתמשים עד היום. באילן שלנו כתוב לידו "פירוק הסנהדרין".', 'The Hebrew Calendar', 'Until the days of Hillel Nesiah the court sanctified the month by witnesses who saw the new moon, and added leap months as needed. When the Roman decrees grew harsher and the communities of Israel were scattered, Hillel Nesiah and his court fixed the calculation of the calendar for all the years to come – and that calendar is the Hebrew calendar we use to this day. On our tree "the dissolution of the Sanhedrin" is written beside him.'),
@@ -108,7 +108,7 @@ module.exports = [
     slug: 'rabbi-yirmeya', spot2: 'רבי ירמיה', roles: [GEN4, L('ראש ישיבת טבריה', 'Head of the Yeshivah of Tiberias')],
     name: L('רבי ירמיה', 'Rabbi Yirmeyah'), summary: L('תלמיד רבי זירא, שעמד בראש ישיבת טבריה אחרי רבי אמי.', 'Rabbi Zeira’s student, who headed the Yeshivah of Tiberias after Rabbi Ami.'),
     rel: [muv('rabbi-zeira'), to('teacher', 'rabbi-abahu')],
-    offices: [HEAD('ראש ישיבת טבריה', 'Head of the Yeshivah of Tiberias', 4070, 4100, ['rabbi-ami'], [L('רבי יונה', 'Rabbi Yonah')])],
+    offices: [HEAD('ראש ישיבת טבריה', 'Head of the Yeshivah of Tiberias', 4070, 4100, ['rabbi-ami'], ['rabbi-yona'])],
     sources: [L('ירושלמי שבת יט, א', 'Yerushalmi Shabbat 19:1'), L('בבא בתרא כג ע״ב', 'Bava Batra 23b'), TTA],
     sections: [
       sec('רבי ירמיה', 'רבי ירמיה עלה מבבל לארץ ישראל ולמד לפני רבי זירא. הוא נודע בשאלותיו החריפות; הגמרא (בבא בתרא כג ע״ב) מספרת ששאל שאלה שנראתה לחכמים כמתריסה, והוציאוהו מבית המדרש.', 'Rabbi Yirmeyah', 'Rabbi Yirmeyah came up from Bavel to the Land of Israel and learned before Rabbi Zeira. He was known for his sharp questions; the Gemara (Bava Batra 23b) relates that he asked a question which seemed to the sages provocative, and they put him out of the study hall.'),
