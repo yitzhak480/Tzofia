@@ -173,8 +173,11 @@ module.exports = [
     slug: 'rav-acha-midifti', spot2: 'רב אחא מדפתי', roles: [GEN6],
     name: L('רב אחא מדפתי', 'Rav Acha of Difti'),
     summary: L('תלמיד רבינא.', 'Ravina’s student.'),
-    rel: [to('teacher', 'ravina-1')], sources: [TTA],
-    sections: [TS('רבו היה רבינא.', 'His teacher was Ravina.')],
+    rel: [to('teacher', 'ravina-1')], sources: [L('בבא בתרא יב ע״ב', 'Bava Batra 12b'), TTA],
+    sections: [
+      sec('רב אחא מדפתי', 'אחרי פטירת רב אשי רצו החכמים למנות את רב אחא מדפתי לראש ישיבת סורא, אבל באותה שעה הגיע מר בר רב אשי, ומינו אותו במקומו (בבא בתרא יב ע״ב).', 'Rav Acha of Difti', 'After Rav Ashi’s death the sages wished to appoint Rav Acha of Difti as head of the Sura yeshivah, but at that very hour Mar bar Rav Ashi arrived, and they appointed him in his place (Bava Batra 12b).'),
+      TS('רבו היה רבינא.', 'His teacher was Ravina.'),
+    ],
   }),
   A({
     slug: 'rav-acha-brei-drav-avya', spot2: 'רב אחא בריה דרב אויא', roles: [GEN6],

@@ -31,6 +31,7 @@ const CATEGORIES = {
   'rashei-hagola': { order: 0.85, color: 't1-yehuda', name: L('ראשי הגולה', 'The Heads of the Exile'), description: L('צאצאי בית דוד שהנהיגו את יהודי בבל, ומשפחותיהם', 'Descendants of the house of David who led the Jews of Bavel, and their families') },
   'av-beit-din': { order: 5.5, color: 't1-yehuda', name: L('אבות בית הדין', 'The Heads of the Court (Av Beit Din)'), description: L('אבות בית הדין שעמדו לצד הנשיא בראש הסנהדרין', 'The heads of the court who stood beside the Nasi at the head of the Sanhedrin') },
   'kings-chashmonai': { parent: 'kings', order: 3, color: 't1-levi', sortMode: 'chrono', name: L('מלכי בית חשמונאי', 'The Hasmonean Kings'), description: L('המלכים והמלכה מבית חשמונאי', 'The kings and the queen of the house of Chashmonai') },
+  'false-messiahs': { order: 31.5, color: 't2-italia', name: L('משיחי שקר', 'False Messiahs'), description: L('אנשים שטענו שהם המשיח, והטעו רבים', 'People who claimed to be the Messiah, and misled many') },
   'kings-himyar': { parent: 'kings', order: 5, color: 't2-teiman', sortMode: 'chrono', name: L('מלכי חמיר', 'The Kings of Himyar'), description: L('מלכי חמיר שבדרום ערב, שעזבו את עבודת האלילים והתקרבו ליהדות', 'The kings of Himyar in southern Arabia, who left idol worship and drew close to Judaism') },
   'kings-hordos': { parent: 'kings', order: 4, color: 't1-hordos', sortMode: 'chrono', name: L('מלכי בית הורדוס', 'The Herodian Kings'), description: L('הורדוס וצאצאיו שנשאו תואר מלך', 'Herod and his descendants who bore the title of king') },
   // the heads of the great yeshivot, each yeshivah in its own list (by the years of their headship)
@@ -278,6 +279,7 @@ const BATCHES = [
   { category: null, orderBase: 300, entries: require('./content/amoraim-4'), order: [], relink: {} },
   { category: null, orderBase: 400, entries: require('./content/amoraim-5'), order: [], relink: {} },
   { category: null, orderBase: 500, entries: require('./content/amoraim-6'), order: [], relink: {} },
+  { category: null, orderBase: 600, entries: require('./content/amoraim-7'), order: [], relink: {} },
   {
     category: 'beit-chashmonai',
     entries: require('./content/second-temple-houses').chashmonai,
@@ -301,8 +303,8 @@ const EXTRA = [
   { slug: 'ovadyah-hanavi', addCategory: 'gerei-tzedek' },
   { slug: 'rav-huna-kama', addCategory: 'amoraim-rashei-hagola' },
   // the heads of the yeshivot (new heads are added here generation by generation)
-  ...['rav-abba-arikha', 'rav-huna', 'rav-chisda', 'rabba-bar-rav-huna', 'rav-papa', 'rav-ashi'].map((slug, i) => ({ slug, addCategory: 'roshei-yeshivat-sura', catOrder: i + 1 })),
-  ...['rav-yehuda', 'rav-huna-bar-chiya', 'rabba', 'rav-yosef', 'abaye', 'rava', 'rav-nachman-bar-yitzhak', 'rav-chama', 'rav-zvid', 'rav-dimi-minehardea', 'rafram-1', 'rav-kahana-4', 'rav-acha-bar-rava'].map((slug, i) => ({ slug, addCategory: 'roshei-yeshivat-pumbedita', catOrder: i + 1 })),
+  ...['rav-abba-arikha', 'rav-huna', 'rav-chisda', 'rabba-bar-rav-huna', 'rav-papa', 'rav-ashi', 'marimar', 'rav-idi-bar-avin-2', 'rav-nachman-bar-rav-huna', 'mar-bar-rav-ashi'].map((slug, i) => ({ slug, addCategory: 'roshei-yeshivat-sura', catOrder: i + 1 })),
+  ...['rav-yehuda', 'rav-huna-bar-chiya', 'rabba', 'rav-yosef', 'abaye', 'rava', 'rav-nachman-bar-yitzhak', 'rav-chama', 'rav-zvid', 'rav-dimi-minehardea', 'rafram-1', 'rav-kahana-4', 'rav-acha-bar-rava', 'rav-gviha-mibei-katil', 'rafram-2', 'rav-rechumi-2'].map((slug, i) => ({ slug, addCategory: 'roshei-yeshivat-pumbedita', catOrder: i + 1 })),
   // the Savoraim's heads come long after the Amoraim's
   { slug: 'rabbah-yossi', addCategory: 'roshei-yeshivat-pumbedita', catOrder: 100, forceOrder: true },
   ...['rabbi-yochanan', 'rabbi-elazar-ben-pedat', 'rabbi-ami', 'rabbi-yirmeya', 'rabbi-yona', 'rabbi-yose-ben-zevida', 'rabbi-mana', 'rabbi-avin'].map((slug, i) => ({ slug, addCategory: 'roshei-yeshivat-tveria', catOrder: i + 1 })),
@@ -406,7 +408,7 @@ const main = async () => {
       const doc = bySlug.get(e.slug) || new Person({ slug: e.slug });
       for (const c of e.cats) if (!cats[c]) throw new Error(`${e.slug}: no category "${c}"`);
       doc.set({
-        kind: 'person', gender: e.gender, categories: [...(period ? [period._id] : []), ...e.cats.map((s) => cats[s]._id)],
+        kind: e.kind || 'person', gender: e.gender, categories: [...(period ? [period._id] : []), ...e.cats.map((s) => cats[s]._id)],
         name: e.name, titles: [], roles: e.roles || [], life: e.life ? { from: e.life[0], to: e.life[1] } : { from: null, to: null },
         summary: e.summary, content: { he: html(e.sections, 'he'), en: html(e.sections, 'en') },
         sources: e.sources.map((s) => s.he), sourcesEn: e.sources.map((s) => s.en),
