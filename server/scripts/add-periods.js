@@ -31,7 +31,7 @@ const CATEGORIES = {
   'rashei-hagola': { order: 0.85, color: 't1-yehuda', name: L('ראשי הגולה', 'The Heads of the Exile'), description: L('צאצאי בית דוד שהנהיגו את יהודי בבל, ומשפחותיהם', 'Descendants of the house of David who led the Jews of Bavel, and their families') },
   'av-beit-din': { order: 5.5, color: 't1-yehuda', name: L('אבות בית הדין', 'The Heads of the Court (Av Beit Din)'), description: L('אבות בית הדין שעמדו לצד הנשיא בראש הסנהדרין', 'The heads of the court who stood beside the Nasi at the head of the Sanhedrin') },
   'kings-chashmonai': { parent: 'kings', order: 3, color: 't1-levi', sortMode: 'chrono', name: L('מלכי בית חשמונאי', 'The Hasmonean Kings'), description: L('המלכים והמלכה מבית חשמונאי', 'The kings and the queen of the house of Chashmonai') },
-  'false-messiahs': { order: 31.5, color: 't2-italia', name: L('משיחי שקר', 'False Messiahs'), description: L('אנשים שטענו שהם המשיח, והטעו רבים', 'People who claimed to be the Messiah, and misled many') },
+  'tekufat-hasavoraim': { order: 30, color: 'purple', name: L('תקופת הסבוראים', 'The Period of the Savoraim'), description: L('החכמים שהשלימו את חתימת התלמוד, ואישים ומאורעות בימיהם', 'The sages who completed the sealing of the Talmud, and people and events of their days') },
   'kings-himyar': { parent: 'kings', order: 5, color: 't2-teiman', sortMode: 'chrono', name: L('מלכי חמיר', 'The Kings of Himyar'), description: L('מלכי חמיר שבדרום ערב, שעזבו את עבודת האלילים והתקרבו ליהדות', 'The kings of Himyar in southern Arabia, who left idol worship and drew close to Judaism') },
   'kings-hordos': { parent: 'kings', order: 4, color: 't1-hordos', sortMode: 'chrono', name: L('מלכי בית הורדוס', 'The Herodian Kings'), description: L('הורדוס וצאצאיו שנשאו תואר מלך', 'Herod and his descendants who bore the title of king') },
   // the heads of the great yeshivot, each yeshivah in its own list (by the years of their headship)
@@ -379,6 +379,20 @@ const main = async () => {
     cats[slug] = doc;
   }
 
+  // the Savoraim category (made earlier) sits under the period of the Savoraim;
+  // the old "false messiahs" category is gone (Moshe of Crete is in the period)
+  {
+    const sav = await Category.findOne({ slug: 'savoraim' });
+    if (sav && String(sav.parent) !== String(cats['tekufat-hasavoraim']._id)) {
+      sav.set({ parent: cats['tekufat-hasavoraim']._id, order: 1 });
+      await sav.save();
+    }
+    const old = await Category.findOne({ slug: 'false-messiahs' });
+    if (old) {
+      await Person.updateMany({ categories: old._id }, { $pull: { categories: old._id } });
+      await old.deleteOne();
+    }
+  }
   // categories made elsewhere (e.g. prophets-of-israel) can be used too
   for (const c of await Category.find()) if (!cats[c.slug]) cats[c.slug] = c;
 

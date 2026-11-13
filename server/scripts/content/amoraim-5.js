@@ -285,7 +285,7 @@ module.exports = [
     rel: [maybe('father', 'huna-bar-mar-ukvan')], offices: [RG(['huna-bar-mar-ukvan'], ['kahana-1'], 4120, 4140)], sources: [SOZ],
     sections: [
       sec('נתן ג׳', 'נתן עמד בראש הגולה אחרי הונא בר מר עוקבן, ואחריו כהנא.', 'Natan III', 'Natan headed the Exile after Huna son of Mar Ukvan, and after him came Kahana.'),
-      sec('סימן השאלה', 'באילן שלנו יש סימן שאלה בקו שיורד אליו מהונא בר מר עוקבן. ' + RG_SOURCES + ' הקו שממשיך מתחתיו אינו שלו, אלא קו הצאצאים של רבה בר אבוה, שעובר לידו בדרכו אל משפחת רב שרירא גאון.', 'The Question Mark', 'On our tree there is a question mark on the line coming down to him from Huna son of Mar Ukvan. ' + RG_SOURCES_EN + ' The line that continues below him is not his, but the line of Rabba bar Avuha’s descendants, which passes beside him on its way to the family of Rav Sherira Gaon.'),
+      sec('סימני השאלה', 'באילן שלנו יש סימן שאלה בקו שיורד אליו מהונא בר מר עוקבן, ובקו שיורד ממנו אל בניו, רב הונא בר נתן ומר זוטרא השני, שעמדו בראש הגולה זה אחר זה. ' + RG_SOURCES + ' הקו המנוקד שלצד ראשי הגולה אינו שלהם, אלא קו הצאצאים של רבה בר אבוה, בדרכו אל משפחת רב שרירא גאון.', 'The Question Marks', 'On our tree there is a question mark on the line coming down to him from Huna son of Mar Ukvan, and on the line going down from him to his sons, Rav Huna bar Natan and Mar Zutra II, who headed the Exile one after the other. ' + RG_SOURCES_EN + ' The dotted line beside the Heads of the Exile is not theirs, but the line of Rabba bar Avuha’s descendants, on its way to the family of Rav Sherira Gaon.'),
     ],
   }),
   A({
