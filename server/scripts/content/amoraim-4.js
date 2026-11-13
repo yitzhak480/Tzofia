@@ -95,7 +95,7 @@ module.exports = [
   A({
     slug: 'rabbi-zerika', spot2: 'רבי זריקא', roles: [GEN4],
     name: L('רבי זריקא', 'Rabbi Zerika'), summary: L('תלמיד רבי אמי, רבי אלעזר ורבי אבהו.', 'Student of Rabbi Ami, Rabbi Elazar and Rabbi Abahu.'),
-    rel: [to('teacher', 'rabbi-ami'), to('teacher', 'rabbi-elazar-ben-pedat'), to('teacher', 'rabbi-abahu')], sources: [TTA],
+    rel: [muv('rabbi-ami'), to('teacher', 'rabbi-elazar-ben-pedat'), to('teacher', 'rabbi-abahu')], sources: [TTA],
     sections: [TS('רבותיו היו רבי אמי, רבי אלעזר בן פדת ורבי אבהו.', 'His teachers were Rabbi Ami, Rabbi Elazar ben Pedat and Rabbi Abahu.')],
   }),
   A({
