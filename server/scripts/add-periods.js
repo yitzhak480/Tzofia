@@ -514,6 +514,11 @@ const main = async () => {
   };
   for (const { pred, succ: st } of succ.values()) {
     if (!onGmara(st) || !onGmara(pred)) continue;
+    // bar plugta who followed each other (Abaye and Rava, Rabbi Yonah and Rabbi Yose) were
+    // colleagues, not teacher and student: one simply died first
+    const plugta = [...(st.relations || []), ...(pred.relations || [])].some((r) => r.type === 'plugta'
+      && [String(st._id), String(pred._id)].includes(String(r.person)));
+    if (plugta) continue;
     const linked = (st.relations || []).some((r) => r.type === 'teacher' && String(r.person) === String(pred._id))
       || (pred.relations || []).some((r) => r.type === 'student' && String(r.person) === String(st._id));
     if (!linked) {

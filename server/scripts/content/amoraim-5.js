@@ -66,7 +66,7 @@ module.exports = [
     sections: [
       sec('רבי יונה', 'רבי יונה היה צדיק נסתר. כשהיה העולם צריך לגשמים, היה אומר לבני ביתו: "אלך ואביא בזוזא חיטין", יוצא למקום סתר, לובש שק ומתפלל – ובאו הגשמים. כשחזר שאלו אותו אם הביא חיטים, והוא השיב: "אמרתי, הואיל ואתא מטרא – ירווח עלמא" (תענית כג ע״ב). בנו היה רבי מנא.', 'Rabbi Yonah', 'Rabbi Yonah was a hidden tzaddik. When the world needed rain, he would say to his household: "I will go and buy wheat for a zuz", go out to a hidden place, put on sackcloth and pray – and the rain came. When he returned they asked him if he had brought wheat, and he answered: "I said, since the rain has come, the world will have relief" (Taanit 23b). His son was Rabbi Mana.'),
       URSICINUS,
-      TS('רבותיו היו רבי זירא, רבי שמואל בר רב יצחק ורבי ירמיה, שאחריו עמד בראש ישיבת טבריה. אחריו עמד בראשה רבי יוסי, תלמידו.', 'His teachers were Rabbi Zeira, Rabbi Shmuel bar Rav Yitzhak and Rabbi Yirmeyah, after whom he headed the Tiberias yeshivah. After him his student Rabbi Yose headed it.'),
+      TS('רבותיו היו רבי זירא, רבי שמואל בר רב יצחק ורבי ירמיה, שאחריו עמד בראש ישיבת טבריה. אחריו עמדו בראשה יחד רבי יוסי, בר פלוגתיה, ורבי מנא בנו, עד שנפטר רבי יוסי.', 'His teachers were Rabbi Zeira, Rabbi Shmuel bar Rav Yitzhak and Rabbi Yirmeyah, after whom he headed the Tiberias yeshivah. After him Rabbi Yose, his bar plugta, and his son Rabbi Mana headed it together, until Rabbi Yose died.'),
     ],
   }),
   A({
@@ -79,7 +79,7 @@ module.exports = [
     sections: [
       sec('רבי יוסי', 'רבי יוסי – בתלמוד הירושלמי הוא נקרא פשוט "רבי יוסי" – היה מגדולי חכמי ארץ ישראל בדורו, ועמד בראש ישיבת טבריה אחרי רבי יונה.', 'Rabbi Yose', 'Rabbi Yose – in the Jerusalem Talmud he is simply called "Rabbi Yose" – was one of the greatest sages of the Land of Israel in his generation, and headed the Tiberias yeshivah after Rabbi Yonah.'),
       URSICINUS,
-      TS('רבותיו היו רבי זירא, רבי שמואל בר רב יצחק ורבי יונה, שאחריו עמד בראש ישיבת טבריה. תלמידו המובהק היה רבי פנחס.', 'His teachers were Rabbi Zeira, Rabbi Shmuel bar Rav Yitzhak and Rabbi Yonah, after whom he headed the Tiberias yeshivah. His talmid muvhak was Rabbi Pinchas.'),
+      TS('רבותיו היו רבי זירא ורבי שמואל בר רב יצחק. הוא עמד בראש ישיבת טבריה אחרי רבי יונה, בר פלוגתיה – הם היו חברים, ולא רב ותלמיד, ורבי יוסי בא אחריו משום שרבי יונה נפטר לפניו. תלמידו המובהק היה רבי פנחס.', 'His teachers were Rabbi Zeira and Rabbi Shmuel bar Rav Yitzhak. He headed the Tiberias yeshivah after Rabbi Yonah, his bar plugta – they were colleagues, not teacher and student, and Rabbi Yose followed him because Rabbi Yonah died first. His talmid muvhak was Rabbi Pinchas.'),
     ],
   }),
   A({
@@ -103,18 +103,18 @@ module.exports = [
   A({
     slug: 'rabbi-yehuda-bar-titus', spot2: 'רבי יהודה בר טיטס', roles: [GEN5],
     name: L('רבי יהודה בר טיטס', 'Rabbi Yehudah bar Titus'),
-    summary: L('מחכמי ארץ ישראל בדור החמישי.', 'One of the sages of the Land of Israel in the fifth generation.'),
-    rel: [], sources: [TTA],
-    sections: one('רבי יהודה בר טיטס', 'רבי יהודה בר טיטס היה מחכמי ארץ ישראל בדור החמישי של האמוראים, ודבריו מובאים בתלמוד הירושלמי ובמדרשים.', 'Rabbi Yehudah bar Titus', 'Rabbi Yehudah bar Titus was one of the sages of the Land of Israel in the fifth generation of the Amoraim, and his words are brought in the Jerusalem Talmud and the Midrashim.'),
+    summary: L('מחכמי ארץ ישראל, תלמיד רבי יהודה בן פזי.', 'One of the sages of the Land of Israel, Rabbi Yehudah ben Pazi’s student.'),
+    rel: [to('teacher', 'rabbi-yehuda-ben-pazi')], sources: [TTA],
+    sections: one('רבי יהודה בר טיטס', 'רבי יהודה בר טיטס היה מחכמי ארץ ישראל בדור החמישי של האמוראים, ודבריו מובאים בתלמוד הירושלמי ובמדרשים. רבו היה רבי יהודה בן פזי.', 'Rabbi Yehudah bar Titus', 'Rabbi Yehudah bar Titus was one of the sages of the Land of Israel in the fifth generation of the Amoraim, and his words are brought in the Jerusalem Talmud and the Midrashim. His teacher was Rabbi Yehudah ben Pazi.'),
   }),
   A({
     slug: 'rabbi-yehuda-bar-shalom', spot2: 'רבי יהודה בר שלום', roles: [GEN5],
     name: L('רבי יהודה בר שלום', 'Rabbi Yehudah bar Shalom'),
-    summary: L('בעל אגדה, תלמיד רבי אחא.', 'A master of aggadah, Rabbi Acha’s student.'),
-    rel: [to('teacher', 'rabbi-acha'), to('plugta', 'rabbi-matanya-ben-rabbi-yudan')], sources: [TTA],
+    summary: L('בעל אגדה, תלמיד רבי יונה.', 'A master of aggadah, Rabbi Yonah’s student.'),
+    rel: [to('teacher', 'rabbi-yona'), to('plugta', 'rabbi-matanya-ben-rabbi-yudan')], sources: [TTA],
     sections: [
       sec('רבי יהודה בר שלום', 'רבי יהודה בר שלום היה מבעלי האגדה בארץ ישראל, ודבריו מובאים פעמים רבות במדרשים.', 'Rabbi Yehudah bar Shalom', 'Rabbi Yehudah bar Shalom was one of the masters of aggadah in the Land of Israel, and his words are brought many times in the Midrashim.'),
-      TS('רבו היה רבי אחא, ורבי מתניה היה בר פלוגתיה.', 'His teacher was Rabbi Acha, and Rabbi Matanyah was his bar plugta.'),
+      TS('רבו היה רבי יונה, ורבי מתניה היה בר פלוגתיה.', 'His teacher was Rabbi Yonah, and Rabbi Matanyah was his bar plugta.'),
     ],
   }),
   A({
@@ -155,7 +155,7 @@ module.exports = [
     offices: [HEAD('ראש ישיבת נרש', 'Head of the Naresh yeshivah', 4113, 4132, ['rava'], [])],
     sources: [IRSG, L('פסחים קיג ע״א', 'Pesachim 113a'), BB22, L('נוסח ההדרן', 'The text of the Hadran')],
     sections: [
-      sec('רב פפא', 'אחרי פטירת רבא ייסד רב פפא ישיבה בנרש, ליד סורא, ורב הונא בריה דרב יהושע היה "ריש כלה" אצלו (איגרת רב שרירא גאון). רב פפא התעשר מעשיית שכר, ואמר: "אי לאו דשכרי – לא איעתרי" – אילו לא עשיתי שכר, לא הייתי מתעשר (פסחים קיג ע״א). בנוסח ה"הדרן" שאומרים בסיום מסכת נזכרים "עשרה בני רב פפא".', 'Rav Papa', 'After Rava’s death Rav Papa founded a yeshivah in Naresh, near Sura, and Rav Huna son of Rav Yehoshua was "Reish Kallah" beside him (the Letter of Rav Sherira Gaon). Rav Papa grew rich from brewing beer, and said: "Had I not brewed beer, I would not have grown rich" (Pesachim 113a). In the text of the "Hadran" said at the completion of a tractate, the "ten sons of Rav Papa" are named.'),
+      sec('רב פפא', 'אחרי פטירת רבא ייסד רב פפא ישיבה בנרש, ליד סורא, ורב הונא בריה דרב יהושע היה "ריש כלה" אצלו (איגרת רב שרירא גאון). בימי רבא הייתה ישיבה אחת בלבד, ורבא עמד בראשה; אחרי פטירתו נחלקה שוב לשתיים – פומבדיתא, שבראשה רב נחמן בר יצחק, ונרש, שהיא חלק משושלת ישיבת סורא, ולכן אחרי רב פפא בא רב אשי. רב פפא התעשר מעשיית שכר, ואמר: "אי לאו דשכרי – לא איעתרי" – אילו לא עשיתי שכר, לא הייתי מתעשר (פסחים קיג ע״א). בנוסח ה"הדרן" שאומרים בסיום מסכת נזכרים "עשרה בני רב פפא".', 'Rav Papa', 'After Rava’s death Rav Papa founded a yeshivah in Naresh, near Sura, and Rav Huna son of Rav Yehoshua was "Reish Kallah" beside him (the Letter of Rav Sherira Gaon). In Rava’s days there was only one yeshivah, headed by Rava; after his death it split again in two – Pumbedita, headed by Rav Nachman bar Yitzhak, and Naresh, which is part of the line of the Sura yeshivah, and so after Rav Papa came Rav Ashi. Rav Papa grew rich from brewing beer, and said: "Had I not brewed beer, I would not have grown rich" (Pesachim 113a). In the text of the "Hadran" said at the completion of a tractate, the "ten sons of Rav Papa" are named.'),
       ADA,
       TS('רבותיו היו אביי, רב אידי בר אבין ורבא, שאחריו עמד בראש הישיבה. רב הונא בריה דרב יהושע ורב פפי היו בני פלוגתיה.', 'His teachers were Abaye, Rav Idi bar Avin and Rava, after whom he headed the yeshivah. Rav Huna son of Rav Yehoshua and Rav Papi were his study partners (bar plugta).'),
     ],
@@ -189,6 +189,7 @@ module.exports = [
     offices: [PUM(4113, 4117, ['rava'], ['rav-chama'])],
     sources: [IRSG, L('שבת קנו ע״ב', 'Shabbat 156b')],
     sections: [
+      sec('אחרי רבא', 'בימי רבא הייתה ישיבה אחת בלבד, ורבא עמד בראשה. אחרי פטירתו נחלקה הישיבה שוב לשתיים: רב נחמן בר יצחק עמד בראש ישיבת פומבדיתא, ורב פפא בראש ישיבת נרש, שהיא חלק משושלת ישיבת סורא.', 'After Rava', 'In Rava’s days there was only one yeshivah, headed by Rava. After his death the yeshivah split again in two: Rav Nachman bar Yitzhak headed the Pumbedita yeshivah, and Rav Papa the Naresh yeshivah, which is part of the line of the Sura yeshivah.'),
       sec('כסי רישיך', 'החוזים בכוכבים אמרו לאמו של רב נחמן בר יצחק: "בריך גנבא הוי" – בנך יהיה גנב. היא לא הניחה לו לגלות את ראשו, ואמרה לו: "כסי רישיך, כי היכי דתיהוי עלך אימתא דשמיא" – כסה את ראשך, כדי שתהיה עליך יראת שמים. פעם אחת נפל הכיסוי מעל ראשו כשישב תחת דקל של אחר, ותקף אותו יצרו ועלה וגזם אשכול בשיניו (שבת קנו ע״ב).', 'Cover Your Head', 'The astrologers told Rav Nachman bar Yitzhak’s mother: "Your son will be a thief." She did not let him uncover his head, and said to him: "Cover your head, so that the fear of Heaven will be upon you." Once the covering fell from his head as he sat under someone else’s palm tree, and his desire overcame him and he climbed up and bit off a cluster with his teeth (Shabbat 156b).'),
       TS('רבותיו היו רב נחמן, רב חסדא ורבא, שאחריו עמד בראש ישיבת פומבדיתא. אחריו עמד בראשה רב חמא, תלמידו.', 'His teachers were Rav Nachman, Rav Chisda and Rava, after whom he headed the Pumbedita yeshivah. After him his student Rav Chama headed it.'),
     ],
