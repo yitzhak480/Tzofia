@@ -16,8 +16,8 @@ module.exports = [
         'I Am Only a Youth', 'Yirmeyahu son of Chilkiyahu, of the Kohanim of Anatot, was called to prophecy in the thirteenth year of Yoshiyahu: "Before I formed you in the womb I knew you". He answered "I do not know how to speak, for I am a youth", and Hashem put His words in his mouth. His father Chilkiyahu is Chilkiyahu the High Priest, who found the Torah scroll in the House of Hashem in the days of Yoshiyahu: so writes the Radak in the name of his father, Rabbi Yosef Kimchi, and so writes the Malbim, that Yirmeyahu was of distinguished lineage, "for his father was a High Priest and a prophet". So it is on our tree as well.'),
       sec('הנביא המוכיח', 'ארבעים שנה הזהיר ירמיהו את העם ואת מלכי יהודה שיחזרו בתשובה ושיכנעו לבבל. יהויקים שרף את מגילתו, ובימי צדקיהו הושלך לבור טיט. הוא ראה בעיניו את חורבן ירושלים, ובישר שאחרי שבעים שנה ישובו הגולים.',
         'The Prophet Who Rebuked', 'For forty years Yirmeyahu warned the people and the kings of Judah to repent and to submit to Babylon. Yehoyakim burned his scroll, and in the days of Tzidkiyahu he was thrown into a pit of mud. He saw the destruction of Jerusalem with his own eyes, and foretold that after seventy years the exiles would return.'),
-      sec('כתביו', 'לפי חז״ל ירמיהו כתב את ספרו, את ספר מלכים ואת מגילת איכה (בבא בתרא טו ע״א). באילן שלנו מוצג חץ הרב והתלמיד מצפניה אל ירמיהו, ומירמיהו אל ברוך בן נריה.',
-        'His Writings', 'According to Chazal Yirmeyahu wrote his book, the Book of Kings and the Book of Lamentations (Bava Batra 15a). Our tree shows the teacher-student arrow from Tzefanyah to Yirmeyahu, and from Yirmeyahu to Baruch son of Neriyah.'),
+      sec('כתביו', 'לפי חז״ל ירמיהו כתב את ספרו, את ספר מלכים ואת מגילת איכה (בבא בתרא טו ע״א). ירמיהו היה תלמידו של צפניה, וברוך בן נריה תלמידו של ירמיהו.',
+        'His Writings', 'According to Chazal Yirmeyahu wrote his book, the Book of Kings and the Book of Lamentations (Bava Batra 15a). Yirmeyahu was the student of Tzefanyah, and Baruch son of Neriyah the student of Yirmeyahu.'),
     ],
   }),
   prophet({

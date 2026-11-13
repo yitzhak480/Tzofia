@@ -18,8 +18,8 @@ module.exports = [
         'The First Zecharyah', 'Zecharyah son of Yehoyada the Kohen prophesied in the days of Yehoash king of Judah. After his father Yehoyada died, the princes of Judah and the king forsook the House of Hashem and served the Asherim and idols. "And the spirit of God clothed Zecharyah son of Yehoyada the Kohen", and he stood above the people and said: "Why do you transgress Hashem’s commandments, so that you cannot prosper?". Our tree labels him "the first", to distinguish him from Zecharyah son of Berechyah, the prophet of the Return to Zion.'),
       sec('דמו של זכריה', 'במצוות המלך רגמו אותו באבן בחצר בית ה׳, ובמותו אמר: "ירא ה׳ וידרש". חז״ל מספרים שהדבר אירע ביום הכיפורים שחל בשבת, ושדמו המשיך לרתוח עד שבא נבוזראדן בימי החורבן (גיטין נז ע״ב).',
         'The Blood of Zecharyah', 'At the king’s command they stoned him in the courtyard of the House of Hashem, and as he died he said: "May Hashem see and avenge". Chazal relate that this happened on a Yom Kippur that fell on Shabbat, and that his blood kept seething until Nevuzaradan came at the time of the Destruction (Gittin 57b).'),
-      sec('בשרשרת המסורה', 'הרמב״ם מונה אותו בשרשרת מסירת התורה: יהוידע הכהן קיבל מאלישע, זכריה קיבל מיהוידע אביו, והושע קיבל מזכריה. באילן שלנו מוצג חץ הרב והתלמיד מזכריה אל הושע.',
-        'In the Chain of Tradition', 'The Rambam counts him in the chain of tradition: Yehoyada the Kohen received from Elisha, Zecharyah received from his father Yehoyada, and Hoshea received from Zecharyah. Our tree shows the teacher-student arrow from Zecharyah to Hoshea.'),
+      sec('בשרשרת המסורה', 'הרמב״ם מונה אותו בשרשרת מסירת התורה: יהוידע הכהן קיבל מאלישע, זכריה קיבל מיהוידע אביו, והושע קיבל מזכריה. הושע היה תלמידו של זכריה.',
+        'In the Chain of Tradition', 'The Rambam counts him in the chain of tradition: Yehoyada the Kohen received from Elisha, Zecharyah received from his father Yehoyada, and Hoshea received from Zecharyah. Hoshea was the student of Zecharyah.'),
     ],
   }),
   prophet({

@@ -158,8 +158,8 @@ module.exports = [
     sections: [
       sec('נינוה', 'ה׳ שלח את יונה לקרוא על נינוה העיר הגדולה, אך הוא ברח בספינה לתרשיש. בסערה הוטל לים ונבלע בבטן הדג שלושה ימים ושלושה לילות, ושם התפלל. אחרי שנשלח שוב קרא "עוד ארבעים יום ונינוה נהפכת", ואנשי נינוה שבו בתשובה. ספרו נקרא ביום הכיפורים.',
         'Nineveh', 'Hashem sent Yonah to call out against Nineveh the great city, but he fled on a ship to Tarshish. In the storm he was thrown into the sea and swallowed by the fish for three days and three nights, and there he prayed. Sent again, he called "Forty more days and Nineveh will be overturned", and the people of Nineveh repented. His book is read on Yom Kippur.'),
-      sec('תלמיד אלישע', 'לפי סדר עולם, יונה הוא הנער שנשלח בידי אלישע למשוח את יהוא. בספר מלכים מסופר שניבא בימי ירבעם בן יואש שישיב את גבול ישראל, וכך היה. באילן שלנו מוצג חץ הרב והתלמיד מאלישע אל יונה.',
-        'Elisha’s Student', 'According to Seder Olam, Yonah is the young man sent by Elisha to anoint Yehu. The Book of Kings relates that in the days of Yeravam son of Yoash he prophesied that the border of Israel would be restored, and so it was. Our tree shows the teacher-student arrow from Elisha to Yonah.'),
+      sec('תלמיד אלישע', 'לפי סדר עולם, יונה הוא הנער שנשלח בידי אלישע למשוח את יהוא. בספר מלכים מסופר שניבא בימי ירבעם בן יואש שישיב את גבול ישראל, וכך היה. יונה היה תלמידו של אלישע.',
+        'Elisha’s Student', 'According to Seder Olam, Yonah is the young man sent by Elisha to anoint Yehu. The Book of Kings relates that in the days of Yeravam son of Yoash he prophesied that the border of Israel would be restored, and so it was. Yonah was the student of Elisha.'),
     ],
   }),
   prophet({
@@ -171,8 +171,8 @@ module.exports = [
     sections: [
       sec('ארבעה נביאים בעונה אחת', 'הושע ניבא בימי עוזיהו, יותם, אחז וחזקיהו מלכי יהודה, ובימי ירבעם בן יואש מלך ישראל. חז״ל מלמדים שארבעה נביאים ניבאו בעונה אחת, והגדול שבהם הושע: הושע, ישעיהו, עמוס ומיכה (פסחים פז ע״א).',
         'Four Prophets at One Time', 'Hoshea prophesied in the days of Uziyahu, Yotam, Achaz and Hizkiyahu kings of Judah, and in the days of Yeravam son of Yoash king of Israel. Chazal teach that four prophets prophesied at one time, and the greatest of them was Hoshea: Hoshea, Yeshayahu, Amos and Michah (Pesachim 87a).'),
-      sec('שובה ישראל', 'נבואתו משווה את ישראל לאישה שבגדה בבעלה, ואת אהבת ה׳ לעמו לאהבה שאינה פוסקת. דבריו "שובה ישראל עד ה׳ אלהיך" נקראים בשבת שובה. באילן שלנו מוצג חץ הרב והתלמיד מזכריה בן יהוידע אל הושע, ומהושע אל עמוס.',
-        'Return, Israel', 'His prophecy compares Israel to a wife who betrayed her husband, and Hashem’s love for His people to a love that never ceases. His words "Return, Israel, to Hashem your God" are read on Shabbat Shuvah. Our tree shows the teacher-student arrow from Zecharyah son of Yehoyada to Hoshea, and from Hoshea to Amos.'),
+      sec('שובה ישראל', 'נבואתו משווה את ישראל לאישה שבגדה בבעלה, ואת אהבת ה׳ לעמו לאהבה שאינה פוסקת. דבריו "שובה ישראל עד ה׳ אלהיך" נקראים בשבת שובה. הושע היה תלמידו של זכריה בן יהוידע, ועמוס תלמידו של הושע.',
+        'Return, Israel', 'His prophecy compares Israel to a wife who betrayed her husband, and Hashem’s love for His people to a love that never ceases. His words "Return, Israel, to Hashem your God" are read on Shabbat Shuvah. Hoshea was the student of Zecharyah son of Yehoyada, and Amos the student of Hoshea.'),
     ],
   }),
   prophet({
@@ -275,8 +275,8 @@ module.exports = [
     sources: [L('ספר צפניה', 'The Book of Zephaniah'), L('צפניה א, א', 'Zephaniah 1:1')],
     spots: biblical(56.6, 62.6),
     sections: [
-      sec('מבית חזקיהו', 'צפניה בן כושי בן גדליה בן אמריה בן חזקיה ניבא בימי יאשיהו בן אמון. באילן שלנו מסומן בכוכבית, וקו מנוקד מחבר אותו לחזקיהו המלך, אבי אבותיו.',
-        'Of the House of Hizkiyahu', 'Tzefanyah son of Kushi son of Gedalyah son of Amaryah son of Hizkiyah prophesied in the days of Yoshiyahu son of Amon. On our tree he is marked with an asterisk, and a dotted line connects him to King Hizkiyahu, his ancestor.'),
+      sec('מבית חזקיהו', 'צפניה בן כושי בן גדליה בן אמריה בן חזקיה ניבא בימי יאשיהו בן אמון. באילן שלנו הוא מסומן בכוכבית, כצאצא של חזקיהו המלך.',
+        'Of the House of Hizkiyahu', 'Tzefanyah son of Kushi son of Gedalyah son of Amaryah son of Hizkiyah prophesied in the days of Yoshiyahu son of Amon. On our tree he is marked with an asterisk, as a descendant of King Hizkiyahu.'),
       sec('יום ה׳ הגדול', 'צפניה ניבא על יום ה׳ הגדול, "יום עברה היום ההוא", וקרא: "בקשו את ה׳ כל ענוי הארץ". הוא חתם בנחמה: "רני בת ציון... ה׳ אלהיך בקרבך גבור יושיע". באילן שלנו הוא תלמידו של חבקוק ורבו של ירמיהו.',
         'The Great Day of Hashem', 'Tzefanyah prophesied the great day of Hashem, "a day of wrath is that day", and called: "Seek Hashem, all the humble of the land". He ended with consolation: "Sing, daughter of Zion... Hashem your God is in your midst, a mighty one who will save". On our tree he is Chavakuk’s student and Yirmeyahu’s teacher.'),
     ],

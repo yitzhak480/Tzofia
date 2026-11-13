@@ -30,9 +30,9 @@ const kohen = (e) => ({
 const SOZ_SOURCE = L('סדר עולם זוטא, פרקים ה – ז', 'Seder Olam Zuta, chapters 5–7');
 const SOZ_TEXT = (kingHe, kingEn) => sec(
   'בסדר עולם זוטא',
-  `סדר עולם זוטא מונה ליד כל מלך ממלכי בית דוד את הכהן הגדול שבימיו, ושם הוא מוזכר ככהן הגדול בימי ${kingHe}. בתנ״ך עצמו לא נמסר עליו דבר, ואין ידוע מי היה אביו. באילן שלנו הוא מופיע ברשימת הכהנים הגדולים לפי סדר עולם זוטא, ובינו ובין הבא אחריו חץ שחור – חץ של ירושה בתפקיד, לא של משפחה.`,
+  `סדר עולם זוטא מונה ליד כל מלך ממלכי בית דוד את הכהן הגדול שבימיו, ושם הוא מוזכר ככהן הגדול בימי ${kingHe}. בתנ״ך עצמו לא נמסר עליו דבר, ואין ידוע מי היה אביו. באילן שלנו הוא מופיע ברשימת הכהנים הגדולים לפי סדר עולם זוטא; הבא אחריו ירש ממנו את התפקיד, אך לא היה בהכרח בנו.`,
   'In Seder Olam Zuta',
-  `Seder Olam Zuta names, beside each king of the house of David, the High Priest of his days, and there he is named as the High Priest in the days of ${kingEn}. Tanach itself tells nothing of him, and his father is not known. On our tree he appears in the list of High Priests according to Seder Olam Zuta, with a black arrow to the next one: an arrow of succession in the office, not of family.`,
+  `Seder Olam Zuta names, beside each king of the house of David, the High Priest of his days, and there he is named as the High Priest in the days of ${kingEn}. Tanach itself tells nothing of him, and his father is not known. On our tree he appears in the list of High Priests according to Seder Olam Zuta; the next one inherited the office from him, but was not necessarily his son.`,
 );
 
 module.exports = [
@@ -257,7 +257,7 @@ module.exports = [
     summary: L('הכהן הגדול בימי מנשה, לפי סדר עולם זוטא.', 'The High Priest in the days of Menashe, according to Seder Olam Zuta.'),
     note: soz('מנשה', 'Menashe'), before: ['neriyah-hakohen'], after: ['shalum-ben-tzadok'],
     rel: [], sources: [SOZ_SOURCE], spots: biblical(65.9, 59.8),
-    sections: [SOZ_TEXT('מנשה', 'Menashe'), sec('בימי מנשה', 'הושעיה כיהן בשנות מלכותו הארוכה של מנשה, חמישים וחמש שנה, שבהן הוכנס פסל אל בית ה׳. באילן שלנו החץ ממנו מוביל אל שלום הכהן הגדול, שבו נפגשות שתי רשימות הכהנים.', 'In the Days of Menashe', 'Hoshayah served in the long reign of Menashe, fifty-five years, in which an idol was brought into the House of Hashem. On our tree the arrow from him leads to Shalum the High Priest, where the two lists of Kohanim meet.')],
+    sections: [SOZ_TEXT('מנשה', 'Menashe'), sec('בימי מנשה', 'הושעיה כיהן בשנות מלכותו הארוכה של מנשה, חמישים וחמש שנה, שבהן הוכנס פסל אל בית ה׳. אחריו בא שלום הכהן הגדול, שבו נפגשות שתי רשימות הכהנים.', 'In the Days of Menashe', 'Hoshayah served in the long reign of Menashe, fifty-five years, in which an idol was brought into the House of Hashem. After him came Shalum the High Priest, where the two lists of Kohanim meet.')],
   }),
   kohen({
     slug: 'shalum-ben-tzadok', name: L('שלום בן צדוק', 'Shalum son of Tzadok'),

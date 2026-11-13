@@ -308,15 +308,15 @@ const EXTRA = [
     slug: 'natan-hanavi',
     rels: [{ type: 'ancestor', slug: 'pinchas', uncertain: true }],
     note: {
-      he: ['משפחתו', 'נתן הנביא היה כהן, אך לא ידוע מאיזה ענף של הכהונה. באילן שלנו הוא מחובר לפינחס בן אלעזר, הענף הבולט שבבית אלעזר, בקו מנוקד עם סימן שאלה, כי הקשר אינו ידוע. מתחתיו מופיע יגאל, מגיבורי דוד, שנקרא "יגאל בן נתן", גם הוא בסימן שאלה.'],
-      en: ['His Family', 'Natan the prophet was a Kohen, but it is not known from which branch of the priesthood. On our tree he is joined to Pinchas son of Elazar, the most prominent branch of the house of Elazar, with a dotted line and a question mark, since the connection is not known. Below him appears Yigal, one of David’s warriors, called "Yigal son of Natan", also with a question mark.'],
+      he: ['משפחתו', 'נתן הנביא היה כהן, אך לא ידוע מאיזה ענף של הכהונה. באילן שלנו הוא משויך לפינחס בן אלעזר, הענף הבולט שבבית אלעזר, בסימן שאלה, כי הקשר אינו ידוע. מתחתיו מופיע יגאל, מגיבורי דוד, שנקרא "יגאל בן נתן", גם הוא בסימן שאלה.'],
+      en: ['His Family', 'Natan the prophet was a Kohen, but it is not known from which branch of the priesthood. On our tree he is assigned to Pinchas son of Elazar, the most prominent branch of the house of Elazar, with a question mark, since the connection is not known. Below him appears Yigal, one of David’s warriors, called "Yigal son of Natan", also with a question mark.'],
     },
   },
   {
     slug: 'gad-hachozeh',
     note: {
-      he: ['משפחתו', 'באילן שלנו יש מעל גד קו קצר עם סימן שאלה, כי לא ידוע מאיזו משפחה בא.'],
-      en: ['His Family', 'On our tree there is a short line with a question mark above Gad, since it is not known which family he came from.'],
+      he: ['משפחתו', 'באילן שלנו יש מעל גד סימן שאלה, כי לא ידוע מאיזו משפחה בא.'],
+      en: ['His Family', 'On our tree there is a question mark above Gad, since it is not known which family he came from.'],
     },
   },
   // Megillah 13a: Mordechai took Esther "as a daughter" – read "as a wife"
