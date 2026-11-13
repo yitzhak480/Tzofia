@@ -31,6 +31,7 @@ const CATEGORIES = {
   'rashei-hagola': { order: 0.85, color: 't1-yehuda', name: L('ראשי הגולה', 'The Heads of the Exile'), description: L('צאצאי בית דוד שהנהיגו את יהודי בבל, ומשפחותיהם', 'Descendants of the house of David who led the Jews of Bavel, and their families') },
   'av-beit-din': { order: 5.5, color: 't1-yehuda', name: L('אבות בית הדין', 'The Heads of the Court (Av Beit Din)'), description: L('אבות בית הדין שעמדו לצד הנשיא בראש הסנהדרין', 'The heads of the court who stood beside the Nasi at the head of the Sanhedrin') },
   'kings-chashmonai': { parent: 'kings', order: 3, color: 't1-levi', sortMode: 'chrono', name: L('מלכי בית חשמונאי', 'The Hasmonean Kings'), description: L('המלכים והמלכה מבית חשמונאי', 'The kings and the queen of the house of Chashmonai') },
+  'kings-himyar': { parent: 'kings', order: 5, color: 't2-teiman', sortMode: 'chrono', name: L('מלכי חמיר', 'The Kings of Himyar'), description: L('מלכי חמיר שבדרום ערב, שעזבו את עבודת האלילים והתקרבו ליהדות', 'The kings of Himyar in southern Arabia, who left idol worship and drew close to Judaism') },
   'kings-hordos': { parent: 'kings', order: 4, color: 't1-hordos', sortMode: 'chrono', name: L('מלכי בית הורדוס', 'The Herodian Kings'), description: L('הורדוס וצאצאיו שנשאו תואר מלך', 'Herod and his descendants who bore the title of king') },
   // the heads of the great yeshivot, each yeshivah in its own list (by the years of their headship)
   'roshei-yeshivot': { order: 29.5, color: 't2-sura', name: L('ראשי הישיבות', 'The Heads of the Yeshivot'), description: L('ראשי הישיבות הגדולות בבבל ובארץ ישראל, זה אחר זה', 'The heads of the great yeshivot of Bavel and the Land of Israel, one after another') },
@@ -276,6 +277,7 @@ const BATCHES = [
   { category: null, orderBase: 200, entries: require('./content/amoraim-3'), order: [], relink: {} },
   { category: null, orderBase: 300, entries: require('./content/amoraim-4'), order: [], relink: {} },
   { category: null, orderBase: 400, entries: require('./content/amoraim-5'), order: [], relink: {} },
+  { category: null, orderBase: 500, entries: require('./content/amoraim-6'), order: [], relink: {} },
   {
     category: 'beit-chashmonai',
     entries: require('./content/second-temple-houses').chashmonai,
@@ -299,11 +301,11 @@ const EXTRA = [
   { slug: 'ovadyah-hanavi', addCategory: 'gerei-tzedek' },
   { slug: 'rav-huna-kama', addCategory: 'amoraim-rashei-hagola' },
   // the heads of the yeshivot (new heads are added here generation by generation)
-  ...['rav-abba-arikha', 'rav-huna', 'rav-chisda', 'rabba-bar-rav-huna', 'rav-papa'].map((slug, i) => ({ slug, addCategory: 'roshei-yeshivat-sura', catOrder: i + 1 })),
-  ...['rav-yehuda', 'rav-huna-bar-chiya', 'rabba', 'rav-yosef', 'abaye', 'rava', 'rav-nachman-bar-yitzhak', 'rav-chama', 'rav-zvid'].map((slug, i) => ({ slug, addCategory: 'roshei-yeshivat-pumbedita', catOrder: i + 1 })),
+  ...['rav-abba-arikha', 'rav-huna', 'rav-chisda', 'rabba-bar-rav-huna', 'rav-papa', 'rav-ashi'].map((slug, i) => ({ slug, addCategory: 'roshei-yeshivat-sura', catOrder: i + 1 })),
+  ...['rav-yehuda', 'rav-huna-bar-chiya', 'rabba', 'rav-yosef', 'abaye', 'rava', 'rav-nachman-bar-yitzhak', 'rav-chama', 'rav-zvid', 'rav-dimi-minehardea', 'rafram-1', 'rav-kahana-4', 'rav-acha-bar-rava'].map((slug, i) => ({ slug, addCategory: 'roshei-yeshivat-pumbedita', catOrder: i + 1 })),
   // the Savoraim's heads come long after the Amoraim's
   { slug: 'rabbah-yossi', addCategory: 'roshei-yeshivat-pumbedita', catOrder: 100, forceOrder: true },
-  ...['rabbi-yochanan', 'rabbi-elazar-ben-pedat', 'rabbi-ami', 'rabbi-yirmeya', 'rabbi-yona', 'rabbi-yose-ben-zevida'].map((slug, i) => ({ slug, addCategory: 'roshei-yeshivat-tveria', catOrder: i + 1 })),
+  ...['rabbi-yochanan', 'rabbi-elazar-ben-pedat', 'rabbi-ami', 'rabbi-yirmeya', 'rabbi-yona', 'rabbi-yose-ben-zevida', 'rabbi-mana', 'rabbi-avin'].map((slug, i) => ({ slug, addCategory: 'roshei-yeshivat-tveria', catOrder: i + 1 })),
   // Ibn Ezra: Tzefanyah descended from Chizkiyahu (the tree follows him)
   { slug: 'tzefanyah-hanavi', rels: [{ type: 'ancestor', slug: 'chizkiyahu' }] },
   // the High Priesthood of the Second Temple, before and after (black arrows)

@@ -61,7 +61,7 @@ module.exports = [
     name: L('רבי יונה', 'Rabbi Yonah'),
     summary: L('ראש ישיבת טבריה אחרי רבי ירמיה, יחד עם רבי יוסי.', 'Head of the Tiberias yeshivah after Rabbi Yirmeyah, together with Rabbi Yose.'),
     rel: [to('teacher', 'rabbi-zeira'), to('teacher', 'rabbi-shmuel-bar-rav-yitzhak'), to('plugta', 'rabbi-yose-ben-zevida')],
-    offices: [TVE(4100, 4130, ['rabbi-yirmeya'], ['rabbi-yose-ben-zevida'])],
+    offices: [TVE(4100, 4130, ['rabbi-yirmeya'], ['rabbi-yose-ben-zevida', 'rabbi-mana'])],
     sources: [L('תענית כג ע״ב', 'Taanit 23b'), URS, TTA],
     sections: [
       sec('רבי יונה', 'רבי יונה היה צדיק נסתר. כשהיה העולם צריך לגשמים, היה אומר לבני ביתו: "אלך ואביא בזוזא חיטין", יוצא למקום סתר, לובש שק ומתפלל – ובאו הגשמים. כשחזר שאלו אותו אם הביא חיטים, והוא השיב: "אמרתי, הואיל ואתא מטרא – ירווח עלמא" (תענית כג ע״ב). בנו היה רבי מנא.', 'Rabbi Yonah', 'Rabbi Yonah was a hidden tzaddik. When the world needed rain, he would say to his household: "I will go and buy wheat for a zuz", go out to a hidden place, put on sackcloth and pray – and the rain came. When he returned they asked him if he had brought wheat, and he answered: "I said, since the rain has come, the world will have relief" (Taanit 23b). His son was Rabbi Mana.'),
