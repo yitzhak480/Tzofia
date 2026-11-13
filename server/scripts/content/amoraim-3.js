@@ -33,7 +33,7 @@ module.exports = [
   // ── the Land of Israel ──
   A({
     slug: 'rabbi-yehuda-nesia-2', spot2: 'רבי יהודה נשיאה ב׳', cats: ['nesiim', 'amoraim-eretz'], roles: [GEN3, L('נשיא', 'Nasi')],
-    name: L('רבי יהודה נשיאה השני', 'Rabbi Yehudah Nesiah II'),
+    name: L('רבי יהודה נשיאה ב׳', 'Rabbi Yehudah Nesiah II'),
     summary: L('בנו של רבן גמליאל הרביעי, הנשיא בימי רבי אמי ורבי אסי.', 'Son of Rabban Gamliel IV, the Nasi in the days of Rabbi Ami and Rabbi Assi.'),
     rel: [to('father', 'rabban-gamliel-4'), to('teacher', 'rabbi-yochanan')],
     offices: [{ label: L('שנות נשיאות', 'Years as Nasi'), from: 4060, to: 4090, before: ['rabban-gamliel-4'], after: [L('הלל נשיאה', 'Hillel Nesiah')] }],
@@ -55,7 +55,7 @@ module.exports = [
   }),
   A({
     slug: 'rabbi-abba-1', spot2: 'רבי אבא א׳', roles: [GEN3],
-    name: L('רבי אבא', 'Rabbi Abba'), summary: L('חכם בבלי שעלה לארץ ישראל, תלמיד רב הונא ורבי יוחנן.', 'A Babylonian sage who went up to the Land of Israel, student of Rav Huna and Rabbi Yochanan.'),
+    name: L('רבי אבא א׳', 'Rabbi Abba'), summary: L('חכם בבלי שעלה לארץ ישראל, תלמיד רב הונא ורבי יוחנן.', 'A Babylonian sage who went up to the Land of Israel, student of Rav Huna and Rabbi Yochanan.'),
     rel: [to('teacher', 'rav-huna'), to('teacher', 'rabbi-yochanan')], sources: [L('ברכות כד ע״ב', 'Berachot 24b'), TTA],
     sections: [
       sec('רבי אבא', 'רבי אבא למד בבבל לפני רב הונא, ועלה לארץ ישראל, ושם למד לפני רבי יוחנן. באילן יש כמה חכמים בשם רבי אבא, והם ממוספרים; זהו הראשון שבהם.', 'Rabbi Abba', 'Rabbi Abba learned in Bavel before Rav Huna, and went up to the Land of Israel, where he learned before Rabbi Yochanan. On our tree there are several sages named Rabbi Abba, and they are numbered; this is the first of them.'),
@@ -81,7 +81,7 @@ module.exports = [
   }),
   A({
     slug: 'ulla', spot2: 'עולא בן ישמעאל', roles: [GEN3, NECHUTA],
-    name: L('עולא', 'Ulla'), summary: L('מגדולי ה"נחותי", תלמיד רבי יוחנן, שהביא את תורת ארץ ישראל לבבל.', 'One of the greatest of the "Nechutei", Rabbi Yochanan’s student, who brought the Torah of the Land of Israel to Bavel.'),
+    name: L('עולא בן ישמעאל', 'Ulla'), summary: L('מגדולי ה"נחותי", תלמיד רבי יוחנן, שהביא את תורת ארץ ישראל לבבל.', 'One of the greatest of the "Nechutei", Rabbi Yochanan’s student, who brought the Torah of the Land of Israel to Bavel.'),
     rel: [to('teacher', 'rabbi-yochanan'), to('teacher', 'rabbi-elazar-ben-pedat')], sources: [L('ברכות נא ע״ב', 'Berachot 51b'), L('כתובות קיא ע״א', 'Ketubot 111a'), L('שבת קמה ע״ב', 'Shabbat 145b')],
     sections: [
       sec('עולא', 'עולא היה רגיל לרדת מארץ ישראל לבבל ולמסור שם את דברי חכמי ארץ ישראל. הוא היה אורח בבית רב נחמן, ולא שלח לילתא מכוס של ברכה, והיא שברה ארבע מאות כדי יין (ברכות נא ע״ב). הוא נפטר בחוץ לארץ, וכשבכה על כך אמרו לו "ארונך יבוא אחריך" (כתובות קיא ע״א).', 'Ulla', 'Ulla used to go down from the Land of Israel to Bavel and hand down there the words of the sages of the Land of Israel. He was a guest in Rav Nachman’s house, and did not send Yalta from the cup of blessing, and she broke four hundred jars of wine (Berachot 51b). He died outside the Land, and when he wept over it they told him "your coffin will follow you" (Ketubot 111a).'),
@@ -100,7 +100,7 @@ module.exports = [
   }),
   A({
     slug: 'rabbi-ami', spot2: 'רבי אמי בן נתן', roles: [GEN3, L('ראש ישיבת טבריה', 'Head of the Yeshivah of Tiberias')],
-    name: L('רבי אמי', 'Rabbi Ami'), summary: L('ראש ישיבת טבריה אחרי רבי אלעזר, חברו של רבי אסי.', 'Head of the Yeshivah of Tiberias after Rabbi Elazar, Rabbi Assi’s companion.'),
+    name: L('רבי אמי בן נתן', 'Rabbi Ami'), summary: L('ראש ישיבת טבריה אחרי רבי אלעזר, חברו של רבי אסי.', 'Head of the Yeshivah of Tiberias after Rabbi Elazar, Rabbi Assi’s companion.'),
     rel: [to('teacher', 'rabbi-oshaya-rabba'), to('teacher', 'rabbi-yochanan'), to('teacher', 'rabbi-elazar-ben-pedat'), to('plugta', 'rabbi-assi')],
     offices: [HEAD('ראש ישיבת טבריה', 'Head of the Yeshivah of Tiberias', 4039, 4070, ['rabbi-elazar-ben-pedat'], [L('רבי ירמיה', 'Rabbi Yirmeyah')])],
     sources: [L('מגילה כב ע״א', 'Megillah 22a'), L('בבא בתרא ח ע״א', 'Bava Batra 8a'), TTA],
@@ -224,7 +224,7 @@ module.exports = [
   }),
   A({
     slug: 'rav-yosef', spot2: 'רב יוסף בר חייא', roles: [GEN3, KOLELET, L('ראש ישיבת פומבדיתא', 'Head of the Pumbedita yeshivah')],
-    name: L('רב יוסף', 'Rav Yosef'), summary: L('"סיני", בקי בכל התורה, ראש ישיבת פומבדיתא אחרי רבה.', '"Sinai", master of all the Torah, head of the Pumbedita yeshivah after Rabba.'),
+    name: L('רב יוסף בר חייא', 'Rav Yosef'), summary: L('"סיני", בקי בכל התורה, ראש ישיבת פומבדיתא אחרי רבה.', '"Sinai", master of all the Torah, head of the Pumbedita yeshivah after Rabba.'),
     rel: [to('teacher', 'rav-nachman'), to('teacher', 'rav-huna'), to('teacher', 'rav-yehuda'), to('plugta', 'rabba')],
     offices: [HEAD('ראש ישיבת פומבדיתא', 'Head of the Pumbedita yeshivah', 4082, 4085, ['rabba'], [L('אביי', 'Abaye')])],
     sources: [IRSG, L('ברכות סד ע״א', 'Berachot 64a'), L('נדרים מא ע״א', 'Nedarim 41a'), L('פסחים סח ע״ב', 'Pesachim 68b')],
@@ -234,7 +234,7 @@ module.exports = [
     ],
   }),
   A({
-    slug: 'chama-avi-rami', spot2: 'חמא', name: L('חמא – אבי רמי', 'Chama – father of Rami'),
+    slug: 'chama-avi-rami', spot2: 'חמא', name: L('חמא (אבי רמי)', 'Chama – father of Rami'),
     summary: L('אביו של רמי בר חמא.', 'Father of Rami bar Chama.'), rel: [], sources: [TTA],
     sections: one('חמא', 'חמא ידוע כאביו של רמי בר חמא, שנשא את בתו של רב חסדא.', 'Chama', 'Chama is known as the father of Rami bar Chama, who married Rav Chisda’s daughter.'),
   }),

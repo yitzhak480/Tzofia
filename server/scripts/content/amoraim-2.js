@@ -29,7 +29,7 @@ module.exports = [
   // ── the Land of Israel ──
   A({
     slug: 'rabban-gamliel-4', spot2: 'רבן גמליאל ד׳', cats: ['nesiim', 'amoraim-eretz'], roles: [GEN2, L('נשיא', 'Nasi')],
-    name: L('רבן גמליאל הרביעי', 'Rabban Gamliel IV'),
+    name: L('רבן גמליאל ד׳', 'Rabban Gamliel IV'),
     summary: L('בנו של רבי יהודה נשיאה הראשון, הנשיא אחריו.', 'Son of Rabbi Yehudah Nesiah I, the Nasi after him.'),
     rel: [to('father', 'rabbi-yehuda-nesia-1')],
     offices: [{ label: L('שנות נשיאות', 'Years as Nasi'), from: 4030, to: 4060, before: ['rabbi-yehuda-nesia-1'], after: ['rabbi-yehuda-nesia-2'] }],
@@ -54,7 +54,7 @@ module.exports = [
   }),
   A({
     slug: 'rabbi-simlai', spot2: 'רבי שמלאי בר אבא', roles: [GEN2],
-    name: L('רבי שמלאי', 'Rabbi Simlai'),
+    name: L('רבי שמלאי בר אבא', 'Rabbi Simlai'),
     summary: L('שדרש: "שש מאות ושלוש עשרה מצוות נאמרו לו למשה".', 'Who taught: "Six hundred and thirteen mitzvot were said to Moshe".'),
     rel: [to('teacher', 'rabbi-yehuda-nesia-1'), to('teacher', 'rabbi-yochanan')], sources: [L('מכות כג ע״ב – כד ע״א', 'Makkot 23b–24a'), L('סוטה יד ע״א', 'Sotah 14a')],
     sections: [
@@ -74,7 +74,7 @@ module.exports = [
   }),
   A({
     slug: 'rabbi-yosef-ben-ribal', spot2: 'רבי יוסף בריה דריב"ל', roles: [GEN2],
-    name: L('רבי יוסף בנו של רבי יהושע בן לוי', 'Rabbi Yosef son of Rabbi Yehoshua ben Levi'),
+    name: L('רבי יוסף בריה דריב״ל', 'Rabbi Yosef son of Rabbi Yehoshua ben Levi'),
     summary: L('בנו של רבי יהושע בן לוי, ש"עולם הפוך ראה".', 'Son of Rabbi Yehoshua ben Levi, who "saw an upside-down world".'),
     rel: [to('father', 'rabbi-yehoshua-ben-levi')], sources: [L('בבא בתרא י ע״ב', 'Bava Batra 10b'), L('פסחים נ ע״א', 'Pesachim 50a')],
     sections: one('עולם הפוך', 'הגמרא (בבא בתרא י ע״ב) מספרת שרבי יוסף בנו של רבי יהושע בן לוי חלה ונתעלף, וכשהתעורר שאל אותו אביו מה ראה. אמר: "עולם הפוך ראיתי – עליונים למטה ותחתונים למעלה". אמר לו אביו: "עולם ברור ראית".', 'An Upside-Down World', 'The Gemara (Bava Batra 10b) relates that Rabbi Yosef son of Rabbi Yehoshua ben Levi fell ill and fainted, and when he awoke his father asked him what he had seen. He said: "I saw an upside-down world – the high below and the low above". His father told him: "You saw a clear world".'),
@@ -155,7 +155,7 @@ module.exports = [
   // ── Sura ──
   A({
     slug: 'rav-kahana-2', spot2: 'רב כהנא ב׳', roles: [GEN2],
-    name: L('רב כהנא השני', 'Rav Kahana II'),
+    name: L('רב כהנא ב׳', 'Rav Kahana II'),
     summary: L('תלמיד רב ושמואל, שעלה לארץ ישראל וישב לפני רבי יוחנן.', 'Student of Rav and Shmuel, who went up to the Land of Israel and sat before Rabbi Yochanan.'),
     rel: [to('teacher', 'rav-abba-arikha'), to('teacher', 'shmuel'), to('teacher', 'rabbi-yochanan')], sources: [L('בבא קמא קיז ע״א', 'Bava Kamma 117a'), L('ברכות סב ע״א', 'Berachot 62a')],
     sections: [
@@ -176,7 +176,7 @@ module.exports = [
     ],
   }),
   F({
-    slug: 'chova', spot2: 'חובה', name: L('חובה אשת רב הונא', 'Chova, wife of Rav Huna'),
+    slug: 'chova', spot2: 'חובה', name: L('חובה (אשת רב הונא)', 'Chova, wife of Rav Huna'),
     summary: L('אשתו של רב הונא, אם רבה בר רב הונא.', 'Rav Huna’s wife, mother of Rabba bar Rav Huna.'),
     rel: [to('spouse', 'rav-huna')], sources: [L('יבמות סד ע״ב', 'Yevamot 64b')],
     sections: one('חובה', 'חובה הייתה אשתו של רב הונא, ואמו של בנם רבה בר רב הונא, שעמד לימים בראש ישיבת סורא. היא נזכרת בגמרא (יבמות סד ע״ב) בדיון על נשים שבעליהן מתו.', 'Chova', 'Chova was Rav Huna’s wife, and the mother of their son Rabba bar Rav Huna, who later headed the Sura yeshivah. She is mentioned in the Gemara (Yevamot 64b).'),
@@ -199,7 +199,7 @@ module.exports = [
     sections: [TS('רב חנן בר רבא היה תלמידו של רב, ונשא את בתו.', 'Rav Chanan bar Rava was Rav’s student, and married his daughter.')],
   }),
   F({
-    slug: 'eshet-rav-chanan', spot2: 'אשת רב חנן', name: L('בת רב – אשת רב חנן', 'Daughter of Rav – wife of Rav Chanan'),
+    slug: 'eshet-rav-chanan', spot2: 'אשת רב חנן', name: L('אשת רב חנן', 'Daughter of Rav – wife of Rav Chanan'),
     summary: L('בתו של רב, אשת רב חנן בר רבא.', 'Rav’s daughter, wife of Rav Chanan bar Rava.'),
     rel: [to('father', 'rav-abba-arikha'), to('spouse', 'rav-chanan-bar-rava')], sources: [TTA],
     sections: one('בת רב', 'בתו של רב נישאה לתלמידו רב חנן בר רבא. שמה לא נשמר, ובאילן היא כתובה בשם "אשת רב חנן".', 'Rav’s Daughter', 'Rav’s daughter married his student Rav Chanan bar Rava. Her name has not been kept, and on our tree she is written as "the wife of Rav Chanan".'),
@@ -236,14 +236,14 @@ module.exports = [
     sections: one('זבת חלב ודבש', 'הגמרא (כתובות קיא ע״ב) מספרת שרמי בר יחזקאל הגיע לבני ברק, וראה עזים אוכלות תחת תאנים, ודבש נוטף מן התאנים וחלב מטפטף מן העזים, ומתערבים זה בזה – ואמר: "היינו זבת חלב ודבש".', 'Flowing with Milk and Honey', 'The Gemara (Ketubot 111b) relates that Rami bar Yechezkel came to Bnei Brak, and saw goats eating under fig trees, honey dripping from the figs and milk from the goats, and mixing together – and said: "This is flowing with milk and honey".'),
   }),
   F({
-    slug: 'rachel-bat-shmuel', spot2: 'רחל (אם רב מרי)', name: L('רחל בת שמואל', 'Rachel, daughter of Shmuel'),
+    slug: 'rachel-bat-shmuel', spot2: 'רחל (אם רב מרי)', name: L('רחל (בת שמואל)', 'Rachel, daughter of Shmuel'),
     summary: L('בתו של שמואל שנשבתה, ואם רב מרי בר רחל.', 'Shmuel’s daughter who was taken captive, and the mother of Rav Mari bar Rachel.'),
     rel: [to('father', 'shmuel')], sources: [L('יבמות מה ע״ב', 'Yevamot 45b'), L('כתובות כג ע״א', 'Ketubot 23a')],
     sections: one('רחל', 'הגמרא (כתובות כג ע״א) מספרת על בנותיו של שמואל שנשבו והועלו לארץ ישראל. רחל, בתו של שמואל, נישאה לאיסור הגר, וילדה את רב מרי בר רחל, שנולד לפני שאביו התגייר ולכן נקרא על שם אמו (יבמות מה ע״ב).', 'Rachel', 'The Gemara (Ketubot 23a) tells of Shmuel’s daughters who were taken captive and brought up to the Land of Israel. Rachel, Shmuel’s daughter, married Issur the convert, and bore Rav Mari bar Rachel, who was conceived before his father converted and so was called after his mother (Yevamot 45b).'),
   }),
   A({
     slug: 'rav-anan', spot2: 'רב ענן בר תחליפא', roles: [GEN2],
-    name: L('רב ענן', 'Rav Anan'),
+    name: L('רב ענן בר תחליפא', 'Rav Anan'),
     summary: L('תלמיד שמואל, שאליהו הנביא לימד אותו את "תנא דבי אליהו".', 'Shmuel’s student, whom Eliyahu the prophet taught "Tanna DeVei Eliyahu".'),
     rel: [to('teacher', 'shmuel')], sources: [L('כתובות קו ע״א', 'Ketubot 106a')],
     sections: [
@@ -288,7 +288,7 @@ module.exports = [
   }),
   A({
     slug: 'mar-ukva-1', spot2: 'עוקבא א׳ "מר עוקבא"', roles: [GEN2, L('ראש הגולה', 'Head of the Exile'), L('אב בית דין', 'Av Beit Din')],
-    name: L('מר עוקבא', 'Mar Ukva'),
+    name: L('מר עוקבא (עוקבא א׳)', 'Mar Ukva'),
     summary: L('ראש הגולה ואב בית הדין, תלמיד שמואל, שנתן צדקה בסתר.', 'Head of the Exile and Av Beit Din, Shmuel’s student, who gave charity in secret.'),
     rel: [to('teacher', 'shmuel'), to('father', 'nechemya-rosh-hagola')],
     offices: [{ label: L('ראש הגולה', 'Head of the Exile'), from: 4000, to: 4030, before: ['nechemya-rosh-hagola'], after: ['mar-ukvan-detzutzita'] }],

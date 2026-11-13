@@ -190,12 +190,12 @@ module.exports = [
   }),
   prophet({
     slug: 'amotz', name: L('אמוץ', 'Amotz (Amoz)'), cardColor: BLUE,
-    summary: L('אביו של ישעיהו הנביא ואחיו של אמציה מלך יהודה.', 'The father of Yeshayahu the Prophet and brother of Amatzyah king of Judah.'),
+    summary: L('אביו של ישעיהו הנביא ואחיו של אמציהו מלך יהודה.', 'The father of Yeshayahu the Prophet and brother of Amatzyah king of Judah.'),
     rel: [to('child', 'yeshayahu-hanavi'), to('sibling', 'amatzyah'), to('father', 'yehoash')],
     sources: [L('ישעיהו א, א', 'Isaiah 1:1'), L('מגילה י ע״ב; טו ע״א', 'Megillah 10b; 15a')],
     spots: biblical(46.7, 52.7),
     sections: [
-      sec('מבית דוד', 'חז״ל מלמדים שאמוץ ואמציה מלך יהודה היו אחים (מגילה י ע״ב), ולכן ישעיהו בנו היה מזרע המלוכה של בית דוד. באילן שלנו אמוץ מופיע בענף בית דוד, כאחיו של אמציה.',
+      sec('מבית דוד', 'חז״ל מלמדים שאמוץ ואמציהו מלך יהודה היו אחים (מגילה י ע״ב), ולכן ישעיהו בנו היה מזרע המלוכה של בית דוד. באילן שלנו אמוץ מופיע בענף בית דוד, כאחיו של אמציהו.',
         'Of the House of David', 'Chazal teach that Amotz and Amatzyah king of Judah were brothers (Megillah 10b), so his son Yeshayahu was of the royal seed of the House of David. On our tree Amotz appears in the branch of the House of David, as Amatzyah’s brother.'),
       sec('נביא בן נביא', 'חז״ל מלמדים: "כל נביא שנתפרש שמו ושם אביו, בידוע שהוא נביא בן נביא" (מגילה טו ע״א), ולכן אמוץ נמנה בין הנביאים.',
         'A Prophet Son of a Prophet', 'Chazal teach: "Every prophet whose name and father’s name are given is known to be a prophet son of a prophet" (Megillah 15a), and so Amotz is counted among the prophets.'),

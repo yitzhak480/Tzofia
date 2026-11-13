@@ -101,7 +101,7 @@ const family = [
     sections: [FAMILY_CHIYA],
   }),
   F({
-    slug: 'ima-em-rav', spot2: 'אימא?', name: L('אימא – אם רב', 'Ima – Mother of Rav'),
+    slug: 'ima-em-rav', spot2: 'אימא?', name: L('אימא (אם רב)', 'Ima – Mother of Rav'),
     summary: L('אמו של רב, אחותו של רבי חייא מצד אמם.', 'Rav’s mother, Rabbi Chiya’s sister through their mother.'),
     rel: [to('mother', 'em-rabbi-chiya'), to('father', 'avi-ima'), to('spouse', 'aivu'), to('sibling', 'rabbi-chiya')], sources: [SAN5],
     sections: [sec('השם באילן', 'באילן שלנו שמה כתוב "אימא?" – שמה אינו ידוע בוודאות. היא בתם של אם רבי חייא ושל "אבי אימא", ונישאה לאייבו – ולכן רב היה "בר אחוה ובר אחתיה דרבי חייא".', 'Her Name on Our Tree', 'On our tree her name is written "Ima?" – her name is not known for certain. She was the daughter of Rabbi Chiya’s mother and of "Ima’s father", and married Aivu – which is why Rav was "the son of Rabbi Chiya’s brother and of his sister".'), FAMILY_CHIYA],
@@ -117,7 +117,7 @@ const family = [
     rel: [to('father', 'abba-bar-acha-karsla'), to('sibling', 'rabbi-chiya')], sources: [PES4], sections: [FAMILY_CHIYA],
   }),
   F({
-    slug: 'yehudit-eshet-rabbi-chiya', spot2: 'יהודית', name: L('יהודית אשת רבי חייא', 'Yehudit, wife of Rabbi Chiya'),
+    slug: 'yehudit-eshet-rabbi-chiya', spot2: 'יהודית', name: L('יהודית (אשת רבי חייא)', 'Yehudit, wife of Rabbi Chiya'),
     summary: L('אשת רבי חייא, אם התאומים יהודה וחזקיה.', 'Wife of Rabbi Chiya, mother of the twins Yehudah and Chizkiyah.'),
     rel: [to('spouse', 'rabbi-chiya')], sources: [L('יבמות סה ע״ב', 'Yevamot 65b')],
     sections: one('יהודית', 'הגמרא (יבמות סה ע״ב) מספרת שליהודית, אשת רבי חייא, היו לידות קשות מאוד; היא ילדה תאומים – יהודה וחזקיה – ותאומות – פזי וטבי.', 'Yehudit', 'The Gemara (Yevamot 65b) relates that Yehudit, Rabbi Chiya’s wife, had very hard births; she bore twin sons – Yehudah and Chizkiyah – and twin daughters – Pazi and Tavi.'),
@@ -135,7 +135,7 @@ const family = [
     sections: one('אחות רבי יוחנן', 'כשריש לקיש, שהיה ליסטים, ראה את רבי יוחנן רוחץ בירדן, אמר לו רבי יוחנן: "אם אתה חוזר בך – אתן לך את אחותי, שהיא נאה ממני". ריש לקיש קיבל, למד תורה ונעשה גדול (בבא מציעא פד ע״א). אחרי מות בעלה באה לפני רבי יוחנן ובכתה.', 'Rabbi Yochanan’s Sister', 'When Reish Lakish, who was a bandit, saw Rabbi Yochanan bathing in the Jordan, Rabbi Yochanan told him: "If you repent – I will give you my sister, who is more beautiful than I". Reish Lakish accepted, learned Torah and became great (Bava Metzia 84a). After her husband’s death she came before Rabbi Yochanan and wept.'),
   }),
   A({
-    slug: 'nafcha', spot2: '"נפחא"?', cats: ['amoraim-family'], name: L('נפחא – אבי רבי יוחנן', 'Nafcha – father of Rabbi Yochanan'),
+    slug: 'nafcha', spot2: '"נפחא"?', cats: ['amoraim-family'], name: L('נפחא (אבי רבי יוחנן)', 'Nafcha – father of Rabbi Yochanan'),
     summary: L('אביו של רבי יוחנן, שמת לפני שנולד.', 'Rabbi Yochanan’s father, who died before he was born.'),
     rel: [], sources: [L('קידושין לא ע״ב', 'Kiddushin 31b'), L('סנהדרין צו ע״ב', 'Sanhedrin 96b')],
     sections: one('"נפחא"?', 'רבי יוחנן נקרא "בר נפחא" (סנהדרין צו ע״ב). באילן שלנו שם אביו כתוב "נפחא"?, משום שלא ברור אם נפחא היה שמו או כינוי – "הנפח", מי שעובד בברזל. הגמרא (קידושין לא ע״ב) אומרת על רבי יוחנן: "כי עברתו אמו – מת אביו, ילדתו – מתה אמו". בתו נישאה לריש לקיש.', '"Nafcha"?', 'Rabbi Yochanan is called "bar Nafcha" (Sanhedrin 96b). On our tree his father’s name is written "Nafcha"?, since it is not clear whether Nafcha was his name or a nickname – "the smith", one who works iron. The Gemara (Kiddushin 31b) says of Rabbi Yochanan: "when his mother conceived him, his father died; when she bore him, his mother died". His daughter married Reish Lakish.'),
@@ -250,7 +250,7 @@ const transition = [
   }),
   A({
     slug: 'natan-2-rosh-hagola', spot2: 'נתן ב׳', roles: [L('ראש הגולה', 'Head of the Exile')],
-    name: L('נתן ב׳ ראש הגולה', 'Natan II, Head of the Exile'),
+    name: L('נתן ב׳', 'Natan II, Head of the Exile'),
     summary: L('בנו של רב הונא קמא, ראש הגולה אחריו.', 'Son of Rav Huna I, Head of the Exile after him.'),
     rel: [to('father', 'rav-huna-kama')], offices: [RG(['rav-huna-kama'], ['nechemya-rosh-hagola'], 3960, 3980)], sources: [SOZ],
     sections: one('נתן ב׳', 'לפי סדר עולם זוטא, אחרי רב הונא קמא עמד בראש הגולה בנו נתן, ואחריו בנו נחמיה.', 'Natan II', 'According to Seder Olam Zuta, after Rav Huna I his son Natan headed the Exile, and after him his son Nechemyah.'),
@@ -261,7 +261,7 @@ const transition = [
 const gen1 = [
   A({
     slug: 'rabbi-yehuda-nesia-1', spot2: 'רבי יהודה נשיאה א׳', cats: ['nesiim', 'amoraim-eretz'], roles: [GEN1, L('נשיא', 'Nasi')],
-    name: L('רבי יהודה נשיאה הראשון', 'Rabbi Yehudah Nesiah I'),
+    name: L('רבי יהודה נשיאה א׳', 'Rabbi Yehudah Nesiah I'),
     summary: L('נכדו של רבי והנשיא אחרי אביו, שהתיר את שמן הגויים.', 'Rebbi’s grandson and the Nasi after his father, who permitted the oil of gentiles.'),
     rel: [to('father', 'rabban-gamliel-berabbi')],
     offices: [{ label: L('שנות נשיאות', 'Years as Nasi'), from: 4000, to: 4030, before: ['rabban-gamliel-berabbi'], after: ['rabban-gamliel-4'] }],
@@ -270,7 +270,7 @@ const gen1 = [
   }),
   A({
     slug: 'rabbi-hillel-ben-rabban-gamliel', spot2: 'רבי הלל', cats: ['amoraim-eretz'], roles: [GEN1],
-    name: L('רבי הלל בן רבן גמליאל', 'Rabbi Hillel son of Rabban Gamliel'),
+    name: L('רבי הלל', 'Rabbi Hillel son of Rabban Gamliel'),
     summary: L('נכדו ותלמידו של רבי, אחי רבי יהודה נשיאה.', 'Rebbi’s grandson and student, brother of Rabbi Yehudah Nesiah.'),
     rel: [to('father', 'rabban-gamliel-berabbi'), to('sibling', 'rabbi-yehuda-nesia-1'), to('teacher', 'rabbi-yehuda-hanasi')], sources: [L('תוספתא מועד קטן ב, טו', 'Tosefta Moed Katan 2:15')],
     sections: one('רבי הלל', 'התוספתא מספרת על רבי יהודה ורבי הלל, בני רבן גמליאל, שהלכו לכבול ונהגו שם בזהירות כדי שלא ילמדו מהם להקל. הוא למד תורה מסבו, רבי.', 'Rabbi Hillel', 'The Tosefta tells of Rabbi Yehudah and Rabbi Hillel, sons of Rabban Gamliel, who went to Kavul and acted there with care so that people would not learn from them to be lenient. He learned Torah from his grandfather, Rebbi.'),
@@ -335,7 +335,7 @@ const gen1 = [
   }),
   A({
     slug: 'rabbi-yehuda-ben-rabbi-chiya', spot2: 'רבי יהודה ((בן רבי חייא))', roles: [GEN1],
-    name: L('רבי יהודה בן רבי חייא', 'Rabbi Yehudah son of Rabbi Chiya'),
+    name: L('רבי יהודה (בן רבי חייא)', 'Rabbi Yehudah son of Rabbi Chiya'),
     summary: L('בנו של רבי חייא, אחי חזקיה התאום, וחתנו של רבי ינאי.', 'Rabbi Chiya’s son, twin of Chizkiyah, and Rabbi Yannai’s son-in-law.'),
     rel: [to('father', 'rabbi-chiya'), to('mother', 'yehudit-eshet-rabbi-chiya'), to('sibling', 'chizkiya-ben-rabbi-chiya'), to('spouse', 'bat-rabbi-yannai')],
     sources: [L('סנהדרין לח ע״א', 'Sanhedrin 38a'), L('כתובות סב ע״ב', 'Ketubot 62b'), L('יבמות סה ע״ב', 'Yevamot 65b')],
@@ -343,7 +343,7 @@ const gen1 = [
   }),
   A({
     slug: 'chizkiya-ben-rabbi-chiya', spot2: 'חזקיה ((בן רבי חייא))', roles: [GEN1],
-    name: L('חזקיה בן רבי חייא', 'Chizkiyah son of Rabbi Chiya'),
+    name: L('חזקיה (בן רבי חייא)', 'Chizkiyah son of Rabbi Chiya'),
     summary: L('בנו של רבי חייא, שעמד בראש בית מדרש בטבריה.', 'Rabbi Chiya’s son, who headed a study hall in Tiberias.'),
     rel: [to('father', 'rabbi-chiya'), to('mother', 'yehudit-eshet-rabbi-chiya'), to('sibling', 'rabbi-yehuda-ben-rabbi-chiya')],
     sources: [L('סנהדרין לח ע״א', 'Sanhedrin 38a'), L('יבמות סה ע״ב', 'Yevamot 65b'), TTA],
@@ -365,13 +365,13 @@ const gen1 = [
   }),
   A({
     slug: 'rav-abba-arikha', spot2: 'אבא בר אייבו "רב"', roles: [GEN1, L('ראש המתיבתא הכוללת', 'Rosh HaMetivta HaKolelet (head of the general yeshivah)'), L('מייסד ישיבת סורא', 'Founder of the Sura yeshivah')],
-    name: L('רב (אבא בר איבו)', 'Rav (Abba bar Ibo)'),
+    name: L('רב (אבא בר אייבו)', 'Rav (Abba bar Ibo)'),
     summary: L('תלמיד רבי ורבי חייא, שייסד את ישיבת סורא; "הלכתא כרב באיסורי".', 'Student of Rebbi and Rabbi Chiya, who founded the Sura yeshivah; "the law follows Rav in prohibitions".'),
     rel: [to('teacher', 'rabbi-yehuda-hanasi'), to('teacher', 'rabbi-chiya'), to('father', 'aivu'), to('mother', 'ima-em-rav'), to('plugta', 'shmuel')],
     offices: [HEAD('ראש ישיבת סורא', 'Head of the Sura yeshivah', 3979, 4003, [], ['rav-huna'])],
     sources: [IRSG, SAN5, L('עירובין נ ע״ב', 'Eruvin 50b'), L('בכורות מט ע״ב', 'Bechorot 49b'), L('ירושלמי ראש השנה א, ג', 'Yerushalmi Rosh Hashanah 1:3')],
     sections: [
-      sec('בבית מדרשו של רבי', 'רב, ששמו אבא בר איבו, נולד בבבל ועלה לארץ ישראל עם דודו רבי חייא, ולמד תורה מפי רבי יהודה הנשיא. בשל גדולתו נקרא בפי כל "רב" סתם, כרבן של כל בני הגולה. חז״ל אומרים עליו "רב תנא הוא ופליג": מעמדו כמעמד תנא, ולכן הוא רשאי לחלוק על דברי תנאים (עירובין נ ע״ב).', 'In the Study Hall of Rebbi', 'Rav, whose name was Abba bar Ibo, was born in Babylon and went up to the Land of Israel with his uncle Rabbi Chiya, where he learned Torah from Rabbi Yehudah HaNasi. Because of his greatness he was called simply "Rav", the teacher of all the Diaspora. Chazal say of him "Rav is a Tanna and may disagree": his standing was like that of a Tanna, so he could disagree with Tannaim (Eruvin 50b).'),
+      sec('בבית מדרשו של רבי', 'רב, ששמו אבא בר אייבו, נולד בבבל ועלה לארץ ישראל עם דודו רבי חייא, ולמד תורה מפי רבי יהודה הנשיא. בשל גדולתו נקרא בפי כל "רב" סתם, כרבן של כל בני הגולה. חז״ל אומרים עליו "רב תנא הוא ופליג": מעמדו כמעמד תנא, ולכן הוא רשאי לחלוק על דברי תנאים (עירובין נ ע״ב).', 'In the Study Hall of Rebbi', 'Rav, whose name was Abba bar Ibo, was born in Babylon and went up to the Land of Israel with his uncle Rabbi Chiya, where he learned Torah from Rabbi Yehudah HaNasi. Because of his greatness he was called simply "Rav", the teacher of all the Diaspora. Chazal say of him "Rav is a Tanna and may disagree": his standing was like that of a Tanna, so he could disagree with Tannaim (Eruvin 50b).'),
       sec('ישיבת סורא', 'בשנת ג׳תתקע״ט ירד רב לבבל, ולפי איגרת רב שרירא גאון ייסד את ישיבת סורא, שהייתה במשך מאות שנים, יחד עם פומבדיתא, מרכז התורה של העם היהודי. הוא עמד בראשה עד פטירתו בשנת ד׳ג׳.', 'The Sura Yeshivah', 'In the year 3979 Rav went down to Babylon, and according to the Letter of Rav Sherira Gaon he founded the Sura yeshivah, which for hundreds of years, together with Pumbedita, was the center of Torah for the Jewish people. He headed it until his passing in 4003.'),
       sec('רב ושמואל', 'רב וחברו שמואל, ראש ישיבת נהרדעא, נחלקו בהלכות רבות, ומחלוקותיהם ממלאות את התלמוד הבבלי. נקבע: "הלכתא כרב באיסורי, וכשמואל בדיני" (בכורות מט ע״ב). לפי המסורת רב חיבר את נוסח "עלינו לשבח" ואת ברכות מלכויות, זכרונות ושופרות של ראש השנה, הנקראות בירושלמי "תקיעתא דבי רב".', 'Rav and Shmuel', 'Rav and his colleague Shmuel, head of the Nehardea academy, disagreed in many laws, and their disputes fill the Babylonian Talmud. The rule was set: "The halachah follows Rav in matters of prohibition, and Shmuel in monetary law" (Bechorot 49b). According to tradition Rav composed the prayer "Aleinu LeShabeach" and the blessings of Kingship, Remembrance and Shofar of Rosh Hashanah, which the Jerusalem Talmud calls "the shofar blessings of the school of Rav".'),
       sec('רבותיו ותלמידיו', 'רב היה ראש המתיבתא הכוללת – הישיבה הראשית של בבל בדורו. הוא למד מרבי – והוא חוליה בשלשלת הקבלה שמונה הרמב״ם – ומדודו רבי חייא. שמואל היה בר פלוגתיה, ורב אסי היה תלמיד חבר שלו.', 'Teachers and Students', 'Rav was Rosh HaMetivta HaKolelet – head of the leading yeshivah of Bavel in his generation. He learned from Rebbi – a link in the chain of tradition listed by the Rambam – and from his uncle Rabbi Chiya. Shmuel was his sparring partner, and Rav Assi was his talmid chaver.'),
@@ -406,7 +406,7 @@ const gen1 = [
   }),
   A({
     slug: 'rav-kahana-1', spot2: 'רב כהנא א׳', roles: [GEN1],
-    name: L('רב כהנא הראשון', 'Rav Kahana I'),
+    name: L('רב כהנא א׳', 'Rav Kahana I'),
     summary: L('מחכמי בבל בדורו של רב.', 'One of the sages of Bavel in Rav’s generation.'),
     rel: [], sources: [TTA, SDH],
     sections: one('רב כהנא', 'בתלמוד יש כמה חכמים בשם רב כהנא, ובאילן שלנו הם ממוספרים. רב כהנא הראשון היה מחכמי סורא בדור הראשון, בימי רב.', 'Rav Kahana', 'There are several sages named Rav Kahana in the Talmud, and on our tree they are numbered. Rav Kahana I was one of the sages of Sura in the first generation, in Rav’s days.'),

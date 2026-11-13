@@ -30,7 +30,7 @@ module.exports = [
     sections: one('אם יהושפט', 'בספר מלכים ובדברי הימים נאמר על יהושפט: "ושם אמו עזובה בת שלחי". יש להבחין בינה לבין עזובה אשת כלב בן חצרון (דברי הימים א׳ ב, יח).', 'Mother of Yehoshafat', 'The Book of Kings and Divrei HaYamim say of Yehoshafat: "and his mother’s name was Azuvah daughter of Shilchi". She should be distinguished from Azuvah the wife of Kalev son of Chetzron (I Chronicles 2:18).'),
   }),
   w({
-    slug: 'yehoshavat', name: L('יהושבעת בת יהורם', 'Yehoshavat daughter of Yehoram'), spot: 'יהושבע',
+    slug: 'yehoshavat', name: L('יהושבע בת יהורם', 'Yehoshavat daughter of Yehoram'), spot: 'יהושבע',
     summary: L('בת המלך יהורם ואשת יהוידע הכהן, שהצילה את יואש התינוק.', 'Daughter of King Yehoram and wife of Yehoyada the Kohen, who saved the infant Yoash.'),
     rel: [to('father', 'yehoram'), to('sibling', 'achazyahu'), to('spouse', 'yehoyada-hakohen'), to('related', 'yehoash')],
     sources: [L('מלכים ב׳ יא, ב – ג', 'II Kings 11:2–3'), L('דברי הימים ב׳ כב, יא – יב', 'II Chronicles 22:11–12')],

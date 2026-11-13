@@ -128,7 +128,7 @@ const BATCHES = [
       asa: { 'מעכה בת אבישלום': 'maacha-bat-avishalom', 'עזובה בת שלחי': 'azuva' },
       yehoshafat: { 'עזובה בת שלחי': 'azuva' },
       achazyahu: { 'יהושבע': 'yehoshavat' },
-      'yehoyada-hakohen': { 'יהושבעת בת יהורם': 'yehoshavat' },
+      'yehoyada-hakohen': { 'יהושבע בת יהורם': 'yehoshavat' },
       chizkiyahu: { 'חפצי-בה': 'chefzi-ba' },
       menashe: { 'חפצי-בה': 'chefzi-ba' },
       'azaryahu-ben-oded': { 'עודד': 'oded-avi-azaryahu' },
@@ -230,7 +230,7 @@ const BATCHES = [
     order: [],
     relink: {
       'rabbi-akiva': { 'רחל': 'rachel-eshet-rabbi-akiva', 'רבי אליעזר בן הורקנוס': 'rabbi-eliezer-ben-hurkanos', 'רבי יהושע בן חנניה': 'rabbi-yehoshua-ben-chananya',
-        'נחום איש גם זו': 'nachum-ish-gamzu', 'רבי מאיר': 'rabbi-meir', 'רבי יהודה בר אלעאי': 'rabbi-yehuda-bar-ilai', 'רבי יוסי בן חלפתא': 'rabbi-yose-ben-chalafta',
+        'נחום איש גמזו': 'nachum-ish-gamzu', 'רבי מאיר': 'rabbi-meir', 'רבי יהודה בר אלעאי': 'rabbi-yehuda-bar-ilai', 'רבי יוסי בן חלפתא': 'rabbi-yose-ben-chalafta',
         'רבי שמעון בר יוחאי': 'rabbi-shimon-bar-yochai', 'רבי אלעזר בן שמוע': 'rabbi-elazar-ben-shamua' },
     },
   },
@@ -302,7 +302,7 @@ const EXTRA = [
     note: (() => { const m = require('./content/tannaim').MARTYR(4); return { he: [m.titleHe, m.textHe], en: [m.titleEn, m.textEn] }; })(),
   },
   { slug: 'hillel-hazaken', offices: [{ label: L('שנות נשיאות', 'Years as Nasi'), before: ['shmaya'], after: ['rabban-shimon-ben-hillel'] }],
-    rels: [{ type: 'related', slug: 'beteira' }] },
+    rels: [{ type: 'related', slug: 'beteira' }, { type: 'plugta', slug: 'shammai' }, { type: 'plugta', slug: 'menachem-av-beit-din' }] },
   { slug: 'shimon-hatzadik', offices: [{ label: L('כהונה גדולה', 'High Priesthood'), before: ['choniyo-1'], after: ['elazar-kg2'] }],
     rels: [{ type: 'teacher', he: 'אנשי כנסת הגדולה', en: 'The Men of the Great Assembly' }] },
   // a Kohen, branch unknown; the tree joins him to Pinchas with a "?"

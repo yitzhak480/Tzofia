@@ -223,14 +223,14 @@ module.exports = [
   king({
     slug: 'yoash-ben-yehoachaz', name: L('יואש בן יהואחז', 'Yoash son of Yehoachaz (Joash)'),
     offices: [reign(3098, 3114)],
-    summary: L('מלך ישראל שביקר את אלישע לפני מותו וניצח את ארם ואת אמציה.', 'King of Israel who visited Elisha before his death and defeated Aram and Amatzyah.'),
+    summary: L('מלך ישראל שביקר את אלישע לפני מותו וניצח את ארם ואת אמציהו.', 'King of Israel who visited Elisha before his death and defeated Aram and Amatzyah.'),
     rel: [to('father', 'yehoachaz-ben-yehu'), to('child', 'yeravam-ben-yoash'), nm('related', 'אלישע הנביא', 'Elisha the Prophet'), to('related', 'amatzyah')],
     sources: [L('מלכים ב׳ יג, י – כה; יד, ח – טז', 'II Kings 13:10–25; 14:8–16'), L('דברי הימים ב׳ כה, יז – כד', 'II Chronicles 25:17–24')],
     spots: biblical(40.04, 53.39),
     sections: [
       sec('אבי אבי', 'כשחלה אלישע את חוליו אשר ימות בו, ירד אליו יואש ובכה: "אבי אבי, רכב ישראל ופרשיו". אלישע ציווה עליו לירות בחץ ולהכות בחצים בארץ; יואש הכה שלוש פעמים ועמד, ואלישע אמר שלכן ינצח את ארם רק שלוש פעמים. וכך היה.',
         'My Father, My Father', 'When Elisha fell ill with the illness from which he would die, Yoash went down to him and wept: "My father, my father, the chariot of Israel and its horsemen". Elisha told him to shoot an arrow and strike the ground with the arrows; Yoash struck three times and stopped, and Elisha said that therefore he would defeat Aram only three times. And so it was.'),
-      sec('מול אמציה', 'אמציה מלך יהודה הזמין את יואש להתמודד מולו. יואש השיב במשל החוח והארז, ובמלחמה בבית שמש ניצח את יהודה, תפס את אמציה, פרץ בחומת ירושלים ולקח את אוצרות בית ה׳. הוא מלך שש עשרה שנה בשומרון.',
+      sec('מול אמציהוו', 'אמציהו מלך יהודה הזמין את יואש להתמודד מולו. יואש השיב במשל החוח והארז, ובמלחמה בבית שמש ניצח את יהודה, תפס את אמציהו, פרץ בחומת ירושלים ולקח את אוצרות בית ה׳. הוא מלך שש עשרה שנה בשומרון.',
         'Against Amatzyah', 'Amatzyah king of Judah challenged Yoash to face him. Yoash replied with the parable of the thistle and the cedar, and in the battle at Beit Shemesh he defeated Judah, captured Amatzyah, broke through the wall of Jerusalem and took the treasures of the House of Hashem. He reigned sixteen years in Shomron.'),
     ],
   }),

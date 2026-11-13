@@ -275,7 +275,7 @@ const ENTRIES = [
       { type: 'spouse', he: 'רחל', en: 'Rachel' },
       { type: 'teacher', he: 'רבי אליעזר בן הורקנוס', en: 'Rabbi Eliezer son of Hyrcanus' },
       { type: 'teacher', he: 'רבי יהושע בן חנניה', en: 'Rabbi Yehoshua son of Chananyah' },
-      { type: 'teacher', he: 'נחום איש גם זו', en: 'Nachum Ish Gamzu' },
+      { type: 'teacher', he: 'נחום איש גמזו', en: 'Nachum Ish Gamzu' },
       { type: 'student', he: 'רבי מאיר', en: 'Rabbi Meir' },
       { type: 'student', he: 'רבי יהודה בר אלעאי', en: 'Rabbi Yehudah son of Ilai' },
       { type: 'student', he: 'רבי יוסי בן חלפתא', en: 'Rabbi Yossi son of Chalafta' },
@@ -286,7 +286,7 @@ const ENTRIES = [
     spots: biblical(64.05, 92.85),
     content: L(
       p('מרועה לחכם', 'עקיבא בן יוסף היה רועה צאן עם הארץ עד גיל ארבעים. רחל, בת כלבא שבוע, ראתה בו את גדולתו ונישאה לו בתנאי שילך ללמוד תורה. חז״ל מספרים שראה אבן שנחקקה מטיפות מים, ואמר: אם מים רכים חקקו אבן, דברי תורה שקשים כברזל על אחת כמה וכמה (אבות דרבי נתן ו). הוא למד עשרים וארבע שנים, וכשחזר עם אלפי תלמידים אמר עליה: "שלי ושלכם שלה הוא" (כתובות סג ע״א).') +
-        p('רבם של חכמי המשנה', 'רבי עקיבא למד מרבי אליעזר ומרבי יהושע, ושימש את נחום איש גם זו עשרים ושתיים שנה (חגיגה יב ע״א). עשרים וארבעה אלף תלמידים היו לו, וכולם מתו בין פסח לעצרת. אחר כך לימד חמישה תלמידים בדרום: רבי מאיר, רבי יהודה, רבי יוסי, רבי שמעון ורבי אלעזר בן שמוע, והם העמידו את התורה (יבמות סב ע״ב).') +
+        p('רבם של חכמי המשנה', 'רבי עקיבא למד מרבי אליעזר ומרבי יהושע, ושימש את נחום איש גמזו עשרים ושתיים שנה (חגיגה יב ע״א). עשרים וארבעה אלף תלמידים היו לו, וכולם מתו בין פסח לעצרת. אחר כך לימד חמישה תלמידים בדרום: רבי מאיר, רבי יהודה, רבי יוסי, רבי שמעון ורבי אלעזר בן שמוע, והם העמידו את התורה (יבמות סב ע״ב).') +
         p('מסירות נפשו', 'רבי עקיבא אמר: "ואהבת לרעך כמוך, זה כלל גדול בתורה". כשגזרו הרומאים שלא לעסוק בתורה, המשיך ללמד ברבים. הוא נתפס, וסרקו את בשרו במסרקות של ברזל, והוא קרא קריאת שמע והאריך ב"אחד" עד שיצאה נשמתו (ברכות סא ע״ב). הוא נמנה עם עשרה הרוגי מלכות.'),
       p('From Shepherd to Sage', 'Akiva son of Yosef was an unlearned shepherd until the age of forty. Rachel, the daughter of Kalba Savua, saw his greatness and married him on condition that he go to learn Torah. Chazal relate that he saw a stone hollowed out by drops of water, and said: if soft water could carve stone, how much more can words of Torah, which are hard as iron, carve my heart (Avot DeRabbi Natan 6). He learned for twenty-four years, and when he returned with thousands of students he said of her: "What is mine and what is yours is hers" (Ketubot 63a).') +
         p('Teacher of the Sages of the Mishnah', 'Rabbi Akiva learned from Rabbi Eliezer and Rabbi Yehoshua, and served Nachum Ish Gamzu for twenty-two years (Chagigah 12a). He had twenty-four thousand students, and they all died between Pesach and Shavuot. Afterwards he taught five students in the south: Rabbi Meir, Rabbi Yehudah, Rabbi Yossi, Rabbi Shimon and Rabbi Elazar son of Shamua, and they upheld the Torah (Yevamot 62b).') +
@@ -296,7 +296,7 @@ const ENTRIES = [
   {
     slug: 'rav-abba-arikha',
     categories: ['amoraim'],
-    name: L('רב (אבא בר איבו)', 'Rav (Abba bar Ibo)'),
+    name: L('רב (אבא בר אייבו)', 'Rav (Abba bar Ibo)'),
     titles: [L('אמורא', 'Amora')],
     roles: [L('מייסד ישיבת סורא', 'Founder of the Sura academy')],
     offices: [office('ראש ישיבת סורא', 'Head of the Sura academy', 3979, 4003, 'לפי איגרת רב שרירא גאון', 'According to the Letter of Rav Sherira Gaon')],
@@ -311,7 +311,7 @@ const ENTRIES = [
     sources: [L('איגרת רב שרירא גאון', 'The Letter of Rav Sherira Gaon'), L('סנהדרין ה ע״א', 'Sanhedrin 5a'), L('עירובין נ ע״ב', 'Eruvin 50b'), L('בכורות מט ע״ב', 'Bechorot 49b'), L('ירושלמי ראש השנה א, ג', 'Jerusalem Talmud Rosh Hashanah 1:3')],
     spots: gmara(43.3, 11.9),
     content: L(
-      p('בבית מדרשו של רבי', 'רב, ששמו אבא בר איבו, נולד בבבל ועלה לארץ ישראל עם דודו רבי חייא, ולמד תורה מפי רבי יהודה הנשיא. בשל גדולתו נקרא בפי כל "רב" סתם, כרבן של כל בני הגולה. חז״ל אומרים עליו "רב תנא הוא ופליג": מעמדו כמעמד תנא, ולכן הוא רשאי לחלוק על דברי תנאים (עירובין נ ע״ב).') +
+      p('בבית מדרשו של רבי', 'רב, ששמו אבא בר אייבו, נולד בבבל ועלה לארץ ישראל עם דודו רבי חייא, ולמד תורה מפי רבי יהודה הנשיא. בשל גדולתו נקרא בפי כל "רב" סתם, כרבן של כל בני הגולה. חז״ל אומרים עליו "רב תנא הוא ופליג": מעמדו כמעמד תנא, ולכן הוא רשאי לחלוק על דברי תנאים (עירובין נ ע״ב).') +
         p('ישיבת סורא', 'בשנת ג׳תתקע״ט ירד רב לבבל, ולפי איגרת רב שרירא גאון ייסד את ישיבת סורא, שהייתה במשך מאות שנים, יחד עם פומבדיתא, מרכז התורה של העם היהודי. הוא עמד בראשה עד פטירתו בשנת ד׳ג׳. תלמידיו רב הונא ורב יהודה היו מגדולי הדור הבא.') +
         p('רב ושמואל', 'רב וחברו שמואל, ראש ישיבת נהרדעא, נחלקו בהלכות רבות, ומחלוקותיהם ממלאות את התלמוד הבבלי. נקבע: "הלכתא כרב באיסורי, וכשמואל בדיני" (בכורות מט ע״ב). לפי המסורת רב חיבר את נוסח "עלינו לשבח" ואת ברכות מלכויות, זכרונות ושופרות של ראש השנה, הנקראות בירושלמי "תקיעתא דבי רב".'),
       p('In the Study Hall of Rabbi', 'Rav, whose name was Abba bar Ibo, was born in Babylon and went up to the Land of Israel with his uncle Rabbi Chiya, where he learned Torah from Rabbi Yehudah HaNasi. Because of his greatness he was called simply "Rav", the teacher of all the Diaspora. Chazal say of him "Rav is a Tanna and may disagree": his standing was like that of a Tanna, so he could disagree with Tannaim (Eruvin 50b).') +
