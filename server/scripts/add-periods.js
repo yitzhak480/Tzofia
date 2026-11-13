@@ -32,6 +32,14 @@ const CATEGORIES = {
   'av-beit-din': { order: 5.5, color: 't1-yehuda', name: L('אבות בית הדין', 'The Heads of the Court (Av Beit Din)'), description: L('אבות בית הדין שעמדו לצד הנשיא בראש הסנהדרין', 'The heads of the court who stood beside the Nasi at the head of the Sanhedrin') },
   'kings-chashmonai': { parent: 'kings', order: 3, color: 't1-levi', sortMode: 'chrono', name: L('מלכי בית חשמונאי', 'The Hasmonean Kings'), description: L('המלכים והמלכה מבית חשמונאי', 'The kings and the queen of the house of Chashmonai') },
   'kings-hordos': { parent: 'kings', order: 4, color: 't1-hordos', sortMode: 'chrono', name: L('מלכי בית הורדוס', 'The Herodian Kings'), description: L('הורדוס וצאצאיו שנשאו תואר מלך', 'Herod and his descendants who bore the title of king') },
+  // the Amoraim, by the colour groups of the Talmud tree
+  'amoraim-sura': { parent: 'amoraim', order: 1, color: 't2-sura', name: L('סורא, מתא מחסיא ונרש', 'Sura, Mata Mechasya and Naresh'), description: L('אמוראי ישיבת סורא והמקומות הסמוכים לה', 'The Amoraim of the Sura yeshivah and the places near it') },
+  'amoraim-nehardea': { parent: 'amoraim', order: 2, color: 't2-nehardea', name: L('נהרדעא, פומבדיתא ומחוזא', 'Nehardea, Pumbedita and Mechoza'), description: L('אמוראי ישיבות נהרדעא ופומבדיתא ומחוזא', 'The Amoraim of the yeshivot of Nehardea, Pumbedita and Mechoza') },
+  'amoraim-tveria': { parent: 'amoraim', order: 3, color: 't2-tveria', name: L('טבריה', 'Tiberias'), description: L('אמוראי ישיבת טבריה, והנחותי שירדו לבבל ועלו ממנה', 'The Amoraim of the Tiberias yeshivah, and the Nechutei who travelled between it and Bavel') },
+  'amoraim-eretz': { parent: 'amoraim', order: 4, color: 't2-eretz', name: L('שאר ארץ ישראל', 'The Rest of the Land of Israel'), description: L('אמוראי ציפורי, קיסריה, לוד ושאר ארץ ישראל', 'The Amoraim of Tzippori, Caesarea, Lod and the rest of the Land of Israel') },
+  'amoraim-bavel': { parent: 'amoraim', order: 5, color: 't2-bavel', name: L('שאר בבל ופרס', 'The Rest of Bavel and Persia'), description: L('אמוראים מבבל ומפרס שאינם מן הישיבות הגדולות', 'Amoraim of Bavel and Persia outside the great yeshivot') },
+  'amoraim-rashei-hagola': { parent: 'amoraim', order: 6, color: 't2-reshgaluta', name: L('ראשי הגולה', 'The Heads of the Exile'), description: L('ראשי הגולה ומשפחתם בימי האמוראים', 'The Heads of the Exile and their family in the days of the Amoraim') },
+  'amoraim-family': { parent: 'amoraim', order: 7, color: 'marble', name: L('משפחות האמוראים', 'The Families of the Amoraim'), description: L('הורים, נשים ובני משפחה של האמוראים, הכתובים באילן בלי תיבה', 'Parents, wives and family of the Amoraim, written on the tree without a box') },
   levites: { order: 6.5, color: 't1-levi', sortMode: 'chrono', name: L('בני לוי', 'The Levites'), description: L('משפחות שבט לוי: לויים, משוררים ובני משפחות הכהנים', 'The families of the tribe of Levi: Levites, singers and the families of the Kohanim') },
   'gerei-tzedek': { order: 6.6, color: 't1-gerim', sortMode: 'chrono', name: L('גרי צדק', 'Righteous Converts'), description: L('מי שבאו מן העמים ונכנסו תחת כנפי השכינה', 'Those who came from the nations and entered under the wings of the Divine Presence') },
 };
@@ -257,6 +265,8 @@ const BATCHES = [
     order: ['yose-ben-yochanan', 'nitai-haarbeli', 'yehuda-ben-tabai', 'avtalyon', 'menachem-av-beit-din', 'shammai', 'rabban-yochanan-ben-zakai'],
     relink: {},
   },
+  // ── the Talmud tree: the Amoraim, band by band ──
+  { category: null, orderBase: 0, entries: require('./content/amoraim-1'), order: [], relink: {} },
   {
     category: 'beit-chashmonai',
     entries: require('./content/second-temple-houses').chashmonai,
@@ -278,6 +288,7 @@ const ASTERISKS = require('./content/asterisks');
 const ASTERISK_TITLE = { he: 'הכוכבית שבאילן', en: 'The Asterisk on Our Tree' };
 const EXTRA = [
   { slug: 'ovadyah-hanavi', addCategory: 'gerei-tzedek' },
+  { slug: 'rav-huna-kama', addCategory: 'amoraim-rashei-hagola' },
   // Ibn Ezra: Tzefanyah descended from Chizkiyahu (the tree follows him)
   { slug: 'tzefanyah-hanavi', rels: [{ type: 'ancestor', slug: 'chizkiyahu' }] },
   // the High Priesthood of the Second Temple, before and after (black arrows)
@@ -373,15 +384,16 @@ const main = async () => {
 
   let count = 0;
   for (const batch of BATCHES) {
-    const period = cats[batch.category];
+    const period = batch.category ? cats[batch.category] : null;
     for (const e of batch.entries) {
       const doc = bySlug.get(e.slug) || new Person({ slug: e.slug });
+      for (const c of e.cats) if (!cats[c]) throw new Error(`${e.slug}: no category "${c}"`);
       doc.set({
-        kind: 'person', gender: e.gender, categories: [period._id, ...e.cats.map((s) => cats[s]._id)],
+        kind: 'person', gender: e.gender, categories: [...(period ? [period._id] : []), ...e.cats.map((s) => cats[s]._id)],
         name: e.name, titles: [], roles: e.roles || [], life: e.life ? { from: e.life[0], to: e.life[1] } : { from: null, to: null },
         summary: e.summary, content: { he: html(e.sections, 'he'), en: html(e.sections, 'en') },
         sources: e.sources.map((s) => s.he), sourcesEn: e.sources.map((s) => s.en),
-        treeSpots: [...spotOf(e.spot), ...(e.spot2 ? spot2Of(e.spot2) : [])], cardColor: e.color || doc.cardColor || GROUP[e.spot] || 't1-shvatim', published: true,
+        treeSpots: [...(e.spot ? spotOf(e.spot) : []), ...(e.spot2 ? spot2Of(e.spot2) : [])], cardColor: e.color || doc.cardColor || GROUP[e.spot] || 't1-shvatim', published: true,
         titles: e.titles || [],
       });
       if (e.offices) doc.offices = e.offices.map((o) => ({ label: o.label, from: o.from ?? null, to: o.to ?? null, note: o.note || { he: '', en: '' }, before: [], after: [] }));
@@ -401,6 +413,20 @@ const main = async () => {
         doc.markModified('offices');
       }
       await doc.save();
+    }
+    // a batch without one list (the Amoraim): each page gets its place in
+    // each of its own lists, in the batch's order (base + its index)
+    if (!period) {
+      for (const [i, e] of batch.entries.entries()) {
+        const doc = bySlug.get(e.slug);
+        for (const c of e.cats) {
+          const cid = String(cats[c]._id);
+          const has = doc.orders?.get ? doc.orders.get(cid) != null : doc.orders?.[cid] != null;
+          if (!(cats[c].sortMode === 'manual' && has)) doc.set(`orders.${cid}`, (batch.orderBase || 0) + i + 1);
+        }
+        await doc.save();
+      }
+      continue;
     }
     // existing pages join the list; the list's order
     const id = String(period._id);

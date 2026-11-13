@@ -47,8 +47,8 @@ const rasheiHagola = [
     slug: 'rav-huna-kama', name: L('רב הונא קמא', 'Rav Huna I'), spot: 'רב הונא קמא', spot2: 'רב הונא קמא',
     roles: [L('ראש הגולה', 'Head of the Exile')],
     summary: L('ראש הגולה בבבל בימי רבי יהודה הנשיא, שרבי אמר עליו שהוא גדול ממנו ביחוסו.', 'Head of the Exile in Bavel in the days of Rabbi Yehudah HaNasi, of whom Rebbi said he was greater than him in lineage.'),
-    rel: [to('father', 'natan-rosh-hagola'), to('related', 'rabbi-yehuda-hanasi'), nm('child', 'נתן ב׳', 'Natan II')],
-    offices: [{ ...RG(['natan-rosh-hagola'], [L('נתן ב׳', 'Natan II')]), from: 3910, to: 3960 }],
+    rel: [to('father', 'natan-rosh-hagola'), to('related', 'rabbi-yehuda-hanasi'), to('child', 'natan-2-rosh-hagola')],
+    offices: [{ ...RG(['natan-rosh-hagola'], ['natan-2-rosh-hagola']), from: 3910, to: 3960 }],
     sources: [L('הוריות יא ע״ב', 'Horayot 11b'), L('ירושלמי כלאים ט, ג', 'Yerushalmi Kilayim 9:3'), L('מועד קטן כה ע״א', 'Moed Katan 25a'), SOZ],
     sections: [
       sec('רב הונא', 'הגמרא (הוריות יא ע״ב) מספרת שרבי שאל את רבי חייא: "כגון אני מהו בשעיר?" – האם אני כמלך? ענה לו: "הרי צרתך בבבל" – רב הונא ראש הגולה, שהוא מבית דוד מצד הזכר, ואילו רבי מבית דוד מצד הנקבה. הוא נפטר בבבל, וארונו הועלה לארץ ישראל ונקבר ליד רבי חייא (מועד קטן כה ע״א). באילן שלנו מתחתיו כתוב שראשי הגולה המשיכו להנהיג את גלות בבל גם בתקופת האמוראים והגאונים.', 'Rav Huna', 'The Gemara (Horayot 11b) relates that Rebbi asked Rabbi Chiya: "One like me – what am I regarding the king’s goat-offering?" – am I like a king? He answered: "Your rival is in Bavel" – Rav Huna the Head of the Exile, who is of the house of David through the male line, while Rebbi is of the house of David through the female line. He died in Bavel, and his coffin was brought up to the Land of Israel and buried beside Rabbi Chiya (Moed Katan 25a). On our tree it says beneath him that the Heads of the Exile went on leading the Babylonian exile in the times of the Amoraim and the Geonim too.'),
