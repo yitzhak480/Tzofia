@@ -79,8 +79,8 @@ module.exports = [
   A({
     slug: 'rabbi-yehuda-ben-pazi', spot2: 'רבי יהודה בן פזי', roles: [GEN4],
     name: L('רבי יהודה בן פזי', 'Rabbi Yehudah ben Pazi'), summary: L('בנו של רבי שמעון בן פזי, בעל אגדה.', 'Son of Rabbi Shimon ben Pazi, a master of aggadah.'),
-    rel: [to('father', 'rabbi-shimon-ben-pazi'), to('teacher', 'rabbi-yoshiya'), to('student', 'ravin')], sources: [TTA],
-    sections: [TS('הוא בנו של רבי שמעון בן פזי. רבותיו היו רבי יאשיה ורבי אחא, ותלמידו היה רבין.', 'He was the son of Rabbi Shimon ben Pazi. His teachers were Rabbi Yoshiyah and Rabbi Acha, and his student was Ravin.')],
+    rel: [to('father', 'rabbi-shimon-ben-pazi'), to('teacher', 'rabbi-yoshiya'), to('teacher', 'rabbi-yose-bar-chanina'), to('student', 'ravin')], sources: [TTA],
+    sections: [TS('הוא בנו של רבי שמעון בן פזי. רבותיו היו רבי יאשיה, רבי יוסי בר חנינא ורבי אחא, ותלמידו היה רבין.', 'He was the son of Rabbi Shimon ben Pazi. His teachers were Rabbi Yoshiyah, Rabbi Yose bar Chanina and Rabbi Acha, and his student was Ravin.')],
   }),
   A({
     slug: 'ravin', spot2: 'רבין', roles: [GEN4, NECHUTA],
@@ -131,9 +131,9 @@ module.exports = [
   // ── Nehardea, Pumbedita and Mechoza ──
   A({
     slug: 'rav-avya', spot2: 'רב אויא', roles: [GEN4],
-    name: L('רב אויא', 'Rav Avya'), summary: L('מתלמידי רב יוסף.', 'One of Rav Yosef’s students.'),
-    rel: [to('teacher', 'rav-yosef')], sources: [L('ברכות כח ע״ב', 'Berachot 28b'), TTA],
-    sections: [TS('רבו היה רב יוסף.', 'His teacher was Rav Yosef.')],
+    name: L('רב אויא', 'Rav Avya'), summary: L('תלמיד רב יוסף ורבי אמי.', 'Student of Rav Yosef and Rabbi Ami.'),
+    rel: [to('teacher', 'rav-yosef'), to('teacher', 'rabbi-ami')], sources: [L('ברכות כח ע״ב', 'Berachot 28b'), TTA],
+    sections: [TS('רבותיו היו רב יוסף ורבי אמי.', 'His teachers were Rav Yosef and Rabbi Ami.')],
   }),
   A({
     slug: 'rav-safra', spot2: 'רב ספרא', roles: [GEN4],
@@ -146,9 +146,9 @@ module.exports = [
   }),
   A({
     slug: 'rav-bivi', spot2: 'רב ביבי', roles: [GEN4],
-    name: L('רב ביבי', 'Rav Bivi'), summary: L('מתלמידי רב נחמן.', 'One of Rav Nachman’s students.'),
-    rel: [to('teacher', 'rav-nachman')], sources: [TTA],
-    sections: [TS('רבו היה רב נחמן.', 'His teacher was Rav Nachman.')],
+    name: L('רב ביבי', 'Rav Bivi'), summary: L('תלמיד רב נחמן, רבי אמי ורב אדא בר אהבה.', 'Student of Rav Nachman, Rabbi Ami and Rav Ada bar Ahava.'),
+    rel: [to('teacher', 'rav-nachman'), to('teacher', 'rabbi-ami'), to('teacher', 'rav-ada-bar-ahava')], sources: [TTA],
+    sections: [TS('רבותיו היו רב נחמן, רבי אמי ורב אדא בר אהבה.', 'His teachers were Rav Nachman, Rabbi Ami and Rav Ada bar Ahava.')],
   }),
   A({
     slug: 'rav-idi-bar-avin-1', spot2: 'רב אידי בר אבין א׳', roles: [GEN4],
@@ -162,9 +162,9 @@ module.exports = [
   A({
     slug: 'rav-kahana-3', spot2: 'רב כהנא ג׳', roles: [GEN4, L('ראש ישיבת פום נהרא', 'Head of the yeshivah of Pum Nahara')],
     name: L('רב כהנא ג׳', 'Rav Kahana III'), summary: L('ראש ישיבת פום נהרא, רבו של רב אשי.', 'Head of the yeshivah of Pum Nahara, Rav Ashi’s teacher.'),
-    rel: [to('teacher', 'rabba'), to('teacher', 'rabbi-zeira'), to('teacher', 'rav-chiya-bar-rav'), to('teacher', 'rav-chisda'), to('teacher', 'rav-zvid-minehardea')],
+    rel: [to('teacher', 'rabba'), to('teacher', 'rabbi-zeira'), to('teacher', 'rav-yehuda'), to('teacher', 'rav-zvid-minehardea')],
     sources: [L('זבחים ב ע״ב', 'Zevachim 2b'), TTA],
-    sections: [TS('רבותיו היו רבה, רבי זירא, רב חייא בר רב, רב חסדא ורב זביד מנהרדעא. הוא עמד בראש הישיבה בפום נהרא, ומתלמידיו היה רב אשי.', 'His teachers were Rabba, Rabbi Zeira, Rav Chiya son of Rav, Rav Chisda and Rav Zvid of Nehardea. He headed the yeshivah in Pum Nahara, and one of his students was Rav Ashi.')],
+    sections: [TS('רבותיו היו רבה, רבי זירא, רב יהודה ורב זביד מנהרדעא. הוא עמד בראש הישיבה בפום נהרא, ומתלמידיו היה רב אשי.', 'His teachers were Rabba, Rabbi Zeira, Rav Yehudah and Rav Zvid of Nehardea. He headed the yeshivah in Pum Nahara, and one of his students was Rav Ashi.')],
   }),
   A({
     slug: 'rav-zvid-minehardea', spot2: 'רב זביד מנהרדעא', roles: [GEN4],
@@ -174,9 +174,9 @@ module.exports = [
   }),
   A({
     slug: 'rechava', spot2: 'רחבא דפומבדיתא', roles: [GEN4],
-    name: L('רחבא דפומבדיתא', 'Rechava of Pumbedita'), summary: L('תלמיד רב חייא בר רב, בעלה הראשון של חומא.', 'Student of Rav Chiya son of Rav, Chuma’s first husband.'),
-    rel: [to('teacher', 'rav-chiya-bar-rav'), to('spouse', 'chuma')], sources: [Y64, TTA],
-    sections: [TS('רבו היה רב חייא בר רב.', 'His teacher was Rav Chiya son of Rav.'), CHUMA],
+    name: L('רחבא דפומבדיתא', 'Rechava of Pumbedita'), summary: L('תלמיד רב יהודה, בעלה הראשון של חומא.', 'Student of Rav Yehudah, Chuma’s first husband.'),
+    rel: [to('teacher', 'rav-yehuda'), to('spouse', 'chuma')], sources: [Y64, TTA],
+    sections: [TS('רבו היה רב יהודה בר יחזקאל.', 'His teacher was Rav Yehudah bar Yechezkel.'), CHUMA],
   }),
   A({
     slug: 'isi', spot2: 'איסי', name: L('איסי (אבי חומא)', 'Isi (father of Chuma)'),
@@ -233,9 +233,9 @@ module.exports = [
   }),
   A({
     slug: 'rami-bar-chama', spot2: 'רמי בר חמא', roles: [GEN4],
-    name: L('רמי בר חמא', 'Rami bar Chama'), summary: L('תלמיד רב נחמן, בעלה הראשון של בת רב חסדא.', 'Rav Nachman’s student, the first husband of Rav Chisda’s daughter.'),
-    rel: [to('father', 'chama-avi-rami'), to('teacher', 'rav-nachman'), to('spouse', 'bat-rav-chisda')], sources: [L('בבא בתרא יב ע״ב', 'Bava Batra 12b'), L('ברכות מז ע״ב', 'Berachot 47b'), TTA],
-    sections: [TS('רבו היה רב נחמן. אשתו הייתה בת רב חסדא, ואחרי מותו נישאה לרבא; ואחיו רב עוקבא בר חמא נשא את אחותה.', 'His teacher was Rav Nachman. His wife was Rav Chisda’s daughter, and after his death she married Rava; and his brother Rav Ukva bar Chama married her sister.')],
+    name: L('רמי בר חמא', 'Rami bar Chama'), summary: L('תלמיד רב נחמן ורב חסדא, בעלה הראשון של בת רב חסדא.', 'Student of Rav Nachman and Rav Chisda, the first husband of Rav Chisda’s daughter.'),
+    rel: [to('father', 'chama-avi-rami'), to('teacher', 'rav-nachman'), to('teacher', 'rav-chisda'), to('spouse', 'bat-rav-chisda')], sources: [L('בבא בתרא יב ע״ב', 'Bava Batra 12b'), L('ברכות מז ע״ב', 'Berachot 47b'), TTA],
+    sections: [TS('רבותיו היו רב נחמן ורב חסדא, חותנו. אשתו הייתה בת רב חסדא, ואחרי מותו נישאה לרבא; ואחיו רב עוקבא בר חמא נשא את אחותה.', 'His teachers were Rav Nachman and Rav Chisda, his father-in-law. His wife was Rav Chisda’s daughter, and after his death she married Rava; and his brother Rav Ukva bar Chama married her sister.')],
   }),
   F({
     slug: 'bat-rami', spot2: 'בת רמי', name: L('בת רמי (בר חמא)', 'Daughter of Rami (bar Chama)'),
