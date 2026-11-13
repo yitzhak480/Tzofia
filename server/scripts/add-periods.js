@@ -268,6 +268,7 @@ const BATCHES = [
   // ── the Talmud tree: the Amoraim, band by band ──
   { category: null, orderBase: 0, entries: require('./content/amoraim-1'), order: [], relink: {} },
   { category: null, orderBase: 100, entries: require('./content/amoraim-2'), order: [], relink: {} },
+  { category: null, orderBase: 200, entries: require('./content/amoraim-3'), order: [], relink: {} },
   {
     category: 'beit-chashmonai',
     entries: require('./content/second-temple-houses').chashmonai,

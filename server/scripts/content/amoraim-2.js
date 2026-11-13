@@ -1,7 +1,7 @@
 // The Talmud tree, second band: the second generation of the Amoraim, with
 // their families. Teachers and students follow the poster's lines, each one
 // traced to its end; the pages say what each connection means.
-const { L, sec, to, nm } = require('./helpers');
+const { L, sec, to } = require('./helpers');
 const T2 = require('./tree-checklist-talmud');
 
 const CAT = {
@@ -32,7 +32,7 @@ module.exports = [
     name: L('רבן גמליאל הרביעי', 'Rabban Gamliel IV'),
     summary: L('בנו של רבי יהודה נשיאה הראשון, הנשיא אחריו.', 'Son of Rabbi Yehudah Nesiah I, the Nasi after him.'),
     rel: [to('father', 'rabbi-yehuda-nesia-1')],
-    offices: [{ label: L('שנות נשיאות', 'Years as Nasi'), from: 4030, to: 4060, before: ['rabbi-yehuda-nesia-1'], after: [L('רבי יהודה נשיאה ב׳', 'Rabbi Yehudah Nesiah II')] }],
+    offices: [{ label: L('שנות נשיאות', 'Years as Nasi'), from: 4030, to: 4060, before: ['rabbi-yehuda-nesia-1'], after: ['rabbi-yehuda-nesia-2'] }],
     sources: [TTA],
     sections: one('רבן גמליאל הרביעי', 'רבן גמליאל, בנו של רבי יהודה נשיאה, עמד בראש הנשיאות בארץ ישראל כשלושים שנה, בימי הדור השני של האמוראים. אחריו עמד בנו, רבי יהודה נשיאה השני. בימיו נחלשה הנשיאות, ומרכז התורה עבר בהדרגה לישיבת טבריה.', 'Rabban Gamliel IV', 'Rabban Gamliel, son of Rabbi Yehudah Nesiah, headed the patriarchate in the Land of Israel for about thirty years, in the days of the second generation of the Amoraim. After him came his son, Rabbi Yehudah Nesiah II. In his days the patriarchate weakened, and the center of Torah moved gradually to the Yeshivah of Tiberias.'),
   }),
@@ -126,7 +126,7 @@ module.exports = [
     name: L('רבי אלעזר בן פדת', 'Rabbi Elazar ben Pedat'),
     summary: L('הכהן שעלה מבבל, "מרא דארעא דישראל", שעמד בראש ישיבת טבריה אחרי רבי יוחנן.', 'The Kohen who came up from Bavel, "master of the Land of Israel", who headed the Yeshivah of Tiberias after Rabbi Yochanan.'),
     rel: [to('teacher', 'rabbi-chanina-bar-chama'), to('teacher', 'rabbi-yose-ben-zimra'), to('teacher', 'rabbi-yochanan')],
-    offices: [HEAD('ראש ישיבת טבריה', 'Head of the Yeshivah of Tiberias', 4039, null, ['rabbi-yochanan'], [L('רבי אמי', 'Rabbi Ami')])],
+    offices: [HEAD('ראש ישיבת טבריה', 'Head of the Yeshivah of Tiberias', 4039, null, ['rabbi-yochanan'], ['rabbi-ami'])],
     sources: [L('תענית כה ע״א', 'Taanit 25a'), L('ברכות ה ע״ב', 'Berachot 5b'), L('גיטין יט ע״ב', 'Gittin 19b'), TTA],
     sections: [
       sec('רבי אלעזר', 'רבי אלעזר בן פדת, שנקרא בגמרא בפשטות "רבי אלעזר", היה כהן שעלה מבבל, ונקרא "מרא דארעא דישראל" (גיטין יט ע״ב). הוא היה עני מאוד; הגמרא (תענית כה ע״א) מספרת שלא היה לו מה לאכול, ובחלומו אמר לו הקב״ה: "ניחא לך דאפכיה לעלמא מרישא? אפשר דמתילדת בשעתא דמזוני". כשחלה, ביקר אותו רבי יוחנן, ובכו שניהם על היופי שבלה בעפר (ברכות ה ע״ב).', 'Rabbi Elazar', 'Rabbi Elazar ben Pedat, called in the Gemara simply "Rabbi Elazar", was a Kohen who came up from Bavel, and was called "master of the Land of Israel" (Gittin 19b). He was very poor; the Gemara (Taanit 25a) relates that he had nothing to eat, and in his dream G-d told him: "Would you have Me turn the world back to its beginning? Perhaps you would be born at an hour of sustenance". When he fell ill, Rabbi Yochanan visited him, and both wept over beauty that wastes in the dust (Berachot 5b).'),
@@ -168,7 +168,7 @@ module.exports = [
     name: L('רב הונא', 'Rav Huna'),
     summary: L('גדול תלמידי רב, שעמד אחריו בראש ישיבת סורא ארבעים שנה, עם שמונה מאות תלמידים.', 'The greatest of Rav’s students, who headed the Sura yeshivah after him for forty years, with eight hundred students.'),
     rel: [to('teacher', 'rav-abba-arikha'), to('teacher', 'shmuel'), to('teacher', 'rabbi-yochanan'), to('spouse', 'chova')],
-    offices: [HEAD('ראש ישיבת סורא', 'Head of the Sura yeshivah', 4010, 4050, ['rav-abba-arikha'], [L('רב חסדא', 'Rav Chisda')])],
+    offices: [HEAD('ראש ישיבת סורא', 'Head of the Sura yeshivah', 4010, 4050, ['rav-abba-arikha'], ['rav-chisda'])],
     sources: [IRSG, L('תענית כ ע״ב', 'Taanit 20b'), L('כתובות קו ע״א', 'Ketubot 106a'), L('מועד קטן כה ע״א', 'Moed Katan 25a')],
     sections: [
       sec('רב הונא', 'רב הונא היה גדול תלמידיו של רב, ואחרי פטירתו עמד בראש ישיבת סורא, וכשהיו תלמידיו עומדים ומנערים את בגדיהם בצאתם מן השיעור, היה האבק מכסה את השמש (כתובות קו ע״א). בתחילה היה עני, ואחר כך התעשר; כשהיה בא לאכול, היה פותח את פתחו ואומר: "כל מאן דצריך – ייתי וליכול" (תענית כ ע״ב). כשנפטר העלו את ארונו לארץ ישראל.', 'Rav Huna', 'Rav Huna was the greatest of Rav’s students, and after his death headed the Sura yeshivah, and when his students stood and shook out their clothes as they left the lesson, the dust covered the sun (Ketubot 106a). At first he was poor, and later grew rich; when he sat down to eat, he would open his door and say: "Whoever is in need, let him come and eat" (Taanit 20b). When he died his coffin was brought up to the Land of Israel.'),
@@ -222,7 +222,7 @@ module.exports = [
     name: L('רב יהודה בר יחזקאל', 'Rav Yehudah bar Yechezkel'),
     summary: L('תלמיד רב ושמואל, שייסד את ישיבת פומבדיתא.', 'Student of Rav and Shmuel, who founded the Pumbedita yeshivah.'),
     rel: [to('teacher', 'rav-abba-arikha'), to('teacher', 'shmuel'), to('father', 'rav-yechezkel'), to('related', 'rav-eina')],
-    offices: [HEAD('ראש ישיבת פומבדיתא', 'Head of the Pumbedita yeshivah', 4010, 4060, [], [L('רבה בר נחמני', 'Rabba bar Nachmani')])],
+    offices: [HEAD('ראש ישיבת פומבדיתא', 'Head of the Pumbedita yeshivah', 4010, 4060, [], ['rav-huna-bar-chiya'])],
     sources: [IRSG, L('ברכות כ ע״א', 'Berachot 20a'), L('קידושין עב ע״ב', 'Kiddushin 72b'), L('ברכות כד ע״ב', 'Berachot 24b')],
     sections: [
       sec('ישיבת פומבדיתא', 'רב יהודה, שנקרא בגמרא בפשטות "רב יהודה", ייסד את ישיבת פומבדיתא בשנת 4010, ובכך פתח את מסורתה, שנמשכה כשמונה מאות שנה. דבריו בשם רבותיו – "אמר רב יהודה אמר רב" ו"אמר רב יהודה אמר שמואל" – ממלאים את התלמוד. הגמרא (ברכות כ ע״א) אומרת: "בשני דרב יהודה כולי תנויי בנזיקין הוה" – כל לימודם היה בסדר נזיקין, ובכל זאת כשהיה שולף את נעלו לתעניות היו יורדים גשמים.', 'The Pumbedita Yeshivah', 'Rav Yehudah, called in the Gemara simply "Rav Yehudah", founded the Pumbedita yeshivah in 4010, opening its tradition, which lasted about eight hundred years. His words in the name of his teachers – "Rav Yehudah said in the name of Rav" and "Rav Yehudah said in the name of Shmuel" – fill the Talmud. The Gemara (Berachot 20a) says that in Rav Yehudah’s years all their learning was in the order of Nezikin, and yet when he took off his shoe for a fast-day, rain would fall.'),
@@ -255,7 +255,7 @@ module.exports = [
     slug: 'rav-nachman', spot2: 'רב נחמן בר יעקב', roles: [GEN2, L('ראש ישיבת נהרדעא', 'Head of the Nehardea yeshivah'), L('דיין', 'Judge')],
     name: L('רב נחמן בר יעקב', 'Rav Nachman bar Yaakov'),
     summary: L('תלמיד שמואל ודיינו של ראש הגולה, שההלכה כמותו בדינים.', 'Shmuel’s student and the Exilarch’s judge, whom the law follows in money matters.'),
-    rel: [to('teacher', 'shmuel'), to('teacher', 'rabba-bar-avuha'), to('spouse', 'yalta'), nm('related', 'רב ששת', 'Rav Sheshet')],
+    rel: [to('teacher', 'shmuel'), to('teacher', 'rabba-bar-avuha'), to('spouse', 'yalta'), to('related', 'rav-sheshet')],
     offices: [
       HEAD('ראש ישיבת נהרדעא', 'Head of the Nehardea yeshivah', 4010, 4018, ['shmuel'], []),
       HEAD('מרביץ תורה במחוזא', 'Teacher of Torah in Mechoza', 4018, 4079, [], []),
@@ -291,7 +291,7 @@ module.exports = [
     name: L('מר עוקבא', 'Mar Ukva'),
     summary: L('ראש הגולה ואב בית הדין, תלמיד שמואל, שנתן צדקה בסתר.', 'Head of the Exile and Av Beit Din, Shmuel’s student, who gave charity in secret.'),
     rel: [to('teacher', 'shmuel'), to('father', 'nechemya-rosh-hagola')],
-    offices: [{ label: L('ראש הגולה', 'Head of the Exile'), from: 4000, to: 4030, before: ['nechemya-rosh-hagola'], after: [L('מר עוקבן דצוציתא', 'Mar Ukvan of Tzutzita')] }],
+    offices: [{ label: L('ראש הגולה', 'Head of the Exile'), from: 4000, to: 4030, before: ['nechemya-rosh-hagola'], after: ['mar-ukvan-detzutzita'] }],
     sources: [SOZ, L('כתובות סז ע״ב', 'Ketubot 67b'), L('שבת נה ע״א', 'Shabbat 55a'), L('חולין קה ע״א', 'Chullin 105a')],
     sections: [
       sec('צדקה בסתר', 'מר עוקבא היה נותן לעני אחד ארבעה זוזים בכל יום, מכניס אותם לחור שבדלת. פעם אחת רצה העני לדעת מי עושה לו את החסד, ומר עוקבא ואשתו ברחו וקפצו לתוך תנור לוהט, כדי שלא יתבייש – "נוח לו לאדם שיפיל עצמו לכבשן האש ואל ילבין פני חברו ברבים" (כתובות סז ע״ב). הוא אמר: "אנא להא מילתא – חלא בר חמרא לגבי אבא" – אביו היה ממתין בין בשר לחלב עשרים וארבע שעות, והוא רק מסעודה לסעודה (חולין קה ע״א).', 'Charity in Secret', 'Mar Ukva would give a poor man four zuz every day, pushing them through a hole in his door. Once the poor man wanted to know who did him this kindness, and Mar Ukva and his wife fled and jumped into a hot oven, so that he would not be shamed – "better for a person to throw himself into a fiery furnace than to shame his fellow in public" (Ketubot 67b). He said: "In this matter I am vinegar son of wine compared to my father" – his father waited twenty-four hours between meat and milk, and he only from one meal to the next (Chullin 105a).'),
