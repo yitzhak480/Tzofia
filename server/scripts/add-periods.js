@@ -493,6 +493,55 @@ const main = async () => {
     }
   }
 
+  // On the Talmud tree, whoever followed someone in a rabbinic post (head of a
+  // yeshivah, Reish Sidra, Gaon...) was also his student: the link and a few words on both pages.
+  const RABBINIC = /^(ראש ישיבת|ריש סידרא|גאון|מרביץ תורה)/;
+  const onGmara = (d) => (d.treeSpots || []).some((t) => t.tree === 'gmara');
+  const byId = new Map([...bySlug.values()].map((d) => [String(d._id), d]));
+  const succ = new Map(); // "pred|succ" -> { pred, succ, label }
+  for (const d of bySlug.values()) {
+    for (const o of d.offices || []) {
+      if (!RABBINIC.test(o.label?.he || '')) continue;
+      for (const b of o.before || []) if (b.person && byId.get(String(b.person))) succ.set(`${b.person}|${d._id}`, { pred: byId.get(String(b.person)), succ: d, label: o.label });
+      for (const a2 of o.after || []) if (a2.person && byId.get(String(a2.person))) succ.set(`${d._id}|${a2.person}`, { pred: d, succ: byId.get(String(a2.person)), label: o.label });
+    }
+  }
+  const ROLE_TITLE = { he: 'רבו וקודמו בתפקיד', en: 'Teacher and Predecessor' };
+  const roleText = new Map();
+  const sayRole = (slug, he, en) => {
+    if (!roleText.has(slug)) roleText.set(slug, { he: [], en: [] });
+    roleText.get(slug).he.push(he); roleText.get(slug).en.push(en);
+  };
+  for (const { pred, succ: st } of succ.values()) {
+    if (!onGmara(st) || !onGmara(pred)) continue;
+    const linked = (st.relations || []).some((r) => r.type === 'teacher' && String(r.person) === String(pred._id))
+      || (pred.relations || []).some((r) => r.type === 'student' && String(r.person) === String(st._id));
+    if (!linked) {
+      st.relations.push({ type: 'teacher', person: pred._id, name: { he: pred.name.he, en: pred.name.en || '' }, uncertain: false, muvhak: false });
+      st.markModified('relations');
+      await st.save();
+    }
+    sayRole(st.slug, `${st.name.he} בא אחרי ${pred.name.he} בתפקידו, והיה גם תלמידו – כמו כל מי שבא אחרי חכם בתפקיד רבני באילן שלנו.`,
+      `${st.name.en} followed ${pred.name.en} in his post, and was also his student – like everyone on our tree who followed a sage in a rabbinic post.`);
+    sayRole(pred.slug, `${st.name.he}, שבא אחריו בתפקידו, היה גם תלמידו.`, `${st.name.en}, who followed him in his post, was also his student.`);
+  }
+  for (const doc of bySlug.values()) {
+    const add = roleText.get(doc.slug);
+    const content = { he: doc.content?.he || '', en: doc.content?.en || '' };
+    let changed = false;
+    for (const lang of ['he', 'en']) {
+      const head = `<h2>${ROLE_TITLE[lang]}</h2>`;
+      const cut = content[lang].indexOf(head);
+      if (cut < 0 && !add) continue;
+      const rest = cut >= 0 ? content[lang].slice(0, cut) + content[lang].slice(content[lang].indexOf('</p>', cut) + 4) : content[lang];
+      const star = rest.indexOf(`<h2>${ASTERISK_TITLE[lang]}</h2>`);
+      const block = add ? `${head}<p>${add[lang].join(' ')}</p>` : '';
+      content[lang] = star >= 0 ? rest.slice(0, star) + block + rest.slice(star) : rest + block;
+      changed = true;
+    }
+    if (changed) { doc.content = content; doc.markModified('content'); await doc.save(); }
+  }
+
   // teacher and talmid muvhak (the pointed arrow): a few words on both pages (replaced, not repeated)
   const MUV_TITLE = { he: 'רב ותלמיד מובהק', en: 'Teacher and Closest Student' };
   const muvText = new Map(); // slug -> { he: [], en: [] }
