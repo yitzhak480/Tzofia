@@ -270,20 +270,21 @@ module.exports = [
   F({
     slug: 'yalta', spot2: 'ילתא', name: L('ילתא', 'Yalta'),
     summary: L('אשת רב נחמן, ממשפחת ראשי הגולה, ששברה ארבע מאות כדי יין.', 'Rav Nachman’s wife, of the family of the Heads of the Exile, who broke four hundred jars of wine.'),
-    rel: [to('spouse', 'rav-nachman'), { ...to('ancestor', 'nechemya-rosh-hagola'), uncertain: true }], sources: [L('ברכות נא ע״ב', 'Berachot 51b'), L('חולין קט ע״ב', 'Chullin 109b')],
+    rel: [to('spouse', 'rav-nachman'), { ...to('ancestor', 'nechemya-rosh-hagola'), uncertain: true }, { ...to('father', 'rabba-bar-avuha'), uncertain: true }], sources: [L('ברכות נא ע״ב', 'Berachot 51b'), L('חולין קט ע״ב', 'Chullin 109b'), L('חולין קכד ע״א', 'Chullin 124a'), L('יבמות פ ע״ב', 'Yevamot 80b'), IRSG],
     sections: [
       sec('ילתא', 'ילתא, אשתו של רב נחמן, הייתה ממשפחת ראשי הגולה. כשעולא, האורח, לא שלח לה מכוס של ברכה, קמה בכעס ושברה ארבע מאות כדי יין (ברכות נא ע״ב). היא גם אמרה: "כל דאסר לן רחמנא – שרא לן כוותיה" – לכל דבר שאסרה התורה התירה דבר דומה (חולין קט ע״ב).', 'Yalta', 'Yalta, Rav Nachman’s wife, was of the family of the Heads of the Exile. When Ulla, the guest, did not send her from the cup of blessing, she rose in anger and broke four hundred jars of wine (Berachot 51b). She also said: "for everything the Torah forbade us, it permitted us something like it" (Chullin 109b).'),
-      sec('סימן השאלה', 'באילן שלנו היא מצאצאי נחמיה ראש הגולה בסימן שאלה, משום שלא ידוע בוודאות בתו של מי הייתה.', 'The Question Mark', 'On our tree she is a descendant of Nechemyah, Head of the Exile, with a question mark, since it is not known for certain whose daughter she was.'),
+      sec('בתו של מי?', 'ידוע שילתא הייתה בתו של ראש גולה – רב נחמן נקרא "חתניה דבי נשיאה", חתנו של בית ראש הגולה (חולין קכד ע״א) – אבל לא ידוע של מי. האפשרות המרכזית היא שהייתה בתו של רבה בר אבוה, שהיה מבית ראש הגולה (איגרת רב שרירא גאון), וכך משתמע גם מהגמרא ביבמות (פ ע״ב); אך רבה בר אבוה עצמו כנראה לא היה ראש הגולה. לכן באילן שלנו היא מצאצאי ראשי הגולה בסימן שאלה, ובאתר היא מקושרת לרבה בר אבוה כאביה בסימן שאלה.', 'Whose Daughter?', 'It is known that Yalta was the daughter of a Head of the Exile – Rav Nachman is called the son-in-law of the Exilarch’s house (Chullin 124a) – but not of which one. The main possibility is that she was the daughter of Rabba bar Avuha, who was of the Exilarch’s family (the Letter of Rav Sherira Gaon), as is also implied by the Gemara in Yevamot (80b); but Rabba bar Avuha himself was probably not Head of the Exile. So on our tree she descends from the Heads of the Exile with a question mark, and on the site she is linked to Rabba bar Avuha as her father with a question mark.'),
     ],
   }),
   A({
     slug: 'rabba-bar-avuha', spot2: 'רבה בר אבוה', roles: [GEN2],
     name: L('רבה בר אבוה', 'Rabba bar Avuha'),
     summary: L('ממשפחת ראשי הגולה, תלמיד רב ורבו של רב נחמן, שפגש את אליהו.', 'Of the family of the Heads of the Exile, Rav’s student and Rav Nachman’s teacher, who met Eliyahu.'),
-    rel: [to('teacher', 'rav-abba-arikha')], sources: [L('בבא מציעא קיד ע״א – ע״ב', 'Bava Metzia 114a–b'), TTA],
+    rel: [to('teacher', 'rav-abba-arikha')], sources: [L('בבא מציעא קיד ע״א – ע״ב', 'Bava Metzia 114a–b'), IRSG, L('יבמות פ ע״ב', 'Yevamot 80b'), TTA],
     sections: [
       sec('רבה בר אבוה ואליהו', 'הגמרא (בבא מציעא קיד ע״א – ע״ב) מספרת שרבה בר אבוה מצא את אליהו הנביא עומד בבית קברות של גויים, והכניס אותו אליהו לגן עדן, ואמר לו: "פשוט גלימך, שקול מהני טרפי" – ולקח עלים, ושמע קול "מי מבלה עולמו כרבה בר אבוה?".', 'Rabba bar Avuha and Eliyahu', 'The Gemara (Bava Metzia 114a–b) relates that Rabba bar Avuha found Eliyahu the prophet standing in a cemetery of gentiles, and Eliyahu brought him into Gan Eden and told him: "spread out your cloak and take of these leaves" – and he took leaves, and heard a voice: "who uses up his world like Rabba bar Avuha?".'),
       TS('הוא היה ממשפחת ראשי הגולה ותלמידו של רב, ורב נחמן היה תלמידו.', 'He was of the family of the Heads of the Exile and Rav’s student, and Rav Nachman was his student.'),
+      sec('ילתא', 'לפי האפשרות המרכזית ילתא, אשת רב נחמן, הייתה בתו (איגרת רב שרירא גאון; יבמות פ ע״ב), ולכן היא מקושרת אליו בסימן שאלה. ידוע שילתא הייתה בתו של ראש גולה, אבל רבה בר אבוה עצמו כנראה לא היה ראש הגולה, אלא בן למשפחתו – ולכן אין זה ודאי.', 'Yalta', 'By the main possibility Yalta, Rav Nachman’s wife, was his daughter (the Letter of Rav Sherira Gaon; Yevamot 80b), so she is linked to him with a question mark. It is known that Yalta was the daughter of a Head of the Exile, but Rabba bar Avuha himself was probably not Head of the Exile, only of his family – so this is not certain.'),
     ],
   }),
   A({

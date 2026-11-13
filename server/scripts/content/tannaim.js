@@ -160,7 +160,7 @@ const sages = [
     sections: one('גם זו לטובה', 'על כל דבר שקרה לו היה אומר "גם זו לטובה". הגמרא (תענית כא ע״א) מספרת שנשלח עם תיבה של אבנים טובות לקיסר, ובדרך גנבו אותן ומילאו את התיבה עפר – ואמר "גם זו לטובה". העפר התגלה כעפר של אברהם אבינו, שהופך לחרבות ולחצים, והקיסר ניצח בו. רבי עקיבא למד ממנו עשרים ושתיים שנה את דרך הדרשה ב"ריבוי ומיעוט".', 'This Too Is for the Good', 'Of everything that happened to him he would say "this too is for the good". The Gemara (Taanit 21a) relates that he was sent with a chest of precious stones to the emperor, and on the way they were stolen and the chest filled with earth – and he said "this too is for the good". The earth turned out to be the earth of Avraham Avinu, which turns into swords and arrows, and the emperor won with it. Rabbi Akiva learned from him for twenty-two years the method of expounding by "inclusion and exclusion".'),
   }),
   p({
-    slug: 'shimon-hapakuli', name: L('שמעון הפקולי', 'Shimon HaPakuli'), spot: 'שמעון הקפולי',
+    slug: 'shimon-hapakuli', name: L('שמעון הפקולי', 'Shimon HaPakuli'), spot: 'שמעון הפקולי',
     summary: L('שסידר את שמונה עשרה הברכות לפני רבן גמליאל ביבנה.', 'Who arranged the eighteen blessings before Rabban Gamliel in Yavneh.'),
     rel: [to('related', 'rabban-gamliel-deyavne')], sources: [L('ברכות כח ע״ב', 'Berachot 28b'), L('מגילה יז ע״ב', 'Megillah 17b')],
     sections: one('שמונה עשרה', 'הגמרא (ברכות כח ע״ב) אומרת: "שמעון הפקולי הסדיר שמונה עשרה ברכות לפני רבן גמליאל על הסדר ביבנה". הכינוי "הפקולי" מתפרש כסוחר בצמר גפן (פקולין).', 'The Eighteen Blessings', 'The Gemara (Berachot 28b) says: "Shimon HaPakuli arranged the eighteen blessings in order before Rabban Gamliel in Yavneh". The name "HaPakuli" is explained as a dealer in cotton (pakulin).'),

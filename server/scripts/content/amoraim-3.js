@@ -1,6 +1,7 @@
 // The Talmud tree, third band: the third generation of the Amoraim, with
 // their families. Teachers and students follow the poster's lines.
 const { L, sec, to } = require('./helpers');
+const { CHUMA } = require('./amoraim-4');
 const T2 = require('./tree-checklist-talmud');
 
 const CAT = {
@@ -36,7 +37,7 @@ module.exports = [
     name: L('רבי יהודה נשיאה ב׳', 'Rabbi Yehudah Nesiah II'),
     summary: L('בנו של רבן גמליאל הרביעי, הנשיא בימי רבי אמי ורבי אסי.', 'Son of Rabban Gamliel IV, the Nasi in the days of Rabbi Ami and Rabbi Assi.'),
     rel: [to('father', 'rabban-gamliel-4'), to('teacher', 'rabbi-yochanan')],
-    offices: [{ label: L('שנות נשיאות', 'Years as Nasi'), from: 4060, to: 4090, before: ['rabban-gamliel-4'], after: [L('הלל נשיאה', 'Hillel Nesiah')] }],
+    offices: [{ label: L('שנות נשיאות', 'Years as Nasi'), from: 4060, to: 4090, before: ['rabban-gamliel-4'], after: ['hillel-nesia'] }],
     sources: [TTA],
     sections: [
       sec('רבי יהודה נשיאה', 'רבי יהודה נשיאה השני, בנו של רבן גמליאל הרביעי, עמד בראש הנשיאות כשלושים שנה. בימיו גברו לחצי השלטון הרומי על יהודי ארץ ישראל, וחכמי טבריה – רבי אמי ורבי אסי – הנהיגו את לימוד התורה. אחריו עמד בנו, הלל נשיאה.', 'Rabbi Yehudah Nesiah', 'Rabbi Yehudah Nesiah II, son of Rabban Gamliel IV, headed the patriarchate for about thirty years. In his days the pressures of Roman rule on the Jews of the Land of Israel grew, and the sages of Tiberias – Rabbi Ami and Rabbi Assi – led Torah learning. After him came his son, Hillel Nesiah.'),
@@ -102,7 +103,7 @@ module.exports = [
     slug: 'rabbi-ami', spot2: 'רבי אמי בן נתן', roles: [GEN3, L('ראש ישיבת טבריה', 'Head of the Yeshivah of Tiberias')],
     name: L('רבי אמי בן נתן', 'Rabbi Ami'), summary: L('ראש ישיבת טבריה אחרי רבי אלעזר, חברו של רבי אסי.', 'Head of the Yeshivah of Tiberias after Rabbi Elazar, Rabbi Assi’s companion.'),
     rel: [to('teacher', 'rabbi-oshaya-rabba'), to('teacher', 'rabbi-yochanan'), to('teacher', 'rabbi-elazar-ben-pedat'), to('plugta', 'rabbi-assi')],
-    offices: [HEAD('ראש ישיבת טבריה', 'Head of the Yeshivah of Tiberias', 4039, 4070, ['rabbi-elazar-ben-pedat'], [L('רבי ירמיה', 'Rabbi Yirmeyah')])],
+    offices: [HEAD('ראש ישיבת טבריה', 'Head of the Yeshivah of Tiberias', 4039, 4070, ['rabbi-elazar-ben-pedat'], ['rabbi-yirmeya'])],
     sources: [L('מגילה כב ע״א', 'Megillah 22a'), L('בבא בתרא ח ע״א', 'Bava Batra 8a'), TTA],
     sections: [
       sec('רבי אמי', 'רבי אמי, כהן, עמד בראש ישיבת טבריה אחרי רבי אלעזר. הגמרא (בבא בתרא ח ע״א) מספרת שחייב את בני העיר לבנות חומה, והלך עם רבי אסי לבדוק את העיירות בארץ ישראל ולהעמיד בהן מלמדי תינוקות.', 'Rabbi Ami', 'Rabbi Ami, a Kohen, headed the Yeshivah of Tiberias after Rabbi Elazar. The Gemara relates that he went with Rabbi Assi to inspect the towns of the Land of Israel and to set up teachers of children in them.'),
@@ -117,6 +118,7 @@ module.exports = [
     sections: [
       sec('אגדות רבה בר בר חנה', 'הגמרא (בבא בתרא עג ע״א – עד ע״ב) מביאה את סיפוריו המופלאים של רבה בר בר חנה: על הגל שגובהו שלוש מאות פרסה, על הדג שחשבוהו לאי, על האווזים השמנים, ועל מתי מדבר. המפרשים הסבירו שאלה משלים ורמזים לסודות התורה.', 'The Tales of Rabba bar bar Chana', 'The Gemara (Bava Batra 73a–74b) brings Rabba bar bar Chana’s wondrous tales: of the wave three hundred parasangs high, of the fish they took for an island, of the fat geese, and of the dead of the wilderness. The commentators explained these as parables and hints at the secrets of the Torah.'),
       TS(`רבותיו היו רבי יוחנן ורבי אלעזר, והוא ${NECHUTEI} יש דעה שהוא רבה בר חנה, בן אחיו של רבי חייא, ששמו נכתב בקיצור – ולכן הם מקושרים בסימן שאלה.`, `His teachers were Rabbi Yochanan and Rabbi Elazar. ${NECHUTEI_EN} There is an opinion that he is Rabba bar Chana, Rabbi Chiya’s nephew, with his name written short – so they are linked with a question mark.`),
+      CHUMA,
     ],
   }),
   A({
@@ -131,17 +133,17 @@ module.exports = [
   A({
     slug: 'rav-chanina-achi-rabba', spot2: 'רב חנינא (אחי רבה?)', roles: [GEN3],
     name: L('רב חנינא (אחי רבה?)', 'Rav Chanina (Rabba’s brother?)'), summary: L('אולי אחיו של רבה בר נחמני; עלה לארץ ישראל.', 'Perhaps Rabba bar Nachmani’s brother; he went up to the Land of Israel.'),
-    rel: [maybe('father', 'nachmani'), maybe('sibling', 'rabba'), maybe('sibling', 'kaylil'), to('sibling', 'rav-oshaya-achi-rabba'), to('teacher', 'rabbi-yochanan')], sources: [L('פסחים קיג ע״ב', 'Pesachim 113b'), L('כתובות קיא ע״א', 'Ketubot 111a')],
+    rel: [maybe('father', 'nachmani'), maybe('sibling', 'rabba'), maybe('sibling', 'kaylil'), to('sibling', 'rav-oshaya-achi-rabba'), to('teacher', 'rabbi-yochanan')], sources: [L('פסחים קיג ע״ב', 'Pesachim 113b'), L('כתובות קיא ע״א', 'Ketubot 111a'), L('ספר יוחסין', 'Sefer Yuchasin'), L('מהרש״א, סנהדרין יד ע״א', 'Maharsha, Sanhedrin 14a')],
     sections: [
       sec('רב חנינא ורב אושעיא', 'רב חנינא ורב אושעיא עלו לארץ ישראל ולמדו לפני רבי יוחנן, והתפרנסו מתפירת מנעלים (פסחים קיג ע״ב). אחיהם רבה נשאר בבבל, ושלחו לו לעלות אחריהם.', 'Rav Chanina and Rav Oshaya', 'Rav Chanina and Rav Oshaya went up to the Land of Israel and learned before Rabbi Yochanan, earning their living by making shoes (Pesachim 113b). Their brother Rabba stayed in Bavel, and they sent him to come up after them.'),
-      sec('סימן השאלה', 'באילן שלנו רב חנינא ורב אושעיא הם בניו של נחמני ואחיו של רבה בסימן שאלה, משום שלא ודאי שהם אחיו של רבה.', 'The Question Mark', 'On our tree Rav Chanina and Rav Oshaya are Nachmani’s sons and Rabba’s brothers with a question mark, since it is not certain that they were Rabba’s brothers.'),
+      sec('סימן השאלה', 'באילן שלנו רב אושעיא ורב חנינא הם בניו של נחמני ואחיו של רבה בסימן שאלה. הגמרא (כתובות קיא ע״א) מספרת שאחיו של רבה, שישבו בארץ ישראל, שלחו לו לעלות וללמוד מפי רבי יוחנן – אבל אינה מזכירה את שמותיהם. יש הסוברים שאחים אלה היו רב אושעיא ורב חנינא (ספר יוחסין; מהרש״א על סנהדרין יד ע״א), שעלו לארץ ישראל ולמדו לפני רבי יוחנן, ושמותיהם דומים; אך זה אינו ודאי.', 'The Question Mark', 'On our tree Rav Oshaya and Rav Chanina are Nachmani’s sons and Rabba’s brothers with a question mark. The Gemara (Ketubot 111a) relates that Rabba’s brothers, who lived in the Land of Israel, sent to him to come up and learn from Rabbi Yochanan – but does not name them. Some hold that these brothers were Rav Oshaya and Rav Chanina (Sefer Yuchasin; the Maharsha on Sanhedrin 14a), who went up to the Land of Israel and learned before Rabbi Yochanan, and whose names match; but it is not certain.'),
     ],
   }),
   A({
     slug: 'rav-oshaya-achi-rabba', spot2: 'רב אושעיא', roles: [GEN3],
     name: L('רב אושעיא (אחי רבה?)', 'Rav Oshaya (Rabba’s brother?)'), summary: L('אולי אחיו של רבה בר נחמני; עלה לארץ ישראל ולמד לפני רבי יוחנן.', 'Perhaps Rabba bar Nachmani’s brother; he went up to the Land of Israel and learned before Rabbi Yochanan.'),
-    rel: [maybe('father', 'nachmani'), maybe('sibling', 'rabba'), maybe('sibling', 'kaylil'), to('teacher', 'rabbi-yochanan')], sources: [L('פסחים קיג ע״ב', 'Pesachim 113b')],
-    sections: [TS('רב אושעיא עלה לארץ ישראל עם אחיו רב חנינא, ולמד לפני רבי יוחנן.', 'Rav Oshaya went up to the Land of Israel with his brother Rav Chanina, and learned before Rabbi Yochanan.'), sec('סימן השאלה', 'באילן שלנו רב אושעיא ורב חנינא הם בניו של נחמני ואחיו של רבה בסימן שאלה, משום שלא ודאי שהם אחיו של רבה.', 'The Question Mark', 'On our tree Rav Oshaya and Rav Chanina are Nachmani’s sons and Rabba’s brothers with a question mark, since it is not certain that they were Rabba’s brothers.')],
+    rel: [maybe('father', 'nachmani'), maybe('sibling', 'rabba'), maybe('sibling', 'kaylil'), to('teacher', 'rabbi-yochanan')], sources: [L('פסחים קיג ע״ב', 'Pesachim 113b'), L('כתובות קיא ע״א', 'Ketubot 111a'), L('ספר יוחסין', 'Sefer Yuchasin'), L('מהרש״א, סנהדרין יד ע״א', 'Maharsha, Sanhedrin 14a')],
+    sections: [TS('רב אושעיא עלה לארץ ישראל עם אחיו רב חנינא, ולמד לפני רבי יוחנן.', 'Rav Oshaya went up to the Land of Israel with his brother Rav Chanina, and learned before Rabbi Yochanan.'), sec('סימן השאלה', 'באילן שלנו רב אושעיא ורב חנינא הם בניו של נחמני ואחיו של רבה בסימן שאלה. הגמרא (כתובות קיא ע״א) מספרת שאחיו של רבה, שישבו בארץ ישראל, שלחו לו לעלות וללמוד מפי רבי יוחנן – אבל אינה מזכירה את שמותיהם. יש הסוברים שאחים אלה היו רב אושעיא ורב חנינא (ספר יוחסין; מהרש״א על סנהדרין יד ע״א), שעלו לארץ ישראל ולמדו לפני רבי יוחנן, ושמותיהם דומים; אך זה אינו ודאי.', 'The Question Mark', 'On our tree Rav Oshaya and Rav Chanina are Nachmani’s sons and Rabba’s brothers with a question mark. The Gemara (Ketubot 111a) relates that Rabba’s brothers, who lived in the Land of Israel, sent to him to come up and learn from Rabbi Yochanan – but does not name them. Some hold that these brothers were Rav Oshaya and Rav Chanina (Sefer Yuchasin; the Maharsha on Sanhedrin 14a), who went up to the Land of Israel and learned before Rabbi Yochanan, and whose names match; but it is not certain.')],
   }),
   // ── Sura ──
   A({
@@ -171,7 +173,7 @@ module.exports = [
     offices: [HEAD('ראש ישיבת סורא', 'Head of the Sura yeshivah', 4060, 4068, ['rav-huna'], ['rabba-bar-rav-huna'])],
     sources: [IRSG, L('מכות י ע״א', 'Makkot 10a'), L('בבא בתרא יב ע״ב', 'Bava Batra 12b'), L('שבת קמ ע״ב', 'Shabbat 140b')],
     sections: [
-      sec('רב חסדא', 'רב חסדא היה חריף מאוד ועשיר, והקים בסורא בית מדרש משלו. הגמרא (מכות י ע״א) מספרת שמלאך המוות לא יכול לגשת אליו כל זמן שלא פסק פיו מתלמודו. בבא בתרא (יב ע״ב) מביאה את בתו, שאמר לה אביה מי היא תבחר, והיא אמרה "תרווייהו" – ונישאה לרמי בר חמא ואחר כך לרבא.', 'Rav Chisda', 'Rav Chisda was very sharp and wealthy, and set up his own study hall in Sura. The Gemara (Makkot 10a) relates that the angel of death could not approach him as long as his mouth did not stop from his learning. Bava Batra (12b) tells of his daughter, who was asked whom she would choose, and said "both" – and married Rami bar Chama and afterwards Rava.'),
+      sec('רב חסדא', 'רב חסדא היה חריף מאוד ועשיר, והקים בסורא בית מדרש משלו. הגמרא (מכות י ע״א) מספרת שמלאך המוות לא יכול לגשת אליו כל זמן שלא פסק פיו מתלמודו. בבא בתרא (יב ע״ב) מביאה את בתו, שאמר לה אביה מי היא תבחר, והיא אמרה "תרווייהו" – ונישאה לרמי בר חמא ואחר כך לרבא; ובתו האחרת נישאה לרב עוקבא בר חמא, אחיו של רמי.', 'Rav Chisda', 'Rav Chisda was very sharp and wealthy, and set up his own study hall in Sura. The Gemara (Makkot 10a) relates that the angel of death could not approach him as long as his mouth did not stop from his learning. Bava Batra (12b) tells of his daughter, who was asked whom she would choose, and said "both" – and married Rami bar Chama and afterwards Rava; and his other daughter married Rav Ukva bar Chama, Rami’s brother.'),
       TS('רב חסדא היה ראש המתיבתא הכוללת. רבותיו היו רב, רב הונא – שאחריו עמד בראש ישיבת סורא – ורב חנן בר רבא. אחריו עמד בראש הישיבה רבה בר רב הונא.', 'Rav Chisda was Rosh HaMetivta HaKolelet. His teachers were Rav, Rav Huna – whom he succeeded at the head of the Sura yeshivah – and Rav Chanan bar Rava. After him Rabba bar Rav Huna headed the yeshivah.'),
     ],
   }),
@@ -195,7 +197,7 @@ module.exports = [
     slug: 'rav-yitzhak-berei-derav-yehuda', spot2: 'רב יצחק בריה דרב יהודה', roles: [GEN3],
     name: L('רב יצחק בריה דרב יהודה', 'Rav Yitzhak son of Rav Yehudah'), summary: L('בנו של רב יהודה, מייסד ישיבת פומבדיתא.', 'Son of Rav Yehudah, founder of the Pumbedita yeshivah.'),
     rel: [to('father', 'rav-yehuda')], sources: [L('קידושין כט ע״ב', 'Kiddushin 29b')],
-    sections: one('רב יצחק', 'רב יצחק בנו של רב יהודה נזכר בגמרא בדיון בין אביו לבין בנו על נישואיו (קידושין כט ע״ב).', 'Rav Yitzhak', 'Rav Yitzhak son of Rav Yehudah is mentioned in the Gemara in his father’s discussion of his marriage (Kiddushin 29b).'),
+    sections: [...one('רב יצחק', 'רב יצחק בנו של רב יהודה נזכר בגמרא בדיון בין אביו לבין בנו על נישואיו (קידושין כט ע״ב). בנו היה איסי, אביה של חומא.', 'Rav Yitzhak', 'Rav Yitzhak son of Rav Yehudah is mentioned in the Gemara in his father’s discussion of his marriage (Kiddushin 29b). His son was Isi, Chuma’s father.'), CHUMA],
   }),
   A({
     slug: 'kaylil', spot2: 'כייליל', name: L('כייליל', 'Kaylil'),
@@ -219,14 +221,14 @@ module.exports = [
     sources: [IRSG, L('בבא מציעא פו ע״א', 'Bava Metzia 86a'), L('ברכות סד ע״א', 'Berachot 64a'), L('ראש השנה יח ע״א', 'Rosh Hashanah 18a')],
     sections: [
       sec('עוקר הרים', 'רבה, שנקרא בגמרא בפשטות "רבה", היה חריף מאוד ונקרא "עוקר הרים", וחברו רב יוסף נקרא "סיני". שאלו בארץ ישראל מי מהם יקדם, ושלחו: "סיני עדיף"; אבל רב יוסף לא קיבל את הנשיאות, ורבה מלך עשרים ושתיים שנה (ברכות סד ע״א). הגמרא (בבא מציעא פו ע״א) מספרת שבשמים נחלקו בהלכה, ושאלו מי יכריע – "רבה בר נחמני", ושלחו לקחת אותו; ובשעת פטירתו אמר "טהור, טהור".', 'Uprooter of Mountains', 'Rabba, called in the Gemara simply "Rabba", was very sharp and was called "uprooter of mountains", and his colleague Rav Yosef was called "Sinai". They asked in the Land of Israel which of them should come first, and were told: "Sinai is preferable"; but Rav Yosef did not accept the headship, and Rabba ruled twenty-two years (Berachot 64a). The Gemara (Bava Metzia 86a) relates that in heaven they disagreed about a law and asked who should decide – "Rabba bar Nachmani", and sent to take him; at his death he said "pure, pure".'),
-      TS('רבה היה ראש המתיבתא הכוללת. רבותיו היו רב הונא ורב יהודה; רב הונא מרבותיו גם בשלשלת הקבלה שמונה הרמב״ם. חברו לתורה ובר פלוגתיה היה רב יוסף, שעמד אחריו בראש הישיבה. אחיו היה כייליל, ואת אביי, בן אחיו, גידל בביתו; ויש אומרים שגם רב אושעיא ורב חנינא היו אחיו.', 'Rabba was Rosh HaMetivta HaKolelet. His teachers were Rav Huna and Rav Yehudah; Rav Huna is his teacher also in the chain of tradition listed by the Rambam. His study partner and sparring partner was Rav Yosef, who headed the yeshivah after him. His brother was Kaylil, and he raised Abaye, his nephew, in his home; and some say Rav Oshaya and Rav Chanina were also his brothers.'),
+      TS('רבה היה ראש המתיבתא הכוללת. רבותיו היו רב הונא ורב יהודה; רב הונא מרבותיו גם בשלשלת הקבלה שמונה הרמב״ם. חברו לתורה ובר פלוגתיה היה רב יוסף, שעמד אחריו בראש הישיבה. אחיו היה כייליל, ואת אביי, בן אחיו, גידל בביתו; ואחים נוספים שלו ישבו בארץ ישראל ושלחו לו לעלות אליהם (כתובות קיא ע״א) – ויש אומרים שהם רב אושעיא ורב חנינא.', 'Rabba was Rosh HaMetivta HaKolelet. His teachers were Rav Huna and Rav Yehudah; Rav Huna is his teacher also in the chain of tradition listed by the Rambam. His study partner and sparring partner was Rav Yosef, who headed the yeshivah after him. His brother was Kaylil, and he raised Abaye, his nephew, in his home; and other brothers of his lived in the Land of Israel and sent to him to come up to them (Ketubot 111a) – some say these were Rav Oshaya and Rav Chanina.'),
     ],
   }),
   A({
     slug: 'rav-yosef', spot2: 'רב יוסף בר חייא', roles: [GEN3, KOLELET, L('ראש ישיבת פומבדיתא', 'Head of the Pumbedita yeshivah')],
     name: L('רב יוסף בר חייא', 'Rav Yosef'), summary: L('"סיני", בקי בכל התורה, ראש ישיבת פומבדיתא אחרי רבה.', '"Sinai", master of all the Torah, head of the Pumbedita yeshivah after Rabba.'),
     rel: [to('teacher', 'rav-nachman'), to('teacher', 'rav-huna'), to('teacher', 'rav-yehuda'), to('plugta', 'rabba')],
-    offices: [HEAD('ראש ישיבת פומבדיתא', 'Head of the Pumbedita yeshivah', 4082, 4085, ['rabba'], [L('אביי', 'Abaye')])],
+    offices: [HEAD('ראש ישיבת פומבדיתא', 'Head of the Pumbedita yeshivah', 4082, 4085, ['rabba'], ['abaye'])],
     sources: [IRSG, L('ברכות סד ע״א', 'Berachot 64a'), L('נדרים מא ע״א', 'Nedarim 41a'), L('פסחים סח ע״ב', 'Pesachim 68b')],
     sections: [
       sec('סיני', 'רב יוסף נקרא "סיני" משום שהיה בקי בכל המשניות והברייתות. כשהציעו לו להיות ראש הישיבה לפני רבה, סירב, משום שאמרו לו האיצטגנינים שימלוך שתי שנים בלבד. לעת זקנתו חלה ושכח את תלמודו, ותלמידו אביי החזיר לו אותו (נדרים מא ע״א). הוא היה עיוור, ואמר: "אי לאו האי יומא דקא גרים – כמה יוסף איכא בשוקא" (פסחים סח ע״ב).', 'Sinai', 'Rav Yosef was called "Sinai" since he knew all the Mishnayot and baraitot. When they offered him the headship before Rabba, he refused, since the astrologers had told him he would rule only two years. In his old age he fell ill and forgot his learning, and his student Abaye restored it to him (Nedarim 41a). He was blind, and said: "Were it not for this day (Shavuot) – how many Yosefs are there in the market" (Pesachim 68b).'),
@@ -272,7 +274,7 @@ module.exports = [
   A({
     slug: 'abba-mari-huna-mar', spot2: 'אבא מרי (הונא מר)', roles: [L('ראש הגולה', 'Head of the Exile')],
     name: L('אבא מרי (הונא מר)', 'Abba Mari (Huna Mar)'), summary: L('ראש הגולה אחרי מר עוקבן.', 'Head of the Exile after Mar Ukvan.'),
-    rel: [], offices: [RG(['mar-ukvan-detzutzita'], [], 4060, 4080)], sources: [SOZ],
+    rel: [], offices: [RG(['mar-ukvan-detzutzita'], ['rabbana-ukva-2'], 4060, 4080)], sources: [SOZ],
     sections: one('אבא מרי', 'לפי סדר עולם זוטא עמד אבא מרי, הנקרא גם הונא מר, בראש הגולה אחרי מר עוקבן דצוציתא, בימיהם של רבה ורב יוסף.', 'Abba Mari', 'According to Seder Olam Zuta, Abba Mari, also called Huna Mar, headed the Exile after Mar Ukvan of Tzutzita, in the days of Rabba and Rav Yosef.'),
   }),
 ];

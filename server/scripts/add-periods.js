@@ -269,6 +269,7 @@ const BATCHES = [
   { category: null, orderBase: 0, entries: require('./content/amoraim-1'), order: [], relink: {} },
   { category: null, orderBase: 100, entries: require('./content/amoraim-2'), order: [], relink: {} },
   { category: null, orderBase: 200, entries: require('./content/amoraim-3'), order: [], relink: {} },
+  { category: null, orderBase: 300, entries: require('./content/amoraim-4'), order: [], relink: {} },
   {
     category: 'beit-chashmonai',
     entries: require('./content/second-temple-houses').chashmonai,
@@ -395,7 +396,7 @@ const main = async () => {
         name: e.name, titles: [], roles: e.roles || [], life: e.life ? { from: e.life[0], to: e.life[1] } : { from: null, to: null },
         summary: e.summary, content: { he: html(e.sections, 'he'), en: html(e.sections, 'en') },
         sources: e.sources.map((s) => s.he), sourcesEn: e.sources.map((s) => s.en),
-        treeSpots: [...(e.spot ? spotOf(e.spot) : []), ...(e.spot2 ? spot2Of(e.spot2) : [])], cardColor: e.color || doc.cardColor || GROUP[e.spot] || 't1-shvatim', published: true,
+        treeSpots: [...(e.spot ? spotOf(e.spot) : []), ...[].concat(e.spot2 || []).flatMap(spot2Of)], cardColor: e.color || doc.cardColor || GROUP[e.spot] || 't1-shvatim', published: true,
         titles: e.titles || [],
       });
       if (e.offices) doc.offices = e.offices.map((o) => ({ label: o.label, from: o.from ?? null, to: o.to ?? null, note: o.note || { he: '', en: '' }, before: [], after: [] }));
