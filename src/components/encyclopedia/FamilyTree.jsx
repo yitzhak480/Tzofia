@@ -66,6 +66,7 @@ const FamilyTree = ({ person, name }) => {
       {row(he ? (person.gender === 'female' ? 'מצאצאיה' : 'מצאצאיו') : 'Descendants', g.descendants, 'is-side')}
       {g.students.length > 0 && line}
       {row(w.students, g.students, 'is-side')}
+      {row(he ? (g.plugta.length > 1 ? 'בני פלוגתא' : 'בר פלוגתא') : 'Study partners (bar plugta)', g.plugta, 'is-side')}
       {roles.some((r) => r.after.length) && line}
       {roles.map((r, i) => <React.Fragment key={`a${i}`}>{row(r.afterTitle, r.after, 'is-side is-role')}</React.Fragment>)}
     </div>

@@ -83,7 +83,7 @@ module.exports = [
     slug: 'rabbi-shmuel-bar-nachmani', spot2: 'רבי שמואל בר נחמני', roles: [GEN2],
     name: L('רבי שמואל בר נחמני', 'Rabbi Shmuel bar Nachmani'),
     summary: L('גדול בעלי האגדה, תלמיד רבי יונתן.', 'The greatest of the masters of aggadah, student of Rabbi Yonatan.'),
-    rel: [to('teacher', 'rabbi-yochanan'), to('teacher', 'rabbi-yonatan-ben-elazar'), to('related', 'rabbi-yaakov-bar-idi')],
+    rel: [to('teacher', 'rabbi-yochanan'), to('teacher', 'rabbi-yonatan-ben-elazar'), to('plugta', 'rabbi-yaakov-bar-idi')],
     sources: [L('סנהדרין צז ע״ב', 'Sanhedrin 97b'), L('בבא בתרא טו ע״א', 'Bava Batra 15a'), TTA],
     sections: [
       sec('בעל אגדה', 'רבי שמואל בר נחמני מוסר בגמרא אגדות רבות בשם רבו רבי יונתן, ובהן "תיפח עצמן של מחשבי קיצין" (סנהדרין צז ע״ב), ודעתו ש"איוב לא היה ולא נברא, אלא משל היה" (בבא בתרא טו ע״א). בארץ ישראל דרש לפני הציבור, ונשלח גם למלכות בענייני הציבור.', 'A Master of Aggadah', 'Rabbi Shmuel bar Nachmani hands down in the Gemara many aggadot in the name of his teacher Rabbi Yonatan, among them "may the bones of those who calculate the end be blasted" (Sanhedrin 97b), and the view that "Iyov never existed, but was a parable" (Bava Batra 15a).'),
@@ -94,7 +94,7 @@ module.exports = [
     slug: 'rabbi-yaakov-bar-idi', spot2: 'רבי יעקב בר אידי', roles: [GEN2],
     name: L('רבי יעקב בר אידי', 'Rabbi Yaakov bar Idi'),
     summary: L('תלמיד רבי יהושע בן לוי ורבי יוחנן.', 'Student of Rabbi Yehoshua ben Levi and Rabbi Yochanan.'),
-    rel: [to('teacher', 'rabbi-yehoshua-ben-levi'), to('teacher', 'rabbi-yochanan'), to('related', 'rabbi-shmuel-bar-nachmani')], sources: [L('ברכות ד ע״א', 'Berachot 4a'), TTA],
+    rel: [to('teacher', 'rabbi-yehoshua-ben-levi'), to('teacher', 'rabbi-yochanan'), to('plugta', 'rabbi-shmuel-bar-nachmani')], sources: [L('ברכות ד ע״א', 'Berachot 4a'), TTA],
     sections: [
       sec('שמא יגרום החטא', 'רבי יעקב בר אידי דרש את הפסוק שבו פחד יעקב מעשו אף שה׳ הבטיחו "והנה אנכי עמך": "שמא יגרום החטא" (ברכות ד ע״א).', 'Lest Sin Cause It', 'Rabbi Yaakov bar Idi expounded the verse in which Yaakov feared Esav although G-d had promised him "Behold, I am with you": "lest sin cause it" (Berachot 4a).'),
       TS('רבותיו היו רבי יהושע בן לוי ורבי יוחנן, וחברו לתורה היה רבי שמואל בר נחמני.', 'His teachers were Rabbi Yehoshua ben Levi and Rabbi Yochanan, and his study partner was Rabbi Shmuel bar Nachmani.'),
@@ -207,21 +207,21 @@ module.exports = [
   // ── Nehardea, Pumbedita and Mechoza ──
   A({
     slug: 'nachmani', spot2: 'נחמני', roles: [GEN2],
-    name: L('נחמני', 'Nachmani'), summary: L('אביהם של רבה ושל כיילל, אבי אביי.', 'Father of Rabba and of Kaylil, Abaye’s father.'),
+    name: L('נחמני', 'Nachmani'), summary: L('אביהם של רבה ושל כייליל, סבו של אביי.', 'Father of Rabba and of Kaylil, Abaye’s grandfather.'),
     rel: [], sources: [L('גיטין לד ע״ב', 'Gittin 34b'), TTA],
-    sections: one('נחמני', 'נחמני ידוע כאביו של רבה בר נחמני, ראש ישיבת פומבדיתא, וסבו של אביי, שגדל בבית דודו רבה. לפי הגמרא (גיטין לד ע״ב) שמו האמיתי של אביי היה נחמני, על שם סבו.', 'Nachmani', 'Nachmani is known as the father of Rabba bar Nachmani, head of the Pumbedita yeshivah, and the grandfather of Abaye, who grew up in the home of his uncle Rabba. According to the Gemara (Gittin 34b) Abaye’s real name was Nachmani, after his grandfather.'),
+    sections: one('נחמני', 'נחמני ידוע כאביו של רבה בר נחמני, ראש ישיבת פומבדיתא, וסבו של אביי, שגדל בבית דודו רבה. באילן שלנו גם רב אושעיא ורב חנינא הם בניו, בסימן שאלה. לפי הגמרא (גיטין לד ע״ב) שמו האמיתי של אביי היה נחמני, על שם סבו.', 'Nachmani', 'Nachmani is known as the father of Rabba bar Nachmani, head of the Pumbedita yeshivah, and the grandfather of Abaye, who grew up in the home of his uncle Rabba. On our tree Rav Oshaya and Rav Chanina are also his sons, with a question mark. According to the Gemara (Gittin 34b) Abaye’s real name was Nachmani, after his grandfather.'),
   }),
   A({
     slug: 'rav-eina', spot2: 'רב עינא', roles: [GEN2],
     name: L('רב עינא', 'Rav Eina'), summary: L('חברו לתורה של רב יהודה.', 'Rav Yehudah’s study partner.'),
-    rel: [to('related', 'rav-yehuda')], sources: [L('חולין קלג ע״א', 'Chullin 133a'), TTA],
+    rel: [to('plugta', 'rav-yehuda')], sources: [L('חולין קלג ע״א', 'Chullin 133a'), TTA],
     sections: [TS('רב עינא היה חברו לתורה של רב יהודה, מייסד ישיבת פומבדיתא.', 'Rav Eina was the study partner of Rav Yehudah, founder of the Pumbedita yeshivah.')],
   }),
   A({
     slug: 'rav-yehuda', spot2: 'רב יהודה בר יחזקאל', roles: [GEN2, KOLELET, L('מייסד ישיבת פומבדיתא', 'Founder of the Pumbedita yeshivah')],
     name: L('רב יהודה בר יחזקאל', 'Rav Yehudah bar Yechezkel'),
     summary: L('תלמיד רב ושמואל, שייסד את ישיבת פומבדיתא.', 'Student of Rav and Shmuel, who founded the Pumbedita yeshivah.'),
-    rel: [to('teacher', 'rav-abba-arikha'), to('teacher', 'shmuel'), to('father', 'rav-yechezkel'), to('related', 'rav-eina')],
+    rel: [to('teacher', 'rav-abba-arikha'), to('teacher', 'shmuel'), to('father', 'rav-yechezkel'), to('plugta', 'rav-eina')],
     offices: [HEAD('ראש ישיבת פומבדיתא', 'Head of the Pumbedita yeshivah', 4010, 4060, [], ['rav-huna-bar-chiya'])],
     sources: [IRSG, L('ברכות כ ע״א', 'Berachot 20a'), L('קידושין עב ע״ב', 'Kiddushin 72b'), L('ברכות כד ע״ב', 'Berachot 24b')],
     sections: [
@@ -255,7 +255,7 @@ module.exports = [
     slug: 'rav-nachman', spot2: 'רב נחמן בר יעקב', roles: [GEN2, L('ראש ישיבת נהרדעא', 'Head of the Nehardea yeshivah'), L('דיין', 'Judge')],
     name: L('רב נחמן בר יעקב', 'Rav Nachman bar Yaakov'),
     summary: L('תלמיד שמואל ודיינו של ראש הגולה, שההלכה כמותו בדינים.', 'Shmuel’s student and the Exilarch’s judge, whom the law follows in money matters.'),
-    rel: [to('teacher', 'shmuel'), to('teacher', 'rabba-bar-avuha'), to('spouse', 'yalta'), to('related', 'rav-sheshet')],
+    rel: [to('teacher', 'shmuel'), to('teacher', 'rabba-bar-avuha'), to('spouse', 'yalta'), to('plugta', 'rav-sheshet')],
     offices: [
       HEAD('ראש ישיבת נהרדעא', 'Head of the Nehardea yeshivah', 4010, 4018, ['shmuel'], []),
       HEAD('מרביץ תורה במחוזא', 'Teacher of Torah in Mechoza', 4018, 4079, [], []),

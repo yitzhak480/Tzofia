@@ -41,6 +41,7 @@ export const RELATION_TYPES = [
   { id: 'descendant', he: 'מצאצאיו (כמה דורות אחר כך)', en: 'Descendant (generations later)', heMany: 'מצאצאיו', enMany: 'Descendants' },
   { id: 'teacher', he: 'רב / מורה', en: 'Teacher', heMany: 'רבותיו', enMany: 'Teachers' },
   { id: 'student', he: 'תלמיד', en: 'Student', heMany: 'תלמידיו', enMany: 'Students' },
+  { id: 'plugta', he: 'בר פלוגתא / חברותא', en: 'Study partner (bar plugta)', heMany: 'בני פלוגתא', enMany: 'Study partners' },
   { id: 'related', he: 'ערך קשור', en: 'Related', heMany: 'ערכים קשורים', enMany: 'Related' },
   { id: 'prophet', he: 'נביא בימיו', en: 'Prophet in his days', heMany: 'נביאים בימיו', enMany: 'Prophets in his days' },
   { id: 'king', he: 'מלך בימיו', en: 'King in his days', heMany: 'מלכים בימיו', enMany: 'Kings in his days' },
@@ -51,13 +52,14 @@ export const genderWords = (person, lang) => {
   const female = person.gender === 'female';
   if (lang !== 'he') {
     return {
-      teachers: 'Teachers', students: 'Students', siblings: 'and siblings', family: 'Family',
+      teachers: 'Teachers', students: 'Students', plugta: 'study partners', siblings: 'and siblings', family: 'Family',
       spouses: female ? 'Husband' : 'Wives', before: 'Before in the role', after: 'After in the role', succession: 'role',
     };
   }
   return {
     teachers: female ? 'רבותיה' : 'רבותיו',
     students: female ? 'תלמידיה' : 'תלמידיו',
+    plugta: 'בני פלוגתא',
     siblings: female ? 'ואחיה' : 'ואחיו',
     family: 'משפחה',
     spouses: female ? 'בעלה' : 'נשותיו',
@@ -76,6 +78,7 @@ export const familyTitle = (person, lang) => {
     (g.parents.length || g.siblings.length || g.spouses.length || g.children.length || g.ancestors.length || g.descendants.length) && w.family,
     g.teachers.length && w.teachers,
     g.students.length && w.students,
+    g.plugta.length && w.plugta,
     (successionOf(person).before.length || successionOf(person).after.length) && w.succession,
   ].filter(Boolean);
   if (parts.length <= 1) return parts[0] || '';
@@ -144,6 +147,7 @@ export const groupRelations = (relations = []) => {
     descendants: of('descendant'),
     teachers: of('teacher'),
     students: of('student'),
+    plugta: of('plugta'),
   };
 };
 

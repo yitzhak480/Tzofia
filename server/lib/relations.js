@@ -19,6 +19,7 @@ const INVERSE = {
   king: 'prophet',
   ancestor: 'descendant', // a line on the tree that skips generations
   descendant: 'ancestor',
+  plugta: 'plugta', // study partners / disputants (the poster's "hands" line)
 };
 
 // Relations that count as the same group when removing duplicates.

@@ -231,14 +231,14 @@ const transition = [
     slug: 'abba-bar-abba', spot2: 'אבא בר אבא', roles: [GEN0],
     name: L('אבא בר אבא (אבוה דשמואל)', 'Abba bar Abba (Shmuel’s father)'),
     summary: L('אביו של שמואל, מתלמידי רבי, שנקרא בגמרא "אבוה דשמואל".', 'Shmuel’s father, of Rebbi’s students, called in the Gemara "Shmuel’s father".'),
-    rel: [to('teacher', 'rabbi-yehuda-hanasi'), to('related', 'levi-bar-sisi')], sources: [L('ברכות יח ע״ב', 'Berachot 18b'), IRSG],
+    rel: [to('teacher', 'rabbi-yehuda-hanasi'), to('plugta', 'levi-bar-sisi')], sources: [L('ברכות יח ע״ב', 'Berachot 18b'), IRSG],
     sections: one('אבוה דשמואל', 'אבא בר אבא, שנקרא בגמרא בפשטות "אבוה דשמואל", היה ממנהיגי נהרדעא. הגמרא (ברכות יח ע״ב) מספרת שהיה ממונה על מעות יתומים, ונפטר בלי שבנו ידע היכן הפקידם, ושמואל הלך לבית הקברות לשאול אותו. הוא למד מרבי, והיה חברותא של לוי בר סיסי; בנו היה שמואל.', 'Shmuel’s Father', 'Abba bar Abba, called in the Gemara simply "Shmuel’s father", was one of the leaders of Nehardea. The Gemara (Berachot 18b) relates that he was in charge of orphans’ money, and died without his son knowing where he had placed it, and Shmuel went to the cemetery to ask him. He learned from Rebbi, and was Levi bar Sisi’s study partner; his son was Shmuel.'),
   }),
   A({
     slug: 'levi-bar-sisi', spot2: 'לוי בר סיסי', roles: [GEN0],
     name: L('לוי בר סיסי', 'Levi bar Sisi'),
     summary: L('תלמיד רבי, שירד לבבל ולימד את שמואל.', 'Rebbi’s student, who went down to Bavel and taught Shmuel.'),
-    rel: [to('teacher', 'rabbi-yehuda-hanasi'), to('related', 'abba-bar-abba')], sources: [L('ירושלמי יבמות יב, ו', 'Yerushalmi Yevamot 12:6'), L('מגילה כב ע״ב', 'Megillah 22b'), IRSG],
+    rel: [to('teacher', 'rabbi-yehuda-hanasi'), to('plugta', 'abba-bar-abba')], sources: [L('ירושלמי יבמות יב, ו', 'Yerushalmi Yevamot 12:6'), L('מגילה כב ע״ב', 'Megillah 22b'), IRSG],
     sections: one('לוי', 'לוי, שנקרא בגמרא בפשטות "לוי", היה מתלמידי רבי וחבריו. הירושלמי (יבמות יב, ו) מספר שבני סימונייא ביקשו מרבי איש שיהיה דיין, חזן ומלמד, ושלח להם את לוי בר סיסי. הוא ירד לבבל לפני רב, וישב בנהרדעא. הוא למד מרבי, לימד את שמואל, והיה חברותא של אבוה דשמואל.', 'Levi', 'Levi, called in the Gemara simply "Levi", was of Rebbi’s students and colleagues. The Yerushalmi (Yevamot 12:6) relates that the people of Simonia asked Rebbi for a man to be judge, cantor and teacher, and he sent them Levi bar Sisi. He went down to Bavel before Rav, and lived in Nehardea. He learned from Rebbi, taught Shmuel, and was the study partner of Shmuel’s father.'),
   }),
   A({
@@ -279,7 +279,7 @@ const gen1 = [
     slug: 'rabbi-yochanan', spot2: 'רבי יוחנן בר נפחא', roles: [GEN1, L('ראש ישיבת טבריה', 'Head of the Yeshivah of Tiberias'), L('מסדר התלמוד הירושלמי', 'Compiler of the Jerusalem Talmud')],
     name: L('רבי יוחנן בר נפחא', 'Rabbi Yochanan bar Nafcha'),
     summary: L('מייסד ישיבת טבריה ומסדר התלמוד הירושלמי, גדול אמוראי ארץ ישראל.', 'Founder of the Yeshivah of Tiberias and compiler of the Jerusalem Talmud, the greatest of the Amoraim of the Land of Israel.'),
-    rel: [to('teacher', 'rabbi-yehuda-hanasi'), to('father', 'nafcha'), to('related', 'reish-lakish')],
+    rel: [to('teacher', 'rabbi-yehuda-hanasi'), to('father', 'nafcha'), to('plugta', 'reish-lakish')],
     offices: [HEAD('ראש ישיבת טבריה', 'Head of the Yeshivah of Tiberias', 3990, 4039, [], ['rabbi-elazar-ben-pedat'])],
     sources: [L('בבא מציעא פד ע״א', 'Bava Metzia 84a'), L('ברכות ה ע״ב', 'Berachot 5b'), L('קידושין לא ע״ב', 'Kiddushin 31b'), L('רמב״ם, הקדמה למשנה תורה', 'Rambam, Introduction to the Mishneh Torah')],
     sections: [
@@ -292,7 +292,7 @@ const gen1 = [
     slug: 'reish-lakish', spot2: 'רבי שמעון בן לקיש', roles: [GEN1],
     name: L('רבי שמעון בן לקיש (ריש לקיש)', 'Rabbi Shimon ben Lakish (Reish Lakish)'),
     summary: L('ראש הליסטים שחזר בתשובה ונעשה חברו ובר פלוגתיה של רבי יוחנן.', 'The bandit chief who repented and became Rabbi Yochanan’s colleague and sparring partner.'),
-    rel: [to('teacher', 'bar-kappara'), to('teacher', 'rabbi-chanina-bar-chama'), to('teacher', 'rabbi-yannai'), to('spouse', 'achot-rabbi-yochanan'), to('related', 'rabbi-yochanan')],
+    rel: [to('teacher', 'bar-kappara'), to('teacher', 'rabbi-chanina-bar-chama'), to('teacher', 'rabbi-yannai'), to('spouse', 'achot-rabbi-yochanan'), to('plugta', 'rabbi-yochanan')],
     sources: [L('בבא מציעא פד ע״א', 'Bava Metzia 84a'), L('יומא ט ע״ב', 'Yoma 9b'), L('גיטין מז ע״א', 'Gittin 47a')],
     sections: one('ריש לקיש', 'ריש לקיש היה גיבור ונמכר פעם ללודאים (גיטין מז ע״א), ועמד בראש ליסטים, עד שראה את רבי יוחנן רוחץ בירדן וקפץ אחריו. רבי יוחנן אמר לו: "חילך לאורייתא", ונתן לו את אחותו. הוא נעשה מגדולי הדור, ודבריו ממלאים את שני התלמודים. רבותיו היו בר קפרא, רבי חנינא בר חמא ורבי ינאי, והוא היה בר פלוגתיה של רבי יוחנן.', 'Reish Lakish', 'Reish Lakish was a strong man who once sold himself to the gladiators (Gittin 47a), and led a band of robbers, until he saw Rabbi Yochanan bathing in the Jordan and leapt after him. Rabbi Yochanan told him: "Your strength for Torah", and gave him his sister. He became one of the greatest of the generation, and his words fill both Talmuds. His teachers were Bar Kappara, Rabbi Chanina bar Chama and Rabbi Yannai, and he was Rabbi Yochanan’s sparring partner.'),
   }),
@@ -367,7 +367,7 @@ const gen1 = [
     slug: 'rav-abba-arikha', spot2: 'אבא בר אייבו "רב"', roles: [GEN1, L('ראש המתיבתא הכוללת', 'Rosh HaMetivta HaKolelet (head of the general yeshivah)'), L('מייסד ישיבת סורא', 'Founder of the Sura yeshivah')],
     name: L('רב (אבא בר איבו)', 'Rav (Abba bar Ibo)'),
     summary: L('תלמיד רבי ורבי חייא, שייסד את ישיבת סורא; "הלכתא כרב באיסורי".', 'Student of Rebbi and Rabbi Chiya, who founded the Sura yeshivah; "the law follows Rav in prohibitions".'),
-    rel: [to('teacher', 'rabbi-yehuda-hanasi'), to('teacher', 'rabbi-chiya'), to('father', 'aivu'), to('mother', 'ima-em-rav'), to('related', 'shmuel')],
+    rel: [to('teacher', 'rabbi-yehuda-hanasi'), to('teacher', 'rabbi-chiya'), to('father', 'aivu'), to('mother', 'ima-em-rav'), to('plugta', 'shmuel')],
     offices: [HEAD('ראש ישיבת סורא', 'Head of the Sura yeshivah', 3979, 4003, [], ['rav-huna'])],
     sources: [IRSG, SAN5, L('עירובין נ ע״ב', 'Eruvin 50b'), L('בכורות מט ע״ב', 'Bechorot 49b'), L('ירושלמי ראש השנה א, ג', 'Yerushalmi Rosh Hashanah 1:3')],
     sections: [
@@ -382,7 +382,7 @@ const gen1 = [
     slug: 'shmuel', spot2: 'שמואל (מייסד ישיבת נהרדעא 3979-4010)', roles: [GEN1, L('ראש המתיבתא הכוללת', 'Rosh HaMetivta HaKolelet (head of the general yeshivah)'), L('ראש ישיבת נהרדעא', 'Head of the Nehardea yeshivah')],
     name: L('שמואל (האמורא)', 'Shmuel (the Amora)'),
     summary: L('ראש ישיבת נהרדעא, חברו של רב, רופא ותוכן: "דינא דמלכותא דינא".', 'Head of the Nehardea yeshivah, Rav’s colleague, physician and astronomer: "the law of the land is the law".'),
-    rel: [to('teacher', 'rabbi-yehuda-hanasi'), to('teacher', 'levi-bar-sisi'), to('father', 'abba-bar-abba'), to('related', 'rav-abba-arikha')],
+    rel: [to('teacher', 'rabbi-yehuda-hanasi'), to('teacher', 'levi-bar-sisi'), to('father', 'abba-bar-abba'), to('plugta', 'rav-abba-arikha')],
     offices: [HEAD('ראש ישיבת נהרדעא', 'Head of the Nehardea yeshivah', 3979, 4010, ['rav-shila'], ['rav-nachman'])],
     sources: [L('ברכות נח ע״ב', 'Berachot 58b'), L('נדרים כה ע״א', 'Nedarim 25a'), L('בבא קמא קיג ע״א', 'Bava Kamma 113a'), L('בכורות מט ע״ב', 'Bechorot 49b'), IRSG],
     sections: [
