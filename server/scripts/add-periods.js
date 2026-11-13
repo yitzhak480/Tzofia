@@ -32,6 +32,11 @@ const CATEGORIES = {
   'av-beit-din': { order: 5.5, color: 't1-yehuda', name: L('אבות בית הדין', 'The Heads of the Court (Av Beit Din)'), description: L('אבות בית הדין שעמדו לצד הנשיא בראש הסנהדרין', 'The heads of the court who stood beside the Nasi at the head of the Sanhedrin') },
   'kings-chashmonai': { parent: 'kings', order: 3, color: 't1-levi', sortMode: 'chrono', name: L('מלכי בית חשמונאי', 'The Hasmonean Kings'), description: L('המלכים והמלכה מבית חשמונאי', 'The kings and the queen of the house of Chashmonai') },
   'kings-hordos': { parent: 'kings', order: 4, color: 't1-hordos', sortMode: 'chrono', name: L('מלכי בית הורדוס', 'The Herodian Kings'), description: L('הורדוס וצאצאיו שנשאו תואר מלך', 'Herod and his descendants who bore the title of king') },
+  // the heads of the great yeshivot, each yeshivah in its own list (by the years of their headship)
+  'roshei-yeshivot': { order: 29.5, color: 't2-sura', name: L('ראשי הישיבות', 'The Heads of the Yeshivot'), description: L('ראשי הישיבות הגדולות בבבל ובארץ ישראל, זה אחר זה', 'The heads of the great yeshivot of Bavel and the Land of Israel, one after another') },
+  'roshei-yeshivat-sura': { parent: 'roshei-yeshivot', order: 1, color: 't2-sura', sortMode: 'manual', name: L('ראשי ישיבת סורא', 'The Heads of the Sura Yeshivah'), description: L('ראשי ישיבת סורא מרב ואילך', 'The heads of the Sura yeshivah, from Rav onwards') },
+  'roshei-yeshivat-pumbedita': { parent: 'roshei-yeshivot', order: 2, color: 't2-nehardea', sortMode: 'manual', name: L('ראשי ישיבת פומבדיתא', 'The Heads of the Pumbedita Yeshivah'), description: L('ראשי ישיבת פומבדיתא מרב יהודה ואילך', 'The heads of the Pumbedita yeshivah, from Rav Yehudah onwards') },
+  'roshei-yeshivat-tveria': { parent: 'roshei-yeshivot', order: 3, color: 't2-tveria', sortMode: 'manual', name: L('ראשי ישיבת טבריה', 'The Heads of the Tiberias Yeshivah'), description: L('ראשי ישיבת טבריה מרבי יוחנן ואילך', 'The heads of the Tiberias yeshivah, from Rabbi Yochanan onwards') },
   // the Amoraim, by the colour groups of the Talmud tree
   'amoraim-sura': { parent: 'amoraim', order: 1, color: 't2-sura', name: L('סורא, מתא מחסיא ונרש', 'Sura, Mata Mechasya and Naresh'), description: L('אמוראי ישיבת סורא והמקומות הסמוכים לה', 'The Amoraim of the Sura yeshivah and the places near it') },
   'amoraim-nehardea': { parent: 'amoraim', order: 2, color: 't2-nehardea', name: L('נהרדעא, פומבדיתא ומחוזא', 'Nehardea, Pumbedita and Mechoza'), description: L('אמוראי ישיבות נהרדעא ופומבדיתא ומחוזא', 'The Amoraim of the yeshivot of Nehardea, Pumbedita and Mechoza') },
@@ -292,6 +297,10 @@ const ASTERISK_TITLE = { he: 'הכוכבית שבאילן', en: 'The Asterisk on
 const EXTRA = [
   { slug: 'ovadyah-hanavi', addCategory: 'gerei-tzedek' },
   { slug: 'rav-huna-kama', addCategory: 'amoraim-rashei-hagola' },
+  // the heads of the yeshivot (new heads are added here generation by generation)
+  ...['rav-abba-arikha', 'rav-huna', 'rav-chisda', 'rabba-bar-rav-huna'].map((slug, i) => ({ slug, addCategory: 'roshei-yeshivat-sura', catOrder: i + 1 })),
+  ...['rav-yehuda', 'rav-huna-bar-chiya', 'rabba', 'rav-yosef', 'abaye', 'rava', 'rabbah-yossi'].map((slug, i) => ({ slug, addCategory: 'roshei-yeshivat-pumbedita', catOrder: i + 1 })),
+  ...['rabbi-yochanan', 'rabbi-elazar-ben-pedat', 'rabbi-ami', 'rabbi-yirmeya'].map((slug, i) => ({ slug, addCategory: 'roshei-yeshivat-tveria', catOrder: i + 1 })),
   // Ibn Ezra: Tzefanyah descended from Chizkiyahu (the tree follows him)
   { slug: 'tzefanyah-hanavi', rels: [{ type: 'ancestor', slug: 'chizkiyahu' }] },
   // the High Priesthood of the Second Temple, before and after (black arrows)
@@ -501,6 +510,12 @@ const main = async () => {
     const doc = bySlug.get(x.slug);
     if (!doc) continue;
     if (x.addCategory && !doc.categories.map(String).includes(String(cats[x.addCategory]._id))) doc.categories.push(cats[x.addCategory]._id);
+    // its place in that list, in the order they held the post (a hand-made order is kept)
+    if (x.catOrder != null) {
+      const cid = String(cats[x.addCategory]._id);
+      const has = doc.orders?.get ? doc.orders.get(cid) != null : doc.orders?.[cid] != null;
+      if (!has) doc.set(`orders.${cid}`, x.catOrder);
+    }
     for (const r of x.rels || []) {
       if (!r.slug) {
         // a name without a page: added once

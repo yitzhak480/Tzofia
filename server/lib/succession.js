@@ -7,7 +7,6 @@ const keyOf = (link) => (link.person ? `id:${link.person}` : `name:${(link.name?
 
 const resolveOffices = async (person) => {
   const offices = (person.offices || []).map((o) => ({ ...o, before: [...(o.before || [])], after: [...(o.after || [])] }));
-  if (!offices.length) return offices;
   const nameHe = person.name?.he;
 
   // other people whose offices point at this person
@@ -24,13 +23,22 @@ const resolveOffices = async (person) => {
     .lean();
 
   const pointsHere = (l) => (l.person ? String(l.person) === String(person._id) : (l.name?.he || '').trim() === nameHe);
-  const officeFor = (label) => offices.find((o) => o.label?.he === label) || offices[0];
+  // the office with the same name; else the only one; else a new one with that
+  // name (a role written only on the other person's page still shows here)
+  const officeFor = (label) => {
+    const same = offices.find((o) => o.label?.he === label?.he);
+    if (same) return same;
+    if (offices.length === 1) return offices[0];
+    const made = { label, from: null, to: null, note: { he: '', en: '' }, before: [], after: [] };
+    offices.push(made);
+    return made;
+  };
   for (const other of others) {
     for (const o of other.offices || []) {
       const self = { person: other._id, name: other.name };
       // they say I came after them -> they are "before" me (and the reverse)
-      if ((o.after || []).some(pointsHere)) officeFor(o.label?.he).before.push(self);
-      if ((o.before || []).some(pointsHere)) officeFor(o.label?.he).after.push(self);
+      if ((o.after || []).some(pointsHere)) officeFor(o.label).before.push(self);
+      if ((o.before || []).some(pointsHere)) officeFor(o.label).after.push(self);
     }
   }
 
