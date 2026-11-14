@@ -124,15 +124,15 @@ module.exports = [
   }),
   S({
     slug: 'rav-acha-bar-nehilai', spot2: 'רב אחא בר נהילאי', cats: ['savoraim'], roles: [SAVORA],
-    name: L('רב אחא בר נהילאי', 'Rav Acha bar Nehilai'), summary: L('מן הסבוראים.', 'One of the Savoraim.'),
+    name: L('רב אחא בר נהילאי', 'Rav Acha bar Nehilai'), summary: L('מן הסבוראים, הנזכר ב"סדר תנאים ואמוראים".', 'One of the Savoraim, named in "Seder Tannaim VeAmoraim".'),
     rel: [], sources: [STA],
-    sections: [SAVORAIM],
+    sections: [SAVORAIM, sec('בסדר תנאים ואמוראים', 'שמו מופיע ב"סדר תנאים ואמוראים", חיבור מתקופת הגאונים, שמביא רשימה של אחד עשר מן הסבוראים – בלי שנים ובלי סדר דורות – ומשבח אותם שבזכותם "נמתחו שמים וארץ". הוא אחד משלושה סבוראים שנזכרים שם ואינם נזכרים באיגרת רב שרירא גאון ובספר הקבלה לראב״ד, ולכן כמעט אין אנו יודעים עליו דבר מעבר לשמו.', 'In Seder Tannaim VeAmoraim', 'His name appears in "Seder Tannaim VeAmoraim", a work from the period of the Geonim, which brings a list of eleven of the Savoraim – without years and without an order of generations – and praises them, that by their merit "heaven and earth were stretched out". He is one of three Savoraim named there who are not named in the Letter of Rav Sherira Gaon or in the Sefer HaKabbalah of the Ra’avad, so we know almost nothing about him beyond his name.')],
   }),
   S({
     slug: 'rav-achadboi', spot2: 'רב אחדבוי', cats: ['savoraim'], roles: [SAVORA],
-    name: L('רב אחדבוי', 'Rav Achadboi'), summary: L('מן הסבוראים.', 'One of the Savoraim.'),
+    name: L('רב אחדבוי', 'Rav Achadboi'), summary: L('מן הסבוראים, הנזכר ב"סדר תנאים ואמוראים".', 'One of the Savoraim, named in "Seder Tannaim VeAmoraim".'),
     rel: [], sources: [STA],
-    sections: [SAVORAIM],
+    sections: [SAVORAIM, sec('בסדר תנאים ואמוראים', 'שמו מופיע ב"סדר תנאים ואמוראים", חיבור מתקופת הגאונים, שמביא רשימה של אחד עשר מן הסבוראים – בלי שנים ובלי סדר דורות – ומשבח אותם שבזכותם "נמתחו שמים וארץ". הוא אחד משלושה סבוראים שנזכרים שם ואינם נזכרים באיגרת רב שרירא גאון ובספר הקבלה לראב״ד, ולכן כמעט אין אנו יודעים עליו דבר מעבר לשמו.', 'In Seder Tannaim VeAmoraim', 'His name appears in "Seder Tannaim VeAmoraim", a work from the period of the Geonim, which brings a list of eleven of the Savoraim – without years and without an order of generations – and praises them, that by their merit "heaven and earth were stretched out". He is one of three Savoraim named there who are not named in the Letter of Rav Sherira Gaon or in the Sefer HaKabbalah of the Ra’avad, so we know almost nothing about him beyond his name.'), sec('שמו', 'בסדר תנאים ואמוראים הוא נקרא "רב אחדבוי בר בטינא", ובנוסחאות אחרות "בר קטינא".', 'His Name', 'In Seder Tannaim VeAmoraim he is called "Rav Achadboi bar Batina", and in other versions "bar Katina".')],
   }),
   S({
     slug: 'rav-yitzhak-reish-metivta', spot2: 'רב יצחק ריש מתיבתא', cats: ['savoraim'], roles: [L('ריש מתיבתא', 'Reish Metivta'), L('נהרג על קידוש השם', 'Killed for the sanctification of God’s Name')],
