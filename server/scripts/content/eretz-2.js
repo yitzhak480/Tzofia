@@ -80,7 +80,7 @@ module.exports = [
     slug: 'yehoshafat-ben-yoshiyahu', spot2: 'יהושפט בן יאשיהו', cats: HEADS, roles: [GAON],
     name: L('יהושפט בן יאשיהו', 'Yehoshafat ben Yoshiyahu'), summary: L('גאון ארץ ישראל, מצאצאי ענן בן דוד.', 'Gaon of the Land of Israel, a descendant of Anan ben David.'),
     rel: [to('father', 'yoshiyahu-avi-yehoshafat'), to('sibling', 'tzemach-ben-yoshiyahu')], offices: [TVE(null, 4622, [], ['tzemach-ben-yoshiyahu'])], sources: [GIL, GENIZA],
-    sections: [YOSHIYAHU],
+    sections: [YOSHIYAHU, sec('הקו המנוקד', 'באילן שלנו יורד אליו קו מנוקד מרבי פנחס הכהן, גאון טבריה: קו כזה מסמן כמה דורות, ובהם ראשי ישיבה שאין אנו יודעים את שמותיהם.', 'The Dotted Line', 'On our tree a dotted line comes down to him from Rabbi Pinchas HaKohen, Gaon of Tiberias: such a line marks several generations, among them heads of the yeshivah whose names we do not know.')],
   }),
   E({
     slug: 'tzemach-ben-yoshiyahu', spot2: 'צמח בן יאשיהו', cats: HEADS, roles: [GAON],
@@ -149,9 +149,9 @@ module.exports = [
   }),
   E({
     slug: 'eli-ben-yehuda-hanazir', spot2: 'עלי בן יהודה הנזיר', cats: ['ishei-eretz-yisrael'], roles: [L('מדקדק', 'Grammarian')],
-    name: L('עלי בן יהודה הנזיר', 'Eli ben Yehudah HaNazir'), summary: L('מדקדק מטבריה, מגדולי חכמי הלשון בארץ ישראל.', 'A grammarian of Tiberias, one of the great masters of the Hebrew language in the Land of Israel.'),
-    rel: [], sources: [GIL],
-    sections: one('עלי בן יהודה הנזיר', 'עלי בן יהודה, שנקרא "הנזיר", היה מדקדק בטבריה בסוף המאה התשיעית ובתחילת העשירית, בימים שבהם הייתה טבריה מרכז חכמת הלשון והמסורה. חכמי ארץ ישראל ובבל העריכו את ידיעתו בלשון העברית.', 'Eli ben Yehudah HaNazir', 'Eli ben Yehudah, called "the Nazirite", was a grammarian in Tiberias at the end of the ninth century and the start of the tenth, in the days when Tiberias was the centre of the study of language and the Masorah. The sages of the Land of Israel and of Bavel prized his knowledge of the Hebrew language.'),
+    name: L('עלי בן יהודה הנזיר', 'Eli ben Yehudah HaNazir'), summary: L('מדקדק מטבריה, שיש אומרים שהיה רבו של רב סעדיה גאון בדקדוק.', 'A grammarian of Tiberias, who some say was Rav Saadia Gaon’s teacher in grammar.'),
+    rel: [{ ...to('student', 'rav-saadia-gaon'), uncertain: true }], sources: [GIL, L('אל־מסעודי, ספר ההתראה וההשגחה', 'al-Mas’udi, Kitab al-Tanbih wa-l-Ishraf')],
+    sections: one('עלי בן יהודה הנזיר', 'עלי בן יהודה, שנקרא "הנזיר", היה מדקדק בטבריה בסוף המאה התשיעית ובתחילת העשירית, בימים שבהם הייתה טבריה מרכז חכמת הלשון והמסורה. חכמי ארץ ישראל ובבל העריכו את ידיעתו בלשון העברית. בשנים 4675–4680 (915–920 למניינם) שהה רב סעדיה גאון, בצעירותו, בטבריה, והשתלם שם בדקדוק, במסורה ובשירה. ההיסטוריון הערבי אל־מסעודי כותב שרב סעדיה למד אצל חכם טברייני בשם אבו כת׳יר יחיא בן זכריא, ויש חוקרים המזהים אותו עם עלי בן יהודה הנזיר – ולפי זה היה רבו של רב סעדיה בדקדוק. הזיהוי אינו מוכח, ולכן באילן שלנו יורד ממנו הקו אל רב סעדיה בסימן שאלה.', 'Eli ben Yehudah HaNazir', 'Eli ben Yehudah, called "the Nazirite", was a grammarian in Tiberias at the end of the ninth century and the start of the tenth, in the days when Tiberias was the centre of the study of language and the Masorah. The sages of the Land of Israel and of Bavel prized his knowledge of the Hebrew language. In the years 4675–4680 (915–920 CE) Rav Saadia Gaon, in his youth, stayed in Tiberias, and studied grammar, the Masorah and poetry there. The Arab historian al-Mas’udi writes that Rav Saadia learned from a sage of Tiberias named Abu Kathir Yahya ibn Zakariya, and some scholars identify him with Eli ben Yehudah HaNazir – by which he was Rav Saadia’s teacher in grammar. The identification is not proven, so on our tree the line from him to Rav Saadia has a question mark.'),
   }),
 
   // ── the Masoretes ──

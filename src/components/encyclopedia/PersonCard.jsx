@@ -5,12 +5,12 @@ import { tr } from '../../api';
 import { cardLine, cardSummary, textDir } from './personFormat';
 import CardBack from './CardBack';
 import CategoryIcon from './CategoryIcon';
-import { iconForCategory } from './categoryIcons';
+import { iconForPerson } from './categoryIcons';
 import { CARD_COLORS, entryColor } from './cardColors';
 
 // A person card in the same style as the old Kings gallery cards.
 // Without a picture it shows a decorated card back in the entry's colour,
-// with the symbol of its category. The whole card opens the person's page.
+// with its own symbol (or its category's, if it has none yet). The whole card opens the person's page.
 const PersonCard = ({ person, category }) => {
   const { lang } = useContext(CartContext);
   const name = tr(person.name, lang);
@@ -27,7 +27,7 @@ const PersonCard = ({ person, category }) => {
           <>
             <CardBack color={color} medallion={false} />
             <div className="encyc-card-symbol" style={{ color: CARD_COLORS[color].icon }}>
-              <CategoryIcon kind={iconForCategory(category?.slug, category?.icon)} />
+              <CategoryIcon kind={iconForPerson(person, category)} />
             </div>
           </>
         )}

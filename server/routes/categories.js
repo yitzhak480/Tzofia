@@ -8,12 +8,13 @@ const { ancestorChain, wouldCreateLoop, removedImages } = require('../lib/tree')
 const { deleteImages } = require('../lib/cloudinary');
 const { yearOf } = require('../lib/chrono');
 const { COLOR_KEYS } = require('../models/shared');
+const { ICON_KEYS } = require('../lib/icons');
 
 const router = express.Router();
 const FIELDS = ['slug', 'name', 'description', 'image', 'parent', 'order', 'cardColor', 'icon', 'colorEntries', 'sortMode'];
 const SORT = { order: 1, createdAt: 1 };
 // What a person's card needs (no full article).
-const CARD_FIELDS = 'slug kind name period summary autoSummary mainImage order categories life offices treeSpots cardColor orders';
+const CARD_FIELDS = 'slug kind name period summary autoSummary mainImage order categories life offices treeSpots cardColor orders icon';
 
 const normalizeParent = (data) => {
   if (data.parent === '' || data.parent === undefined) data.parent = null;
@@ -87,6 +88,45 @@ router.put('/:id', requireAdmin, async (req, res) => {
 //   { mode: 'random' }        a random colour for each, from the site's ten
 //   { mode: 'clear' }         no colour of their own (the category decides)
 const SITE_COLORS = ['burgundy', 'blue', 'purple', 'brown', 'marble', 'emerald', 'teal', 'ink', 'olive', 'slate'];
+// this category and everything under it
+const withSubcategories = async (category) => {
+  const ids = [category._id];
+  const all = await Category.find().select('_id parent').lean();
+  for (let i = 0; i < ids.length; i += 1) {
+    for (const c of all) if (String(c.parent) === String(ids[i])) ids.push(c._id);
+  }
+  return ids;
+};
+
+// GET /api/categories/:id/entry-icons (admin) -> { counts: { icon: number } } of the
+// entries in the category and its subcategories ('' = no symbol of its own)
+router.get('/:id/entry-icons', requireAdmin, async (req, res) => {
+  if (!mongoose.isValidObjectId(req.params.id)) return res.status(404).json({ message: 'Category not found' });
+  const category = await Category.findById(req.params.id);
+  if (!category) return res.status(404).json({ message: 'Category not found' });
+  const ids = await withSubcategories(category);
+  const people = await Person.find({ categories: { $in: ids } }).select('icon').lean();
+  const counts = {};
+  for (const p of people) counts[p.icon || ''] = (counts[p.icon || ''] || 0) + 1;
+  res.json({ counts, total: people.length });
+});
+
+// POST /api/categories/:id/entry-icons (admin) — one symbol for the entries of the
+// category and its subcategories: { icon, only } – `only` (optional) changes just
+// the entries whose symbol is now that one ('' = those without a symbol)
+router.post('/:id/entry-icons', requireAdmin, async (req, res) => {
+  if (!mongoose.isValidObjectId(req.params.id)) return res.status(404).json({ message: 'Category not found' });
+  const category = await Category.findById(req.params.id);
+  if (!category) return res.status(404).json({ message: 'Category not found' });
+  const { icon, only } = req.body || {};
+  if (!ICON_KEYS.includes(icon)) return res.status(400).json({ message: 'Unknown symbol' });
+  const ids = await withSubcategories(category);
+  const filter = { categories: { $in: ids } };
+  if (typeof only === 'string') filter.icon = only === '' ? { $in: ['', null] } : only;
+  const result = await Person.updateMany(filter, { $set: { icon } });
+  res.json({ updated: result.modifiedCount });
+});
+
 router.post('/:id/entry-colors', requireAdmin, async (req, res) => {
   if (!mongoose.isValidObjectId(req.params.id)) return res.status(404).json({ message: 'Category not found' });
   const category = await Category.findById(req.params.id);

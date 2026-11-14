@@ -156,6 +156,17 @@ const AdminCategories = ({ adminApi }) => {
             onSave={handleSave}
             onCancel={() => setEditing(null)}
             upload={upload}
+            entryIcons={editing.mode === 'edit' ? {
+              counts: async () => (await call(`/categories/${editing.category._id}/entry-icons`)).counts,
+              apply: async (body) => {
+                try {
+                  const r = await call(`/categories/${editing.category._id}/entry-icons`, { method: 'POST', body });
+                  toast.success(`הסמל עודכן ב-${r.updated} ערכים`);
+                } catch (err) {
+                  toast.error(err.message);
+                }
+              },
+            } : null}
             onEntryColors={async (body) => {
               try {
                 const r = await call(`/categories/${editing.category._id}/entry-colors`, { method: 'POST', body });

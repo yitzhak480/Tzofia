@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import ImageUpload from '../../components/admin/ImageUpload';
 import { SLUG_PATTERN, toSlug } from './adminApi';
 import ColorPicker from '../../components/admin/ColorPicker';
@@ -9,7 +9,7 @@ const emptyCategory = { name: { he: '', en: '' }, description: { he: '', en: '' 
 
 // Add / edit form for a category. `options` is the list of possible parents
 // (already without this category and its subcategories).
-const CategoryForm = ({ initial, options, defaultParent = '', onSave, onCancel, upload, onEntryColors }) => {
+const CategoryForm = ({ initial, options, defaultParent = '', onSave, onCancel, upload, onEntryColors, entryIcons }) => {
   const editing = Boolean(initial);
   const [form, setForm] = useState(() =>
     initial
@@ -32,6 +32,24 @@ const CategoryForm = ({ initial, options, defaultParent = '', onSave, onCancel, 
   // colouring all the entries at once (only when editing)
   const [bulkColor, setBulkColor] = useState(initial?.cardColor || 'burgundy');
   const [withSubs, setWithSubs] = useState(true);
+  // one symbol for the entries at once (only when editing)
+  const [bulkIcon, setBulkIcon] = useState(initial?.icon || 'magenDavid');
+  const [onlyIcon, setOnlyIcon] = useState('*'); // '*' = every entry
+  const [iconCounts, setIconCounts] = useState(null);
+  useEffect(() => {
+    if (editing && entryIcons) entryIcons.counts().then(setIconCounts).catch(() => setIconCounts(null));
+    // once, when the form opens
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [editing]);
+  const runEntryIcons = async () => {
+    setBusy(true);
+    try {
+      await entryIcons.apply({ icon: bulkIcon, ...(onlyIcon === '*' ? {} : { only: onlyIcon }) });
+      setIconCounts(await entryIcons.counts());
+    } finally {
+      setBusy(false);
+    }
+  };
   const runEntryColors = async (mode) => {
     setBusy(true);
     try {
@@ -155,7 +173,7 @@ const CategoryForm = ({ initial, options, defaultParent = '', onSave, onCancel, 
       </div>
 
       <div className="form-group">
-        <label>סמל לכרטיסים של ערכים בלי תמונה:</label>
+        <label>הסמל של הקטגוריה (ניתן לערכים חדשים שאין להם סמל משלהם):</label>
         <div className="admin-icon-picker" role="radiogroup">
           <button
             type="button"
@@ -185,6 +203,48 @@ const CategoryForm = ({ initial, options, defaultParent = '', onSave, onCancel, 
         </div>
       </div>
 
+      {editing && entryIcons && (
+        <div className="form-group admin-bulk-colors">
+          <label>סמל לערכים בקטגוריה (כולל הקטגוריות שבתוכה):</label>
+          <span className="admin-hint">
+            לכל ערך יש סמל משלו, שמופיע בכרטיס שלו בכל קטגוריה. כאן אפשר להחליף בבת אחת את הסמל של הערכים בקטגוריה –
+            של כולם, או רק של אלה שהסמל שלהם עכשיו הוא סמל מסוים.
+          </span>
+          <div className="admin-icon-picker" role="radiogroup">
+            {ICON_LIST.map(([key, label]) => (
+              <button
+                key={key}
+                type="button"
+                role="radio"
+                aria-checked={bulkIcon === key}
+                className={`admin-icon-option ${bulkIcon === key ? 'is-selected' : ''}`}
+                onClick={() => setBulkIcon(key)}
+                title={label}
+              >
+                <CategoryIcon kind={key} />
+                <span>{label}</span>
+              </button>
+            ))}
+          </div>
+          <label>
+            לשנות רק ערכים שהסמל שלהם עכשיו:{' '}
+            <select value={onlyIcon} onChange={(e) => setOnlyIcon(e.target.value)}>
+              <option value="*">כל הערכים{iconCounts ? ` (${Object.values(iconCounts).reduce((a, b) => a + b, 0)})` : ''}</option>
+              {iconCounts && Object.entries(iconCounts).sort((a, b) => b[1] - a[1]).map(([key, n]) => (
+                <option key={key || 'none'} value={key}>
+                  {key ? (ICON_LIST.find(([k]) => k === key)?.[1] || key) : 'בלי סמל'} ({n})
+                </option>
+              ))}
+            </select>
+          </label>
+          <div className="admin-bulk-actions">
+            <button type="button" className="admin-btn" disabled={busy} onClick={runEntryIcons}>
+              החלפת הסמל לסמל שנבחר
+            </button>
+          </div>
+        </div>
+      )}
+
       {editing && onEntryColors && (
         <div className="form-group admin-bulk-colors">
           <label>צבע לכל הערכים בקטגוריה בבת אחת:</label>
@@ -205,7 +265,7 @@ const CategoryForm = ({ initial, options, defaultParent = '', onSave, onCancel, 
             גם הערכים שבקטגוריות שבתוכה
           </label>
           <span className="admin-hint">
-            הכפתורים משנים מיד את הצבע של כל הערכים (בלי צורך לשמור). הסמל של הכרטיסים נקבע לכל הקטגוריה יחד, בבחירת הסמל למעלה.
+            הכפתורים משנים מיד את הצבע של כל הערכים (בלי צורך לשמור).
           </span>
         </div>
       )}

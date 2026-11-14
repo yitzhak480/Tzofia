@@ -129,6 +129,8 @@ const personSchema = new mongoose.Schema(
     published: { type: Boolean, default: true },
     // Card colour when there is no picture; empty = picked automatically.
     cardColor: { type: String, enum: ['', ...COLOR_KEYS], default: '' },
+    // the symbol on the card when there is no picture – the entry's own, on every category page
+    icon: { type: String, trim: true, default: '' },
   },
   { timestamps: true }
 );

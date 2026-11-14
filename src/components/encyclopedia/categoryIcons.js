@@ -1,8 +1,8 @@
 // All the symbols that can appear on a card without a picture, with their
 // Hebrew names (shown in the admin when choosing a category's symbol).
 export const ICON_LIST = [
-  ['crown', 'כתר מלכות'], ['scroll', 'מגילה'], ['menorah', 'מנורה'], ['scales', 'מאזניים'], ['banner', 'דגל'],
-  ['temple', 'בית המקדש'], ['vessel', 'כלי המקדש'], ['hourglass', 'שעון חול'], ['star', 'מגן דוד (פשוט)'],
+  ['magenDavid', 'מגן דוד'], ['crown', 'כתר מלכות'], ['scroll', 'מגילה'], ['menorah', 'מנורה'], ['scales', 'מאזניים'], ['banner', 'דגל'],
+  ['temple', 'בית המקדש'], ['vessel', 'כלי המקדש'], ['hourglass', 'שעון חול'], ['star', 'מגן דוד (משולשים)'],
   ['book', 'ספר פתוח'], ['quill', 'נוצת כתיבה'], ['inkwell', 'קסת וקולמוס'], ['talmudPage', 'דף גמרא'],
   ['bookStack', 'ערימת ספרים'], ['torahScroll', 'ספר תורה'], ['kterTorah', 'כתר תורה'], ['oilLamp', 'נר שמן'],
   ['candle', 'נר דולק'], ['tablets', 'לוחות הברית'], ['shtender', 'סטנדר'], ['archGate', 'שער בית המדרש'],
@@ -37,5 +37,10 @@ export const iconForCategory = (slug = '', chosen = '') => {
   if (/geon/.test(slug)) return 'archGate';
   if (/nesi/.test(slug)) return 'laurel';
   if (/sage|rabbi/.test(slug)) return 'book';
-  return 'star';
+  return 'magenDavid';
 };
+
+// The symbol on an entry's card: its own (the same on every category page),
+// or – if it has none yet – the one its category gives.
+export const iconForPerson = (person, category) =>
+  (person?.icon && ICON_LABELS[person.icon] ? person.icon : iconForCategory(category?.slug, category?.icon));

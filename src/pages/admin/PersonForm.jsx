@@ -7,6 +7,8 @@ import { CategoryPicker, OfficesEditor, RelationsEditor, TreeSpotsEditor, YearsI
 import { SLUG_PATTERN } from './adminApi';
 import ColorPicker from '../../components/admin/ColorPicker';
 import { entryColor } from '../../components/encyclopedia/cardColors';
+import CategoryIcon from '../../components/encyclopedia/CategoryIcon';
+import { ICON_LIST } from '../../components/encyclopedia/categoryIcons';
 
 const DRAFT_KEY = 'tzofia_new_person_draft';
 const PLACE_SUGGESTIONS = ['עיר', 'מקום', 'בית מקדש', 'כלי המקדש', 'ספר', 'אירוע', 'שבט', 'הר', 'נהר', 'ארץ', 'ישיבה', 'בית כנסת', 'מערה', 'מדבר', 'מסכת', 'חפץ'];
@@ -42,6 +44,7 @@ const toForm = (p = {}) => ({
   slug: p.slug || '',
   published: p.published ?? true,
   cardColor: p.cardColor || '',
+  icon: p.icon || '',
 });
 
 // Form state -> what the server expects.
@@ -71,6 +74,7 @@ const toBody = (f) => ({
   slug: f.slug.trim(),
   published: f.published,
   cardColor: f.cardColor,
+  icon: f.icon,
 });
 
 const readDraft = () => {
@@ -256,6 +260,27 @@ const PersonForm = ({ initial, defaultCategory, categoryRows, people, upload, on
               autoColor={entryColor({ slug: form.slug || form.name.he })}
               autoLabel="אוטומטי"
             />
+          </div>
+        )}
+        {!form.mainImage && (
+          <div className="form-group">
+            <label>הסמל בכרטיס (בכל הקטגוריות):</label>
+            <div className="admin-icon-picker" role="radiogroup">
+              {ICON_LIST.map(([key, label]) => (
+                <button
+                  key={key}
+                  type="button"
+                  role="radio"
+                  aria-checked={form.icon === key}
+                  className={`admin-icon-option ${form.icon === key ? 'is-selected' : ''}`}
+                  onClick={() => set({ icon: key })}
+                  title={label}
+                >
+                  <CategoryIcon kind={key} />
+                  <span>{label}</span>
+                </button>
+              ))}
+            </div>
           </div>
         )}
       </Section>

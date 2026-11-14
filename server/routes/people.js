@@ -13,11 +13,11 @@ const { resolveOffices } = require('../lib/succession');
 const router = express.Router();
 const FIELDS = [
   'slug', 'kind', 'categories', 'name', 'gender', 'titles', 'roles', 'life', 'offices', 'period', 'summary', 'content',
-  'mainImage', 'relations', 'sources', 'sourcesEn', 'treeSpots', 'order', 'orders', 'published', 'cardColor',
+  'mainImage', 'relations', 'sources', 'sourcesEn', 'treeSpots', 'order', 'orders', 'published', 'cardColor', 'icon',
 ];
 const SORT = { order: 1, createdAt: 1 };
 // What a person's card needs (no full article).
-const CARD_FIELDS = 'slug kind name period summary autoSummary mainImage order categories life offices treeSpots published cardColor orders';
+const CARD_FIELDS = 'slug kind name period summary autoSummary mainImage order categories life offices treeSpots published cardColor orders icon';
 
 const escapeRegex = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 const imagesOf = (p) => [p.mainImage].filter(Boolean);

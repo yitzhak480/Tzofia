@@ -724,6 +724,17 @@ const main = async () => {
     }
   }
 
+  // every entry without a symbol of its own gets the symbol of its first category
+  {
+    const { iconForCategory } = require('../lib/icons');
+    const catById = new Map((await Category.find().lean()).map((c) => [String(c._id), c]));
+    for (const d of await Person.find({ $or: [{ icon: '' }, { icon: null }, { icon: { $exists: false } }] })) {
+      const first = catById.get(String((d.categories || [])[0]));
+      d.icon = iconForCategory(first?.slug, first?.icon);
+      await d.save();
+    }
+  }
+
   console.log(`✓ Periods: ${count} pages in ${BATCHES.length} batch(es); ${Object.keys(ASTERISKS).length} asterisk notes`);
   await mongoose.disconnect();
 };

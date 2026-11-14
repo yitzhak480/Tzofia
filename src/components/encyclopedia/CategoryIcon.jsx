@@ -3,6 +3,14 @@ import React from 'react';
 // Simple line symbols for each kind of category, drawn in gold.
 // `kind` is chosen from the category's web address (see iconForCategory).
 const ICONS = {
+  magenDavid: (
+    <>
+      <path d="M32 7 L53.6 44.5 H10.4 Z" />
+      <path d="M32 57 L10.4 19.5 H53.6 Z" />
+      <path d="M32 14 L47.6 41 H16.4 Z" />
+      <path d="M32 50 L16.4 23 H47.6 Z" />
+    </>
+  ),
   crown: (
     <>
       <path d="M14 46 L10 22 L22 32 L32 14 L42 32 L54 22 L50 46 Z" />
@@ -529,9 +537,9 @@ const ICONS = {
   ),
 };
 
-const CategoryIcon = ({ kind = 'star', className = '' }) => (
+const CategoryIcon = ({ kind = 'magenDavid', className = '' }) => (
   <svg className={className} viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-    {ICONS[kind] || ICONS.star}
+    {ICONS[kind] || ICONS.magenDavid}
   </svg>
 );
 

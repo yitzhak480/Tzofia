@@ -13,13 +13,14 @@ const one = (titleHe, he, titleEn, en) => [sec(titleHe, he, titleEn, en)];
 const HEADS = ['roshei-yeshivat-eretz-yisrael', 'roshei-yeshivat-tveria'];
 const TVE = (from, to2, before, after) => ({ label: L('ראש ישיבת טבריה', 'Head of the Yeshivah of Tiberias'), from, to: to2, before, after });
 const SOZ10 = L('סדר עולם זוטא, פרק י', 'Seder Olam Zuta, chapter 10');
+const GINTZLER = L('רשימת ראשי הישיבה של משה גינצלר', 'The list of the heads of the yeshivah by Moshe Gintzler');
 const HEAD_ROLE = L('ראש ישיבת טבריה', 'Head of the Yeshivah of Tiberias');
 // the line of Mar Zutra in the Land of Israel, by Seder Olam Zuta
 const LINE = sec('בית מר זוטרא בארץ ישראל',
   'סדר עולם זוטא מונה את ראשי הישיבה בארץ ישראל מבית מר זוטרא, כל אחד אחרי קודמו: "ואחריו רב גוריא, ואחריו מר זוטרא בנו, ואחריו רב יעקב בנו, ואחריו רב מיגס בנו, ואחריו רב נחמיה בנו, ואחריו רב אבדימי בנו" – ואחריו בניו של רב אבדימי, ובהם רבי פנחס, ובנו רבי חצוב. באילן שלנו הם עומדים על קו משפחה אחד, היורד ממר זוטרא בר מר זוטרא. ביניהם עמדו בראש הישיבה גם רב שמעיה, רב הונא ורב איסא, שאינם נזכרים ברשימה זו.',
   'The House of Mar Zutra in the Land of Israel',
   'Seder Olam Zuta lists the heads of the yeshivah in the Land of Israel of the house of Mar Zutra, each after the one before: "and after him Rav Gurya, and after him Mar Zutra his son, and after him Rav Yaakov his son, and after him Rav Migas his son, and after him Rav Nechemiah his son, and after him Rav Avdimi his son" – and after him the sons of Rav Avdimi, among them Rabbi Pinchas, and his son Rabbi Chatzuv. On our tree they stand on one family line, going down from Mar Zutra bar Mar Zutra. Between them Rav Shmaya, Rav Huna and Rav Isa also headed the yeshivah, who are not named in this list.');
-const DOTTED = sec('הקו המנוקד', 'באילן שלנו יורד ממר זוטרא בר מר זוטרא קו מנוקד, בסימן שאלה, אל רב הונא ואל רב איסא, שעמדו בראש הישיבה בין בני משפחתו.', 'The Dotted Line', 'On our tree a dotted line, with a question mark, goes down from Mar Zutra bar Mar Zutra to Rav Huna and to Rav Isa, who headed the yeshivah between the members of his family.');
+const DOTTED = sec('הקו המנוקד', 'רב שמעיה, רב הונא ורב איסא נלקחו לאילן שלנו מרשימת ראשי הישיבה שערך משה גינצלר, ובה הם נראים כחלק ממשפחתו של מר זוטרא. משום שאינם נזכרים ברשימה של סדר עולם זוטא, יורד אליהם ממר זוטרא בר מר זוטרא קו מנוקד, בסימן שאלה – הם כנראה מבני המשפחה, אבל אין ידוע בדיוק מה הקשר.', 'The Dotted Line', 'Rav Shmaya, Rav Huna and Rav Isa were taken onto our tree from the list of heads of the yeshivah compiled by Moshe Gintzler, in which they appear as part of Mar Zutra’s family. Since they are not named in the list of Seder Olam Zuta, a dotted line with a question mark goes down to them from Mar Zutra bar Mar Zutra – they were apparently of the family, but the exact connection is not known.');
 const HERACLIUS = sec('המרד נגד הרקליוס',
   'בשנת 4374 (614 למניינם) כבשו הפרסים, בימי המלך כוסרו השני, את ארץ ישראל מידי ביזנטיון, ויהודים רבים הצטרפו אליהם בתקווה לגאולה – ובהם בנימין מטבריה, שגייס להם צבא, ונחמיה בן חושיאל, שהפרסים הפקידו אותו על ירושלים. כעבור זמן קצר הפרו הפרסים את הבטחותיהם, ונחמיה נהרג. בשנת 4389 (629) החזיר הקיסר הביזנטי הרקליוס את הארץ לשלטונו, ובשנים שאחר כך גזר על היהודים גזירות קשות.',
   'The Revolt against Heraclius',
@@ -64,7 +65,7 @@ module.exports = [
   E({
     slug: 'rav-huna-tveria', spot2: 'רב הונא (ראש ישיבת טבריה)', cats: HEADS, roles: [HEAD_ROLE],
     name: L('רב הונא (ראש ישיבת טבריה)', 'Rav Huna (head of the Tiberias yeshivah)'), summary: L('ראש ישיבת טבריה אחרי רב שמעיה.', 'Head of the Tiberias yeshivah after Rav Shmaya.'),
-    rel: [], offices: [TVE(4390, 4410, ['rav-shmaya-tveria'], ['rav-migas'])], sources: [SOZ10],
+    rel: [{ ...to('ancestor', 'mar-zutra-4'), uncertain: true }], offices: [TVE(4390, 4410, ['rav-shmaya-tveria'], ['rav-migas'])], sources: [SOZ10, GINTZLER],
     sections: [LINE, DOTTED],
   }),
   E({
@@ -76,7 +77,7 @@ module.exports = [
   E({
     slug: 'rav-isa', spot2: 'רב איסא', cats: HEADS, roles: [HEAD_ROLE],
     name: L('רב איסא', 'Rav Isa'), summary: L('ראש ישיבת טבריה אחרי רב מיגס.', 'Head of the Tiberias yeshivah after Rav Migas.'),
-    rel: [], offices: [TVE(4430, 4450, ['rav-migas'], ['rav-nechemia-tveria'])], sources: [SOZ10],
+    rel: [{ ...to('ancestor', 'mar-zutra-4'), uncertain: true }], offices: [TVE(4430, 4450, ['rav-migas'], ['rav-nechemia-tveria'])], sources: [SOZ10, GINTZLER],
     sections: [LINE, DOTTED],
   }),
   E({
