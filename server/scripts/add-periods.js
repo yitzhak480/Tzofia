@@ -284,6 +284,8 @@ const BATCHES = [
   { category: null, orderBase: 600, entries: require('./content/amoraim-7'), order: [], relink: {} },
   { category: null, orderBase: 700, entries: require('./content/amoraim-8'), order: [], relink: {} },
   { category: null, orderBase: 0, entries: require('./content/paytanim-1'), order: [], relink: {} },
+  // the Geonim: their place in the Pumbedita list comes after the Savoraim
+  { category: null, orderBase: 300, entries: require('./content/geonim-1'), order: [], relink: {} },
   {
     category: 'beit-chashmonai',
     entries: require('./content/second-temple-houses').chashmonai,
