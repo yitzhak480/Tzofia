@@ -1050,3 +1050,147 @@ a.admin-btn {
   font-size: 0.8rem;
   color: #7a6d5a;
 }
+
+/* ---------- "טבלת האמוראים": checking the links of every Amora ---------- */
+.atable-wrap {
+  /* wider than the admin column, so all the columns fit */
+  width: min(96vw, 1700px);
+  margin-inline-start: calc((100% - min(96vw, 1700px)) / 2);
+}
+.atable-wrap h2 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: var(--color-ink, #2c241b);
+}
+.atable-wrap h2 small {
+  font-size: 0.8rem;
+  font-weight: normal;
+  opacity: 0.7;
+}
+.atable-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1rem;
+}
+.atable-check {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  white-space: nowrap;
+}
+.atable-scroll {
+  overflow: auto;
+  max-height: 75vh;
+  border: 1px solid var(--color-gold, #c5a059);
+  border-radius: 10px;
+  background: #fffdf7;
+}
+.atable {
+  width: 100%;
+  min-width: 1250px;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.85rem;
+  line-height: 1.35;
+}
+.atable th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--color-ink, #2c241b);
+  color: var(--color-parchment, #f4e4bc);
+  font-weight: bold;
+  text-align: start;
+  padding: 0.55rem 0.6rem;
+  white-space: nowrap;
+}
+.atable td {
+  vertical-align: top;
+  padding: 0.45rem 0.6rem;
+  border-bottom: 1px solid rgba(197, 160, 89, 0.35);
+}
+.atable tbody tr:nth-child(even) td {
+  background: rgba(244, 228, 188, 0.28);
+}
+.atable tbody tr:hover td {
+  background: rgba(197, 160, 89, 0.18);
+}
+.atable tbody tr.atable-gen td,
+.atable tbody tr.atable-gen:nth-child(even) td,
+.atable tbody tr.atable-gen:hover td {
+  position: sticky;
+  top: 2.3rem;
+  z-index: 1;
+  background: var(--color-terracotta, #8e3b30);
+  color: #fff;
+  font-weight: bold;
+  font-size: 0.95rem;
+  padding: 0.4rem 0.8rem;
+}
+.atable tr.is-hidden td {
+  opacity: 0.55;
+}
+.atable td.is-missing {
+  background: rgba(142, 59, 48, 0.08) !important;
+}
+.atable-num {
+  color: #8a7a64;
+  font-variant-numeric: tabular-nums;
+}
+.atable-name a {
+  font-weight: bold;
+  color: var(--color-ink, #2c241b);
+}
+.atable-name small {
+  display: block;
+  font-size: 0.72rem;
+  color: #8a7a64;
+}
+.atable a {
+  color: var(--color-ink, #2c241b);
+  text-decoration: none;
+  border-bottom: 1px dotted currentColor;
+}
+.atable a:hover {
+  color: var(--color-terracotta, #8e3b30);
+}
+.atable-names {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.atable-names li + li {
+  margin-top: 0.15rem;
+}
+.atable-plain {
+  color: #8a7a64;
+  font-style: italic;
+}
+.atable-empty {
+  color: #b7a88f;
+}
+.atable-badge {
+  display: inline-block;
+  margin-inline-start: 0.3rem;
+  padding: 0 0.3rem;
+  border-radius: 0.5rem;
+  font-size: 0.68rem;
+  font-weight: bold;
+  background: var(--color-terracotta, #8e3b30);
+  color: #fff;
+}
+.atable-q {
+  margin-inline-start: 0.25rem;
+  font-weight: bold;
+  color: var(--color-terracotta, #8e3b30);
+}
+.atable-years {
+  margin-inline-start: 0.35rem;
+  color: #6b5b45;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.atable-before small {
+  color: #8a7a64;
+}

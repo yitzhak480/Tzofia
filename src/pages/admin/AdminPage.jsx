@@ -6,6 +6,7 @@ import Footer from '../../components/Footer';
 import AdminLogin from './AdminLogin';
 import AdminCategories from './AdminCategories';
 import AdminChecklist from './AdminChecklist';
+import AdminAmoraimTable from './AdminAmoraimTable';
 import AdminPeople from './AdminPeople';
 import { loadToken, makeAdminApi, saveToken } from './adminApi';
 
@@ -13,6 +14,7 @@ const TABS = [
   { id: 'people', label: 'ערכים' },
   { id: 'categories', label: 'קטגוריות' },
   { id: 'checklist', label: 'רשימת האילן' },
+  { id: 'amoraim', label: 'טבלת האמוראים' },
 ];
 
 // /admin — manage the encyclopedia. Shows the login until the admin signs in.
@@ -74,6 +76,7 @@ const AdminPage = () => {
             {tab === 'categories' && <AdminCategories adminApi={adminApi} />}
             {tab === 'people' && <AdminPeople adminApi={adminApi} />}
             {tab === 'checklist' && <AdminChecklist adminApi={adminApi} />}
+            {tab === 'amoraim' && <AdminAmoraimTable adminApi={adminApi} />}
           </>
         )}
       </main>
