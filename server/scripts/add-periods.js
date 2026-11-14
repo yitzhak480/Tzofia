@@ -31,6 +31,8 @@ const CATEGORIES = {
   'rashei-hagola': { order: 0.85, color: 't1-yehuda', name: L('ראשי הגולה', 'The Heads of the Exile'), description: L('צאצאי בית דוד שהנהיגו את יהודי בבל, ומשפחותיהם', 'Descendants of the house of David who led the Jews of Bavel, and their families') },
   'av-beit-din': { order: 5.5, color: 't1-yehuda', name: L('אבות בית הדין', 'The Heads of the Court (Av Beit Din)'), description: L('אבות בית הדין שעמדו לצד הנשיא בראש הסנהדרין', 'The heads of the court who stood beside the Nasi at the head of the Sanhedrin') },
   'kings-chashmonai': { parent: 'kings', order: 3, color: 't1-levi', sortMode: 'chrono', name: L('מלכי בית חשמונאי', 'The Hasmonean Kings'), description: L('המלכים והמלכה מבית חשמונאי', 'The kings and the queen of the house of Chashmonai') },
+  'paytanim': { order: 32, color: 't2-eretz', name: L('פייטנים', 'Paytanim'), description: L('משוררי הקודש של עם ישראל, שחיברו פיוטים לתפילה', 'The sacred poets of the people of Israel, who wrote piyyutim for the prayers') },
+  'paytanim-classiim': { parent: 'tekufat-hasavoraim', order: 2, color: 't2-eretz', name: L('פייטנים קלאסיים', 'The Classical Paytanim'), description: L('פייטני ארץ ישראל הקדומים, מיוסי בן יוסי ועד יוחנן הכהן, ושמואל בן עדיה', 'The early paytanim of the Land of Israel, from Yose ben Yose to Yochanan HaKohen, and Shmuel ben Adaya') },
   'tekufat-hasavoraim': { order: 30, color: 'purple', name: L('תקופת הסבוראים', 'The Period of the Savoraim'), description: L('החכמים שהשלימו את חתימת התלמוד, ואישים ומאורעות בימיהם', 'The sages who completed the sealing of the Talmud, and people and events of their days') },
   'kings-himyar': { parent: 'kings', order: 5, color: 't2-teiman', sortMode: 'chrono', name: L('מלכי חמיר', 'The Kings of Himyar'), description: L('מלכי חמיר שבדרום ערב, שעזבו את עבודת האלילים והתקרבו ליהדות', 'The kings of Himyar in southern Arabia, who left idol worship and drew close to Judaism') },
   'kings-hordos': { parent: 'kings', order: 4, color: 't1-hordos', sortMode: 'chrono', name: L('מלכי בית הורדוס', 'The Herodian Kings'), description: L('הורדוס וצאצאיו שנשאו תואר מלך', 'Herod and his descendants who bore the title of king') },
@@ -281,6 +283,7 @@ const BATCHES = [
   { category: null, orderBase: 500, entries: require('./content/amoraim-6'), order: [], relink: {} },
   { category: null, orderBase: 600, entries: require('./content/amoraim-7'), order: [], relink: {} },
   { category: null, orderBase: 700, entries: require('./content/amoraim-8'), order: [], relink: {} },
+  { category: null, orderBase: 0, entries: require('./content/paytanim-1'), order: [], relink: {} },
   {
     category: 'beit-chashmonai',
     entries: require('./content/second-temple-houses').chashmonai,
