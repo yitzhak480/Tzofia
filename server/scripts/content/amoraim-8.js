@@ -107,7 +107,7 @@ module.exports = [
     slug: 'kahana-2', spot2: 'כהנא ב׳', roles: [GEN8, L('ראש הגולה', 'Head of the Exile')],
     name: L('כהנא ב׳', 'Kahana II'), summary: L('בנו של מר זוטרא השני, ראש הגולה אחריו.', 'Son of Mar Zutra II, Head of the Exile after him.'),
     rel: [to('father', 'mar-zutra-2'), to('teacher', 'ravina-1')], offices: [RG(['mar-zutra-2'], ['rav-huna-mar'], 4215, 4225)], sources: [SOZ],
-    sections: [SONS, TS('רבו היה רבינא (הראשון).', 'His teacher was Ravina (the first).')],
+    sections: [SONS, sec('הקו המנוקד', 'באילן שלנו יורד ממשפחתו קו מנוקד בסימן שאלה אל "בת ראשי הגולה", אשתו של רב פחדא: רב פחדא היה חתנו של בית דוד, אבל המקורות אינם אומרים בתו של מי הייתה אשתו.', 'The Dotted Line', 'On our tree a dotted line with a question mark goes down from his family to "the daughter of the Heads of the Exile", the wife of Rav Pachda: Rav Pachda was a son-in-law of the house of David, but the sources do not say whose daughter his wife was.'), TS('רבו היה רבינא (הראשון).', 'His teacher was Ravina (the first).')],
   }),
   A({
     slug: 'rav-huna-mar', spot2: 'רב הונא מר', roles: [GEN8, L('ראש הגולה', 'Head of the Exile'), L('נהרג על קידוש השם', 'Killed for the sanctification of God’s Name')],

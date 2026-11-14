@@ -286,6 +286,7 @@ const BATCHES = [
   { category: null, orderBase: 0, entries: require('./content/paytanim-1'), order: [], relink: {} },
   // the Geonim: their place in the Pumbedita list comes after the Savoraim
   { category: null, orderBase: 300, entries: require('./content/geonim-1'), order: [], relink: {} },
+  { category: null, orderBase: 10, entries: require('./content/savoraim-1'), order: [], relink: {} },
   {
     category: 'beit-chashmonai',
     entries: require('./content/second-temple-houses').chashmonai,
@@ -309,10 +310,13 @@ const EXTRA = [
   { slug: 'ovadyah-hanavi', addCategory: 'gerei-tzedek' },
   { slug: 'rav-huna-kama', addCategory: 'amoraim-rashei-hagola' },
   // the heads of the yeshivot (new heads are added here generation by generation)
-  ...['rav-abba-arikha', 'rav-huna', 'rav-chisda', 'rabba-bar-rav-huna', 'rav-papa', 'rav-ashi', 'marimar', 'rav-idi-bar-avin-2', 'rav-nachman-bar-rav-huna', 'mar-bar-rav-ashi', 'rabba-tosfaa', 'ravina-2'].map((slug, i) => ({ slug, addCategory: 'roshei-yeshivat-sura', catOrder: i + 1 })),
+  ...['rav-abba-arikha', 'rav-huna', 'rav-chisda', 'rabba-bar-rav-huna', 'rav-papa', 'rav-ashi', 'marimar', 'rav-idi-bar-avin-2', 'rav-nachman-bar-rav-huna', 'mar-bar-rav-ashi', 'rabba-tosfaa', 'ravina-2', 'rabbana-sama', 'rav-eina-savora'].map((slug, i) => ({ slug, addCategory: 'roshei-yeshivat-sura', catOrder: i + 1 })),
   ...['rav-yehuda', 'rav-huna-bar-chiya', 'rabba', 'rav-yosef', 'abaye', 'rava', 'rav-nachman-bar-yitzhak', 'rav-chama', 'rav-zvid', 'rav-dimi-minehardea', 'rafram-1', 'rav-kahana-4', 'rav-acha-bar-rava', 'rav-gviha-mibei-katil', 'rafram-2', 'rav-rechumi-2', 'rav-sama-brei-drava'].map((slug, i) => ({ slug, addCategory: 'roshei-yeshivat-pumbedita', catOrder: i + 1 })),
   // the Savoraim's heads come long after the Amoraim's
   { slug: 'rabbah-yossi', addCategory: 'roshei-yeshivat-pumbedita', catOrder: 100, forceOrder: true },
+  ...['rav-achai-mibei-chatim', 'rav-shmuel-brei-drav-avahu', 'ravina-meamutzya', 'rav-tachnina', 'rav-simona'].map((slug, i) => ({ slug, addCategory: 'roshei-yeshivat-pumbedita', catOrder: 101 + i })),
+  // Rabbah Yossi (made by add-categories-and-entries.js): his teacher Rabba Tosfa'a
+  { slug: 'rabbah-yossi', rels: [{ type: 'teacher', slug: 'rabba-tosfaa' }] },
   ...['rabbi-yochanan', 'rabbi-elazar-ben-pedat', 'rabbi-ami', 'rabbi-yirmeya', 'rabbi-yona', 'rabbi-yose-ben-zevida', 'rabbi-mana', 'rabbi-avin'].map((slug, i) => ({ slug, addCategory: 'roshei-yeshivat-tveria', catOrder: i + 1 })),
   // Ibn Ezra: Tzefanyah descended from Chizkiyahu (the tree follows him)
   { slug: 'tzefanyah-hanavi', rels: [{ type: 'ancestor', slug: 'chizkiyahu' }] },
@@ -370,6 +374,14 @@ const spot2Of = (name) => {
 const html = (sections, lang) => sections.map((s) => `<h2>${lang === 'he' ? s.titleHe : s.titleEn}</h2><p>${lang === 'he' ? s.textHe : s.textEn}</p>`).join('');
 
 const main = async () => {
+  // two entries with the same slug would write over each other's page
+  {
+    const seen = new Set();
+    for (const b of BATCHES) for (const e of b.entries) {
+      if (seen.has(e.slug)) throw new Error(`the slug "${e.slug}" is used twice`);
+      seen.add(e.slug);
+    }
+  }
   await mongoose.connect(process.env.MONGO_URI);
 
   const cats = {};
