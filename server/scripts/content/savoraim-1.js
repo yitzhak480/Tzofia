@@ -180,6 +180,7 @@ module.exports = [
     offices: [RG(['rav-pachda'], [], 4283, 4296), KING(4296, 4303, [], [])], sources: [SOZ10, IRSG],
     sections: [
       MAR_ZUTRA,
+      sec('מתי היה המרד?', 'המקורות אינם נותנים שנה למרד של מר זוטרא, וההיסטוריונים חלוקים מתי היה. באילן שלנו אנו הולכים בדעה שהמרד הוא שגרם לביטול הישיבות וראשות הגולה בבבל – אך זה אינו ידוע בוודאות, והשנים הכתובות בתיבתו הן משוערות. גם השנה 4280, שבה ייסד בנו, מר זוטרא בר מר זוטרא, את הישיבה בטבריה, אינה מתיישבת היטב עם דעה זו.', 'When Was the Revolt?', 'The sources give no year for Mar Zutra’s revolt, and historians disagree on when it was. On our tree we follow the opinion that the revolt is what caused the closing of the yeshivot and of the office of Head of the Exile in Bavel – but this is not known for certain, and the years written in his box are estimates. The year 4280, in which his son, Mar Zutra bar Mar Zutra, founded the yeshivah in Tiberias, also does not sit well with this opinion.'),
       TS('רבותיו היו סבו רב חנינא ריש מתיבתא, שגידל אותו, ורב יצחק ריש מתיבתא. בנו, מר זוטרא הרביעי, עלה לארץ ישראל.', 'His teachers were his grandfather Rav Chanina Reish Metivta, who raised him, and Rav Yitzhak Reish Metivta. His son, Mar Zutra IV, went up to the Land of Israel.'),
       BITUL_TEXT,
     ],
@@ -187,7 +188,7 @@ module.exports = [
   // the black bar on the poster
   S({
     slug: BITUL, kind: 'other', spot2: 'ביטול הישיבות וראשות הגולה בבבל לכחמישים שנה', cats: ['events-second-tree'], color: 'ink',
-    roles: [L('אירוע', 'Event')], life: [4303, null],
+    roles: [L('אירוע', 'Event')],
     name: L('ביטול הישיבות וראשות הגולה בבבל לכחמישים שנה', 'The Closing of the Yeshivot and of the Office of Head of the Exile in Bavel for About Fifty Years'),
     summary: L('אחרי מרד מר זוטרא בטלו הישיבות וראשות הגולה בבבל לכחמישים שנה.', 'After Mar Zutra’s revolt the yeshivot and the office of Head of the Exile in Bavel were closed for about fifty years.'),
     rel: [], sources: [IRSG, SOZ10],

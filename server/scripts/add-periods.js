@@ -46,7 +46,7 @@ const CATEGORIES = {
   'amoraim-nehardea': { parent: 'amoraim', order: 2, color: 't2-nehardea', name: L('נהרדעא, פומבדיתא ומחוזא', 'Nehardea, Pumbedita and Mechoza'), description: L('אמוראי ישיבות נהרדעא ופומבדיתא ומחוזא', 'The Amoraim of the yeshivot of Nehardea, Pumbedita and Mechoza') },
   'amoraim-tveria': { parent: 'amoraim', order: 3, color: 't2-tveria', name: L('טבריה', 'Tiberias'), description: L('אמוראי ישיבת טבריה, והנחותי שירדו לבבל ועלו ממנה', 'The Amoraim of the Tiberias yeshivah, and the Nechutei who travelled between it and Bavel') },
   'amoraim-eretz': { parent: 'amoraim', order: 4, color: 't2-eretz', name: L('שאר ארץ ישראל', 'The Rest of the Land of Israel'), description: L('אמוראי ציפורי, קיסריה, לוד ושאר ארץ ישראל', 'The Amoraim of Tzippori, Caesarea, Lod and the rest of the Land of Israel') },
-  'amoraim-bavel': { parent: 'amoraim', order: 5, color: 't2-bavel', name: L('שאר בבל ופרס', 'The Rest of Bavel and Persia'), description: L('אמוראים מבבל ומפרס שאינם מן הישיבות הגדולות', 'Amoraim of Bavel and Persia outside the great yeshivot') },
+  'amoraim-bavel': { parent: 'amoraim', order: 5, color: 't2-bavel', name: L('שאר בבל', 'The Rest of Bavel'), description: L('אמוראים מבבל שאינם מן הישיבות הגדולות', 'Amoraim of Bavel outside the great yeshivot') },
   'amoraim-rashei-hagola': { parent: 'amoraim', order: 6, color: 't2-reshgaluta', name: L('ראשי הגולה', 'The Heads of the Exile'), description: L('ראשי הגולה ומשפחתם בימי האמוראים', 'The Heads of the Exile and their family in the days of the Amoraim') },
   'amoraim-family': { parent: 'amoraim', order: 7, color: 'marble', name: L('משפחות האמוראים', 'The Families of the Amoraim'), description: L('הורים, נשים ובני משפחה של האמוראים, הכתובים באילן בלי תיבה', 'Parents, wives and family of the Amoraim, written on the tree without a box') },
   levites: { order: 6.5, color: 't1-levi', sortMode: 'chrono', name: L('בני לוי', 'The Levites'), description: L('משפחות שבט לוי: לויים, משוררים ובני משפחות הכהנים', 'The families of the tribe of Levi: Levites, singers and the families of the Kohanim') },
@@ -404,6 +404,12 @@ const main = async () => {
     if (sav && String(sav.parent) !== String(cats['tekufat-hasavoraim']._id)) {
       sav.set({ parent: cats['tekufat-hasavoraim']._id, order: 1 });
       await sav.save();
+    }
+    // "the rest of Bavel" lost "and Persia": the Persian Jews on the tree are from the Geonim
+    const bavel = await Category.findOne({ slug: 'amoraim-bavel' });
+    if (bavel && bavel.name?.he !== CATEGORIES['amoraim-bavel'].name.he) {
+      bavel.set({ name: CATEGORIES['amoraim-bavel'].name, description: CATEGORIES['amoraim-bavel'].description });
+      await bavel.save();
     }
     const old = await Category.findOne({ slug: 'false-messiahs' });
     if (old) {
