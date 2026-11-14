@@ -295,6 +295,7 @@ const BATCHES = [
   { category: null, orderBase: 10, entries: require('./content/savoraim-1'), order: [], relink: {} },
   { category: null, orderBase: 100, entries: require('./content/eretz-1'), order: [], relink: {} },
   { category: null, orderBase: 200, entries: require('./content/eretz-2'), order: [], relink: {} },
+  { category: null, orderBase: 300, entries: require('./content/eretz-3'), order: [], relink: {} },
   {
     category: 'beit-chashmonai',
     entries: require('./content/second-temple-houses').chashmonai,
