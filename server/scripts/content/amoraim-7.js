@@ -156,8 +156,8 @@ module.exports = [
     slug: 'rav-gviha-mibei-katil', spot2: 'רב גביהה מבי כתיל', roles: [GEN7, L('ראש ישיבת פומבדיתא', 'Head of the Pumbedita yeshivah')],
     name: L('רב גביהה מבי כתיל', 'Rav Geviha of Bei Katil'),
     summary: L('ראש ישיבת פומבדיתא אחרי רב אחא בר רבא.', 'Head of the Pumbedita yeshivah after Rav Acha bar Rava.'),
-    rel: [to('teacher', 'mar-zutra-1')], offices: [PUM(4178, 4193, ['rav-acha-bar-rava'], ['rafram-2'])], sources: [IRSG],
-    sections: [TS('רבו היה מר זוטרא, ורב אחא בר רבא, שאחריו עמד בראש ישיבת פומבדיתא. אחריו עמד בראשה רפרם השני.', 'His teacher was Mar Zutra, and Rav Acha bar Rava, after whom he headed the Pumbedita yeshivah. After him Rafram II headed it.')],
+    rel: [to('teacher', 'rava')], offices: [PUM(4178, 4193, ['rav-acha-bar-rava'], ['rafram-2'])], sources: [IRSG],
+    sections: [TS('רבו היה רבא, ורב אחא בר רבא, שאחריו עמד בראש ישיבת פומבדיתא. אחריו עמד בראשה רפרם השני.', 'His teacher was Rava, and Rav Acha bar Rava, after whom he headed the Pumbedita yeshivah. After him Rafram II headed it.')],
   }),
   A({
     slug: 'rafram-2', spot2: 'רפרם ב׳', roles: [GEN7, L('ראש ישיבת פומבדיתא', 'Head of the Pumbedita yeshivah')],

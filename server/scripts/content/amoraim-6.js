@@ -105,9 +105,12 @@ module.exports = [
   A({
     slug: 'rabbi-abba-3', spot2: 'רבי אבא ג׳', roles: [GEN6],
     name: L('רבי אבא ג׳', 'Rabbi Abba III'),
-    summary: L('מחכמי ארץ ישראל בדור השישי.', 'One of the sages of the Land of Israel in the sixth generation.'),
-    rel: [], sources: [TTA],
-    sections: one('רבי אבא ג׳', 'רבי אבא היה מחכמי ארץ ישראל בדור השישי של האמוראים.', 'Rabbi Abba III', 'Rabbi Abba was one of the sages of the Land of Israel in the sixth generation of the Amoraim.'),
+    summary: L('מאחרוני חכמי ארץ ישראל, שירד לבבל והביא לפני רב אשי את תורת ארץ ישראל.', 'One of the last sages of the Land of Israel, who went down to Bavel and brought the Torah of the Land of Israel before Rav Ashi.'),
+    rel: [], sources: [L('שבת קנ ע״ב', 'Shabbat 150b'), L('בבא קמא כז ע״ב', 'Bava Kamma 27b'), L('תענית ד ע״א', 'Taanit 4a'), L('בבא בתרא קמז ע״א', 'Bava Batra 147a'), L('בכורות נה ע״א', 'Bechorot 55a'), L('תשובות הגאונים (הרכבי), סימן רמח', 'Responsa of the Geonim (Harkavy), no. 248'), TTA],
+    sections: [
+      sec('רבי אבא בבבל', 'רבי אבא היה מאחרוני חכמי ארץ ישראל בדור השישי של האמוראים, וירד לבבל בימי רב אשי – כפי הנראה כשהלכו הישיבות בארץ ישראל ונחלשו. בתלמוד הבבלי הוא מביא לפני רב אשי את תורת ארץ ישראל בלשון "במערבא אמרינן הכי" – כך אומרים אנחנו במערב, בארץ ישראל (שבת קנ ע״ב; בבא קמא כז ע״ב), ומבחין בין "אנן" – בני ארץ ישראל – ל"אתון" – בני בבל (תענית ד ע״א; בבא בתרא קמז ע״א; בכורות נה ע״א). יש הסוברים שלקח חלק בסידור התלמוד הבבלי עם רב אשי.', 'Rabbi Abba in Bavel', 'Rabbi Abba was one of the last sages of the Land of Israel in the sixth generation of the Amoraim, and went down to Bavel in the days of Rav Ashi – apparently when the yeshivot in the Land of Israel were declining. In the Babylonian Talmud he brings the Torah of the Land of Israel before Rav Ashi in the words "in the West we say so" – so we say in the West, in the Land of Israel (Shabbat 150b; Bava Kamma 27b), and distinguishes between "we" – the people of the Land of Israel – and "you" – the people of Bavel (Taanit 4a; Bava Batra 147a; Bechorot 55a). Some hold that he took part in arranging the Babylonian Talmud with Rav Ashi.'),
+      sec('מיהו רבי אבא הזה?', 'הרב אהרן היימן, בספרו "תולדות תנאים ואמוראים", כתב שרבי אבא זה "נשכח כמת מלב", וחשב שהמקומות שבהם הוא מופיע לפני רב אשי הם טעות סופר. אבל בתשובות הגאונים הוא נמנה בין אחרוני האמוראים בארץ ישראל, בן דורו של רב אשי – ומכאן שאינו רבי אבא הראשון, מן הדור השלישי.', 'Who Was This Rabbi Abba?', 'Rabbi Aharon Hyman, in his book "Toldot Tannaim VeAmoraim", wrote that this Rabbi Abba was "forgotten like the dead", and thought that the places where he appears before Rav Ashi are a scribal error. But in the responsa of the Geonim he is counted among the last Amoraim of the Land of Israel, a contemporary of Rav Ashi – so he is not the first Rabbi Abba, of the third generation.'),
+    ],
   }),
   A({
     slug: 'rabbi-avin', spot2: 'רבי אבין', roles: [GEN6, L('ראש ישיבת טבריה', 'Head of the Yeshivah of Tiberias')],

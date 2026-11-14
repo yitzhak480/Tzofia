@@ -672,6 +672,31 @@ const main = async () => {
     await doc.save();
   }
 
+  // a link written by name only, from before that person had a page: once the
+  // page exists, it becomes a real link (or is dropped if already linked)
+  {
+    const byNameHe = new Map();
+    for (const d of bySlug.values()) {
+      const k = (d.name?.he || '').trim();
+      byNameHe.set(k, byNameHe.has(k) ? null : d); // null = two pages with that name
+    }
+    for (const d of bySlug.values()) {
+      let changed = false;
+      const kept = [];
+      for (const r of d.relations || []) {
+        const target = !r.person && byNameHe.get((r.name?.he || '').trim());
+        if (target && String(target._id) !== String(d._id)) {
+          changed = true;
+          if ((d.relations || []).some((q) => String(q.person) === String(target._id))) continue; // already linked
+          kept.push({ ...(r.toObject ? r.toObject() : r), person: target._id, name: { he: target.name.he, en: target.name.en || '' } });
+          continue;
+        }
+        kept.push(r);
+      }
+      if (changed) { d.relations = kept; d.markModified('relations'); await d.save(); }
+    }
+  }
+
   console.log(`✓ Periods: ${count} pages in ${BATCHES.length} batch(es); ${Object.keys(ASTERISKS).length} asterisk notes`);
   await mongoose.disconnect();
 };

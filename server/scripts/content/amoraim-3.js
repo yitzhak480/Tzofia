@@ -57,10 +57,10 @@ module.exports = [
   A({
     slug: 'rabbi-abba-1', spot2: 'רבי אבא א׳', roles: [GEN3],
     name: L('רבי אבא א׳', 'Rabbi Abba'), summary: L('חכם בבלי שעלה לארץ ישראל, תלמיד רב הונא ורבי יוחנן.', 'A Babylonian sage who went up to the Land of Israel, student of Rav Huna and Rabbi Yochanan.'),
-    rel: [to('teacher', 'rav-huna'), to('teacher', 'rabbi-yochanan')], sources: [L('ברכות כד ע״ב', 'Berachot 24b'), TTA],
+    rel: [to('teacher', 'rav-huna'), to('teacher', 'rav-yehuda'), to('teacher', 'rabbi-yochanan')], sources: [L('ברכות כד ע״ב', 'Berachot 24b'), TTA],
     sections: [
       sec('רבי אבא', 'רבי אבא למד בבבל לפני רב הונא, ועלה לארץ ישראל, ושם למד לפני רבי יוחנן. באילן יש כמה חכמים בשם רבי אבא, והם ממוספרים; זהו הראשון שבהם.', 'Rabbi Abba', 'Rabbi Abba learned in Bavel before Rav Huna, and went up to the Land of Israel, where he learned before Rabbi Yochanan. On our tree there are several sages named Rabbi Abba, and they are numbered; this is the first of them.'),
-      TS('רבותיו היו רב הונא ורבי יוחנן.', 'His teachers were Rav Huna and Rabbi Yochanan.'),
+      TS('רבותיו היו רב הונא ורב יהודה בר יחזקאל בבבל, ורבי יוחנן בארץ ישראל.', 'His teachers were Rav Huna and Rav Yehudah bar Yechezkel in Bavel, and Rabbi Yochanan in the Land of Israel.'),
     ],
   }),
   A({
@@ -124,10 +124,10 @@ module.exports = [
   A({
     slug: 'rabbi-zeira', spot2: 'רבי זירא', roles: [GEN3],
     name: L('רבי זירא', 'Rabbi Zeira'), summary: L('שעלה מבבל וצם מאה תעניות כדי לשכוח את תלמודו הבבלי.', 'Who came up from Bavel and fasted a hundred fasts to forget his Babylonian learning.'),
-    rel: [to('teacher', 'rabbi-yochanan'), to('teacher', 'rav-huna')], sources: [L('בבא מציעא פה ע״א', 'Bava Metzia 85a'), L('מגילה כח ע״א', 'Megillah 28a'), L('ברכות כד ע״ב', 'Berachot 24b')],
+    rel: [to('teacher', 'rabbi-yochanan'), to('teacher', 'rav-huna'), to('teacher', 'rav-yehuda')], sources: [L('בבא מציעא פה ע״א', 'Bava Metzia 85a'), L('מגילה כח ע״א', 'Megillah 28a'), L('ברכות כד ע״ב', 'Berachot 24b')],
     sections: [
       sec('מאה תעניות', 'רבי זירא למד בבבל לפני רב הונא, ועלה לארץ ישראל אף שרב יהודה התנגד לכך. הגמרא (בבא מציעא פה ע״א) מספרת שצם מאה תעניות כדי לשכוח את התלמוד הבבלי, כדי ללמוד את תורת ארץ ישראל בדרכה. כשנשאל במה האריך ימים, אמר: "מימי לא הקפדתי בתוך ביתי, ולא צעדתי בפני מי שגדול ממני" (מגילה כח ע״א).', 'A Hundred Fasts', 'Rabbi Zeira learned in Bavel before Rav Huna, and went up to the Land of Israel although Rav Yehudah opposed it. The Gemara (Bava Metzia 85a) relates that he fasted a hundred fasts to forget the Babylonian Talmud, so as to learn the Torah of the Land of Israel in its own way. Asked how he lived long, he said: "I was never strict within my house, and I never walked ahead of one greater than me" (Megillah 28a).'),
-      TS('רבותיו היו רב הונא בבבל ורבי יוחנן בארץ ישראל.', 'His teachers were Rav Huna in Bavel and Rabbi Yochanan in the Land of Israel.'),
+      TS('רבותיו היו רב הונא ורב יהודה בר יחזקאל בבבל, ורבי יוחנן בארץ ישראל.', 'His teachers were Rav Huna and Rav Yehudah bar Yechezkel in Bavel, and Rabbi Yochanan in the Land of Israel.'),
     ],
   }),
   A({
