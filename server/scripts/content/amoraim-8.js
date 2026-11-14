@@ -58,12 +58,12 @@ module.exports = [
     slug: 'ravina-2', spot2: 'רב אבינא בר רב הונא "רבינא האחרון"', roles: [GEN8, KOLELET, L('ראש ישיבת סורא', 'Head of the Sura yeshivah'), L('חותם התלמוד הבבלי ואחרון האמוראים', 'Sealer of the Babylonian Talmud and last of the Amoraim')],
     name: L('רבינא (רב אבינא בר רב הונא)', 'Ravina (Rav Avina bar Rav Huna)'),
     summary: L('רבינא האחרון, ראש ישיבת סורא, שחתם את התלמוד הבבלי.', 'Ravina the last, head of the Sura yeshivah, who sealed the Babylonian Talmud.'),
-    rel: [to('father', 'rav-huna-avi-ravina'), to('teacher', 'rav-ashi'), to('teacher', 'marimar')],
+    rel: [to('father', 'rav-huna-avi-ravina'), to('teacher', 'rav-ashi'), to('teacher', 'marimar'), to('teacher', 'mar-bar-rav-ashi'), to('teacher', 'ravina-1')],
     offices: [SURA(4234, 4260, ['rabba-tosfaa'], [])],
     sources: [IRSG, L('בבא מציעא פו ע״א', 'Bava Metzia 86a'), TTA],
     sections: [
       SOF_HORAA,
-      TS('אביו היה רב הונא, ואחיו רב נחמן בר רב הונא; את דודו רבינא הראשון, אחי אמו, ירש בשמו. רבותיו היו רב אשי ומרימר, ורבה תוספאה, שאחריו עמד בראש ישיבת סורא.', 'His father was Rav Huna, and his brother Rav Nachman bar Rav Huna; he was named after his uncle Ravina I, his mother’s brother. His teachers were Rav Ashi and Marimar, and Rabba Tosfa’a, after whom he headed the Sura yeshivah.'),
+      TS('אביו היה רב הונא, ואחיו רב נחמן בר רב הונא; את דודו רבינא הראשון, אחי אמו, ירש בשמו. רבותיו היו רב אשי, מרימר, מר בר רב אשי ודודו רבינא הראשון, ורבה תוספאה, שאחריו עמד בראש ישיבת סורא.', 'His father was Rav Huna, and his brother Rav Nachman bar Rav Huna; he was named after his uncle Ravina I, his mother’s brother. His teachers were Rav Ashi, Marimar, Mar bar Rav Ashi and his uncle Ravina I, and Rabba Tosfa’a, after whom he headed the Sura yeshivah.'),
     ],
   }),
   A({
@@ -93,8 +93,12 @@ module.exports = [
     slug: 'rav-chanina-reish-metivta', spot2: 'רב חנינא ריש מתיבתא', roles: [GEN8, L('ריש מתיבתא', 'Reish Metivta'), L('נהרג על קידוש השם', 'Killed for the sanctification of God’s Name')],
     name: L('רב חנינא ריש מתיבתא', 'Rav Chanina, Reish Metivta'),
     summary: L('ראש ישיבה, אולי במחוזא, שנהרג על קידוש השם.', 'A head of a yeshivah, perhaps in Mechoza, who was killed for the sanctification of God’s Name.'),
-    rel: [], sources: [TTA],
-    sections: one('רב חנינא ריש מתיבתא', 'רב חנינא עמד בראש ישיבה – אולי במחוזא – בימי הגזירות של מלכי פרס, ונהרג על קידוש השם; לכן באילן שלנו יש להבה ליד שמו.', 'Rav Chanina, Reish Metivta', 'Rav Chanina headed a yeshivah – perhaps in Mechoza – in the days of the decrees of the kings of Persia, and was killed for the sanctification of God’s Name; so on our tree there is a flame beside his name.'),
+    rel: [], sources: [L('סדר עולם זוטא, פרק י', 'Seder Olam Zuta, chapter 10'), TTA],
+    sections: [
+      sec('רב חנינא ובית דוד', 'סדר עולם זוטא מספר: רב חנינא היה ראש ישיבה, ובתו הייתה אשתו של רב הונא ראש הגולה. פעם ביקש דיינו של ראש הגולה לדון בעירו של רב חנינא, ורב חנינא לא הניח לו; ראש הגולה כלא אותו לילה אחד ולקח את רכושו, ורב חנינא בכה בבית הכנסת הגדול. באותו לילה מתו כל בני בית ראש הגולה – ורק מר זוטרא נשאר, טמון במעי אמו.', 'Rav Chanina and the House of David', 'Seder Olam Zuta relates: Rav Chanina was the head of a yeshivah, and his daughter was the wife of Rav Huna the Head of the Exile. Once the Head of the Exile’s judge sought to judge in Rav Chanina’s town, and Rav Chanina did not allow him; the Head of the Exile imprisoned him for a night and took his property, and Rav Chanina wept in the great synagogue. That night all the household of the Head of the Exile died – and only Mar Zutra remained, hidden in his mother’s womb.'),
+      sec('החלום', 'באותו לילה חלם רב חנינא שנכנס לגן של ארזים וקצץ את כולם; נשאר ארז קטן אחד, וכשבא לקצוץ גם אותו, עמד לפניו זקן אדמוני – דוד המלך – ואמר לו: הגן הזה שלי הוא. כשהקיץ סיפרו לו שלא נשאר מבית דוד איש, מלבד בתו, שהייתה מעוברת – והוא שמר על פתחה עד שילדה. את הבן קראו מר זוטרא, על שם אביו, ורב חנינא גידל אותו.', 'The Dream', 'That night Rav Chanina dreamed that he entered a garden of cedars and cut them all down; one small cedar remained, and when he came to cut it down too, a ruddy old man – King David – stood before him and said: this garden is mine. When he woke they told him that no one was left of the house of David, except his daughter, who was with child – and he guarded her door until she gave birth. The son was called Mar Zutra, after his father, and Rav Chanina raised him.'),
+      sec('מר זוטרא וגשר מחוזא', 'כשהיה מר זוטרא בן חמש עשרה, הלך עם ראש הישיבה אל המלך, והסיר את רב פחדא – חתנו של בית דוד, שקנה את ראשות הגולה בשוחד. מר זוטרא עמד בראש הגולה עשרים שנה, ואחר כך יצא למלחמה בפרסים ומלך במחוזא שבע שנים, עד שנתפס; הפרסים צלבו אותו ואת ראש הישיבה על גשר מחוזא. לכן באילן שלנו יש להבה ליד שמו של רב חנינא – הוא נהרג על קידוש השם.', 'Mar Zutra and the Bridge of Mechoza', 'When Mar Zutra was fifteen, he went with the head of the yeshivah to the king, and removed Rav Pachda – a son-in-law of the house of David, who had bought the office of Head of the Exile with a bribe. Mar Zutra headed the Exile for twenty years, and then went out to war against the Persians and reigned in Mechoza for seven years, until he was captured; the Persians crucified him and the head of the yeshivah on the bridge of Mechoza. So on our tree there is a flame beside Rav Chanina’s name – he was killed for the sanctification of God’s Name.'),
+    ],
   }),
 
   // ── the Heads of the Exile ──
@@ -137,7 +141,7 @@ module.exports = [
     name: L('שרחביל יכף', 'Sharchavil Yakkuf'), summary: L('מלך חמיר אחרי שרחביל יעפר.', 'King of Himyar after Sharchavil Yafur.'),
     rel: [maybe('father', 'hassan-yuhamin')], offices: [KING(4225, 4240, ['sharchavil-yafur'], [])], sources: [HIM],
     sections: [
-      sec('שרחביל יכף', 'שרחביל יכף מלך בחמיר אחרי שרחביל יעפר.', 'Sharchavil Yakkuf', 'Sharchavil Yakkuf reigned in Himyar after Sharchavil Yafur.'),
+      sec('שרחביל יכף', 'שרחביל יכף מלך בחמיר אחרי שרחביל יעפר, שהיה כנראה דודו – אחי אביו חסאן.', 'Sharchavil Yakkuf', 'Sharchavil Yakkuf reigned in Himyar after Sharchavil Yafur, who was probably his uncle – the brother of his father Hassan.'),
       sec('סימן השאלה', 'באילן שלנו יורד אליו קו מחסאן יהאמן בסימן שאלה: חלוקות הדעות אם היה בנו, אך כנראה היה.', 'The Question Mark', 'On our tree a line comes down to him from Hassan Yuha’min with a question mark: opinions differ on whether he was his son, but he probably was.'),
     ],
   }),
