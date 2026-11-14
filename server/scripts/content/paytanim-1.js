@@ -5,7 +5,7 @@
 const { L, sec, to } = require('./helpers');
 const T2 = require('./tree-checklist-talmud');
 
-const CATS = ['paytanim-classiim', 'paytanim'];
+const CATS = ['paytanim-classiim', 'paytanim', 'paytanei-eretz-yisrael'];
 const P = (e) => {
   const row = T2.find((r) => r[0] === e.spot2);
   if (!row) throw new Error(`"${e.spot2}" is not in the Talmud tree checklist`);
@@ -107,7 +107,7 @@ module.exports = [
     ],
   }),
   P({
-    slug: 'shmuel-ben-adaya', spot2: 'שמואל בן עדיה',
+    slug: 'shmuel-ben-adaya', spot2: 'שמואל בן עדיה', cats: ['paytanim-classiim', 'paytanim'],
     name: L('שמואל בן עדיה', 'Shmuel ben Adaya (al-Samaw’al)'),
     summary: L('המשורר היהודי של ערב, שנאמנותו הייתה למשל.', 'The Jewish poet of Arabia, whose loyalty became a proverb.'),
     rel: [], life: [null, 4320], sources: [L('ויקיפדיה העברית, שמואל בן עדיה', 'Hebrew Wikipedia, Samaw’al ibn Adiya'), L('האנציקלופדיה היהודית (1906), Samuel ibn Adiya', 'The Jewish Encyclopedia (1906), Samuel ibn Adiya'), L('ספר השירים (כתאב אל־אע׳אני)', 'The Book of Songs (Kitab al-Aghani)')],

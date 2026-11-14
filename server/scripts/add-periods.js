@@ -31,6 +31,12 @@ const CATEGORIES = {
   'rashei-hagola': { order: 0.85, color: 't1-yehuda', name: L('ראשי הגולה', 'The Heads of the Exile'), description: L('צאצאי בית דוד שהנהיגו את יהודי בבל, ומשפחותיהם', 'Descendants of the house of David who led the Jews of Bavel, and their families') },
   'av-beit-din': { order: 5.5, color: 't1-yehuda', name: L('אבות בית הדין', 'The Heads of the Court (Av Beit Din)'), description: L('אבות בית הדין שעמדו לצד הנשיא בראש הסנהדרין', 'The heads of the court who stood beside the Nasi at the head of the Sanhedrin') },
   'kings-chashmonai': { parent: 'kings', order: 3, color: 't1-levi', sortMode: 'chrono', name: L('מלכי בית חשמונאי', 'The Hasmonean Kings'), description: L('המלכים והמלכה מבית חשמונאי', 'The kings and the queen of the house of Chashmonai') },
+  // the yeshivah of the Land of Israel ("Ge'on Yaakov"), from Mar Zutra bar Mar Zutra to the end of the tree
+  'yeshivat-eretz-yisrael': { order: 31.2, color: 't2-tveria', name: L('ישיבת ארץ ישראל', 'The Yeshivah of the Land of Israel'), description: L('ראשי הישיבה וגאוני ארץ ישראל, בעלי המסורה, הפייטנים והאישים של ארץ ישראל מימי מר זוטרא ועד סוף האילן', 'The heads and Geonim of the yeshivah of the Land of Israel, the Masoretes, the paytanim and the figures of the Land of Israel from Mar Zutra to the end of the tree') },
+  'roshei-yeshivat-eretz-yisrael': { parent: 'yeshivat-eretz-yisrael', order: 1, color: 't2-tveria', name: L('ראשי הישיבה וגאוני ארץ ישראל', 'The Heads and Geonim of the Yeshivah'), description: L('ראשי הישיבה בטבריה ואחר כך בירושלים, זה אחר זה', 'The heads of the yeshivah in Tiberias and later in Jerusalem, one after another') },
+  'baalei-hamasora': { parent: 'yeshivat-eretz-yisrael', order: 2, color: 't2-tveria', name: L('בעלי המסורה', 'The Masoretes'), description: L('חכמי טבריה ששמרו על נוסח המקרא, ניקודו וטעמיו', 'The sages of Tiberias who preserved the text of the Bible, its vowels and its accents') },
+  'paytanei-eretz-yisrael': { parent: 'yeshivat-eretz-yisrael', order: 3, color: 't2-eretz', name: L('פייטני ארץ ישראל', 'The Paytanim of the Land of Israel'), description: L('פייטני ארץ ישראל, מן הפייטנים הקלאסיים ועד סוף האילן', 'The paytanim of the Land of Israel, from the classical paytanim to the end of the tree') },
+  'ishei-eretz-yisrael': { parent: 'yeshivat-eretz-yisrael', order: 4, color: 't2-eretz', name: L('אישים ומאורעות בארץ ישראל', 'Figures and Events of the Land of Israel'), description: L('מנהיגי המרד נגד הרקליוס, רופאים, משיחי שקר ואישים אחרים', 'The leaders of the revolt against Heraclius, physicians, false messiahs and other figures') },
   'paytanim': { order: 32, color: 't2-eretz', name: L('פייטנים', 'Paytanim'), description: L('משוררי הקודש של עם ישראל, שחיברו פיוטים לתפילה', 'The sacred poets of the people of Israel, who wrote piyyutim for the prayers') },
   'paytanim-classiim': { parent: 'tekufat-hasavoraim', order: 2, color: 't2-eretz', name: L('פייטנים קלאסיים', 'The Classical Paytanim'), description: L('פייטני ארץ ישראל הקדומים, מיוסי בן יוסי ועד יוחנן הכהן, ושמואל בן עדיה', 'The early paytanim of the Land of Israel, from Yose ben Yose to Yochanan HaKohen, and Shmuel ben Adaya') },
   'tekufat-hasavoraim': { order: 30, color: 'purple', name: L('תקופת הסבוראים', 'The Period of the Savoraim'), description: L('החכמים שהשלימו את חתימת התלמוד, ואישים ומאורעות בימיהם', 'The sages who completed the sealing of the Talmud, and people and events of their days') },
@@ -287,6 +293,7 @@ const BATCHES = [
   // the Geonim: their place in the Pumbedita list comes after the Savoraim
   { category: null, orderBase: 300, entries: require('./content/geonim-1'), order: [], relink: {} },
   { category: null, orderBase: 10, entries: require('./content/savoraim-1'), order: [], relink: {} },
+  { category: null, orderBase: 100, entries: require('./content/eretz-1'), order: [], relink: {} },
   {
     category: 'beit-chashmonai',
     entries: require('./content/second-temple-houses').chashmonai,
