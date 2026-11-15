@@ -40,6 +40,8 @@ const CATEGORIES = {
   'paytanim': { order: 32, color: 't2-eretz', name: L('פייטנים', 'Paytanim'), description: L('משוררי הקודש של עם ישראל, שחיברו פיוטים לתפילה', 'The sacred poets of the people of Israel, who wrote piyyutim for the prayers') },
   'paytanim-classiim': { parent: 'tekufat-hasavoraim', order: 2, color: 't2-eretz', name: L('פייטנים קלאסיים', 'The Classical Paytanim'), description: L('פייטני ארץ ישראל הקדומים, מיוסי בן יוסי ועד יוחנן הכהן, ושמואל בן עדיה', 'The early paytanim of the Land of Israel, from Yose ben Yose to Yochanan HaKohen, and Shmuel ben Adaya') },
   // the orange boxes of the Talmud tree: Persian and Babylonian figures of the Geonic period, with the first Karaites
+  'geonei-sura': { parent: 'geonim', order: 1, color: 't2-sura', name: L('גאוני סורא', 'The Geonim of Sura'), description: L('גאוני ישיבת סורא, ואבות בית הדין, ראשי הכלה והחכמים שלידם, מרב חנניה הכהן ועד רב יצחק גאון', 'The Geonim of the Sura yeshivah, and the av bet din, reishei kallah and sages beside them, from Rav Chanania HaKohen to Rav Yitzhak Gaon') },
+  'geonei-pumbedita': { parent: 'geonim', order: 2, color: 't2-nehardea', name: L('גאוני פומבדיתא', 'The Geonim of Pumbedita'), description: L('גאוני ישיבת פומבדיתא, ואבות בית הדין, ראשי הכלה והחכמים שלידם, מרב הונא מרי ועד רב האי גאון', 'The Geonim of the Pumbedita yeshivah, and the av bet din, reishei kallah and sages beside them, from Rav Huna Mari to Rav Hai Gaon') },
   'ishei-bavel-geonim': { parent: 'geonim', order: 3, color: 't2-bavel', name: L('אישים בבבל ובפרס בימי הגאונים', 'Figures of Bavel and Persia in the Days of the Geonim'), description: L('חכמים, רופאים, מדענים ומשיחי שקר בבבל ובפרס בימי הגאונים, וראשוני הקראים', 'Sages, physicians, scientists and false messiahs of Bavel and Persia in the days of the Geonim, and the first Karaites') },
   'tekufat-hasavoraim': { order: 30, color: 'purple', name: L('תקופת הסבוראים', 'The Period of the Savoraim'), description: L('החכמים שהשלימו את חתימת התלמוד, ואישים ומאורעות בימיהם', 'The sages who completed the sealing of the Talmud, and people and events of their days') },
   'kings-himyar': { parent: 'kings', order: 5, color: 't2-teiman', sortMode: 'chrono', name: L('מלכי חמיר', 'The Kings of Himyar'), description: L('מלכי חמיר שבדרום ערב, שעזבו את עבודת האלילים והתקרבו ליהדות', 'The kings of Himyar in southern Arabia, who left idol worship and drew close to Judaism') },
@@ -294,7 +296,8 @@ const BATCHES = [
   { category: null, orderBase: 700, entries: require('./content/amoraim-8'), order: [], relink: {} },
   { category: null, orderBase: 0, entries: require('./content/paytanim-1'), order: [], relink: {} },
   // the Geonim: their place in the Pumbedita list comes after the Savoraim
-  { category: null, orderBase: 300, entries: require('./content/geonim-1'), order: [], relink: {} },
+  { category: null, orderBase: 600, entries: require('./content/geonim-pumbedita'), order: [], relink: {} },
+  { category: null, orderBase: 700, entries: require('./content/geonim-sura'), order: [], relink: {} },
   { category: null, orderBase: 10, entries: require('./content/savoraim-1'), order: [], relink: {} },
   // the second batch of Savoraim: their places in the lists come after the first (Rav Simona is 105)
   { category: null, orderBase: 105, entries: require('./content/savoraim-2'), order: [], relink: {} },
@@ -332,6 +335,15 @@ const EXTRA = [
   ...['rav-yehuda', 'rav-huna-bar-chiya', 'rabba', 'rav-yosef', 'abaye', 'rava', 'rav-nachman-bar-yitzhak', 'rav-chama', 'rav-zvid', 'rav-dimi-minehardea', 'rafram-1', 'rav-kahana-4', 'rav-acha-bar-rava', 'rav-gviha-mibei-katil', 'rafram-2', 'rav-rechumi-2', 'rav-sama-brei-drava'].map((slug, i) => ({ slug, addCategory: 'roshei-yeshivat-pumbedita', catOrder: i + 1 })),
   // the Savoraim's heads come long after the Amoraim's
   { slug: 'rabbah-yossi', addCategory: 'roshei-yeshivat-pumbedita', catOrder: 100, forceOrder: true },
+  // the last Geonim of Pumbedita in their places, and Rav Natan Aluf among the Sura Geonim before Rav Saadia
+  ...['geonei-pumbedita', 'roshei-yeshivat-pumbedita'].flatMap((c) => [
+    { slug: 'rav-sherira-gaon', addCategory: c, catOrder: 997, forceOrder: true },
+    { slug: 'rav-hai-gaon', addCategory: c, catOrder: 998, forceOrder: true },
+  ]),
+  { slug: 'rav-natan-aluf-ben-yehuda', addCategory: 'geonei-sura', catOrder: 741.5, forceOrder: true },
+  // Chizkiya Gaon sat on Rav Hai's throne – last in the Pumbedita lists
+  { slug: 'chizkiya-gaon-ben-david', addCategory: 'roshei-yeshivat-pumbedita', catOrder: 999, forceOrder: true },
+  { slug: 'chizkiya-gaon-ben-david', addCategory: 'geonei-pumbedita', catOrder: 999, forceOrder: true },
   ...['rav-achai-mibei-chatim', 'rav-shmuel-brei-drav-avahu', 'ravina-meamutzya', 'rav-tachnina', 'rav-simona'].map((slug, i) => ({ slug, addCategory: 'roshei-yeshivat-pumbedita', catOrder: 101 + i })),
   // Rabbah Yossi (made by add-categories-and-entries.js): his teacher Rabba Tosfa'a
   { slug: 'rabbah-yossi', rels: [{ type: 'teacher', slug: 'rabba-tosfaa' }] },
@@ -588,6 +600,9 @@ const main = async () => {
     const plugta = [...(st.relations || []), ...(pred.relations || [])].some((r) => r.type === 'plugta'
       && [String(st._id), String(pred._id)].includes(String(r.person)));
     if (plugta) continue;
+    // Geonim who contended for the gaonate and followed one another were rivals, not teacher and student
+    const RIVALS = [['rav-malka-ben-acha', 'rav-rava-ben-dodai'], ['rav-menachem-ben-yosef', 'rav-matityahu-ben-rabbi'], ['rav-avraham-ben-sherira', 'rav-yosef-ben-chiya']];
+    if (RIVALS.some(([a1, b1]) => (pred.slug === a1 && st.slug === b1) || (pred.slug === b1 && st.slug === a1))) continue;
     const linked = (st.relations || []).some((r) => r.type === 'teacher' && String(r.person) === String(pred._id))
       || (pred.relations || []).some((r) => r.type === 'student' && String(r.person) === String(st._id));
     if (!linked) {

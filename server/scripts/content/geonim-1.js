@@ -13,21 +13,18 @@ const IRSG = L('איגרת רב שרירא גאון', 'The Letter of Rav Sherira
 
 module.exports = [
   G({
-    slug: 'rav-sherira-gaon', spot2: 'רב שרירא גאון בן רב חנינא', cats: ['geonim', 'roshei-yeshivat-pumbedita'],
+    slug: 'rav-sherira-gaon', spot2: 'רב שרירא גאון בן רב חנינא', cats: ['geonei-pumbedita', 'roshei-yeshivat-pumbedita'],
     name: L('רב שרירא גאון', 'Rav Sherira Gaon'),
     roles: [L('גאון פומבדיתא', 'Gaon of Pumbedita'), L('כותב "איגרת רב שרירא גאון"', 'Author of "The Letter of Rav Sherira Gaon"')],
     life: [4666, 4767],
     summary: L('גאון פומבדיתא מבית דוד, שכתב את האיגרת המספרת את שלשלת התורה שבעל פה מן המשנה ועד ימיו.', 'Gaon of Pumbedita of the house of David, who wrote the Letter telling the chain of the Oral Torah from the Mishnah to his own days.'),
     rel: [
-      nm('father', 'רב חנינא גאון בן רב יהודה', 'Rav Chanina Gaon son of Rav Yehudah'),
-      { type: 'mother', he: 'בת רב מישוי', en: 'The daughter of Rav Mishui' },
+      to('father', 'rav-chanina-ben-yehuda'),
+      to('mother', 'bat-rav-mishoi'),
       to('ancestor', 'rabba-bar-avuha'),
-      nm('teacher', 'רב נחמיה גאון בן רב כהן צדק', 'Rav Nechemiah Gaon son of Rav Kohen Tzedek'),
-      nm('child', 'רב האי גאון בן רב שרירא', 'Rav Hai Gaon son of Rav Sherira'),
+      to('child', 'rav-hai-gaon'),
     ],
-    offices: [{ label: L('גאון פומבדיתא', 'Gaon of Pumbedita'), from: 4728, to: 4756,
-      before: [L('רב נחמיה גאון בן רב כהן צדק', 'Rav Nechemiah Gaon son of Rav Kohen Tzedek')],
-      after: [L('רב האי גאון בן רב שרירא', 'Rav Hai Gaon son of Rav Sherira')] }],
+    offices: [{ label: L('ראש ישיבת פומבדיתא', 'Head of the Pumbedita yeshivah'), from: 4728, to: 4756, before: ['rav-nechemia-ben-kohen-tzedek'], after: ['rav-hai-gaon'] }],
     sources: [
       IRSG,
       L('איגרת רב שרירא גאון, מהדורת ב״מ לוין (חיפה, תרפ״א)', 'The Letter of Rav Sherira Gaon, ed. B. M. Lewin (Haifa, 1921)'),
