@@ -280,7 +280,7 @@ module.exports = [
     rel: [to('father', 'mar-ukvan-detzutzita')], offices: [RG(['rabbana-ukva-2'], [], 4100, 4120)], sources: [SOZ],
     sections: [
       sec('הונא בר מר עוקבן', 'הונא, בנו של מר עוקבן דצוציתא, עמד בראש הגולה אחרי רבנא עוקבא.', 'Huna son of Mar Ukvan', 'Huna, the son of Mar Ukvan of Tzutzita, headed the Exile after Rabbana Ukva.'),
-      sec('סימן השאלה', 'באילן שלנו יש סימן שאלה בקו שיורד ממנו אל ראש הגולה שאחריו. ' + "אחריו הרשימות חלוקות: רובן מונות כאן את \"נתן\", אבל ברשימת תנ״ך טריפולי שמו \"כהנא\", וברשימת היחס של צמח הנשיא נמנים שניהם, נתן ואחריו כהנא – וגינצלר כותב ש\"אין לדעת מהי הנוסחה הנכונה\". גם אין אף רשימה שאומרת במפורש שנתן היה בנו (משה גינצלר, \"שלשלת ראשי גולת בבל\").", 'The Question Mark', 'On our tree there is a question mark on the line going down from him to the next Head of the Exile. ' + "After him the lists differ: most count \"Natan\" here, but in the list of the Tripoli Bible his name is \"Kahana\", and in the genealogy of Tzemach the Nasi both are counted, Natan and after him Kahana – and Gintzler writes that \"one cannot know which version is right\". Nor does any list say plainly that Natan was his son (Moshe Gintzler, \"The Exilarch Dynasty\")."),
+      sec('סימן השאלה', 'באילן שלנו יש סימן שאלה בקו שיורד ממנו אל ראש הגולה שאחריו. ' + RG_SOURCES, 'The Question Mark', 'On our tree there is a question mark on the line going down from him to the next Head of the Exile. ' + RG_SOURCES_EN),
     ],
   }),
 ];
