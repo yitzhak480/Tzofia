@@ -40,7 +40,7 @@ const CATEGORIES = {
   'paytanim': { order: 32, color: 't2-eretz', name: L('פייטנים', 'Paytanim'), description: L('משוררי הקודש של עם ישראל, שחיברו פיוטים לתפילה', 'The sacred poets of the people of Israel, who wrote piyyutim for the prayers') },
   'paytanim-classiim': { parent: 'tekufat-hasavoraim', order: 2, color: 't2-eretz', name: L('פייטנים קלאסיים', 'The Classical Paytanim'), description: L('פייטני ארץ ישראל הקדומים, מיוסי בן יוסי ועד יוחנן הכהן, ושמואל בן עדיה', 'The early paytanim of the Land of Israel, from Yose ben Yose to Yochanan HaKohen, and Shmuel ben Adaya') },
   // the orange boxes of the Talmud tree: Persian and Babylonian figures of the Geonic period, with the first Karaites
-  'ishei-bavel-geonim': { order: 30.5, color: 't2-bavel', name: L('אישים בבבל ובפרס בימי הגאונים', 'Figures of Bavel and Persia in the Days of the Geonim'), description: L('חכמים, רופאים, מדענים ומשיחי שקר בבבל ובפרס בימי הגאונים, וראשוני הקראים', 'Sages, physicians, scientists and false messiahs of Bavel and Persia in the days of the Geonim, and the first Karaites') },
+  'ishei-bavel-geonim': { parent: 'geonim', order: 3, color: 't2-bavel', name: L('אישים בבבל ובפרס בימי הגאונים', 'Figures of Bavel and Persia in the Days of the Geonim'), description: L('חכמים, רופאים, מדענים ומשיחי שקר בבבל ובפרס בימי הגאונים, וראשוני הקראים', 'Sages, physicians, scientists and false messiahs of Bavel and Persia in the days of the Geonim, and the first Karaites') },
   'tekufat-hasavoraim': { order: 30, color: 'purple', name: L('תקופת הסבוראים', 'The Period of the Savoraim'), description: L('החכמים שהשלימו את חתימת התלמוד, ואישים ומאורעות בימיהם', 'The sages who completed the sealing of the Talmud, and people and events of their days') },
   'kings-himyar': { parent: 'kings', order: 5, color: 't2-teiman', sortMode: 'chrono', name: L('מלכי חמיר', 'The Kings of Himyar'), description: L('מלכי חמיר שבדרום ערב, שעזבו את עבודת האלילים והתקרבו ליהדות', 'The kings of Himyar in southern Arabia, who left idol worship and drew close to Judaism') },
   'kings-hordos': { parent: 'kings', order: 4, color: 't1-hordos', sortMode: 'chrono', name: L('מלכי בית הורדוס', 'The Herodian Kings'), description: L('הורדוס וצאצאיו שנשאו תואר מלך', 'Herod and his descendants who bore the title of king') },
@@ -425,6 +425,12 @@ const main = async () => {
     }
     // "the rest of Bavel" lost "and Persia": the Persian Jews on the tree are from the Geonim
     // renamed categories keep their slug; bring the name in line with the definition
+    // the orange category moved inside the Geonim
+    {
+      const c = await Category.findOne({ slug: 'ishei-bavel-geonim' });
+      const g = await Category.findOne({ slug: 'geonim' });
+      if (c && g && String(c.parent) !== String(g._id)) { c.set({ parent: g._id, order: 3 }); await c.save(); }
+    }
     for (const slug of ['amoraim-bavel', 'amoraim-rashei-hagola']) {
       const c = await Category.findOne({ slug });
       if (c && c.name?.he !== CATEGORIES[slug].name.he) {
