@@ -46,6 +46,7 @@ const CATEGORIES = {
   'roshei-yeshivot': { order: 29.5, color: 't2-sura', name: L('ראשי הישיבות', 'The Heads of the Yeshivot'), description: L('ראשי הישיבות הגדולות בבבל ובארץ ישראל, זה אחר זה', 'The heads of the great yeshivot of Bavel and the Land of Israel, one after another') },
   'roshei-yeshivat-sura': { parent: 'roshei-yeshivot', order: 1, color: 't2-sura', sortMode: 'manual', name: L('ראשי ישיבת סורא', 'The Heads of the Sura Yeshivah'), description: L('ראשי ישיבת סורא מרב ואילך', 'The heads of the Sura yeshivah, from Rav onwards') },
   'roshei-yeshivat-pumbedita': { parent: 'roshei-yeshivot', order: 2, color: 't2-nehardea', sortMode: 'manual', name: L('ראשי ישיבת פומבדיתא', 'The Heads of the Pumbedita Yeshivah'), description: L('ראשי ישיבת פומבדיתא מרב יהודה ואילך', 'The heads of the Pumbedita yeshivah, from Rav Yehudah onwards') },
+  'roshei-yeshivat-piruz-shabur': { parent: 'roshei-yeshivot', order: 4, color: 't2-bavel', sortMode: 'manual', name: L('ראשי ישיבת פירוז שבור', 'The Heads of the Piruz-Shabur Yeshivah'), description: L('ראשי הישיבה בפירוז שבור שליד נהרדעא, בימי הסבוראים ובתחילת ימי הגאונים', 'The heads of the yeshivah in Piruz-Shabur near Nehardea, in the days of the Savoraim and the start of the Geonim') },
   'roshei-yeshivat-tveria': { parent: 'roshei-yeshivot', order: 3, color: 't2-tveria', sortMode: 'manual', name: L('ראשי ישיבת טבריה', 'The Heads of the Tiberias Yeshivah'), description: L('ראשי ישיבת טבריה מרבי יוחנן ואילך', 'The heads of the Tiberias yeshivah, from Rabbi Yochanan onwards') },
   // the Amoraim, by the colour groups of the Talmud tree
   'amoraim-sura': { parent: 'amoraim', order: 1, color: 't2-sura', name: L('סורא, מתא מחסיא ונרש', 'Sura, Mata Mechasya and Naresh'), description: L('אמוראי ישיבת סורא והמקומות הסמוכים לה', 'The Amoraim of the Sura yeshivah and the places near it') },
@@ -293,6 +294,8 @@ const BATCHES = [
   // the Geonim: their place in the Pumbedita list comes after the Savoraim
   { category: null, orderBase: 300, entries: require('./content/geonim-1'), order: [], relink: {} },
   { category: null, orderBase: 10, entries: require('./content/savoraim-1'), order: [], relink: {} },
+  // the second batch of Savoraim: their places in the lists come after the first (Rav Simona is 105)
+  { category: null, orderBase: 105, entries: require('./content/savoraim-2'), order: [], relink: {} },
   { category: null, orderBase: 100, entries: require('./content/eretz-1'), order: [], relink: {} },
   { category: null, orderBase: 200, entries: require('./content/eretz-2'), order: [], relink: {} },
   { category: null, orderBase: 300, entries: require('./content/eretz-3'), order: [], relink: {} },
