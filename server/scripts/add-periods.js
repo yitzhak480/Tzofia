@@ -39,6 +39,8 @@ const CATEGORIES = {
   'ishei-eretz-yisrael': { parent: 'yeshivat-eretz-yisrael', order: 4, color: 't2-eretz', name: L('אישים ומאורעות בארץ ישראל', 'Figures and Events of the Land of Israel'), description: L('מנהיגי המרד נגד הרקליוס, רופאים, משיחי שקר ואישים אחרים', 'The leaders of the revolt against Heraclius, physicians, false messiahs and other figures') },
   'paytanim': { order: 32, color: 't2-eretz', name: L('פייטנים', 'Paytanim'), description: L('משוררי הקודש של עם ישראל, שחיברו פיוטים לתפילה', 'The sacred poets of the people of Israel, who wrote piyyutim for the prayers') },
   'paytanim-classiim': { parent: 'tekufat-hasavoraim', order: 2, color: 't2-eretz', name: L('פייטנים קלאסיים', 'The Classical Paytanim'), description: L('פייטני ארץ ישראל הקדומים, מיוסי בן יוסי ועד יוחנן הכהן, ושמואל בן עדיה', 'The early paytanim of the Land of Israel, from Yose ben Yose to Yochanan HaKohen, and Shmuel ben Adaya') },
+  // the orange boxes of the Talmud tree: Persian and Babylonian figures of the Geonic period, with the first Karaites
+  'ishei-bavel-geonim': { order: 30.5, color: 't2-bavel', name: L('אישים בבבל ובפרס בימי הגאונים', 'Figures of Bavel and Persia in the Days of the Geonim'), description: L('חכמים, רופאים, מדענים ומשיחי שקר בבבל ובפרס בימי הגאונים, וראשוני הקראים', 'Sages, physicians, scientists and false messiahs of Bavel and Persia in the days of the Geonim, and the first Karaites') },
   'tekufat-hasavoraim': { order: 30, color: 'purple', name: L('תקופת הסבוראים', 'The Period of the Savoraim'), description: L('החכמים שהשלימו את חתימת התלמוד, ואישים ומאורעות בימיהם', 'The sages who completed the sealing of the Talmud, and people and events of their days') },
   'kings-himyar': { parent: 'kings', order: 5, color: 't2-teiman', sortMode: 'chrono', name: L('מלכי חמיר', 'The Kings of Himyar'), description: L('מלכי חמיר שבדרום ערב, שעזבו את עבודת האלילים והתקרבו ליהדות', 'The kings of Himyar in southern Arabia, who left idol worship and drew close to Judaism') },
   'kings-hordos': { parent: 'kings', order: 4, color: 't1-hordos', sortMode: 'chrono', name: L('מלכי בית הורדוס', 'The Herodian Kings'), description: L('הורדוס וצאצאיו שנשאו תואר מלך', 'Herod and his descendants who bore the title of king') },
@@ -54,7 +56,7 @@ const CATEGORIES = {
   'amoraim-tveria': { parent: 'amoraim', order: 3, color: 't2-tveria', name: L('טבריה', 'Tiberias'), description: L('אמוראי ישיבת טבריה, והנחותי שירדו לבבל ועלו ממנה', 'The Amoraim of the Tiberias yeshivah, and the Nechutei who travelled between it and Bavel') },
   'amoraim-eretz': { parent: 'amoraim', order: 4, color: 't2-eretz', name: L('שאר ארץ ישראל', 'The Rest of the Land of Israel'), description: L('אמוראי ציפורי, קיסריה, לוד ושאר ארץ ישראל', 'The Amoraim of Tzippori, Caesarea, Lod and the rest of the Land of Israel') },
   'amoraim-bavel': { parent: 'amoraim', order: 5, color: 't2-bavel', name: L('שאר בבל', 'The Rest of Bavel'), description: L('אמוראים מבבל שאינם מן הישיבות הגדולות', 'Amoraim of Bavel outside the great yeshivot') },
-  'amoraim-rashei-hagola': { parent: 'amoraim', order: 6, color: 't2-reshgaluta', name: L('ראשי הגולה', 'The Heads of the Exile'), description: L('ראשי הגולה ומשפחתם בימי האמוראים', 'The Heads of the Exile and their family in the days of the Amoraim') },
+  'amoraim-rashei-hagola': { parent: 'amoraim', order: 6, color: 't2-reshgaluta', name: L('ראשי הגולה בתקופת האמוראים', 'The Heads of the Exile in the Days of the Amoraim'), description: L('ראשי הגולה ומשפחתם בימי האמוראים', 'The Heads of the Exile and their family in the days of the Amoraim') },
   'amoraim-family': { parent: 'amoraim', order: 7, color: 'marble', name: L('משפחות האמוראים', 'The Families of the Amoraim'), description: L('הורים, נשים ובני משפחה של האמוראים, הכתובים באילן בלי תיבה', 'Parents, wives and family of the Amoraim, written on the tree without a box') },
   levites: { order: 6.5, color: 't1-levi', sortMode: 'chrono', name: L('בני לוי', 'The Levites'), description: L('משפחות שבט לוי: לויים, משוררים ובני משפחות הכהנים', 'The families of the tribe of Levi: Levites, singers and the families of the Kohanim') },
   'gerei-tzedek': { order: 6.6, color: 't1-gerim', sortMode: 'chrono', name: L('גרי צדק', 'Righteous Converts'), description: L('מי שבאו מן העמים ונכנסו תחת כנפי השכינה', 'Those who came from the nations and entered under the wings of the Divine Presence') },
@@ -296,6 +298,7 @@ const BATCHES = [
   { category: null, orderBase: 10, entries: require('./content/savoraim-1'), order: [], relink: {} },
   // the second batch of Savoraim: their places in the lists come after the first (Rav Simona is 105)
   { category: null, orderBase: 105, entries: require('./content/savoraim-2'), order: [], relink: {} },
+  { category: null, orderBase: 500, entries: require('./content/rashei-hagola-geonim'), order: [], relink: {} },
   { category: null, orderBase: 100, entries: require('./content/eretz-1'), order: [], relink: {} },
   { category: null, orderBase: 200, entries: require('./content/eretz-2'), order: [], relink: {} },
   { category: null, orderBase: 300, entries: require('./content/eretz-3'), order: [], relink: {} },
@@ -321,6 +324,9 @@ const ASTERISK_TITLE = { he: 'הכוכבית שבאילן', en: 'The Asterisk on
 const EXTRA = [
   { slug: 'ovadyah-hanavi', addCategory: 'gerei-tzedek' },
   { slug: 'rav-huna-kama', addCategory: 'amoraim-rashei-hagola' },
+  // the wives of the Heads of the Exile of the Savoraim also belong in the main list
+  { slug: 'bat-rav-chanina', addCategory: 'rashei-hagola' },
+  { slug: 'bat-rashei-hagola', addCategory: 'rashei-hagola' },
   // the heads of the yeshivot (new heads are added here generation by generation)
   ...['rav-abba-arikha', 'rav-huna', 'rav-chisda', 'rabba-bar-rav-huna', 'rav-papa', 'rav-ashi', 'marimar', 'rav-idi-bar-avin-2', 'rav-nachman-bar-rav-huna', 'mar-bar-rav-ashi', 'rabba-tosfaa', 'ravina-2', 'rabbana-sama', 'rav-eina-savora'].map((slug, i) => ({ slug, addCategory: 'roshei-yeshivat-sura', catOrder: i + 1 })),
   ...['rav-yehuda', 'rav-huna-bar-chiya', 'rabba', 'rav-yosef', 'abaye', 'rava', 'rav-nachman-bar-yitzhak', 'rav-chama', 'rav-zvid', 'rav-dimi-minehardea', 'rafram-1', 'rav-kahana-4', 'rav-acha-bar-rava', 'rav-gviha-mibei-katil', 'rafram-2', 'rav-rechumi-2', 'rav-sama-brei-drava'].map((slug, i) => ({ slug, addCategory: 'roshei-yeshivat-pumbedita', catOrder: i + 1 })),
@@ -418,10 +424,13 @@ const main = async () => {
       await sav.save();
     }
     // "the rest of Bavel" lost "and Persia": the Persian Jews on the tree are from the Geonim
-    const bavel = await Category.findOne({ slug: 'amoraim-bavel' });
-    if (bavel && bavel.name?.he !== CATEGORIES['amoraim-bavel'].name.he) {
-      bavel.set({ name: CATEGORIES['amoraim-bavel'].name, description: CATEGORIES['amoraim-bavel'].description });
-      await bavel.save();
+    // renamed categories keep their slug; bring the name in line with the definition
+    for (const slug of ['amoraim-bavel', 'amoraim-rashei-hagola']) {
+      const c = await Category.findOne({ slug });
+      if (c && c.name?.he !== CATEGORIES[slug].name.he) {
+        c.set({ name: CATEGORIES[slug].name, description: CATEGORIES[slug].description });
+        await c.save();
+      }
     }
     const old = await Category.findOne({ slug: 'false-messiahs' });
     if (old) {
@@ -735,6 +744,20 @@ const main = async () => {
       const first = catById.get(String((d.categories || [])[0]));
       d.icon = iconForCategory(first?.slug, first?.icon);
       await d.save();
+    }
+  }
+
+  // the main list of the Heads of the Exile, from the Second Temple to Chizkiya Gaon, in one order
+  {
+    const MAIN = ['chizkiya-rosh-hagola', 'akuv-rosh-hagola', 'nachum-rosh-hagola', 'yochanan-rosh-hagola', 'shafat-rosh-hagola',
+      'anan-rosh-hagola', 'natan-rosh-hagola', 'kosiva', 'shimon-ben-koziva', 'rav-huna-kama', 'natan-2-rosh-hagola', 'nechemya-rosh-hagola',
+      'yalta', 'rabba-bar-avuha', 'mar-ukva-1', 'mar-ukvan-detzutzita', 'abba-mari-huna-mar', 'rabbana-ukva-2', 'huna-bar-mar-ukvan',
+      'natan-3', 'kahana-1', 'mar-zutra-1', 'marimar', 'rav-huna-brei-drav-natan', 'mar-zutra-2', 'kahana-2', 'rav-huna-mar', 'shushandukht',
+      'rav-huna-bar-rav-kahana', 'bat-rav-chanina', 'rav-pachda', 'bat-rashei-hagola', 'mar-zutra-3',
+      ...require('./content/rashei-hagola-geonim').filter((e) => e.cats.includes('rashei-hagola')).map((e) => e.slug)];
+    const cat = await Category.findOne({ slug: 'rashei-hagola' });
+    for (const [i, slug] of MAIN.entries()) {
+      await Person.updateOne({ slug, categories: cat._id }, { $set: { [`orders.${cat._id}`]: (i + 1) * 10 } });
     }
   }
 
