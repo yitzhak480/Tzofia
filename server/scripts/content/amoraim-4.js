@@ -33,8 +33,8 @@ const CHUMA = sec('חומא',
   'חומא, בתו של איסי בן רב יצחק בריה דרב יהודה, נישאה שלוש פעמים, ושלושת בעליה מתו: תחילה לרחבא דפומבדיתא, אחר כך לרב יצחק בנו של רבה בר בר חנה, ולבסוף לאביי (יבמות סד ע״ב) – ולכן באילן שלנו נישואיה ממוספרים 1, 2 ו־3. אחרי פטירת אביי באה לפני רבא ותבעה מזונות, וכשחשפה את זרועה, נשבתה עיניו של רבא. אשתו של רבא, בת רב חסדא, יצאה אחריה ורדפה אותה מן העיר, ואמרה לה: "קטלתיה לתלתא, ואתית למקטל אחרינא?" – הרגת שלושה, ובאת להרוג עוד אחד? (כתובות סה ע״א).',
   'Chuma',
   'Chuma, the daughter of Isi son of Rav Yitzhak son of Rav Yehudah, married three times, and all three of her husbands died: first Rechava of Pumbedita, then Rav Yitzhak son of Rabba bar bar Chana, and finally Abaye (Yevamot 64b) – so on our tree her marriages are numbered 1, 2 and 3. After Abaye’s death she came before Rava to claim support, and when she uncovered her arm, Rava was taken by her. Rava’s wife, Rav Chisda’s daughter, went out after her and chased her from the town, saying to her: "You have killed three, and you come to kill another?" (Ketubot 65a).');
-const RG_SOURCES = 'שושלת ראשי הגולה נמסרה בכעשרים מקורות שונים, שאינם מסכימים זה עם זה, וסימני השאלה באילן נמצאים במקומות שבהם הדבר אינו ברור בגלל ריבוי הדעות.';
-const RG_SOURCES_EN = 'The line of the Heads of the Exile is handed down in some twenty different sources, which do not agree with one another, and the question marks on our tree are in the places that are not clear because of the many opinions.';
+const RG_SOURCES = 'שושלת ראשי הגולה נמסרה בשש עשרה רשימות קדומות, שאינן מסכימות זו עם זו (משה גינצלר ערך אותן זו לצד זו בטבלה), וסימני השאלה באילן נמצאים במקומות שבהם הדבר אינו ברור.';
+const RG_SOURCES_EN = 'The line of the Heads of the Exile is handed down in sixteen early lists, which do not agree with one another (Moshe Gintzler set them side by side in a table), and the question marks on our tree are in the places that are not clear.';
 
 module.exports = [
   // ── the Land of Israel ──
@@ -272,7 +272,7 @@ module.exports = [
     slug: 'rabbana-ukva-2', spot2: 'רבנא עוקבא ב׳', roles: [L('ראש הגולה', 'Head of the Exile')],
     name: L('רבנא עוקבא ב׳', 'Rabbana Ukva II'), summary: L('ראש הגולה אחרי אבא מרי.', 'Head of the Exile after Abba Mari.'),
     rel: [], offices: [RG(['abba-mari-huna-mar'], ['huna-bar-mar-ukvan'], 4080, 4100)], sources: [SOZ],
-    sections: one('רבנא עוקבא ב׳', 'לפי סדר עולם זוטא עמד רבנא עוקבא בראש הגולה אחרי אבא מרי, בימיהם של אביי ורבא. ' + RG_SOURCES, 'Rabbana Ukva II', 'According to Seder Olam Zuta, Rabbana Ukva headed the Exile after Abba Mari, in the days of Abaye and Rava. ' + RG_SOURCES_EN),
+    sections: one('רבנא עוקבא ב׳', 'לפי סדר עולם זוטא עמד רבנא עוקבא בראש הגולה אחרי אבא מרי, בימיהם של אביי ורבא. ' + "רבנא עוקבא נזכר רק בסדר עולם זוטא ובשני נוסחיו המקבילים, ובשאר הרשימות הוא חסר; ברשימת היחס של ידידיה הנשיא נזכר במקומו \"כהנא\". גינצלר מזהה אותו עם רבנא עוקבא, נכדו של רב, שנזכר בגמרא (חולין צב ע\"א) יחד עם אחיו רבנא נחמיה, \"אחוה דריש גלותא\", ותלמיד רב חסדא (משה גינצלר, \"שלשלת ראשי גולת בבל\").", 'Rabbana Ukva II', 'According to Seder Olam Zuta, Rabbana Ukva headed the Exile after Abba Mari, in the days of Abaye and Rava. ' + "Rabbana Ukva is named only in Seder Olam Zuta and its two parallel versions, and is missing in the other lists; in the genealogy of Yedidyah the Nasi \"Kahana\" stands in his place. Gintzler identifies him with Rabbana Ukva, Rav’s grandson, named in the Gemara (Chullin 92a) with his brother Rabbana Nechemiah, \"the brother of the Head of the Exile\", and a student of Rav Chisda (Moshe Gintzler, \"The Exilarch Dynasty\")."),
   }),
   A({
     slug: 'huna-bar-mar-ukvan', spot2: 'הונא בר מר עוקבן', roles: [L('ראש הגולה', 'Head of the Exile')],
@@ -280,7 +280,7 @@ module.exports = [
     rel: [to('father', 'mar-ukvan-detzutzita')], offices: [RG(['rabbana-ukva-2'], [], 4100, 4120)], sources: [SOZ],
     sections: [
       sec('הונא בר מר עוקבן', 'הונא, בנו של מר עוקבן דצוציתא, עמד בראש הגולה אחרי רבנא עוקבא.', 'Huna son of Mar Ukvan', 'Huna, the son of Mar Ukvan of Tzutzita, headed the Exile after Rabbana Ukva.'),
-      sec('סימן השאלה', 'באילן שלנו יש סימן שאלה בקו שיורד ממנו אל ראש הגולה שאחריו. ' + RG_SOURCES, 'The Question Mark', 'On our tree there is a question mark on the line going down from him to the next Head of the Exile. ' + RG_SOURCES_EN),
+      sec('סימן השאלה', 'באילן שלנו יש סימן שאלה בקו שיורד ממנו אל ראש הגולה שאחריו. ' + "אחריו הרשימות חלוקות: רובן מונות כאן את \"נתן\", אבל ברשימת תנ״ך טריפולי שמו \"כהנא\", וברשימת היחס של צמח הנשיא נמנים שניהם, נתן ואחריו כהנא – וגינצלר כותב ש\"אין לדעת מהי הנוסחה הנכונה\". גם אין אף רשימה שאומרת במפורש שנתן היה בנו (משה גינצלר, \"שלשלת ראשי גולת בבל\").", 'The Question Mark', 'On our tree there is a question mark on the line going down from him to the next Head of the Exile. ' + "After him the lists differ: most count \"Natan\" here, but in the list of the Tripoli Bible his name is \"Kahana\", and in the genealogy of Tzemach the Nasi both are counted, Natan and after him Kahana – and Gintzler writes that \"one cannot know which version is right\". Nor does any list say plainly that Natan was his son (Moshe Gintzler, \"The Exilarch Dynasty\")."),
     ],
   }),
 ];

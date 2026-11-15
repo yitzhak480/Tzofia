@@ -31,8 +31,8 @@ const SDH = L('סדר הדורות', 'Seder HaDorot');
 const RAMBAM = L('רמב״ם, הקדמה למשנה תורה', 'Rambam, Introduction to the Mishneh Torah');
 const K61 = L('כתובות סא ע״א', 'Ketubot 61a');
 const TS = (he, en) => sec('רבותיו ותלמידיו', he, 'Teachers and Students', en);
-const RG_SOURCES = 'שושלת ראשי הגולה נמסרה בכעשרים מקורות שונים, שאינם מסכימים זה עם זה, וסימני השאלה באילן נמצאים במקומות שבהם הדבר אינו ברור בגלל ריבוי הדעות.';
-const RG_SOURCES_EN = 'The line of the Heads of the Exile is handed down in some twenty different sources, which do not agree with one another, and the question marks on our tree are in the places that are not clear because of the many opinions.';
+const RG_SOURCES = 'שושלת ראשי הגולה נמסרה בשש עשרה רשימות קדומות, שאינן מסכימות זו עם זו (משה גינצלר ערך אותן זו לצד זו בטבלה), וסימני השאלה באילן נמצאים במקומות שבהם הדבר אינו ברור.';
+const RG_SOURCES_EN = 'The line of the Heads of the Exile is handed down in sixteen early lists, which do not agree with one another (Moshe Gintzler set them side by side in a table), and the question marks on our tree are in the places that are not clear.';
 // Ravina's family: his sister married Rav Huna, and their son was Ravina II
 const RAVINA_FAMILY = sec('משפחת רבינא',
   'אחותו של רבינא נישאה לרב הונא, ובנם נקרא על שם דודו – רבינא השני, אחרון האמוראים, שאביו נפטר כשהיה קטן ודודו רבינא גידל אותו.',
@@ -281,7 +281,7 @@ module.exports = [
     rel: [to('teacher', 'rav-papa'), to('teacher', 'ameimar')],
     offices: [RG(['kahana-1'], [], 4160, 4175)], sources: [SOZ, K61],
     sections: [
-      sec('מר זוטרא', 'מר זוטרא עמד בראש הגולה אחרי כהנא. ' + RG_SOURCES, 'Mar Zutra', 'Mar Zutra headed the Exile after Kahana. ' + RG_SOURCES_EN),
+      sec('מר זוטרא', 'מר זוטרא עמד בראש הגולה אחרי כהנא. ' + "רוב הרשימות מונות אותו כאן, ושישה חיבורים כרונולוגיים, ובהם איגרת רב שרירא, רושמים את פטירתו בשנת 4175 (415). גינצלר משער שהוא האמורא מר זוטרא, ראש ישיבת פומבדיתא, ויש שמזהים אותו עם מר זוטרא חסידא; גרץ הקדים לפניו את מרימר, נגד כל הרשימות (משה גינצלר, \"שלשלת ראשי גולת בבל\").", 'Mar Zutra', 'Mar Zutra headed the Exile after Kahana. ' + "Most of the lists count him here, and six chronological works, among them the Letter of Rav Sherira, record his death in 4175 (415). Gintzler supposes he is the Amora Mar Zutra, head of the Pumbedita yeshivah, and some identify him with Mar Zutra Chasida; Graetz put Marimar before him, against all the lists (Moshe Gintzler, \"The Exilarch Dynasty\")."),
       KING_GATE,
       TS('רבותיו היו רב פפא ואמימר, ותלמידו היה רב אחא בר רבא.', 'His teachers were Rav Papa and Ameimar, and his student was Rav Acha bar Rava.'),
     ],

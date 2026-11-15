@@ -29,8 +29,8 @@ const SDH = L('סדר הדורות', 'Seder HaDorot');
 const BB22 = L('בבא בתרא כב ע״א', 'Bava Batra 22a');
 const URS = L('ירושלמי שביעית ד, ב', 'Yerushalmi Sheviit 4:2');
 const TS = (he, en) => sec('רבותיו ותלמידיו', he, 'Teachers and Students', en);
-const RG_SOURCES = 'שושלת ראשי הגולה נמסרה בכעשרים מקורות שונים, שאינם מסכימים זה עם זה, וסימני השאלה באילן נמצאים במקומות שבהם הדבר אינו ברור בגלל ריבוי הדעות.';
-const RG_SOURCES_EN = 'The line of the Heads of the Exile is handed down in some twenty different sources, which do not agree with one another, and the question marks on our tree are in the places that are not clear because of the many opinions.';
+const RG_SOURCES = 'שושלת ראשי הגולה נמסרה בשש עשרה רשימות קדומות, שאינן מסכימות זו עם זו (משה גינצלר ערך אותן זו לצד זו בטבלה), וסימני השאלה באילן נמצאים במקומות שבהם הדבר אינו ברור.';
+const RG_SOURCES_EN = 'The line of the Heads of the Exile is handed down in sixteen early lists, which do not agree with one another (Moshe Gintzler set them side by side in a table), and the question marks on our tree are in the places that are not clear.';
 // the story of Rav Ada bar Abba, told on the pages of the sages in it
 const ADA = sec('רב אדא בר אבא',
   'רב אדא בר אבא, תלמידו של רבא, פגש את רב פפא ואת רב הונא בריה דרב יהושע כשיצאו מבית המדרש, ושאל אותם שאלות בשמועות של רבא. הם לא ידעו להשיב, והוא אמר להם: "בהא קיימיתו?" – במה עסקתם? הם נעלבו, ורב אדא בר אבא נפטר זמן קצר אחר כך. רבא אמר: "אני ענשתיו", ורב פפא ורב הונא בריה דרב יהושע חשבו כל אחד שהוא הסיבה לכך (בבא בתרא כב ע״א).',
@@ -285,13 +285,13 @@ module.exports = [
     rel: [maybe('father', 'huna-bar-mar-ukvan')], offices: [RG(['huna-bar-mar-ukvan'], ['kahana-1'], 4120, 4140)], sources: [SOZ],
     sections: [
       sec('נתן ג׳', 'נתן עמד בראש הגולה אחרי הונא בר מר עוקבן, ואחריו כהנא.', 'Natan III', 'Natan headed the Exile after Huna son of Mar Ukvan, and after him came Kahana.'),
-      sec('סימני השאלה', 'באילן שלנו יש סימן שאלה בקו שיורד אליו מהונא בר מר עוקבן, ובקו שיורד ממנו אל בניו, רב הונא בר נתן ומר זוטרא השני, שעמדו בראש הגולה זה אחר זה. ' + RG_SOURCES + ' הקו המנוקד שלצד ראשי הגולה אינו שלהם, אלא קו הצאצאים של רבה בר אבוה, בדרכו אל משפחת רב שרירא גאון.', 'The Question Marks', 'On our tree there is a question mark on the line coming down to him from Huna son of Mar Ukvan, and on the line going down from him to his sons, Rav Huna bar Natan and Mar Zutra II, who headed the Exile one after the other. ' + RG_SOURCES_EN + ' The dotted line beside the Heads of the Exile is not theirs, but the line of Rabba bar Avuha’s descendants, on its way to the family of Rav Sherira Gaon.'),
+      sec('סימני השאלה', 'באילן שלנו יש סימן שאלה בקו שיורד אליו מהונא בר מר עוקבן, ובקו שיורד ממנו אל בניו, רב הונא בר נתן ומר זוטרא השני, שעמדו בראש הגולה זה אחר זה. ' + "הסימן הראשון: ברשימת תנ״ך טריפולי נקרא ראש הגולה הזה \"כהנא\" ולא נתן, ואין רשימה שאומרת שהיה בנו של הונא. הסימן השני: גינצלר כותב שנתן, אביו של רב הונא בר נתן, \"כנראה לא כיהן כריש גלותא, ולכן אינו מופיע ברשימות\" – הוא היה חכם ושימש חזן לפני רב פפא – ולכן אין ודאות שנתן ראש הגולה הוא אביהם (משה גינצלר, \"שלשלת ראשי גולת בבל\")." + ' הקו המנוקד שלצד ראשי הגולה אינו שלהם, אלא קו הצאצאים של רבה בר אבוה, בדרכו אל משפחת רב שרירא גאון.', 'The Question Marks', 'On our tree there is a question mark on the line coming down to him from Huna son of Mar Ukvan, and on the line going down from him to his sons, Rav Huna bar Natan and Mar Zutra II, who headed the Exile one after the other. ' + "The first mark: in the list of the Tripoli Bible this Head of the Exile is called \"Kahana\" and not Natan, and no list says he was Huna’s son. The second mark: Gintzler writes that Natan, the father of Rav Huna bar Natan, \"apparently did not serve as Head of the Exile, so he does not appear in the lists\" – he was a sage and served as cantor before Rav Pappa – so it is not certain that Natan the Head of the Exile is their father (Moshe Gintzler, \"The Exilarch Dynasty\")." + ' The dotted line beside the Heads of the Exile is not theirs, but the line of Rabba bar Avuha’s descendants, on its way to the family of Rav Sherira Gaon.'),
     ],
   }),
   A({
     slug: 'kahana-1', spot2: 'כהנא א׳', roles: [L('ראש הגולה', 'Head of the Exile')],
     name: L('כהנא א׳', 'Kahana I'), summary: L('ראש הגולה אחרי נתן.', 'Head of the Exile after Natan.'),
     rel: [], offices: [RG(['natan-3'], [], 4140, 4160)], sources: [SOZ],
-    sections: one('כהנא א׳', 'כהנא עמד בראש הגולה אחרי נתן. ' + RG_SOURCES, 'Kahana I', 'Kahana headed the Exile after Natan. ' + RG_SOURCES_EN),
+    sections: one('כהנא א׳', 'כהנא עמד בראש הגולה אחרי נתן. ' + "כהנא נזכר כאן רק בשלוש רשימות – תנ״ך טריפולי, יחס ידידיה הנשיא ויחס צמח הנשיא – ואותן רשימות מונות במקום \"כהנא\" שאחר כך את \"חנינא\" או \"חנניה\"; לכן גינצלר מסמן אותו ברשימתו כנתון מסופק, וכותב ש\"אין לדעת מהי הנוסחה הנכונה\" (משה גינצלר, \"שלשלת ראשי גולת בבל\").", 'Kahana I', 'Kahana headed the Exile after Natan. ' + "Kahana is named here in only three lists – the Tripoli Bible, the genealogy of Yedidyah the Nasi and the genealogy of Tzemach the Nasi – and those same lists name \"Chanina\" or \"Chanania\" in place of the later \"Kahana\"; so Gintzler marks him in his index as doubtful, and writes that \"one cannot know which version is right\" (Moshe Gintzler, \"The Exilarch Dynasty\")."),
   }),
 ];

@@ -24,8 +24,8 @@ const SOZ10 = L('סדר עולם זוטא, פרק י', 'Seder Olam Zuta, chapter
 const STA = L('סדר תנאים ואמוראים', 'Seder Tannaim VeAmoraim');
 const HIM = L('כתובות חמיריות מתימן', 'Himyarite inscriptions from Yemen');
 const TS = (he, en) => sec('רבותיו ותלמידיו', he, 'Teachers and Students', en);
-const RG_SOURCES = 'שושלת ראשי הגולה נמסרה בכעשרים מקורות שונים, שאינם מסכימים זה עם זה, וסימני השאלה באילן נמצאים במקומות שבהם הדבר אינו ברור בגלל ריבוי הדעות.';
-const RG_SOURCES_EN = 'The line of the Heads of the Exile is handed down in some twenty different sources, which do not agree with one another, and the question marks on our tree are in the places that are not clear because of the many opinions.';
+const RG_SOURCES = 'שושלת ראשי הגולה נמסרה בשש עשרה רשימות קדומות, שאינן מסכימות זו עם זו (משה גינצלר ערך אותן זו לצד זו בטבלה), וסימני השאלה באילן נמצאים במקומות שבהם הדבר אינו ברור.';
+const RG_SOURCES_EN = 'The line of the Heads of the Exile is handed down in sixteen early lists, which do not agree with one another (Moshe Gintzler set them side by side in a table), and the question marks on our tree are in the places that are not clear.';
 const SAVORAIM = sec('הסבוראים',
   'הסבוראים הם החכמים שבאו אחרי חתימת התלמוד בפטירת רבינא (4260). הם לא חלקו על דברי האמוראים, אלא "סברו" – הסבירו, השלימו ופסקו – והוסיפו לתלמוד קטעים קצרים, ובהם כנראה כמה מן הפתיחות של הסוגיות. רוב מה שאנו יודעים עליהם בא מאיגרת רב שרירא גאון.',
   'The Savoraim',
@@ -150,7 +150,7 @@ module.exports = [
     slug: 'rav-huna-bar-rav-kahana', spot2: 'רב הונא בר רב כהנא', cats: ['rashei-hagola', 'tekufat-hasavoraim'], roles: [L('ראש הגולה', 'Head of the Exile')],
     name: L('רב הונא בר רב כהנא', 'Rav Huna bar Rav Kahana'), summary: L('ראש הגולה, בעלה של בת רב חנינא ואביו של מר זוטרא.', 'Head of the Exile, the husband of Rav Chanina’s daughter and father of Mar Zutra.'),
     rel: [to('father', 'kahana-2'), to('spouse', 'bat-rav-chanina')], offices: [RG(['rav-huna-mar'], ['rav-pachda'], 4244, 4268)], sources: [SOZ10],
-    sections: [MAR_ZUTRA, sec('ראש הגולה', 'רב הונא, בנו של כהנא השני, עמד בראש הגולה אחרי רב הונא מר. ' + RG_SOURCES, 'Head of the Exile', 'Rav Huna, the son of Kahana II, headed the Exile after Rav Huna Mar. ' + RG_SOURCES_EN)],
+    sections: [MAR_ZUTRA, sec('ראש הגולה', 'רב הונא, בנו של כהנא השני, עמד בראש הגולה אחרי רב הונא מר. ' + "רק סדר עולם זוטא מונה אותו, \"אחי אביהם, רב הונא בר רב כהנא\"; ברוב הרשימות עומד במקומו \"רב כפנא\" או \"כפנאי\". לזרוס וגוד סבורים שראשות הגולה פסקה בגזירות פירוז (4230), ורב הונא התמנה רק כשמת פירוז (4244) (משה גינצלר, \"שלשלת ראשי גולת בבל\").", 'Head of the Exile', 'Rav Huna, the son of Kahana II, headed the Exile after Rav Huna Mar. ' + "Only Seder Olam Zuta counts him, \"their father’s brother, Rav Huna son of Rav Kahana\"; in most lists \"Rav Kafna\" or \"Kafnai\" stands in his place. Lazarus and Goode hold that the office stopped in the decrees of Peroz (4230), and Rav Huna was appointed only when Peroz died (4244) (Moshe Gintzler, \"The Exilarch Dynasty\").")],
   }),
   F({
     slug: 'bat-rav-chanina', spot2: 'בת רב חנינא', cats: ['tekufat-hasavoraim'],
